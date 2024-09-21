@@ -6,6 +6,10 @@
     "docs:dev": "vitepress dev guidelines",
     "dev": "vitepress dev guidelines",
     "docs:build": "vitepress build guidelines",
-    "docs:preview": "vitepress preview guidelines"
+    "docs:preview": "vitepress preview guidelines",
+    "docs:preview8080": "vitepress preview guidelines --port 8080",
+    "serve": "rm -rf guidelines/.vitepress/dist/ || true && npm run docs:build && npm run docs:preview8080",
+    "docker:build": "docker build -t guidelines .",
+    "docker:run": "docker run -p 8080:8080 guidelines"
   }
 }
