@@ -179,9 +179,19 @@ Beispiele:
 Wenn Klassen nur aus Getter und Setter bestehen, sollte die Klasse neu bewertet werden, da sie gegen das Prinzip [Information Hiding](../2.principles/principles#ih) verstößt.
 :::
 
-
 ## Build-Pattern Methoden
 
-Methoden für das [Build-Pattern](../4.designpatterns/builder) sollten mit `with` beginnen.
+Methoden für das [Build-Pattern](../4.designpatterns/builder) sollen mit `with` beginnen.
+Das `Endstück` solle den Namen `build` haben, denn der Kontext sollte mit dem Namen der Klasse oder der Builder-Methode klar sein.
+
+Beispiele:
+
+```text
+PersonBuilder
+.withName(name)
+.withAge(age)
+.withAddress(address)
+.build()
+```
 
 > Das Prefix `add` sollte vermieden werden, da es zu Verwirrung führen kann, ob es sich um eine Methode zur Hinzufügung oder zum Setzen handelt.
