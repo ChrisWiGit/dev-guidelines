@@ -1,0 +1,11 @@
+# run container image guidelines
+
+version: '3.7'
+services:
+  app:
+    image: guidelines
+    container_name: guidelines
+    ports:
+      - "8080:8080"
+    restart: on-failure, 2s
+    

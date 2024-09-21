@@ -15,6 +15,9 @@
   - [Interfaces](#interfaces)
   - [Funktionen und Methoden](#funktionen-und-methoden)
   - [Methodenpaare](#methodenpaare)
+  - [Methoden mit Boolean-Rückgabewerten](#methoden-mit-boolean-rückgabewerten)
+  - [Getter und Setter](#getter-und-setter)
+  - [Build-Pattern Methoden](#build-pattern-methoden)
 
 ## Allgemeine Regeln
 
@@ -67,6 +70,30 @@ Interfaces, die eine Fähigkeit präsentieren, sollten mit einem Adjektiv enden 
 
 ## Funktionen und Methoden
 
+Funktionen und Methoden sollten mit einem Verb beginnen, das die Aktion beschreibt, die sie ausführen.
+Der Name beginnt mit einem Verb und bezieht dabei auch die Parameter mit ein, sodass der Name die Funktionalität der Methode beschreibt.
+Namen können lang sein, solange sie die Funktionalität klar beschreiben.
+Weiterhin kann das Verb ausgeschmückt werden, um die Aktion genauer zu beschreiben (`compareTextCaseInsensitive`).
+
+Beachte jedoch auch:
+
+- Methoden-/Funktionsnamen sollten nur eine Aktion beschreiben.
+`DoSomethingAndSomethingElse` ist ein Hinweis auf eine zu komplexe Methode.
+- Methoden-/Funktionsnamen sollten nur alphanumerische Zeichen enthalten (Buchstaben, Zahlen, Unterstriche).
+- Methoden-/Funktionsnamen sollten nicht mehr als 25 Zeichen lang sein.
+In diesem Fall sollte die Methode in kleinere Methoden aufgeteilt werden (siehe [Single Responsibility Principle](../2.principles/principles#srp)).
+- Die Namen können Typen (z.B. `String`) enthalten, wenn die Sprache **nicht** typisiert ist (*JavaScript*) und der Typ nicht offensichtlich ist (`serializeJsonObject`).
+
+Beispiele:
+
+```text
+serialize(json : JsonObject), aber serializeJsonObject(json)
+deserialize(json : String)
+validate(data : any)
+compare(a : Integer, b : Integer) oder compareIntegers(a, b)
+compareTextCaseInsensitive(a, b) oder compareCaseInsensitive(a: String, b: String)
+```
+
 ## Methodenpaare
 
 Methoden, die ein Paar bilden, sollten mit den gleichen Wörtern beginnen. Zum Beispiel:
@@ -114,3 +141,47 @@ Beispiele:
 - follow/unfollow
 - serialize/deserialize
 - connect/disconnect
+
+## Methoden mit Boolean-Rückgabewerten
+
+Methoden, die einen Boolean-Wert zurückgeben, sollten mit einem Präfix `is`, `has`, `can`, `should` oder `will` gefolgt von einem Adjektiv beginnen.
+
+Beispiele:
+
+```text
+isReady()
+hasChildren()
+canEdit()
+shouldDisplay()
+willDestroy()
+```
+
+> Der Präfix `does` sollte vermieden werden, da er durch die anderen Präfixe besser ersetzt werden kann.
+
+::: info
+Spezifischere Präfixe wie `contains` oder `supports` sollten verwendet werden, wenn sie besser in den Kontext passen.
+:::
+
+## Getter und Setter
+
+Getter sollten **kein** Präfix haben, Setter sollten mit `set` beginnen.
+Die Silbe `get` ist überflüssig, da sie keine zusätzliche Information hinzufügt (wie z.B. auch der Typname im Variablenname).
+Heutige Entwicklungsumgebungen bieten Code-Vervollständigung, sodass der Unterschied zwischen Getter und Setter offensichtlich ist.
+Stattdessen sollen Domain-spezifische Namen direkt verwendet werden
+
+Beispiele:
+
+```text
+`name()` statt `getName()`
+```
+
+::: warning
+Wenn Klassen nur aus Getter und Setter bestehen, sollte die Klasse neu bewertet werden, da sie gegen das Prinzip [Information Hiding](../2.principles/principles#ih) verstößt.
+:::
+
+
+## Build-Pattern Methoden
+
+Methoden für das [Build-Pattern](../4.designpatterns/builder) sollten mit `with` beginnen.
+
+> Das Prefix `add` sollte vermieden werden, da es zu Verwirrung führen kann, ob es sich um eine Methode zur Hinzufügung oder zum Setzen handelt.
