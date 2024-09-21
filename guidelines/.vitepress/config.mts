@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import sidebar from './themeConfig.sidebar.mts'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -10,20 +11,14 @@ export default defineConfig({
       { text: 'Home', link: '/' },
       { text: 'Examples', link: '/markdown-examples' }
     ],
-
-    sidebar: [
-      {
-        text: 'Examples',
-        items: [
-          { text: 'Markdown Examples', link: './markdown-examples' },
-          { text: 'Runtime API Examples', link: './api-examples' }
-        ]
-      }
-    ],
+    ...sidebar,
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
-    ]
+    ],
+    search: {
+      provider: 'local'
+    }
   },
   locales: {
     "de-DE": {

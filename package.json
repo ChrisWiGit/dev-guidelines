@@ -4,6 +4,7 @@
   },
   "scripts": {
     "docs:dev": "vitepress dev guidelines",
+    "dev": "vitepress dev guidelines",
     "docs:build": "vitepress build guidelines",
     "docs:preview": "vitepress preview guidelines"
   }

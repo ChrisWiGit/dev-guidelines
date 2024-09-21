@@ -8,18 +8,34 @@ hero:
   tagline: "Software ist mehr als nur Code"
   actions:
     - theme: brand
-      text: erster Artikel
-      link: ./1. Artikel - Gesundheit
+      text: Allgemeines
+      link: ./preamble
     - theme: alt
-      text: API Examples
-      link: ./api-examples
+      text: Glossar
+      link: ./allrules
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: Allgemeines
+    details: Allgemeines zum Leitfaden
+    link: ./preamble
+  - title: Gesundheit
+    details: Regeln zur Gesundheit
+    link: ./1.health/ 
+  - title: Prinzipien der SE
+    details: Prinzipien der Softwareentwicklung
+    link: ./2.principles/
+  - title: Clean Code
+    details: Clean Code Regeln
+    link: ./3.cleancode/
+  - title: Design Patterns
+    details: Entwurfsmuster in der Softwareentwicklung
+    link: ./4.designpatterns/
+  - title: Refactoring
+    details: Regeln zum Refactoring
+    link: ./5.refactoring/
+  - title: Sprachen
+    details: Richtlinien zu den Sprachen und Frameworks Java, JavaScript, Vue
+    link: ./6.languages/
+  
 ---
 

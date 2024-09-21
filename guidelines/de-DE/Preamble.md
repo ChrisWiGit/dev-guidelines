@@ -2,7 +2,7 @@
 outline: deep
 ---
 
-# Präambel
+# Allgemeines
 
 Dieser Entwicklerleitfaden ist eine Sammlung von Richtlinien, die dir helfen sollen, bessere Software zu entwickeln.
 Software ist mehr als nur Code. Software ist ein Produkt, das von Menschen für Menschen entwickelt wird.
@@ -20,15 +20,15 @@ Es ist besser die Leitlinien mit der Zeit zu lernen, als sie alle auf einmal zu 
 Die Richtlinien sind nicht in Stein gemeißelt. Sie sind ein Leitfaden, der dir helfen soll, bessere Software zu entwickeln.
 :::
 
+## Richtlinien und Regeln
+
+Alle Richtlinien in diesem Dokument sind kodiert. Jede Regel beginnt mit einem Buchstaben, gefolgt von einer Nummer, die den Abschnitt identifiziert.
+Damit kann eine Regel eindeutig identifiziert werden, z.B. für ein Code-Review.
+
+Es gibt folgende Abschnitte:
+
+* **G** für Gesundheit. Siehe [Gesundheit](./1.health/)
+
 ## Nutzen
 
 Du kannst die Richtlinien gesamt oder in Teilen nutzen. Du kannst sie auch an deine Bedürfnisse anpassen und sie in deinem Team verwenden.
-
-## Artikel 1
-
-Der [1. Artikel](./1.law) ist unveränderlich und sollte immer an erster Stelle stehen.
-Er enthält allgemeine Richtlinien, die für alle Entwickler gelten.
-
-::: warning
-Eine Änderung oder sogar das Entfernen des 1. Artikels ist nicht erlaubt, sofern damit der Artikel in seinem Wesen verändert wird.
-:::

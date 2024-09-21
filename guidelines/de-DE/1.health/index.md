@@ -2,36 +2,34 @@
 outline: deep
 ---
 
-# Artikel 1
-
-Siehe auch [Präambel](./Preamble)
+# Entwicklerregeln
 
 Der erste Artikel enthält allgemeine Richtlinien, die für alle Entwickler und deren Gesundheit gelten.
+Jeder Abschnitt enthält einen Code, der mit **H**(ealth/Geshund**h**eit) beginnt, gefolgt von einer Nummer, die den Abschnitt identifiziert.
 
-## §1.1 Gesundheit
+## H1 Gesundheit
 
-a) Nichts ist wichtiger als deine Gesundheit. Achte auf deine Gesundheit und die deiner Kollegen. 
+a) Nichts ist wichtiger als deine Gesundheit. Achte auf deine Gesundheit und die deiner Kollegen.
 
 b) Esse gesund, trinke genug Wasser und bewege dich regelmäßig.
 
 b) Schlafe ausreichend.
 
-## §1.3 Arbeitszeit
+## H3 Arbeitszeit
 
-a) Arbeite im Schnitt maximal 8 Stunden am Tag.
+a) Arbeite im Schnitt maximal deine vereinbarten Stunden am Tag.
 
-b) Arbeite nicht mehr als 40 Stunden in der Woche, außer du willst Stunden aufbauen,
-um später weniger zu arbeiten.
+b) Arbeite nicht mehr als deine vereinbarten Stunden in der Woche, außer du willst Stunden aufbauen, um später weniger zu arbeiten.
 
-d) Wenn du mehr als 8 Stunden am Tag arbeitest, dann musst du mindestens 11 Stunden Pause machen bevor du wieder arbeitest.
+d) Wenn du mehr als deine vereinbarten Stunden am Tag arbeitest, dann musst du mindestens 11 Stunden Pause machen bevor du wieder arbeitest.
 
-## §1.4 Pausen
+## H4 Pausen
 
-a) Mache regelmäßig Pausen. 8 Stunden am Stück zu arbeiten ist nicht effektiv.
+a) Mache regelmäßig Pausen. Viele Stunden am Stück zu arbeiten ist nicht effektiv.
 
 b) Teile deine Arbeitszeit ein, fokusiere dich auf deine Arbeit und mache dann zwischendurch eine Pause.
 
-## §1.5 Urlaub
+## H5 Urlaub
 
 a) Nimm regelmäßig Urlaub. Du hast Anspruch auf einige Tage Urlaub im Jahr.
 
@@ -39,13 +37,13 @@ b) Nutze deinen Urlaub um zu entspannen und neue Energie zu tanken.
 
 c) Urlaube sollten mehrere Tage am Stück sein. Ein Tag Urlaub ist nicht effektiv.
 
-## §1.6 Krankheit
+## H6 Krankheit
 
 a) Wenn du krank bist, dann bleibe zu Hause. Du gefährdest nicht nur dich, sondern auch deine Kollegen.
 
 b) Wenn du krank bist, dann melde dich krank und informiere deinen Vorgesetzten.
 
-## §1.7 Helfen
+## H7 Helfen
 
 a) Hilf deinen Kollegen, wenn du kannst.
 
