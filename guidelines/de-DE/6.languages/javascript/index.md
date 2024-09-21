@@ -37,9 +37,6 @@ Falls es erforderlich ist, wird in Zukunft Typescript in ein eigenes Regeldokume
 * [G15 Verwenden aussagekräftige Rückgabewerte und -typen](general#g15-verwenden-aussagekräftige-rückgabewerte-und--typen)
 <!-- /TOC -->
 
-
-
-
 ## Regeln
 
 Es gelten die [Allgemeinen Regeln für Sprachen](../general).
@@ -100,10 +97,10 @@ Es sollte sichergestellt werden, dass der Code ordnungsgemäß mit Fehlern umgeh
 
 Design Patterns bieten eine wiederverwendbare Vorlage zur Lösung von Softwareentwicklungsproblemen in einem bestimmten Kontext. Sie dienen dazu, den Code sauberer, effizienter und einfacher zu verstehen zu machen. Einige Beispiele für Design Patterns, die in Java häufig verwendet werden, sind:
 
-- Klassenfabrik (Factory Pattern)
-- Singleton Pattern
-- Builder Pattern
-- weitere Patterns [dofactory Design Patterns](https://www.dofactory.com/javascript/design-patterns)
+* Klassenfabrik (Factory Pattern)
+* Singleton Pattern
+* Builder Pattern
+* weitere Patterns [dofactory Design Patterns](https://www.dofactory.com/javascript/design-patterns)
 
 ### G15 Verwenden aussagekräftige Rückgabewerte und -typen
 

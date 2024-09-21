@@ -5,7 +5,7 @@ layout: home
 hero:
   name: "Coding Guidelines"
   text: "Provides a full set of Coding Guidelines"
-  tagline: My great project tagline
+  tagline: Under Construction
   actions:
     - theme: brand
       text: Markdown Examples

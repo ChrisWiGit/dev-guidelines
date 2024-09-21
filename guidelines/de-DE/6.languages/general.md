@@ -7,7 +7,7 @@ layout: doc
 
 ## Einleitung
 
-Jede Richtliniennummer besteht aus dem Buchstaben **G**(eneral) gefolgt von einer Nummer, die den Abschnitt identifiziert. Damit kann eine Regel eindeutig identifiziert werden, z.B. für ein Code-Review.
+Jede Richtliniennummer besteht aus dem Buchstaben --G--(eneral) gefolgt von einer Nummer, die den Abschnitt identifiziert. Damit kann eine Regel eindeutig identifiziert werden, z.B. für ein Code-Review.
 
 ## Übersicht
 
@@ -43,11 +43,10 @@ Die Prinzipien der Softwareentwicklung wie in [Prinzipien der Softwareentwicklun
 
 Design Patterns bieten eine wiederverwendbare Vorlage zur Lösung von Softwareentwicklungsproblemen in einem bestimmten Kontext. Sie dienen dazu, den Code sauberer, effizienter und einfacher zu verstehen zu machen. Einige Beispiele für Design Patterns, die in Java häufig verwendet werden, sind:
 
-* Klassenfabrik (Factory Pattern)
-* Singleton Pattern
-* Builder Pattern
-* weitere Patterns [dofactory Design Patterns](https://www.dofactory.com/javascript/design-patterns)
-
+- Klassenfabrik (Factory Pattern)
+- Singleton Pattern
+- Builder Pattern
+- weitere Patterns [dofactory Design Patterns](https://www.dofactory.com/javascript/design-patterns)
 
 ### G8 Architektur planen und umsetzen
 
@@ -55,10 +54,10 @@ Der Code soll nach den Prinzipien der Softwareentwicklung in [Prinzipien der Sof
 
 Darunter fallen, jedoch nicht ausschließlich:
 
-* Aufteilung in Abstraktionsschichten
-* Trennung von Verantwortlichkeiten
-* Trennung von Geschäftslogik und Präsentation
-* Nutzung von Dependency Injection
+- Aufteilung in Abstraktionsschichten
+- Trennung von Verantwortlichkeiten
+- Trennung von Geschäftslogik und Präsentation
+- Nutzung von Dependency Injection
 
 ### Ein Befehl, ein Build
 
@@ -66,9 +65,9 @@ Ein Projekt sollte mit einem einzigen Befehl gebaut werden können. Dies erleich
 
 ### Dokumentation
 
-* Ein Projekt muss immer mit einem `README.md`-Dokument beginnen, das eine kurze und lange Beschreibung des Projekts, Anweisungen zur Installation und Verwendung, sowie Informationen zur Lizenzierung und zum Beitrag enthält.
-* Der Standardtext, der von gitlab für readme-Dateien generiert wird, muss angepasst werden.
-* Dokumentation über die Architektur und die Funktionsweise muss verlinkt oder im Projekt selbst enthalten sein.
+- Ein Projekt muss immer mit einem `README.md`-Dokument beginnen, das eine kurze und lange Beschreibung des Projekts, Anweisungen zur Installation und Verwendung, sowie Informationen zur Lizenzierung und zum Beitrag enthält.
+- Der Standardtext, der von gitlab für readme-Dateien generiert wird, muss angepasst werden.
+- Dokumentation über die Architektur und die Funktionsweise muss verlinkt oder im Projekt selbst enthalten sein.
 
 ### G6 Einsatz von Linter und Formatter
 
@@ -81,12 +80,12 @@ Tests helfen dabei, sicherzustellen, dass der Code nach dem Refactoring immer no
 
 ### G9 Selbsterklärender Code und keine Kommentare
 
-* Kommentare müssen vermieden werden, wenn der Code selbsterklärend ist.
-  * Wenn der Code nicht selbst erklärend ist, sollte der Code umstrukturiert werden, um ihn verständlicher zu machen.
-* Kommentare dienen
-  * zur Erklärung von komplexen Algorithmen oder Geschäftsregeln, die nicht offensichtlich sind und nicht vereinfacht werden können.
-  * Meta-Informationen, die der Entwickler zur Klärung benötigt (z.B. warum etwas gemacht wurde).
-  * TODOs, die noch erledigt werden müssen.
+- Kommentare müssen vermieden werden, wenn der Code selbsterklärend ist.
+  - Wenn der Code nicht selbst erklärend ist, sollte der Code umstrukturiert werden, um ihn verständlicher zu machen.
+- Kommentare dienen
+  - zur Erklärung von komplexen Algorithmen oder Geschäftsregeln, die nicht offensichtlich sind und nicht vereinfacht werden können.
+  - Meta-Informationen, die der Entwickler zur Klärung benötigt (z.B. warum etwas gemacht wurde).
+  - TODOs, die noch erledigt werden müssen.
 
 ::: info
 Kommentare als Dokumentation (z.B. JavaDoc, JsDoc) sind eine Ausnahme und müssen immer verwendet werden.
@@ -104,18 +103,18 @@ Das Vorgehen nach "Könnte später nützlich sein" sollte vermieden werden und n
 
 Auf Optimierung ohne Grund sollte verzichtet werden.
 
-* Es ist besser, den Code zuerst zu schreiben und dann zu optimieren, wenn es notwendig ist.
-* Optimierungen dürfen nur mit einem Benchmark durchgeführt werden, um das Optimierungsergebnis zu überprüfen.
+- Es ist besser, den Code zuerst zu schreiben und dann zu optimieren, wenn es notwendig ist.
+- Optimierungen dürfen nur mit einem Benchmark durchgeführt werden, um das Optimierungsergebnis zu überprüfen.
 
 ### G13 Fehlerbehandlung
 
-* Es soll immer eine allgemeine Fehlerbehandlung verwendet werden und spezifische Fehlerbehandlungen vermieden werden.
-  * Allgemeine Fehler vom Framework behandeln lassen oder in einem globalen Fehlerhandler behandeln und dem Benutzer anzeigen.
-  * Spezifische Fehlerbehandlungen (`try-catch`) nur verwenden, wenn ein Fehler bekannt und im Code behandelbar ist.
-* Fehlerbehandlung muss immer berücksichtigt und mit-getestet werden.
-  * Tests müssen auch die Fehlerbehandlung abdecken.
-  * Auch seltene oder unmöglich erscheinende Fehler müssen getestet werden.
-* Fehler müssen so früh wie möglich geworfen werden (siehe [Fail Fast](../2.principles/#fail-fast)).
+- Es soll immer eine allgemeine Fehlerbehandlung verwendet werden und spezifische Fehlerbehandlungen vermieden werden.
+  - Allgemeine Fehler vom Framework behandeln lassen oder in einem globalen Fehlerhandler behandeln und dem Benutzer anzeigen.
+  - Spezifische Fehlerbehandlungen (`try-catch`) nur verwenden, wenn ein Fehler bekannt und im Code behandelbar ist.
+- Fehlerbehandlung muss immer berücksichtigt und mit-getestet werden.
+  - Tests müssen auch die Fehlerbehandlung abdecken.
+  - Auch seltene oder unmöglich erscheinende Fehler müssen getestet werden.
+- Fehler müssen so früh wie möglich geworfen werden (siehe [Fail Fast](../2.principles/#fail-fast)).
 
 ### G15 Verwenden aussagekräftige Rückgabewerte und -typen
 

@@ -36,6 +36,9 @@ features:
   - title: Sprachen
     details: Richtlinien zu den Sprachen und Frameworks Java, JavaScript, Vue
     link: ./6.languages/
+  - title: Künstliche Intelligenz
+    details: KI in der Softwareentwicklung
+    link: ./7.ai
   
 ---
 

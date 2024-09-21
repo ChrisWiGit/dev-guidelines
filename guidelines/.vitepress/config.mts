@@ -3,13 +3,13 @@ import sidebar from './themeConfig.sidebar.mts'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  ignoreDeadLinks: true,
   title: "Coding Guidelines",
   description: "Provides a full set of Coding Guidelines",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
+      { text: 'Deutsch', link: '/de-DE' },
     ],
     ...sidebar,
 
