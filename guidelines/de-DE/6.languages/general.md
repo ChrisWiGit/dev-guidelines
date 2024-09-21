@@ -11,33 +11,31 @@ Jede Richtliniennummer besteht aus dem Buchstaben **G**(eneral) gefolgt von eine
 
 ## Übersicht
 
-<!-- TOC depthFrom:2 and depthTo:2 -->
-* [G1 Folgen des KISS-Prinzips (Keep it simple and stupid)](general#g1-folgen-des-kiss-prinzips-keep-it-simple-and-stupid)
-* [G2 Folgen des DRY-Prinzips (Don't Repeat Yourself)](general#g2-folgen-des-dry-prinzips-dont-repeat-yourself)
-* [G3 Konsistente Benennung von Variablen und Funktionen](general#g3-konsistente-benennung-von-variablen-und-funktionen)
-* [G4 Anwendung von ES6 Features](general#g4-anwendung-von-es6-features)
-* [G5 Vermeidung von Callback-Hölle](general#g5-vermeidung-von-callback-hölle)
-* [G6 Einsatz von Linter und Formatter](general#g6-einsatz-von-linter-und-formatter)
-* [G7 Schreiben von Unit-Tests](general#g7-schreiben-von-unit-tests)
-* [G8 Anwendung Modulare Architektur](general#g8-anwendung-modulare-architektur)
-* [G9 Selbsterklärender Code](general#g9-selbsterklärender-code)
-* [G10  Anwendung des SOLID-Prinzips](general#g10--anwendung-des-solid-prinzips)
-* [G11 Performance-Optimierungen](general#g11-performance-optimierungen)
-* [G12 Anwendung Funktionale Programmierkonzepte](general#g12-anwendung-funktionale-programmierkonzepte)
-* [G13 Fehlerbehandlung](general#g13-fehlerbehandlung)
-* [G14 Anwendung von Design Patterns](general#g14-anwendung-von-design-patterns)
-* [G15 Verwenden aussagekräftige Rückgabewerte und -typen](general#g15-verwenden-aussagekräftige-rückgabewerte-und--typen)
+<!-- TOC depthfrom:2 depthto:2 -->
+
+- [Einleitung](#einleitung)
+- [Übersicht](#%C3%BCbersicht)
+- [Regeln](#regeln)
+
 <!-- /TOC -->
 
 <!--
-Uniformes Benennungsschema 
+Uniformes Benennungsschema
 Law of Demeter
 
 -->
 
 ## Regeln
 
-### G1 Folgen der Prinzipien der Softwareentwicklung
+### Zielgruppe
+
+Schreibe Code und Dokumentation so, als würdest du für andere Entwickler schreiben, die deinen Code lesen werden.
+
+::: info
+Code wird öfters gelesen als geschrieben.
+:::
+
+### G1 Anwendung der Prinzipien der Softwareentwicklung
 
 Die Prinzipien der Softwareentwicklung wie in [Prinzipien der Softwareentwicklung](../2.principles/) beschrieben, sollten befolgt werden, um sicherzustellen, dass der Code sauber, robust und wartbar bleibt.
 
@@ -51,7 +49,7 @@ Design Patterns bieten eine wiederverwendbare Vorlage zur Lösung von Softwareen
 * weitere Patterns [dofactory Design Patterns](https://www.dofactory.com/javascript/design-patterns)
 
 
-### G8 Architektur
+### G8 Architektur planen und umsetzen
 
 Der Code soll nach den Prinzipien der Softwareentwicklung in [Prinzipien der Softwareentwicklung](../2.principles/) strukturiert werden.
 
@@ -94,6 +92,14 @@ Tests helfen dabei, sicherzustellen, dass der Code nach dem Refactoring immer no
 Kommentare als Dokumentation (z.B. JavaDoc, JsDoc) sind eine Ausnahme und müssen immer verwendet werden.
 :::
 
+### Einfachheit und nur das Notwendige
+
+Gute Code sollte einfach geschrieben und für andere Personen (im Team) leicht verständlich und ohne Überraschungen sein.
+Entwickler sollten sich nicht im Code selbst verwirklichen, sondern Code so schreiben, dass andere Entwickler ihn leicht verstehen, erweitern und verbessern können.
+
+Um Code daher nicht unnötig komplex zu machen, darf daher auch nur das Notwendige implementiert werden, um die Anforderungen zu erfüllen.
+Das Vorgehen nach "Könnte später nützlich sein" sollte vermieden werden und nur in Absprache mit dem Team umgesetzt werden.
+
 ### G11 Performance-Optimierungen
 
 Auf Optimierung ohne Grund sollte verzichtet werden.
@@ -114,3 +120,12 @@ Auf Optimierung ohne Grund sollte verzichtet werden.
 ### G15 Verwenden aussagekräftige Rückgabewerte und -typen
 
 Wenn eine Methode einen Wert zurückgibt, sollte dieser Wert aussagekräftig sein und genau das darstellen, was die Methode tut. Es ist auch hilfreich, konsistente Rückgabetypen zu verwenden.
+
+### Einheitliche Namensgebung
+
+Code wird öfters gelesen als geschrieben.
+Daher ist es wichtig, dass die Namensgebung konsistent und aussagekräftig ist.
+
+Detailliertere Regeln dazu findest du in [Einheitliche Namensgebung](./naming.md).
+
+> Gute Code beschreibt sich selbst.
