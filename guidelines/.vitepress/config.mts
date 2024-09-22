@@ -3,6 +3,7 @@ import sidebar from './themeConfig.sidebar.mts'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  base: '/dev-guidelines',
   ignoreDeadLinks: true,
   title: "Coding Guidelines",
   description: "Provides a full set of Coding Guidelines",
