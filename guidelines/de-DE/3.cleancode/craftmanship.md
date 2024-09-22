@@ -1,6 +1,0 @@
----
-layout: doc
----
-
-# Craftmanship/Craftwomanship
-
