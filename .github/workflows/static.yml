@@ -41,11 +41,17 @@ jobs:
       - name: Build VitePress site
         run: "npm run docs:build"  # Das setzt voraus, dass du ein entsprechendes build-Skript in deiner package.json hast
 
-      - name: Debugg
-        run: ls -la -R
+      #- name: Deploy to GitHub Pages
+      #  uses: peaceiris/actions-gh-pages@v3
+      #  with:
+      #    github_token: ${{ secrets.PAGES_TOKEN }}
+      #    publish_dir: ./guidelines/.vitepress/dist  # Der Ordner, in dem die gebauten Dateien liegen
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.PAGES_TOKEN }}
-          publish_dir: ./guidelines/.vitepress/dist  # Der Ordner, in dem die gebauten Dateien liegen
+          # Upload entire repository
+          path: ./guidelines/.vitepress/dist
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
