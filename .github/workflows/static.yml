@@ -35,13 +35,13 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '21' # oder eine andere Version, die du benötigst
+          node-version: '20' # oder eine andere Version, die du benötigst
 
       - name: Install dependencies
         run: npm ci  # Installiert die Abhängigkeiten, die in package-lock.json festgelegt sind
 
       - name: Build VitePress site
-        run: npm run docs:build"  # Das setzt voraus, dass du ein entsprechendes build-Skript in deiner package.json hast
+        run: npm run docs:build  # Das setzt voraus, dass du ein entsprechendes build-Skript in deiner package.json hast
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
