@@ -164,7 +164,8 @@ Spezifischere Präfixe wie `contains` oder `supports` sollten verwendet werden, 
 
 ## Getter und Setter
 
-Getter sollten **kein** Präfix haben, Setter sollten mit `set` beginnen.
+Getter sollten **kein** Präfix haben, Setter sollten durch Methoden ersetzt werden, die eine Aktion mit der Eigenschaft durchführen (Prinzip [Tell, Don't Ask](../2.principles/principles#tda)).
+
 Die Silbe `get` ist überflüssig, da sie keine zusätzliche Information hinzufügt (wie z.B. auch der Typname im Variablenname).
 Heutige Entwicklungsumgebungen bieten Code-Vervollständigung, sodass der Unterschied zwischen Getter und Setter offensichtlich ist.
 Stattdessen sollen Domain-spezifische Namen direkt verwendet werden
