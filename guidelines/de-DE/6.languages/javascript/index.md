@@ -5,6 +5,26 @@ layout: doc
 
 # Richtlinien für JavaScript und TypeScript
 
+- [Richtlinien für JavaScript und TypeScript](#richtlinien-für-javascript-und-typescript)
+  - [Einleitung](#einleitung)
+  - [Übersicht](#übersicht)
+  - [Regeln](#regeln)
+    - [G1 Folgen des KISS-Prinzips (Keep it simple and stupid)](#g1-folgen-des-kiss-prinzips-keep-it-simple-and-stupid)
+    - [G2 Folgen des DRY-Prinzips (Don't Repeat Yourself)](#g2-folgen-des-dry-prinzips-dont-repeat-yourself)
+    - [G3 Konsistente Benennung von Variablen und Funktionen](#g3-konsistente-benennung-von-variablen-und-funktionen)
+    - [G4 Anwendung von ES6 Features](#g4-anwendung-von-es6-features)
+    - [G5 Vermeidung von Callback-Hölle](#g5-vermeidung-von-callback-hölle)
+    - [G6 Einsatz von Linter und Formatter](#g6-einsatz-von-linter-und-formatter)
+    - [G7 Schreiben von Unit-Tests](#g7-schreiben-von-unit-tests)
+    - [G8 Anwendung Modulare Architektur](#g8-anwendung-modulare-architektur)
+    - [G9 Selbsterklärender Code](#g9-selbsterklärender-code)
+    - [G10  Anwendung des SOLID-Prinzips](#g10--anwendung-des-solid-prinzips)
+    - [G11 Performance-Optimierungen](#g11-performance-optimierungen)
+    - [G12 Anwendung Funktionale Programmierkonzepte](#g12-anwendung-funktionale-programmierkonzepte)
+    - [G13 Fehlerbehandlung](#g13-fehlerbehandlung)
+    - [G14 Anwendung von Design Patterns](#g14-anwendung-von-design-patterns)
+    - [G15 Verwenden aussagekräftige Rückgabewerte und -typen](#g15-verwenden-aussagekräftige-rückgabewerte-und--typen)
+
 ## Einleitung
 
 Jede Richtliniennummer besteht aus dem Buchstaben **JS**(JavaScript oder Typescript) gefolgt von einer Nummer, die den Abschnitt identifiziert. Damit kann eine Regel eindeutig identifiziert werden, z.B. für ein Code-Review.
@@ -18,24 +38,6 @@ Falls es erforderlich ist, wird in Zukunft Typescript in ein eigenes Regeldokume
 :::
 
 ## Übersicht
-
-<!-- TOC depthFrom:2 and depthTo:2 -->
-* [G1 Folgen des KISS-Prinzips (Keep it simple and stupid)](general#g1-folgen-des-kiss-prinzips-keep-it-simple-and-stupid)
-* [G2 Folgen des DRY-Prinzips (Don't Repeat Yourself)](general#g2-folgen-des-dry-prinzips-dont-repeat-yourself)
-* [G3 Konsistente Benennung von Variablen und Funktionen](general#g3-konsistente-benennung-von-variablen-und-funktionen)
-* [G4 Anwendung von ES6 Features](general#g4-anwendung-von-es6-features)
-* [G5 Vermeidung von Callback-Hölle](general#g5-vermeidung-von-callback-hölle)
-* [G6 Einsatz von Linter und Formatter](general#g6-einsatz-von-linter-und-formatter)
-* [G7 Schreiben von Unit-Tests](general#g7-schreiben-von-unit-tests)
-* [G8 Anwendung Modulare Architektur](general#g8-anwendung-modulare-architektur)
-* [G9 Selbsterklärender Code](general#g9-selbsterklärender-code)
-* [G10  Anwendung des SOLID-Prinzips](general#g10--anwendung-des-solid-prinzips)
-* [G11 Performance-Optimierungen](general#g11-performance-optimierungen)
-* [G12 Anwendung Funktionale Programmierkonzepte](general#g12-anwendung-funktionale-programmierkonzepte)
-* [G13 Fehlerbehandlung](general#g13-fehlerbehandlung)
-* [G14 Anwendung von Design Patterns](general#g14-anwendung-von-design-patterns)
-* [G15 Verwenden aussagekräftige Rückgabewerte und -typen](general#g15-verwenden-aussagekräftige-rückgabewerte-und--typen)
-<!-- /TOC -->
 
 ## Regeln
 
@@ -97,10 +99,10 @@ Es sollte sichergestellt werden, dass der Code ordnungsgemäß mit Fehlern umgeh
 
 Design Patterns bieten eine wiederverwendbare Vorlage zur Lösung von Softwareentwicklungsproblemen in einem bestimmten Kontext. Sie dienen dazu, den Code sauberer, effizienter und einfacher zu verstehen zu machen. Einige Beispiele für Design Patterns, die in Java häufig verwendet werden, sind:
 
-* Klassenfabrik (Factory Pattern)
-* Singleton Pattern
-* Builder Pattern
-* weitere Patterns [dofactory Design Patterns](https://www.dofactory.com/javascript/design-patterns)
+- Klassenfabrik (Factory Pattern)
+- Singleton Pattern
+- Builder Pattern
+- weitere Patterns [dofactory Design Patterns](https://www.dofactory.com/javascript/design-patterns)
 
 ### G15 Verwenden aussagekräftige Rückgabewerte und -typen
 

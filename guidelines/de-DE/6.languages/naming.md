@@ -175,6 +175,8 @@ Beispiele:
 `name()` statt `getName()`
 ```
 
+> Manche Programmiersprachen erfordern die Verwendung von `get` und `set` für Getter und Setter.
+
 ::: warning
 Wenn Klassen nur aus Getter und Setter bestehen, sollte die Klasse neu bewertet werden, da sie gegen das Prinzip [Information Hiding](../2.principles/principles#ih) verstößt.
 :::

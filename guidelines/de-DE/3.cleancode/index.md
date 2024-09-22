@@ -11,6 +11,9 @@ hero:
       text: Craftmanship/Craftwomanship
       link: ./craftsmanship
     - theme: alt
+      text: 1000 Stunden Regel
+      link: ./1000hours
+    - theme: alt
       text: Warum Clean Code?
       link: ./whycleancode
 
