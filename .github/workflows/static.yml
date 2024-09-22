@@ -34,8 +34,6 @@ jobs:
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
-        with:
-          node-version: '20' # oder eine andere Version, die du benötigst
 
       - name: Install dependencies
         run: npm install  # Installiert die Abhängigkeiten, die in package-lock.json festgelegt sind
@@ -47,4 +45,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./.vitepress/dist  # Der Ordner, in dem die gebauten Dateien liegen
+          publish_dir: .vitepress/dist  # Der Ordner, in dem die gebauten Dateien liegen
