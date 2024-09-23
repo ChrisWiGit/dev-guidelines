@@ -9,15 +9,18 @@ hero:
   actions:
     - theme: brand
       text: Allgemeines
-      link: ./preamble
+      link: ./general
     - theme: alt
       text: Glossar
       link: ./allrules
+    - theme: alt
+      text: Literatur/Quellen
+      link: ./sources
 
 features:
   - title: Allgemeines
     details: Allgemeines zum Leitfaden
-    link: ./preamble
+    link: ./general
   - title: Gesundheit
     details: Regeln zur Gesundheit
     link: ./1.health/ 

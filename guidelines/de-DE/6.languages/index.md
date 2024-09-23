@@ -11,6 +11,9 @@ hero:
       text: Allgemeine Richtlinien
       link: ./general
     - theme: alt
+      text: Einheitliche Namensgebung
+      link: ./naming
+    - theme: alt
       text: Java
       link: ./java/
     - theme: alt

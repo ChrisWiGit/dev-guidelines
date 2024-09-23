@@ -11,14 +11,6 @@ Jede Richtliniennummer besteht aus dem Buchstaben --G--(eneral) gefolgt von eine
 
 ## Übersicht
 
-<!-- TOC depthfrom:2 depthto:2 -->
-
-- [Einleitung](#einleitung)
-- [Übersicht](#%C3%BCbersicht)
-- [Regeln](#regeln)
-
-<!-- /TOC -->
-
 <!--
 Uniformes Benennungsschema
 Law of Demeter
@@ -37,7 +29,7 @@ Code wird öfters gelesen als geschrieben.
 
 ### G1 Anwendung der Prinzipien der Softwareentwicklung
 
-Die Prinzipien der Softwareentwicklung wie in [Prinzipien der Softwareentwicklung](../2.principles/) beschrieben, sollten befolgt werden, um sicherzustellen, dass der Code sauber, robust und wartbar bleibt.
+Die Prinzipien der Softwareentwicklung wie in [Prinzipien der Softwareentwicklung](../2.principles/) beschrieben, sollen befolgt werden, um sicherzustellen, dass der Code sauber, robust und wartbar bleibt.
 
 ### G14 Anwendung von Design Patterns
 
@@ -61,7 +53,7 @@ Darunter fallen, jedoch nicht ausschließlich:
 
 ### Ein Befehl, ein Build
 
-Ein Projekt sollte mit einem einzigen Befehl gebaut werden können. Dies erleichtert die Wartung und die Zusammenarbeit mit anderen Entwicklern.
+Ein Projekt soll mit einem einzigen Befehl gebaut werden können. Dies erleichtert die Wartung und die Zusammenarbeit mit anderen Entwicklern.
 
 ### Dokumentation
 
@@ -81,7 +73,7 @@ Tests helfen dabei, sicherzustellen, dass der Code nach dem Refactoring immer no
 ### G9 Selbsterklärender Code und keine Kommentare
 
 - Kommentare müssen vermieden werden, wenn der Code selbsterklärend ist.
-  - Wenn der Code nicht selbst erklärend ist, sollte der Code umstrukturiert werden, um ihn verständlicher zu machen.
+  - Wenn der Code nicht selbst erklärend ist, soll der Code umstrukturiert werden, um ihn verständlicher zu machen.
 - Kommentare dienen
   - zur Erklärung von komplexen Algorithmen oder Geschäftsregeln, die nicht offensichtlich sind und nicht vereinfacht werden können.
   - Meta-Informationen, die der Entwickler zur Klärung benötigt (z.B. warum etwas gemacht wurde).
@@ -93,32 +85,49 @@ Kommentare als Dokumentation (z.B. JavaDoc, JsDoc) sind eine Ausnahme und müsse
 
 ### Einfachheit und nur das Notwendige
 
-Gute Code sollte einfach geschrieben und für andere Personen (im Team) leicht verständlich und ohne Überraschungen sein.
-Entwickler sollten sich nicht im Code selbst verwirklichen, sondern Code so schreiben, dass andere Entwickler ihn leicht verstehen, erweitern und verbessern können.
+Gute Code soll einfach geschrieben und für andere Personen (im Team) leicht verständlich und ohne Überraschungen sein.
+Entwickler sollen sich nicht im Code selbst verwirklichen, sondern Code so schreiben, dass andere Entwickler ihn leicht verstehen, erweitern und verbessern können.
 
 Um Code daher nicht unnötig komplex zu machen, darf daher auch nur das Notwendige implementiert werden, um die Anforderungen zu erfüllen.
-Das Vorgehen nach "Könnte später nützlich sein" sollte vermieden werden und nur in Absprache mit dem Team umgesetzt werden.
+Das Vorgehen nach "Könnte später nützlich sein" soll vermieden werden und nur in Absprache mit dem Team umgesetzt werden.
 
 ### G11 Performance-Optimierungen
 
-Auf Optimierung ohne Grund sollte verzichtet werden.
+Auf Optimierung ohne Grund soll verzichtet werden.
 
 - Es ist besser, den Code zuerst zu schreiben und dann zu optimieren, wenn es notwendig ist.
 - Optimierungen dürfen nur mit einem Benchmark durchgeführt werden, um das Optimierungsergebnis zu überprüfen.
 
 ### G13 Fehlerbehandlung
 
-- Es soll immer eine allgemeine Fehlerbehandlung verwendet werden und spezifische Fehlerbehandlungen vermieden werden.
-  - Allgemeine Fehler vom Framework behandeln lassen oder in einem globalen Fehlerhandler behandeln und dem Benutzer anzeigen.
-  - Spezifische Fehlerbehandlungen (`try-catch`) nur verwenden, wenn ein Fehler bekannt und im Code behandelbar ist.
-- Fehlerbehandlung muss immer berücksichtigt und mit-getestet werden.
+- Fehler/Ausnahmen sollen zuerst vom Framework oder in einem globalen Fehlerhandler behandelt werden und dem Benutzer eine Fehlermeldung angezeigt werden.
+- Spezifische Fehlerbehandlungen (`try-catch`) sollen nur verwendet werden, wenn ein Fehler bekannt und im Code behandelbar ist.
+- Die Fehlerbehandlung muss immer berücksichtigt und immer getestet werden.
   - Tests müssen auch die Fehlerbehandlung abdecken.
   - Auch seltene oder unmöglich erscheinende Fehler müssen getestet werden.
 - Fehler müssen so früh wie möglich geworfen werden (siehe [Fail Fast](../2.principles/#fail-fast)).
+- Fehler sollen anhand ihres Abstraktionsgrades geworfen werden
+  - Fehler von niederen Schichten sollen in höheren Schichten in Domänen-spezifische Fehler umgewandelt werden (gewrappt werden).
 
 ### G15 Verwenden aussagekräftige Rückgabewerte und -typen
 
-Wenn eine Methode einen Wert zurückgibt, sollte dieser Wert aussagekräftig sein und genau das darstellen, was die Methode tut. Es ist auch hilfreich, konsistente Rückgabetypen zu verwenden.
+Wenn eine Methode einen Wert zurückgibt, soll dieser Wert aussagekräftig sein und genau das darstellen, was die Methode tut. Es ist auch hilfreich, konsistente Rückgabetypen zu verwenden.
+
+### G17 Gesetz von Demeter
+
+Objekte sollen nur mit Objekten kommunizieren, die sie direkt kennen. Das bedeutet, dass ein Objekt nur Methoden von Objekten aufrufen soll, die es selbst erstellt hat, die als Parameter übergeben wurden oder die es als Eigenschaft besitzt.
+Dies verhindert eine zu starke Kopplung zwischen den Objekten.
+
+Um dies zu verhindern kann Dependency Injection verwendet werden.
+
+Beispiel:
+
+```java
+// schlecht
+person.department().manager().address().streetName();
+// statt dessen
+addressDI.streetName();
+```
 
 ### Einheitliche Namensgebung
 

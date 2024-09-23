@@ -28,7 +28,9 @@ Das `Single Responsibility Principle` besagt, dass eine Klasse oder ein Modul nu
 Ihre Funktionen und Methoden ermöglichen im Gesamtbild, dass diese Aufgabe erfüllt wird.
 Jede Funktion oder Methode sollte jedoch nur wiederum eine einzige Aufgabe erfüllen.
 
-> Trotzdem können Module, Komponenten oder Klassen mehrere Funktionen oder Methoden besitzen, sollte jede Funktion oder Methode nur eine einzige Aufgabe erfüllen, die zur Erfüllung der Gesamtaufgabe beiträgt.
+::: warning Vorsicht
+Trotzdem können Module, Komponenten oder Klassen mehrere Funktionen oder Methoden besitzen, sollte jede Funktion oder Methode nur eine einzige Aufgabe erfüllen, die zur Erfüllung der Gesamtaufgabe beiträgt.
+:::
 
 ### Open/Closed Principle
 
@@ -41,7 +43,9 @@ Jede Funktion oder Methode sollte jedoch nur wiederum eine einzige Aufgabe erfü
 KISS steht für `Keep It Simple, Stupid` und ist ein Prinzip, das besagt, dass Software so einfach wie möglich sein sollte.
 Dies bedeutet, dass Software so einfach und verständliche für andere Entwickler sein sollte, dass sie leicht gewartet und erweitert werden kann.
 
-> Gute Software ist einfach und verständlich.
+::: info Kurz gesagt
+Gute Software ist einfach zu lesen und zu verstehen.
+:::
 
 ## DRY
 
@@ -55,8 +59,10 @@ Die *2-3-5* Regel besagt, dass Code, der sich mehr als **zweimal** wiederholt, i
 Code, der sich mehr als **dreimal** wiederholt, sollte in eine Klasse oder ein Modul ausgelagert werden.
 Code, der sich mehr als **fünfmal** wiederholt, sollte in eine eigene Bibliothek oder ein eigenes Framework ausgelagert werden.
 
-> Oftmals ist doppelter Code nicht sofort ein Problem, sondern erst später, wenn er ein drittes Mal angefasst wird.
-> Daher kann es manchmal besser sein, Code erst dann zu restrukturieren, wenn er sich zum dritten Mal wiederholt.
+::: warning Vorsicht
+Oftmals ist doppelter Code nicht sofort ein Problem, sondern erst später, wenn er ein drittes Mal angefasst wird.
+Daher kann es manchmal besser sein, Code erst dann zu restrukturieren, wenn er sich zum dritten Mal wiederholt.
+:::
 
 ## SPOT
 
@@ -70,7 +76,10 @@ Es ist dann nicht mehr möglich welche Information die richtige ist.
 Die `You Ain't Gonna Need It` Regel besagt, dass unnützer Code und Features nicht geschrieben werden sollte, weil nicht nur diesen Code zu schreiben Aufwand kostet, sondern ihn auch wieder zu Entfernen, je später dies passiert.
 Daher sollten Laufzeitkonfigurationen, voreilige Optimierungen und unnötige Features vermieden werden und erst dann implementiert werden, wenn sie wirklich benötigt werden.
 
-> Die Zukunft vorauszusagen, ob etwas notwendig ist oder nicht ist unmöglich. Feedback an das Team, den PO, die Stakeholder und die Benutzer ist daher unerlässlich.
+::: warning Denke daran
+Die Zukunft vorauszusagen, ob etwas notwendig ist oder nicht ist unmöglich. 
+Feedback an das Team, den PO, die Stakeholder und die Benutzer ist daher unerlässlich.
+:::
 
 ## SoC
 
@@ -89,11 +98,24 @@ Verschiedene Aspekte können sein:
 * Security
 * Klassen
 
-> Die Nicht-Einhaltung von SoC lässt sich leicht an *schnell-geschriebenen* Code sehen, der `alles` in einer Methode abhandelt.
+::: info Kurz gesagt
+Die Nicht-Einhaltung von SoC lässt sich leicht an *schnell-geschriebenen* Code sehen, der `alles` in einer Methode abhandelt.
+:::
 
 ## LC
 
 Das `Low Coupling` Prinzip besagt, dass Software so entwickelt werden sollte, dass die Abhängigkeiten zwischen den einzelnen Komponenten so gering wie möglich sind.
+Module, Klassen und Komponenten sollten immer eine niedrige Kopplung und eine hohe Kohäsion haben.
+
+Durch eine niedrige Kopplung können Module, Klassen und Komponenten wieder verwendet und leichter getestet werden.
+Durch eine hohe Kohäsion sind Module, Klassen und Komponenten nur einer Aufgabe verpflichtet und haben eine klare Verantwortlichkeit ([Single Responsibility Principle](#single-responsibility-principle)).
+
+::: info Kopplung und Kohäsion
+`Kopplung` ist die Abhängigkeit zwischen zwei oder mehr Modulen oder Komponenten.
+Sie beschreibt, wie stark zwei oder mehr Module oder Komponenten voneinander abhängig sind.
+`Kohäsion` ist die Gemeinsamkeit innerhalb eines Moduls, Klasse oder einer Komponente.
+Sie beschreibt, wie stark die Funktionalität innerhalb eines Moduls, Klasse oder einer Komponente zusammenhängt.
+:::
 
 Es gibt verschiedene Arten von Kopplung:
 
@@ -136,7 +158,9 @@ Das `Easy to Use, Hard to Misuse` Prinzip besagt, dass die API so einfach wie m�
 
 Das `Postel's Law` Prinzip ist ein Konzept für Internetstandards. Auf Software bezogen bedeutet das Robustheitsgebot, dass Software so entwickelt werden sollte, dass sie so tolerant wie möglich gegenüber Eingaben von außen in Hinblick auf die Verarbeitung von Daten sein sollte und so restriktiv wie nötig in Hinblick auf die Ausgabe der eigenen Daten.
 
-> „Software sollte so geschrieben werden, dass sie mit jedem vorstellbaren Fehler umgehen kann, egal wie unwahrscheinlich er ist“ [^](https://datatracker.ietf.org/doc/html/rfc1122)
+::: info Kurz gesagt
+„Software sollte so geschrieben werden, dass sie mit jedem vorstellbaren Fehler umgehen kann, egal wie unwahrscheinlich er ist“ [^](https://datatracker.ietf.org/doc/html/rfc1122)
+:::
 
 ## TdA/IE
 
@@ -162,7 +186,10 @@ Das `Customer Focus` Prinzip besagt, dass Software so entwickelt werden sollte, 
 Es ist wichtiger, dass der Kunde seine eigentliche Aufgabe mit dem Produkt erfüllen kann, als dass das Produkt technisch perfekt ist.
 Dazu zählt auch, dass das Produkt einfach zu bedienen, die Benutzerfreundlichkeit im Vordergrund steht und die Fehler sich in Grenzen halten.
 
-> Fehler sind unerwartete Verhalten von Software gegenüber den Erwartungen des Benutzers.
+::: info Kurz gesagt
+Fehler sind unerwartete Verhalten von Software gegenüber den Erwartungen des Benutzers.
+Unerwartetes Verhalten ist jedoch nicht immer ein Fehler.
+:::
 
 ## UFT
 

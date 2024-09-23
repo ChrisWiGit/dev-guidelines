@@ -1,13 +1,15 @@
 import { defineConfig } from 'vitepress'
 import sidebar from './themeConfig.sidebar.mts'
+import { base } from './base.config.mts'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base: '/dev-guidelines',
+  base,
   ignoreDeadLinks: true,
   title: "Coding Guidelines",
   description: "Provides a full set of Coding Guidelines",
   themeConfig: {
+    outline: [2, 4],
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Deutsch', link: '/de-DE' },

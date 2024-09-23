@@ -1,24 +1,5 @@
 # Einheitliche Namensgebung
 
-- [Einheitliche Namensgebung](#einheitliche-namensgebung)
-  - [Allgemeine Regeln](#allgemeine-regeln)
-  - [Prefixe und Suffixe](#prefixe-und-suffixe)
-  - [Ganzzahlen](#ganzzahlen)
-  - [Fließkommazahlen](#fließkommazahlen)
-  - [Boolean](#boolean)
-  - [Strings](#strings)
-  - [Listen](#listen)
-  - [Maps, Dictionary](#maps-dictionary)
-  - [Tuple](#tuple)
-  - [Optional](#optional)
-  - [Klassen](#klassen)
-  - [Interfaces](#interfaces)
-  - [Funktionen und Methoden](#funktionen-und-methoden)
-  - [Methodenpaare](#methodenpaare)
-  - [Methoden mit Boolean-Rückgabewerten](#methoden-mit-boolean-rückgabewerten)
-  - [Getter und Setter](#getter-und-setter)
-  - [Build-Pattern Methoden](#build-pattern-methoden)
-
 ## Allgemeine Regeln
 
 - Verwende so kurze und präzise Namen wie möglich.
@@ -159,7 +140,7 @@ willDestroy()
 > Der Präfix `does` sollte vermieden werden, da er durch die anderen Präfixe besser ersetzt werden kann.
 
 ::: info
-Spezifischere Präfixe wie `contains` oder `supports` sollten verwendet werden, wenn sie besser in den Kontext passen.
+Spezifischere Präfixe wie `contains` oder `supports` sollten verwendet werden, wenn sie besser in den Kontext passen (z.B. in Listen oder Collections).
 :::
 
 ## Getter und Setter
@@ -178,7 +159,7 @@ Beispiele:
 
 > Manche Programmiersprachen erfordern die Verwendung von `get` und `set` für Getter und Setter.
 
-::: warning
+::: warning Achtung
 Wenn Klassen nur aus Getter und Setter bestehen, sollte die Klasse neu bewertet werden, da sie gegen das Prinzip [Information Hiding](../2.principles/principles#ih) verstößt.
 :::
 
@@ -197,4 +178,6 @@ PersonBuilder
 .build()
 ```
 
-> Das Prefix `add` sollte vermieden werden, da es zu Verwirrung führen kann, ob es sich um eine Methode zur Hinzufügung oder zum Setzen handelt.
+::: warning Achtung
+Das Prefix `add` sollte vermieden werden, da es zu Verwirrung führen kann, ob es sich um eine Methode zur Hinzufügung oder zum Setzen handelt.
+:::

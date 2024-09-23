@@ -1,0 +1,6 @@
+/* 
+Side Container, Texte werden abgeschnitten
+*/
+.container .aside-container {
+  width: 500px !important;
+}
