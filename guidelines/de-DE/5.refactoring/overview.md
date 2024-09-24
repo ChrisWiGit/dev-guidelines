@@ -3,20 +3,6 @@ layout: doc
 ---
 # Code Refactoring
 
-- [Code Refactoring](#code-refactoring)
-  - [Warum Refactoring?](#warum-refactoring)
-  - [Begriffsdefinition](#begriffsdefinition)
-  - [Allgemeines Code-Refactoring](#allgemeines-code-refactoring)
-    - [Code Refactoring als Teil der Programmierung](#code-refactoring-als-teil-der-programmierung)
-    - [Prüfung auf Code Smells](#prüfung-auf-code-smells)
-    - [Inkrementelles Refactoring](#inkrementelles-refactoring)
-    - [Anwendung von Best Practices während der Programmierung](#anwendung-von-best-practices-während-der-programmierung)
-    - [Bewusstsein für Seiteneffekte](#bewusstsein-für-seiteneffekte)
-    - [Weiteres Refactoring nach Programmierung](#weiteres-refactoring-nach-programmierung)
-    - [Dokumentation von Legacy-Code](#dokumentation-von-legacy-code)
-    - [Kontinuierliche und sorgfältige Dokumentation für API-Benutzer](#kontinuierliche-und-sorgfältige-dokumentation-für-api-benutzer)
-    - [Dokumentation von internen Code](#dokumentation-von-internen-code)
-
 ## Warum Refactoring?
 
 > Code altert nicht, er wird alt.
