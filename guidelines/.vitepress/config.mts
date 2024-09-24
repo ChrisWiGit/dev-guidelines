@@ -9,7 +9,7 @@ export default defineConfig({
   title: "Coding Guidelines",
   description: "Provides a full set of Coding Guidelines",
   themeConfig: {
-    outline: [2, 4],
+    outline: [2, 3],
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Deutsch', link: '/de-DE' },

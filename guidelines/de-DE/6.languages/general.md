@@ -149,4 +149,24 @@ Daher ist es wichtig, dass die Namensgebung konsistent und aussagekräftig ist.
 
 Detailliertere Regeln dazu findest du in [Einheitliche Namensgebung](./naming.md).
 
-> Gute Code beschreibt sich selbst.
+::: info
+Gute Code beschreibt sich selbst.
+:::
+
+### GL16 Sicherheit
+
+Sicherheit in der Entwicklung ist eine nicht-funktionale Anforderung, die in jedem Schritt der Softwareentwicklung berücksichtigt werden muss.
+
+Allgemein gilt:
+
+- Prüfung der Authentifizierung und Autorisierung
+- Prüfung der Eingaben auf Gültigkeit und Sicherheit
+- Benutzereingaben sind immer als unsicher zu betrachten
+- Aktualisierung der verwendeten Bibliotheken
+- Einsatz von Tools zur statischen Codeanalyse und Prüfung der Abhängigkeiten
+
+::: info
+`Authentifizierung` ist der Prozess, bei dem die Identität eines Benutzers überprüft wird.
+
+`Autorisierung` ist der Prozess, bei dem überprüft wird, ob ein Benutzer auf bestimmte Ressourcen zugreifen darf.
+:::
