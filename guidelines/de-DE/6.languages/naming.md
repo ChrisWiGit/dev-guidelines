@@ -9,6 +9,12 @@
 - Vermeide Zahlen in Namen, wenn sie nicht Teil des Namens sind.
 - Vermeide komplizierte oder nicht gebräuchliche Wörter.
 
+## Schreibweise
+
+Die Schreibweise von Variablen, Methoden, Konstanten, Typen und Klassen sollte konsistent sein und den Konventionen der Sprache folgen.
+
+Die Schreibweise wird detailliert im Kapitel der entsprechenden Sprache beschrieben.
+
 ## Prefixe und Suffixe
 
 Vermeide Prefixe und Suffixe, wenn der Kontext bereits klar ist.
@@ -166,7 +172,7 @@ Wenn Klassen nur aus Getter und Setter bestehen, sollte die Klasse neu bewertet 
 ## Build-Pattern Methoden
 
 Methoden für das [Build-Pattern](../4.designpatterns/builder) sollen mit `with` beginnen.
-Das `Endstück` solle den Namen `build` haben, denn der Kontext sollte mit dem Namen der Klasse oder der Builder-Methode klar sein.
+Das `Endstück` soll den Namen `build` haben, denn der Kontext sollte mit dem Namen der Klasse oder der Builder-Methode klar sein.
 
 Beispiele:
 
