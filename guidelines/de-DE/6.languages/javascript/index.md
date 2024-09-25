@@ -34,8 +34,20 @@ Stattdessen sollen `const` und `let` verwendet werden, um die Sichtbarkeit von V
 
 ## JS3 Vermeidung von Callback-Hölle
 
-Verschachtelte Callbacks sollten vermieden werden, da sie den Code schwer lesbar und wartbar machen.
+Callbacks in Funktionsparameter und verschachtelte Callbacks sollen vermieden werden, da sie den Code schwer lesbar und wartbar machen.
 Promises oder `async/await` können verwendet werden, um den asynchronen Code besser handhaben zu können.
+
+```javascript
+onCallMeBack(function(result) {
+    onCallMeBackAgain(result, function(otherResult) {
+        onCallMeBackYetAgain(otherResult, function(anotherResult) {
+            // Code ausführen
+        });
+    });
+});
+```
+
+Oder Promise-Chainings:
 
 ```javascript
 promise.then(function(result) {
@@ -47,8 +59,16 @@ promise.then(function(result) {
 })
 ```
 
-stattdessen:
-  
+stattdessen async/await verwenden:
+
+```javascript
+const result = await onCallMeBack();
+const otherResult = await onCallMeBackAgain(result);
+const anotherResult = await onCallMeBackYetAgain(otherResult);
+```
+
+und Promise.all:
+
 ```javascript
 async function myAsyncFunction() {
     const result = await promise;
@@ -224,7 +244,7 @@ if (a && a.b && a.b.e && a.b.e[0] && a.b.e[0].f != null) {
 }
 ```
 
-### JS008 Lösung
+### JS8 Lösung
 
 Um den Code übersichtlicher und robuster zu gestalten, kann der optionale Operator `?.` (Optional Chaining) verwendet werden. Dieser Operator prüft automatisch, ob der vorherige Schlüssel existiert, und greift nur dann auf den nächsten Schlüssel zu, wenn er vorhanden ist.
 Sollte ein Schlüssel nicht existieren, wird keine weitere Aktion ausgeführt und das Ergebnis ist `undefined`.
@@ -315,7 +335,7 @@ Die Verwendung von zwei Gleichheitszeichen `==` anstelle von drei `===` ist hier
 - Werte wie NaN werden nicht erkannt
 - ESLint muss entsprechend konfiguriert werden, um die Verwendung von `==` bei null Vergleich zu erlauben. Dies ist möglich, indem die Regel `eqeqeq` auf [smart](https://eslint.org/docs/latest/rules/eqeqeq#smart) umgestellt wird.
 
-## JS9 Object destructuring / Object Eigenschaften bekommen
+## JS10 Object destructuring / Object Eigenschaften bekommen
 
 Beim Object Destructuring werden die Eigenschaften eines Objekts in einzelne Variablen aufgeteilt und gespeichert.
 
@@ -331,7 +351,7 @@ const speed = car.speed;
 const color = car.color;
 ```
 
-### JS11 Lösung
+### JS10 Lösung
 
 Um den Code zu vereinfachen und die Eigenschaften eines Objekts direkt in Variablen zu speichern, kann das Object Destructuring verwendet werden:
 
@@ -344,7 +364,7 @@ const car = {
 const { speed, color } = car;
 ```
 
-### JS11 Vorteile
+### JS10 Vorteile
 
 - Kürzerer und lesbarerer Code
 - Direkter Zugriff auf die gewünschten Eigenschaften des Objekts
@@ -642,14 +662,14 @@ Dies fördert die Modularität und reduziert die Duplizierung von Code.
 
 6. **Bessere Testabdeckung**: Durch die Aufteilung des Codes in kleine Methoden wird die Testabdeckung verbessert, da jede Methode spezifische Tests erhalten kann. Dadurch können verschiedene Szenarien und Randbedingungen gezielt getestet werden, um die Fehleranfälligkeit zu reduzieren.
 
-7. **Einfacheres Mocking**: Darüber hinaus ist das Mocking in Tests einfacher, wenn der Code in kleine Methoden aufgeteilt ist. Beim Schreiben von Unit-Tests ist es häufig erforderlich, externe Abhängigkeiten zu mocken oder zu fälschen, um den Fokus auf die zu testende Methode zu legen. 
-Mit kleinen Methoden ist es einfacher, diese Abhängigkeiten zu identifizieren und zu isolieren, da sie in der Regel explizit als Parameter an die Methode übergeben werden. 
+7. **Einfacheres Mocking**: Darüber hinaus ist das Mocking in Tests einfacher, wenn der Code in kleine Methoden aufgeteilt ist. Beim Schreiben von Unit-Tests ist es häufig erforderlich, externe Abhängigkeiten zu mocken oder zu fälschen, um den Fokus auf die zu testende Methode zu legen.
+Mit kleinen Methoden ist es einfacher, diese Abhängigkeiten zu identifizieren und zu isolieren, da sie in der Regel explizit als Parameter an die Methode übergeben werden.
 Das Mocking-Setup ist zudem kleiner und einfacher, weil aufgespaltete Methoden einfach diese Methoden mocken können, statt die fremde (externe) API, die darin verwendet wird.
 
 8. **Förderung des Single Responsibility Principle**: Kleine Methoden unterstützen das Single Responsibility Principle, das besagt, dass eine Methode oder Funktion nur eine einzige Verantwortlichkeit haben sollte. Durch die Aufteilung des Codes in kleine Methoden wird die Verantwortlichkeit klarer definiert und das Prinzip der klaren Trennung von Aufgaben eingehalten.
 :::
 
-Die Verwendung kleiner Methoden verbessert die Qualität und Wartbarkeit des Codes, indem sie die Testbarkeit, Lesbarkeit, Wiederverwendbarkeit und Modularität fördern. 
+Die Verwendung kleiner Methoden verbessert die Qualität und Wartbarkeit des Codes, indem sie die Testbarkeit, Lesbarkeit, Wiederverwendbarkeit und Modularität fördern.
 Es ist jedoch wichtig, ein Gleichgewicht zu finden, um eine übermäßige Fragmentierung des Codes zu vermeiden und die Lesbarkeit nicht zu beeinträchtigen.
 
 ::: info
@@ -667,9 +687,6 @@ Die Anzahl der Codezeilen in einer Methode oder Funktion kann je nach Kontext un
 ## JS15 Verwendung von `Optional` in JavaScript-Funktionen
 
 Eine Funktion sollte niemals `null`, `undefined` oder `NaN` zurückgeben und stattdessen die `Optional`-Klasse verwenden, um den Status des Ergebnisses zu kennzeichnen.
-
-> Alternativ kann auch der Optional-Operator `.?` verwendet werden. Siehe das [Kapitel dazu](#js001-optionaler-operator---optional-chaining-verwenden).
-> Alternativ auch [Verwendung von `Optional` in JavaScript-Funktionen](#js008-verwendung-von-optional-in-javascript-funktionen)
 
 ### JS15 Problem
 
@@ -708,6 +725,7 @@ function divide(a, b) {
 
 - Zusätzlicher Overhead durch die Verwendung von `Optional`
 - Potenziell erhöhter Komplexitätsgrad in der Verwendung des `Optional`-Objekts
+- Abhängigkeit von der Implementierung der `Optional`-Klasse
 
 ### JS15 Ausnahmen
 
@@ -998,15 +1016,15 @@ getNames() {
 
 Um Zugriffsfehler und unerwartetes Verhalten zu vermeiden, sollten Methoden/Funktionen stattdessen ein leeres Objekt oder Array zurückgeben.
 
-> Alternativ kann auch der Optional-Operator `.?` verwendet werden. Siehe das [Kapitel dazu](#js001-optionaler-operator---optional-chaining-verwenden).
-> Alternativ kann auch das [Optional-Klassen-Pattern](#js008-verwendung-von-optional-in-javascript-funktionen) verwendet werden.
+- Alternativ kann auch der [Optional-Operator](.#js8-optionaler-operator-optional-chaining-verwenden) `.?` verwendet werden..
+- Alternativ kann auch das [Optional-Objekt](.#js15-verwendung-von-optional-in-javascript-funktionen) verwendet werden.
 
 ```javascript
 function getNames() {
     if (condition) {
         return [];
     }
-    // ...
+    // ... return xy
 }
 ```
 
@@ -1018,7 +1036,8 @@ function getNames() {
 
 ### JS20 Ausnahmen
 
-Es kann Situationen geben, in denen die Rückgabe von null sinnvoll ist, z. B. wenn null einen speziellen Zustand oder eine Bedeutung hat. In solchen Fällen ist es wichtig, die Risiken und Vorteile sorgfältig abzuwägen und die Entscheidung angemessen zu dokumentieren.
+Es kann Situationen geben, in denen die Rückgabe von null sinnvoll ist, z. B. wenn null einen speziellen Zustand oder eine Bedeutung hat.
+In solchen Fällen ist es wichtig, die Dokumentation klar zu kommunizieren und sicherzustellen, dass der Aufrufercode angemessen darauf reagiert.
 
 ### JS20 Weiterführende Literatur/Links
 
@@ -1081,7 +1100,188 @@ Es ist wichtig, einheitliche Benennungsstandards innerhalb des Projekts festzule
 - [Method Naming Conventions in Java](https://www.baeldung.com/java-method-naming-conventions)
 - [JavaScript Naming Conventions](https://www.robinwieruch.de/javascript-naming-conventions)
 
-### JS22 Template Strings
+## JS22 JSDoc Kommentare für JavaScript-Methoden, Funktionen, Variablen, Objekte und Typen
+
+Methoden, Funktionen, Variablen, Objekte und Typen in JavaScript sollten mit JSDoc-Kommentaren annotiert werden, um eine klare Dokumentation und Typisierung der Parameter und des Rückgabewerts zu ermöglichen.
+
+### JS22 Problem
+
+JavaScript ist eine dynamisch typisierte Sprache, was zu einer geringeren Typsicherheit und Dokumentation führen kann.
+Parameter, Variablen und Rückgabewerte von Methoden und Funktionen sind nicht explizit typisiert und dokumentiert, was zu Verwirrung und Fehlern führen kann.
+
+### JS22 Lösung
+
+Die Verwendung von JSDoc-Kommentaren ermöglicht es uns, Methoden, Funktionen, Variablen, Objekte und Typen in JavaScript klar zu dokumentieren und zu typisieren.
+Auf diese Art können auch Objekte und jede andere Art von Datenstrukturen dokumentiert werden.
+
+:::info
+Moderne Entwicklungsumgebungen und Tools wie Visual Studio Code, WebStorm und ESLint unterstützen JSDoc-Kommentare und bieten Funktionen wie Autovervollständigung, Typüberprüfung und Dokumentation.
+Diese Tools melden Probleme bei inkompatiblen Typen und fehlenden Parametern oder Rückgabewerten.
+:::
+
+### JS22 Beispiele
+
+#### Methoden und Funktionen
+
+:::warning Beachte!
+JSDoc-Kommentare beginnen mit `/**` und enden mit `*/`.
+Jede Zeile innerhalb des Kommentars beginnt mit `*`.
+:::
+
+```javascript
+/**
+ * Berechnet die Summe von zwei Zahlen.
+ * @param {number} x - Die erste Zahl.
+ * @param {number} y - Die zweite Zahl.
+ * @param {number} [offsetDefault=1] - Der Standardwert, falls der Parameter fehlt.
+ * @returns {number} Die Summe der beiden Zahlen. 
+ */
+function add(x, y, offsetDefault=1)
+```
+
+#### Variablen
+
+```javascript
+/**
+ * Die maximale Anzahl von Elementen.
+ * @type {number}
+ */
+const MAX_ELEMENTS = 100;
+
+/** @type {(symbol|boolean|{}|string|Array.<string>|number|null|NaN)} */
+let myVariable;
+myVariable = Symbol('mySymbol');
+myVariable = true;
+myVariable = {};
+myVariable = 'Hello';
+// oder, entspricht string[]
+myVariable = ['Hello', 'World'];
+myVariable = 42;
+myVariable = null;
+myVariable = NaN;
+
+
+/** @type {?number} */
+let nullableVar = null;
+
+/** @type {!number} */
+let NotNullVar = 0;
+```
+
+#### Objekte deklarieren
+
+Objekt-Variablen können direkt mit `@type` dokumentiert werden.
+
+```javascript
+ /**
+ * Ein Benutzerobjekt.
+ * @type {Object}
+ * @property {string} name - Der Name des Benutzers.
+ * @property {number} age - Das Alter des Benutzers.
+ * @property {{street: string, city: string}} address - Die Adresse des Benutzers.
+ * @property {string[]} roles - Die Rollen des Benutzers.
+ */
+let user = {
+  name: 'Alice',
+  age: 30,
+  address: {
+    street: '123 Main St',
+    city: 'Anytown'
+  },
+  roles: ['admin', 'user']
+};
+```
+
+#### Typen definieren
+
+Wenn ein Objekt mehrmals verwendet wird, kann der Typ mit `@typedef` definiert werden.
+
+```javascript
+ 
+ /**
+ * Ein Benutzerobjekt.
+ * @typedef {Object} User
+ * @type {Object}
+ * @property {string} name - Der Name des Benutzers.
+ * @property {number} age - Das Alter des Benutzers.
+ */
+
+// definiert den Typ der Variable user als User-Objekt
+/** 
+ * @type {User}
+ */
+let user;
+```
+
+### JS22 Siehe dazu
+
+Die vollständige Dokumentation von [JSDoc @type](https://jsdoc.app/tags-type#:~:text=The%20%40type%20tag%20allows%20you,such%20as%20the%20%40param%20tag.) erklärt die verschiedenen Tags und ihre Verwendung:
+
+## Variable Parameter in Funktionen oder Methoden vermeiden
+
+## Boolean-Parameter in Funktionen oder Methoden vermeiden
+
+Boolean als Parameter in Funktionen oder Methoden sollen nicht verwendet werden. 
+Stattdessen sollen eigene Funktionen oder Methoden mit entsprechenden Namen und Parametern erstellt werden, weil damit das Verhalten der Funktion oder Methode klarer wird.
+
+### Problem
+
+Boolean-Parameter in Funktionen oder Methoden können zu Verwirrung und unerwartetem Verhalten führen, da der Aufrufer den Zweck des Parameters erraten muss.
+
+```javascript
+function fetchData(url, async) {
+  if (async) {
+    // Asynchroner Aufruf
+  } else {
+    // Synchroner Aufruf
+  }
+}
+```
+
+### Lösung
+
+Verwende stattdessen spezifische Parameter oder separate Funktionen/Methoden, um das Verhalten klarer zu kennzeichnen.
+
+```javascript
+function fetchAsyncData(url) {
+  // Asynchroner Aufruf
+}
+
+function fetchData(url) {
+  // Synchroner Aufruf
+}
+```
+
+
+## Default Parameter in Funktionen oder Methoden
+
+Default Parameter in Funktionen oder Methoden sollen nicht verwendet werden.
+
+### Problem
+
+Default Parameter in Funktionen oder Methoden können zu unerwartetem Verhalten führen, wenn der Aufrufer den Standardwert nicht erwartet oder überschreibt.
+
+```javascript
+function increment(value, step = 10) {
+  return value + step;
+}
+```
+
+### Lösung
+
+Verwende stattdessen separate Funktionen oder Methoden mit spezifischen Parametern, um das Verhalten klarer zu kennzeichnen.
+
+```javascript
+function incrementValueBy(value, step) {
+  return value + step;
+}
+
+function incrementByTen(value) {
+  return increment(value, 10);
+}
+```
+
+## Template Strings
 
 ::: info
 In Bearbeitung
@@ -1089,7 +1289,7 @@ In Bearbeitung
 
 Nutze Template Literals (`` ` ``) für die einfache Einbettung von Variablen in Strings.
 
-### Spread-Operator
+## Spread-Operator
 
 ::: info
 In Bearbeitung
@@ -1097,7 +1297,7 @@ In Bearbeitung
 
 Nutze den Spread-Operator (`...`) für das Zusammenführen von Arrays oder das Kopieren von Objekten.
 
-### Arrow Funktion statt `function`
+## Arrow Funktion statt `function`
 
 ::: info
 In Bearbeitung
@@ -1105,7 +1305,7 @@ In Bearbeitung
 
 Verwende Arrow Functions (`() => {}`) für eine kürzere und prägnantere Schreibweise von Funktionen. Vermeide `me = this`.
 
-### "Ternärer Operator ?:"
+## "Ternärer Operator ?:"
 
 ::: info
 In Bearbeitung
@@ -1113,7 +1313,7 @@ In Bearbeitung
 
 Verwende den ternären Operator (`condition ? expression1 : expression2`) für kurze bedingte Ausdrücke.
 
-### Array Prototype Methoden
+## Array Prototype Methoden
 
 ::: info
 In Bearbeitung
@@ -1121,7 +1321,7 @@ In Bearbeitung
 
 Verwende `Array.prototype.forEach()`, `Array.prototype.map()`, `Array.prototype.filter()` und andere Array-Methoden anstelle von Schleifen, um den Code lesbarer zu machen.
 
-### Import/Export
+## Import/Export
 
 ::: info
 In Bearbeitung
@@ -1129,10 +1329,130 @@ In Bearbeitung
 
 Nutze den `import`- und `export`-Mechanismus für die Modulorganisation in deinem Code.
 
-### Einsatz von Set und Map statt Arrays und Objekten
+## Einsatz von Set und Map statt Arrays und Objekten
 
 ::: info
 In Bearbeitung
 :::
 
 Verwende `Set` und `Map` für die Verwaltung eindeutiger Werte und Schlüssel-Wert-Paare.
+
+## for, forEach, for of, for in
+
+In JavaScript gibt es verschiedene Möglichkeiten zu iterieren.
+
+- `for`-Schleife ist die ursprüngliche Schleife
+- `forEach`-Methode für Arrays mit Callback-Funktion
+- `for...of`-Schleife für iterierbare Objekte (`Arrays`, `Strings`, `Sets`, `Maps`)
+- `for...in`-Schleife für Objekte
+
+### for-Schleife
+
+Die ursprüngliche `for`-Schleife ist die am meisten verwendete Schleife in JavaScript.
+Sie besteht aus drei Teilen: Initialisierung, Bedingung und Inkrementierung/Dekrementierung.
+
+```javascript
+for (let i = 0; i < 5; i++) {
+    console.log(i);
+}
+```
+
+:::info Veraltet
+Diese Schleife sollte nur noch in Ausnahmefällen verwendet werden, wenn über ein Index ein Feld durchlaufen wird und beispielsweise der Index für Berechnungen benötigt wird.
+
+Die `for...of`-Schleife ist andernfalls einfacher zu lesen.
+:::
+
+:::warning Objekte
+Die `for`-Schleife kann auch für Objekte verwendet werden, um über die Schlüssel zu iterieren.
+Es ist zu beachten, dass die Reihenfolge der Schlüssel nicht garantiert ist und auch Schlüssel aus dem Prototypen iteriert werden.
+Deshalb muss mit `hasOwnProperty` geprüft werden, ob der Schlüssel direkt im eigenen Objekt vorhanden ist.
+Andernfalls werden versehentlich auch Schlüssel aus dem Prototypen iteriert.
+
+Nutze besser die `for...in`-Schleife.
+:::
+
+:::warning Unendliche Schleife
+Die Schleife kann unendlich laufen, wenn die End-Bedingung nicht korrekt ist.
+
+```javascript
+
+for (let i = 0; i < 5; i--) {
+    console.log(i);
+}
+```
+
+:::
+
+### forEach-Methode
+
+Die `forEach`-Methode wird auf Arrays verwendet und führt eine Funktion für jedes Element im Array aus.
+
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+numbers.forEach((number) => {
+    console.log(number);
+});
+// oder kürzer mit Methodenreferenz
+numbers.forEach(console.log);
+```
+
+:::info Einsatzgebiet
+Die `forEach`-Methode existiert für die Prototypen von `Array`, `Map`, `Set`, `String` und einigen mehr.
+:::
+
+### for...of-Schleife
+
+Die `for...of`-Schleife (neu seit ES6) ist eine moderne Schleife, die für `Arrays`, `Strings`, `Sets`, `Maps` und andere iterierbare Objekte verwendet wird.
+
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+
+for (const number of numbers) {
+    console.log(number);
+}
+```
+
+Es kann auch Destrukturierung verwendet werden.
+
+```javascript
+const numbers = [[1, 2], [3, 4], [5, 6]];
+
+for (const [first, second] of numbers) {
+    console.log(first, second);
+}
+```
+
+:::warning Objekte
+Die `for...of`-Schleife kann nicht direkt auf Objekte verwendet werden, da diese nicht iterierbar sind.
+:::
+
+### for...in-Schleife
+
+Die `for...in`-Schleife wird verwendet, um über die Schlüssel (und Werte) eines Objekts zu iterieren.
+
+```javascript
+const person = {
+    name: 'Alice',
+    age: 30
+};
+
+for (const key in person) {
+    console.log(key, person[key]);
+}
+```
+
+Mit Destrukturierung:
+
+```javascript
+for (const [key, value] of Object.entries(person)) {
+    console.log(key, value);
+}
+```
+
+### Weiterführende Literatur/Links
+
+- [MDN Web Docs: for](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for)
+- [MDN Web Docs: Array.prototype.forEach()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
+- [MDN Web Docs: for...in](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in)
+- [MDN Web Docs: for...of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of)

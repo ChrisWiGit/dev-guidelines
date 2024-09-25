@@ -109,9 +109,10 @@ Auf Optimierung ohne Grund soll verzichtet werden.
 - Es ist besser, den Code zuerst zu schreiben und dann zu optimieren, wenn es notwendig ist.
 - Optimierungen dürfen nur mit einem Benchmark durchgeführt werden, um das Optimierungsergebnis zu überprüfen.
 
-### GL12 Fehlerbehandlung
+### GL12 Einheitliche Fehlerbehandlung
 
-- Fehler/Ausnahmen sollen zuerst vom Framework oder in einem globalen Fehlerhandler behandelt werden und dem Benutzer eine Fehlermeldung angezeigt werden.
+- Fehler/Ausnahmen sollen einheitlich über den gesamten Code behandelt werden.
+- Das Framework oder eine globale Fehlerbehandlung behandelt allgemeine Fehler und informiert den Benutzer.
 - Spezifische Fehlerbehandlungen (`try-catch`) sollen nur verwendet werden, wenn ein Fehler bekannt und im Code behandelbar ist.
 - Abgefangene Fehler/Ausnahmen sollen entweder geloggt oder weitergegeben werden, aber nicht beides, um Doppelungen beim Loggen zu vermeiden.
 - Abgefangene Fehler/Ausnahmen können in Ausnahmefällen und mit Kommentar auch ignoriert werden.
@@ -121,6 +122,11 @@ Auf Optimierung ohne Grund soll verzichtet werden.
 - Fehler müssen so früh wie möglich geworfen werden (siehe [Fail Fast](../2.principles/#fail-fast)).
 - Fehler sollen anhand ihres Abstraktionsgrades geworfen werden
   - Fehler von niederen Schichten sollen in höheren Schichten in Domänen-spezifische Fehler umgewandelt werden (gewrappt werden).
+
+::: info
+Lokale Fehlerbehandlung statt globaler Fehlerbehandlung führt zu unaufgeräumten Code.
+Oftmals wird die Fehlerbehandlung vollständig vergessen oder ignoriert, was zu unterschiedlicher Behandlung von Fehlern führt.
+:::
 
 ### GL13 Verwenden aussagekräftige Rückgabewerte und -typen
 
