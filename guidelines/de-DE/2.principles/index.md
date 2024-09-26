@@ -8,11 +8,11 @@ hero:
   tagline: "Guter Code ist Einstellungssache"
   actions:
     - theme: brand
-      text: Übersicht
-      link: ./2.principles/overview
+      text: Die Prinzipien
+      link: ./principles
     - theme: alt
       text: Literatur
-      link: ./2.principles/literature
+      link: ./literature
 
 features:
 

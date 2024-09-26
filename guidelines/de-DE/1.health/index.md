@@ -1,5 +1,8 @@
 ---
+layout: doc
 outline: deep
+customRulePrefix: H
+customIgnoreTitlesForRules: []
 ---
 
 # Entwicklerregeln
@@ -15,7 +18,7 @@ b) Esse gesund, trinke genug Wasser und bewege dich regelmäßig.
 
 b) Schlafe ausreichend.
 
-## H3 Arbeitszeit
+## H2 Arbeitszeit
 
 a) Arbeite im Schnitt maximal deine vereinbarten Stunden am Tag.
 
@@ -23,13 +26,13 @@ b) Arbeite nicht mehr als deine vereinbarten Stunden in der Woche, außer du wil
 
 d) Wenn du mehr als deine vereinbarten Stunden am Tag arbeitest, dann musst du mindestens 11 Stunden Pause machen bevor du wieder arbeitest.
 
-## H4 Pausen
+## H3 Pausen
 
 a) Mache regelmäßig Pausen. Viele Stunden am Stück zu arbeiten ist nicht effektiv.
 
 b) Teile deine Arbeitszeit ein, fokusiere dich auf deine Arbeit und mache dann zwischendurch eine Pause.
 
-## H5 Urlaub
+## H4 Urlaub
 
 a) Nimm regelmäßig Urlaub. Du hast Anspruch auf einige Tage Urlaub im Jahr.
 
@@ -37,13 +40,13 @@ b) Nutze deinen Urlaub um zu entspannen und neue Energie zu tanken.
 
 c) Urlaube sollten mehrere Tage am Stück sein. Ein Tag Urlaub ist nicht effektiv.
 
-## H6 Krankheit
+## H5 Krankheit
 
 a) Wenn du krank bist, dann bleibe zu Hause. Du gefährdest nicht nur dich, sondern auch deine Kollegen.
 
 b) Wenn du krank bist, dann melde dich krank und informiere deinen Vorgesetzten.
 
-## H7 Helfen
+## H6 Helfen
 
 a) Hilf deinen Kollegen, wenn du kannst.
 
