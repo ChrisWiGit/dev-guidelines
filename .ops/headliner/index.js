@@ -25,6 +25,8 @@ const Glob = require("glob");
 
 const CURRENT_NEW_LINE_OF_OS = process.platform === "win32" ? "\r\n" : "\n";
 
+
+const IGNORE_MD_FILES = ["**/node_modules/**", "**/dist/**", "**/build/**", "README.md", "CHANGELOG.md", "CONTRIBUTING.md", "CODE_OF_CONDUCT.md", "LICENSE.md", "todos.md"]
 const RULE_NUMBER_REGEX = /#+\s*\w+\d+/;
 const HEADLINE_GUTTERS_REGEX = /#+/;
 
@@ -49,6 +51,15 @@ function countNumberOfGutters(str) {
   return str.match(/#/g).length;
 }
 
+function makeNewTitle(str, prefix, ruleNumber, numberOfGutters) {
+  return `${"#".repeat(numberOfGutters)} ${prefix}${ruleNumber} ${correctHeaderTitle(str)}`;
+}
+
+function makeNewTitleWithNoRule(str) {
+  const numberOfGutters = countNumberOfGutters(str);
+  return `${"#".repeat(numberOfGutters)} ${correctHeaderTitle(str)}`;
+}
+
 function addRuleNumber(str, ruleNumber, state) {
   const numberOfGutters = countNumberOfGutters(str);
   const gutters = "#".repeat(numberOfGutters);
@@ -63,22 +74,35 @@ function addRuleNumber(str, ruleNumber, state) {
     filePath: state.relativeFilePath,
   });
 
-  return `${gutters} ${state.prefix}${ruleNumber} ${newTitle}`;
+  return makeNewTitle(str, state.prefix, ruleNumber, numberOfGutters);
 }
 
 function isYamlSectionBounds(str) {
-  // verhinder Tabelle als Yaml zu interpretieren
+  // verhindert Tabelle als Yaml zu interpretieren
   return str.startsWith("---") && !str.startsWith("----");
 }
 
-function processYamlCustomRulePrefixLine(line, state) {
-  if (state.prefix) {
-    throw new Error(`Custom rule prefix already set to ${state.prefix}`);
+function isHeadLineTitleIgnored(str, state) {
+  if (!state.ignoreTitles) {
+    return false;
   }
+  return state.ignoreTitles.includes(correctHeaderTitle(str).toLocaleUpperCase());
+}
 
+function processYamlCustomRulePrefixLine(line, state) {
   const customRulePrefix = line.match(/customRulePrefix: (\w+)/);
   if (customRulePrefix) {
+    if (state.prefix) {
+      throw new Error(`Custom rule prefix already set to ${state.prefix}`);
+    }
     state.prefix = customRulePrefix[1];
+  }
+}
+
+function processCustomIgnoreTitlesArrayLine(line, state) {
+  const customIgnoreTitlesArray = line.match(/customIgnoreTitlesForRules: \[(.*)\]/);
+  if (customIgnoreTitlesArray) {
+    state.ignoreTitles = customIgnoreTitlesArray[1].split(",").map((title) => title.toLocaleUpperCase().trim());
   }
 }
 
@@ -90,17 +114,28 @@ function processLine(line, state) {
 
   if (state.mdYamlSection) {
     processYamlCustomRulePrefixLine(line, state);
+    processCustomIgnoreTitlesArrayLine(line, state);
     return line;
   }
-
+  
   if (!state.prefix) {
     throw new NoCustomRulePrefixException("Custom rule prefix not set");
   }
-
+  
   if (isMainHeader(line)) {
+    if (isHeadLineTitleIgnored(line, state)) {
+      state.ignoreHeadlineTitlesState = true;
+      return makeNewTitleWithNoRule(line)
+    }
+    
+    state.ignoreHeadlineTitlesState = false;
     state.ruleNumber += 1;
     state.currentHeader = state.headers.length;
     return addRuleNumber(line, state.ruleNumber, state);
+  }
+
+  if (state.ignoreHeadlineTitlesState) {
+    return line;
   }
 
   if (isSubHeader(line)) {
@@ -138,6 +173,8 @@ function resetFileState(state, newFile) {
   state.mdYamlSection = false;
   state.headers = [];
   state.relativeFilePath = newFile;
+  state.ignoreHeadlineTitlesState = false;
+  state.ignoreTitles = [];
 }
 
 const singleFileState = {
@@ -146,6 +183,7 @@ const singleFileState = {
   mdYamlSection: false,
   headers: [],
   relativeFilePath: "",
+  ignoreHeadlineTitlesState: false,
 };
 
 const globalState = {
@@ -183,7 +221,7 @@ async function processSingleFile(filePath, state, globalState) {
 
 async function processFilesInDirectory(directoryPath, state, globalState) {
   const files = await Glob.glob(`${directoryPath}/**/*.md`, {
-    ignore: ["**/node_modules/**", "**/.git/**"],
+    ignore: IGNORE_MD_FILES,
   });
 
   for (const file of files) {

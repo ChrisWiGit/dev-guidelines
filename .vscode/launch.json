@@ -13,7 +13,18 @@
       ],
       "program": "${workspaceFolder}\\.ops\\headliner\\index.js",
       "args": ["."],
-      "cwd": "${workspaceFolder}\\.ops\\headliner"
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Program 2",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}\\.ops\\headliner\\index.js",
+      "args": ["test.md"],
+      "cwd": "${workspaceFolder}/.ops/headliner"
     }
   ]
 }
