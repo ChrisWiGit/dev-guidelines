@@ -27,8 +27,9 @@ const CURRENT_NEW_LINE_OF_OS = process.platform === "win32" ? "\r\n" : "\n";
 
 
 const IGNORE_MD_FILES = ["**/node_modules/**", "**/dist/**", "**/build/**", "README.md", "CHANGELOG.md", "CONTRIBUTING.md", "CODE_OF_CONDUCT.md", "LICENSE.md", "todos.md"]
-const RULE_NUMBER_REGEX = /#+\s*\w+\d+/;
-const HEADLINE_GUTTERS_REGEX = /#+/;
+const RULE_NUMBER_REGEX = /^#+\s*\w+\d+/;
+const HEADLINE_GUTTERS_REGEX = /^\s*#+/;
+const ANCHOR_REGEX = /{(#.*)}/;
 
 class NoCustomRulePrefixException extends Error {}
 
@@ -40,24 +41,81 @@ function isSubHeader(str) {
   return str.startsWith("###");
 }
 
-function correctHeaderTitle(str) {
+function removeHeaderFromTitle(str) {
   return str
     .replace(RULE_NUMBER_REGEX, "")
     .replace(HEADLINE_GUTTERS_REGEX, "")
     .trim();
 }
 
+function removeAnchor(str) {
+  return str
+    .replace(ANCHOR_REGEX, "")
+    .trim();
+}
+
+function correctHeaderTitle(str) {
+  return str
+    .replace(ANCHOR_REGEX, "")
+    .replace(RULE_NUMBER_REGEX, "")
+    .replace(HEADLINE_GUTTERS_REGEX, "")
+    .trim();
+}
+
+function getAnchor(str) {
+  return str.trim().toLowerCase()
+    .replace(/ä/g, 'ae')
+    .replace(/ö/g, 'oe')
+    .replace(/ü/g, 'ue')
+    .replace(/ß/g, 'ss')
+    .replace(/[^a-z0-9]/gi, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+function extractAnchor(str) {
+  const match = str.match(ANCHOR_REGEX);
+
+  if (!match) {
+    return '#'+getAnchor(correctHeaderTitle(str));
+  }
+
+  return match[1];
+}
+
+function hasAnchorOrIsSubHeader(str) {
+  return isSubHeader(str) || str.includes("{#");
+}
+
+function styleHeading(str, state) {
+  const newStr = removeHeaderFromTitle(str);
+
+  if (hasAnchorOrIsSubHeader(str)) {
+    return newStr;
+  }
+
+  const mdAnchorStyle = getAnchor(removeAnchor(newStr));
+
+  return `${newStr} {#${mdAnchorStyle}}`;
+}
+
 function countNumberOfGutters(str) {
-  return str.match(/#/g).length;
+  const match = str.match(/#+/);
+
+  if (!match) {
+    return 0;
+  }
+
+  return match[0].length;  
 }
 
-function makeNewTitle(str, prefix, ruleNumber, numberOfGutters) {
-  return `${"#".repeat(numberOfGutters)} ${prefix}${ruleNumber} ${correctHeaderTitle(str)}`;
+function makeNewTitle(str, ruleNumber, numberOfGutters, state) {
+  return `${"#".repeat(numberOfGutters)} ${state.prefix}${ruleNumber} ${styleHeading(str, state)}`;
 }
 
-function makeNewTitleWithNoRule(str) {
+function makeNewTitleWithNoRule(str, state) {
   const numberOfGutters = countNumberOfGutters(str);
-  return `${"#".repeat(numberOfGutters)} ${correctHeaderTitle(str)}`;
+  return `${"#".repeat(numberOfGutters)} ${styleHeading(str, state)}`;
 }
 
 function addRuleNumber(str, ruleNumber, state) {
@@ -72,9 +130,10 @@ function addRuleNumber(str, ruleNumber, state) {
     ruleStr: `${state.prefix}${ruleNumber}`,
     title: newTitle,
     filePath: state.relativeFilePath,
+    anchor: isSubHeader(str) ? "" : extractAnchor(str),
   });
 
-  return makeNewTitle(str, state.prefix, ruleNumber, numberOfGutters);
+  return makeNewTitle(str, ruleNumber, numberOfGutters, state);
 }
 
 function isYamlSectionBounds(str) {
@@ -125,12 +184,13 @@ function processLine(line, state) {
   if (isMainHeader(line)) {
     if (isHeadLineTitleIgnored(line, state)) {
       state.ignoreHeadlineTitlesState = true;
-      return makeNewTitleWithNoRule(line)
+      return makeNewTitleWithNoRule(line, state)
     }
     
     state.ignoreHeadlineTitlesState = false;
     state.ruleNumber += 1;
     state.currentHeader = state.headers.length;
+
     return addRuleNumber(line, state.ruleNumber, state);
   }
 
