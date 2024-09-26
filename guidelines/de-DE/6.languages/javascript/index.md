@@ -2,6 +2,7 @@
 # https://vitepress.dev/reference/default-theme-home-page
 layout: doc
 outline: [2, 2]
+customRulePrefix: JS
 ---
 
 # Richtlinien für JavaScript und TypeScript
