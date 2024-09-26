@@ -179,7 +179,8 @@ class MyClass {
 
 ### Ausnahmen
 
-In Fällen, in der eine besser Verständlichkeit des Codes durch eine andere Reihenfolge erreicht wird, kann von der oben genannten Reihenfolge abgewichen werden.
+- Zwischenberechnungen für Konstanten oder Variablen können vor der Verwendung deklariert werden, wenn es nicht anders geht.
+- In Fällen, in der eine besser Verständlichkeit des Codes durch eine andere Reihenfolge erreicht wird, kann von der oben genannten Reihenfolge abgewichen werden.
 
 ## JS4 Verwendung von `const` und `let` anstelle von `var`
 
@@ -393,9 +394,9 @@ console.log('Defined', a.b.e[0]?.f == null);
 
 - Keine direkte Unterstützung in älteren JavaScript-Versionen (vor ECMAScript 2020)
 - Verwendung des optionalen Operators kann dazu führen, dass Fehler später erkannt werden, da `undefined`-Werte nicht sofort als solche erkannt werden
-- Einsatz der Operator nach dem Gießkannenprinzip führt zu einer unübersichtlichen Codebasis.
+- Einsatz der Operator nach dem Gießkannenprinzip kann dazu führen, dass andere Entwickler davon ausgehen, dass die Werte nicht immer vorhanden sind und dadurch für Erweiterungen weitere Prüfungen einbauen, die nicht notwendig wären.
 
-:::info Gießkannenprinzip
+:::details Gießkannenprinzip
 
 Das Gießkannenprinzip bezeichnet die Verwendung von optionalen Operatoren an vielen Stellen im Code, auch wenn sie nicht unbedingt notwendig sind.
 
@@ -405,6 +406,8 @@ const obj = { defined: { value: 42 } };
 // Gießkannenprinzip, obj kann nie null oder undefined sein, genauso obj.defined
 const value = obj?.defined?.value;
 ```
+
+:::
 
 ### JS8 Weiterführende Informationen
 
@@ -1875,6 +1878,15 @@ Beachte:
 
 - Der importierte Name kann beliebig sein (`mySum`).
 - Benannter und default Export können in einem Modul kombiniert werden.
+
+```javascript
+// export.js
+export const sum = (a, b) => a + b;
+export default const anotherSum = (a, b) => a + b;
+
+// import.js
+import mySum, { sum } from './export.js';
+```
 
 ### Namespace-Import
 
