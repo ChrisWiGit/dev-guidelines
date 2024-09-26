@@ -127,6 +127,7 @@ function addRuleNumber(str, ruleNumber, state) {
     ruleNumber,
     gutters,
     header: isSubHeader(str) ? state.currentHeader : -1,
+    isMainHeader: isMainHeader(str),
     ruleStr: `${state.prefix}${ruleNumber}`,
     title: newTitle,
     filePath: state.relativeFilePath,
