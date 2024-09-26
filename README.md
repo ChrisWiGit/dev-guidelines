@@ -31,3 +31,7 @@ npm run docs:build
 ```bash
 npm run docs:preview
 ```
+
+## Addendum
+
+Due to the package hbs-cli being unmaintained, the devependency global-promise in Version 6 had to be added to the package.json. This is a temporary solution until the package hbs-cli is updated.

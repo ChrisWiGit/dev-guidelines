@@ -1,9 +1,11 @@
 ---
+# Handlebars Template - md-Datei wird automatisch generiert!
+# Lädt die Datei headlines.json und wertet per HBS die Daten aus.
 layout: doc
 ---
 # Glossar aller Regeln
 
-## Die Software-Prinzipien
+## Die anzuwendenden Software-Prinzipien
 
 - [P1 SOLID](2.principles\principles.md#solid)
 - [P2 KISS](2.principles\principles.md#kiss)
@@ -65,7 +67,7 @@ layout: doc
 - [GN17 Getter und Setter](6.languages\naming.md#getter-und-setter)
 - [GN18 Build-Pattern Methoden](6.languages\naming.md#build-pattern-methoden)
 
-## Entwicklungsregeln für JavaScript
+## Regeln für JavaScript
 
 - [JS1 Allgemeine Regeln](6.languages\javascript\index.md#allgemeine-regeln)
 - [JS2 Anwendung von ES6 Features](6.languages\javascript\index.md#anwendung-von-es6-features)
@@ -104,13 +106,13 @@ layout: doc
 - [JS35 Methoden-Verkettung](6.languages\javascript\index.md#methoden-verkettung)
 - [JS36 Unbenutzte Variablen und Parameter](6.languages\javascript\index.md#unbenutzte-variablen-und-parameter)
 
-## Entwicklungsregeln für Vue
+## Regeln für Vue
 
 
-## Entwicklungsregeln für Java
+## Regeln für Java
 
 
-## Refactoring allgemein
+## Allgemeine Regeln für das Refactoring
 
 - [RFG1 Umbenennen](5.refactoring\general.md#umbenennen)
 - [RFG2 Vereinfachungen](5.refactoring\general.md#vereinfachungen)
@@ -118,24 +120,24 @@ layout: doc
 - [RFG4 Methoden extrahieren](5.refactoring\general.md#methoden-extrahieren)
 - [RFG5 Benamung](5.refactoring\general.md#benamung)
 
-## Refactoring JavaScript
+## Regeln für das Refactoring in JavaScript
 
 - [RFJS1 JavaScript und TypeScript](5.refactoring\javascript.md#javascript-und-typescript)
 
-## Refactoring Vue
+## Regeln für das Refactoring in Refactoring Vue
 
 
-## Refactoring Java
+## Regeln für das Refactoring in Refactoring Java
 
 - [RFJ1 Java-Versionen](5.refactoring\java.md#java-versionen)
 
-## Review Allgemein
+## Allgemeine Regeln für das Review
 
 - [GR1 Kommunikation](7.reviews.md#kommunikation)
 - [GR2 Zeitpunkt](7.reviews.md#zeitpunkt)
 - [GR3 Persönliche Einstellung](7.reviews.md#persoenliche-einstellung)
 
-## Künstliche Intelligenz / Artificial Intelligence
+## Regeln für das Arbeiten mit Künstlicher Intelligenz
 
 - [AI1 Was ist KI nicht?](8.ai.md#was-ist-ki-nicht)
 - [AI2 Traue keiner KI](8.ai.md#traue-keiner-ki)
