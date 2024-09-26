@@ -2,26 +2,17 @@
 # https://vitepress.dev/reference/default-theme-home-page
 layout: doc
 customRulePrefix: GL
+customIgnoreTitlesForRules: [Einleitung]
 ---
 
 # Allgemeine Richtlinien für alle Sprachen
 
-## GL1 Einleitung
+## Einleitung {#einleitung}
 
 Allen Kapiteln wurde eine eindeutige Nummerierung, der Richtliniennummer, hinzugefügt, um eine eindeutige Identifikation zu ermöglichen.
 Jede Richtliniennummer besteht aus dem Buchstaben **GL**(General Languages) gefolgt von einer Nummer, die den Abschnitt identifiziert. Damit kann eine Regel eindeutig identifiziert werden, z.B. für ein Code-Review.
 
-## GL2 Übersicht
-
-<!--
-Uniformes Benennungsschema
-Law of Demeter
-
--->
-
-## GL3 Regeln
-
-### GL3 Zielgruppe
+## GL1 Zielgruppe {#zielgruppe}
 
 Schreibe Code und Dokumentation so, als würdest du für andere Entwickler schreiben, die deinen Code lesen werden.
 
@@ -29,11 +20,11 @@ Schreibe Code und Dokumentation so, als würdest du für andere Entwickler schre
 Code wird öfters gelesen als geschrieben.
 :::
 
-### GL3 Anwendung der Prinzipien der Softwareentwicklung
+## GL2 Anwendung der Prinzipien der Softwareentwicklung {#anwendung-der-prinzipien-der-softwareentwicklung}
 
 Die Prinzipien der Softwareentwicklung wie in [Prinzipien der Softwareentwicklung](../2.principles/) beschrieben, sollen befolgt werden, um sicherzustellen, dass der Code sauber, robust und wartbar bleibt.
 
-### GL3 Anwendung von Design Patterns
+## GL3 Anwendung von Design Patterns {#anwendung-von-design-patterns}
 
 Design Patterns bieten eine wiederverwendbare Vorlage zur Lösung von Softwareentwicklungsproblemen in einem bestimmten Kontext. Sie dienen dazu, den Code sauberer, effizienter und einfacher zu verstehen zu machen. Einige Beispiele für Design Patterns, die in Java häufig verwendet werden, sind:
 
@@ -42,7 +33,7 @@ Design Patterns bieten eine wiederverwendbare Vorlage zur Lösung von Softwareen
 - Builder Pattern
 - weitere Patterns [dofactory Design Patterns](https://www.dofactory.com/javascript/design-patterns)
 
-### GL3 Architektur planen und umsetzen
+## GL4 Architektur planen und umsetzen {#architektur-planen-und-umsetzen}
 
 Der Code soll nach den Prinzipien der Softwareentwicklung in [Prinzipien der Softwareentwicklung](../2.principles/) strukturiert werden.
 
@@ -53,26 +44,26 @@ Darunter fallen, jedoch nicht ausschließlich:
 - Trennung von Geschäftslogik und Präsentation
 - Nutzung von Dependency Injection
 
-### GL3 Ein Befehl, ein Build
+## GL5 Ein Befehl, ein Build {#ein-befehl-ein-build}
 
 Ein Projekt soll mit einem einzigen Befehl gebaut werden können. Dies erleichtert die Wartung und die Zusammenarbeit mit anderen Entwicklern.
 
-### GL3 Dokumentation
+## GL6 Dokumentation {#dokumentation}
 
 - Ein Projekt muss immer mit einem `README.md`-Dokument beginnen, das eine kurze und lange Beschreibung des Projekts, Anweisungen zur Installation und Verwendung, sowie Informationen zur Lizenzierung und zum Beitrag enthält.
 - Der Standardtext, der von gitlab für readme-Dateien generiert wird, muss angepasst werden.
 - Dokumentation über die Architektur und die Funktionsweise muss verlinkt oder im Projekt selbst enthalten sein.
 
-### GL3 Einsatz von Linter und Formatter
+## GL7 Einsatz von Linter und Formatter {#einsatz-von-linter-und-formatter}
 
 Von Anfang an sollen für Projekte Linter und automatische Code-Formatter eingesetzen, um sicherzustellen, dass der Code konsistent und fehlerfrei ist.
 
-### GL3 Schreiben von Unit-Tests
+## GL8 Schreiben von Unit-Tests {#schreiben-von-unit-tests}
 
 Guter Code muss immer von Anfang an mit Tests begleitet werden.
 Tests helfen dabei, sicherzustellen, dass der Code nach dem Refactoring immer noch wie erwartet funktioniert.
 
-### GL3 Selbsterklärender Code und keine Kommentare
+## GL9 Selbsterklärender Code und keine Kommentare {#selbsterklaerender-code-und-keine-kommentare}
 
 - Kommentare können lügen, Code nicht.
 - Kommentare müssen vermieden werden, denn Kommentare veralten und ändern sich of nicht mit, wenn der Code geändert wird.
@@ -96,7 +87,7 @@ Code Kommentare beschreiben, wie Code funktioniert.
 Code Dokumentation beschreibt wie Code verwendet werden soll, wozu er dient, welche Laufzeitbedingungen er hat und welche Fehler er werfen kann.
 :::
 
-### GL3 Einfachheit und nur das Notwendige
+## GL10 Einfachheit und nur das Notwendige {#einfachheit-und-nur-das-notwendige}
 
 Gute Code soll einfach geschrieben und für andere Personen (im Team) leicht verständlich und ohne Überraschungen sein.
 Entwickler sollen sich nicht im Code selbst verwirklichen, sondern Code so schreiben, dass andere Entwickler ihn leicht verstehen, erweitern und verbessern können.
@@ -104,14 +95,14 @@ Entwickler sollen sich nicht im Code selbst verwirklichen, sondern Code so schre
 Um Code daher nicht unnötig komplex zu machen, darf daher auch nur das Notwendige implementiert werden, um die Anforderungen zu erfüllen.
 Das Vorgehen nach "Könnte später nützlich sein" soll vermieden werden und nur in Absprache mit dem Team umgesetzt werden.
 
-### GL3 Performance-Optimierungen
+## GL11 Performance-Optimierungen {#performance-optimierungen}
 
 Auf Optimierung ohne Grund soll verzichtet werden.
 
 - Es ist besser, den Code zuerst zu schreiben und dann zu optimieren, wenn es notwendig ist.
 - Optimierungen dürfen nur mit einem Benchmark durchgeführt werden, um das Optimierungsergebnis zu überprüfen.
 
-### GL3 Einheitliche Fehlerbehandlung
+## GL12 Einheitliche Fehlerbehandlung {#einheitliche-fehlerbehandlung}
 
 - Fehler/Ausnahmen sollen einheitlich über den gesamten Code behandelt werden.
 - Das Framework oder eine globale Fehlerbehandlung behandelt allgemeine Fehler und informiert den Benutzer.
@@ -130,11 +121,11 @@ Lokale Fehlerbehandlung statt globaler Fehlerbehandlung führt zu unaufgeräumte
 Oftmals wird die Fehlerbehandlung vollständig vergessen oder ignoriert, was zu unterschiedlicher Behandlung von Fehlern führt.
 :::
 
-### GL3 Verwenden aussagekräftige Rückgabewerte und -typen
+## GL13 Verwenden aussagekräftige Rückgabewerte und -typen {#verwenden-aussagekraeftige-rueckgabewerte-und-typen}
 
 Wenn eine Methode einen Wert zurückgibt, soll dieser Wert aussagekräftig sein und genau das darstellen, was die Methode tut. Es ist auch hilfreich, konsistente Rückgabetypen zu verwenden.
 
-### GL3 Gesetz von Demeter
+## GL14 Gesetz von Demeter {#gesetz-von-demeter}
 
 Objekte sollen nur mit Objekten kommunizieren, die sie direkt kennen. Das bedeutet, dass ein Objekt nur Methoden von Objekten aufrufen soll, die es selbst erstellt hat, die als Parameter übergeben wurden oder die es als Eigenschaft besitzt.
 Dies verhindert eine zu starke Kopplung zwischen den Objekten.
@@ -150,7 +141,7 @@ person.department().manager().address().streetName();
 addressDI.streetName();
 ```
 
-### GL3 Einheitliche Namensgebung
+## GL15 Einheitliche Namensgebung {#einheitliche-namensgebung}
 
 Code wird öfters gelesen als geschrieben.
 Daher ist es wichtig, dass die Namensgebung konsistent und aussagekräftig ist.
@@ -161,7 +152,7 @@ Detailliertere Regeln dazu findest du in [Einheitliche Namensgebung](./naming.md
 Gute Code beschreibt sich selbst.
 :::
 
-### GL3 Sicherheit
+## GL16 Sicherheit {#sicherheit}
 
 Sicherheit in der Entwicklung ist eine nicht-funktionale Anforderung, die in jedem Schritt der Softwareentwicklung berücksichtigt werden muss.
 

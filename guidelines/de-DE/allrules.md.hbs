@@ -1,0 +1,103 @@
+---
+# Handlebars Template - md-Datei wird automatisch generiert!
+# Lädt die Datei headlines.json und wertet per HBS die Daten aus.
+layout: doc
+---
+# Glossar aller Regeln
+
+## Die Software-Prinzipien
+
+{{#each P}}
+{{#if isMainHeader}} 
+- [{{ruleStr}} {{title}}]({{filePath}}{{anchor}})
+{{/if}}
+{{/each}}
+
+## Allgemeine Regeln für alle Sprachen (GL)
+
+{{#each GL}}
+{{#if isMainHeader}} 
+- [{{ruleStr}} {{title}}]({{filePath}}{{anchor}})
+{{/if}}
+{{/each}}
+
+## Allgemein Regeln für Namen
+
+{{#each GN}}
+{{#if isMainHeader}} 
+- [{{ruleStr}} {{title}}]({{filePath}}{{anchor}})
+{{/if}}
+{{/each}}
+
+## Entwicklungsregeln für JavaScript
+
+{{#each JS}}
+{{#if isMainHeader}} 
+- [{{ruleStr}} {{title}}]({{filePath}}{{anchor}})
+{{/if}}
+{{/each}}
+
+## Entwicklungsregeln für Vue
+
+{{#each VUE}}
+{{#if isMainHeader}} 
+- [{{ruleStr}} {{title}}]({{filePath}}{{anchor}})
+{{/if}}
+{{/each}}
+
+## Entwicklungsregeln für Java
+
+{{#each J}}
+{{#if isMainHeader}} 
+- [{{ruleStr}} {{title}}]({{filePath}}{{anchor}})
+{{/if}}
+{{/each}}
+
+## Refactoring allgemein
+
+{{#each RFG}}
+{{#if isMainHeader}} 
+- [{{ruleStr}} {{title}}]({{filePath}}{{anchor}})
+{{/if}}
+{{/each}}
+
+## Refactoring JavaScript
+
+{{#each RFJS}}
+{{#if isMainHeader}} 
+- [{{ruleStr}} {{title}}]({{filePath}}{{anchor}})
+{{/if}}
+{{/each}}
+
+## Refactoring Vue
+
+{{#each RFVUE}}
+{{#if isMainHeader}} 
+- [{{ruleStr}} {{title}}]({{filePath}}{{anchor}})
+{{/if}}
+{{/each}}
+
+## Refactoring Java
+
+{{#each RFJ}}
+{{#if isMainHeader}} 
+- [{{ruleStr}} {{title}}]({{filePath}}{{anchor}})
+{{/if}}
+{{/each}}
+
+## Review Allgemein
+
+{{#each GR}}
+{{#if isMainHeader}} 
+- [{{ruleStr}} {{title}}]({{filePath}}{{anchor}})
+{{/if}}
+{{/each}}
+
+## Künstliche Intelligenz / Artificial Intelligence
+
+{{#each AI}}
+{{#if isMainHeader}} 
+- [{{ruleStr}} {{title}}]({{filePath}}{{anchor}})
+{{/if}}
+{{/each}}
+

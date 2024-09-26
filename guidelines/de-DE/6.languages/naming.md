@@ -6,12 +6,12 @@ customIgnoreTitlesForRules: [Einleitung]
 
 # Einheitliche Namensgebung
 
-## Einleitung
+## Einleitung {#einleitung}
 
 Allen Kapiteln wurde eine eindeutige Nummerierung, der Richtliniennummer, hinzugefügt, um eine eindeutige Identifikation zu ermöglichen.
 Jede Richtliniennummer besteht aus dem Buchstaben **GN**(General Naming) gefolgt von einer Nummer, die den Abschnitt identifiziert. Damit kann eine Regel eindeutig identifiziert werden, z.B. für ein Code-Review.
 
-## GN1 Allgemeine Regeln
+## GN1 Allgemeine Regeln {#allgemeine-regeln}
 
 - Verwende so kurze und präzise Namen wie möglich.
 - Verwende die gleichen Wörter für die gleichen Konzepte in der gesamten Codebasis.
@@ -20,13 +20,13 @@ Jede Richtliniennummer besteht aus dem Buchstaben **GN**(General Naming) gefolgt
 - Vermeide Zahlen in Namen, wenn sie nicht Teil des Namens sind.
 - Vermeide komplizierte oder nicht gebräuchliche Wörter.
 
-## GN2 Schreibweise
+## GN2 Schreibweise {#schreibweise}
 
 Die Schreibweise von Variablen, Methoden, Konstanten, Typen und Klassen sollte konsistent sein und den Konventionen der Sprache folgen.
 
 Die Schreibweise wird detailliert im Kapitel der entsprechenden Sprache beschrieben.
 
-## GN3 Prefixe und Suffixe
+## GN3 Prefixe und Suffixe {#prefixe-und-suffixe}
 
 Vermeide Prefixe und Suffixe, wenn der Kontext bereits klar ist.
 
@@ -40,33 +40,33 @@ Beispiele:
 
 Sollten Prefixe oder Suffixe notwendig sein, sollten eine Aufteilung in Betracht gezogen werden nach dem Prinzip [Separation of Concerns](../2.principles/principles#soc).
 
-## GN4 Ganzzahlen
+## GN4 Ganzzahlen {#ganzzahlen}
 
-## GN5 Fließkommazahlen
+## GN5 Fließkommazahlen {#fliesskommazahlen}
 
-## GN6 Boolean
+## GN6 Boolean {#boolean}
 
-## GN7 Strings
+## GN7 Strings {#strings}
 
-## GN8 Listen
+## GN8 Listen {#listen}
 
-## GN9 Maps, Dictionary
+## GN9 Maps, Dictionary {#maps-dictionary}
 
-## GN10 Tuple
+## GN10 Tuple {#tuple}
 
-## GN11 Optional
+## GN11 Optional {#optional}
 
-## GN12 Klassen
+## GN12 Klassen {#klassen}
 
 Klassen präsentieren Dinge oder Akteure.
 Sie sollten daher konsistent benannt werden und mit einem Nomen enden.
 
-## GN13 Interfaces
+## GN13 Interfaces {#interfaces}
 
 Interfaces präsentieren Dinge, Akteure oder Fähigkeiten und sollten ähnlich wie Klassen benannt werden, jedoch mit einem abstrakten Nomen enden (z.B. `Serializer`, `Comparator`, `Validator`).
 Interfaces, die eine Fähigkeit präsentieren, sollten mit einem Adjektiv enden (z.B. `Serializable`, `Comparable`, `Validatable`).
 
-## GN14 Funktionen und Methoden
+## GN14 Funktionen und Methoden {#funktionen-und-methoden}
 
 Funktionen und Methoden sollten mit einem Verb beginnen, das die Aktion beschreibt, die sie ausführen.
 Der Name beginnt mit einem Verb und bezieht dabei auch die Parameter mit ein, sodass der Name die Funktionalität der Methode beschreibt.
@@ -92,7 +92,7 @@ compare(a : Integer, b : Integer) oder compareIntegers(a, b)
 compareTextCaseInsensitive(a, b) oder compareCaseInsensitive(a: String, b: String)
 ```
 
-## GN15 Methodenpaare
+## GN15 Methodenpaare {#methodenpaare}
 
 Methoden, die ein Paar bilden, sollten mit den gleichen Wörtern beginnen. Zum Beispiel:
 
@@ -140,7 +140,7 @@ Beispiele:
 - serialize/deserialize
 - connect/disconnect
 
-## GN16 Methoden mit Boolean-Rückgabewerten
+## GN16 Methoden mit Boolean-Rückgabewerten {#methoden-mit-boolean-rueckgabewerten}
 
 Methoden, die einen Boolean-Wert zurückgeben, sollten mit einem Präfix `is`, `has`, `can`, `should` oder `will` gefolgt von einem Adjektiv beginnen.
 
@@ -160,7 +160,7 @@ willDestroy()
 Spezifischere Präfixe wie `contains` oder `supports` sollten verwendet werden, wenn sie besser in den Kontext passen (z.B. in Listen oder Collections).
 :::
 
-## GN17 Getter und Setter
+## GN17 Getter und Setter {#getter-und-setter}
 
 Getter sollten **kein** Präfix haben, Setter sollten durch Methoden ersetzt werden, die eine Aktion mit der Eigenschaft durchführen (Prinzip [Tell, Don't Ask](../2.principles/principles#tda)).
 
@@ -180,7 +180,7 @@ Beispiele:
 Wenn Klassen nur aus Getter und Setter bestehen, sollte die Klasse neu bewertet werden, da sie gegen das Prinzip [Information Hiding](../2.principles/principles#ih) verstößt.
 :::
 
-## GN18 Build-Pattern Methoden
+## GN18 Build-Pattern Methoden {#build-pattern-methoden}
 
 Methoden für das [Build-Pattern](../4.designpatterns/builder) sollen mit `with` beginnen.
 Das `Endstück` soll den Namen `build` haben, denn der Kontext sollte mit dem Namen der Klasse oder der Builder-Methode klar sein.
