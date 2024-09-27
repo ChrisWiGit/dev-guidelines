@@ -1323,11 +1323,12 @@ Jede Zeile innerhalb des Kommentars beginnt mit `*`.
 /**
  * Berechnet die Summe von zwei Zahlen.
  * @param {number} x - Die erste Zahl.
- * @param {number} y - Die zweite Zahl.
+ * @param [number] y - Die zweite Zahl ist optional. //Alternative Google Closure Compiler Syntax: {number=}
+ * @param [string|number] text - Ein Text als String oder Zahl.
+ * @param {*} data - Ein beliebiger Typ.
  * @param {number} [offsetDefault=1] - Der Standardwert, falls der Parameter fehlt.
  * @returns {number} Die Summe der beiden Zahlen. 
  */
-function add(x, y, offsetDefault=1)
 ```
 
 #### JS22 Variablen
@@ -1387,8 +1388,11 @@ let user = {
 
 Wenn ein Objekt mehrmals verwendet wird, kann der Typ mit `@typedef` definiert werden.
 
+`@typedef` definiert einen benutzerdefinierten Typ, der in anderen JSDoc-Kommentaren verwendet werden kann.
+Im Gegensatz zu `@type`, welches den Typ einer Variablen oder eines Objekts angibt, definiert `@typedef` einen benutzerdefinierten Typ, der wiederverwendet werden kann.
+
 ```javascript
- 
+
  /**
  * Ein Benutzerobjekt.
  * @typedef {Object} User
@@ -1406,7 +1410,8 @@ let user;
 
 ### JS22 Siehe dazu
 
-Die vollständige Dokumentation von [JSDoc @type](https://jsdoc.app/tags-type#:~:text=The%20%40type%20tag%20allows%20you,such%20as%20the%20%40param%20tag.) erklärt die verschiedenen Tags und ihre Verwendung:
+- [JSDoc @type](https://jsdoc.app/tags-type) erklärt die verschiedenen Tags und ihre Verwendung:
+- [JSDoc @typedef](https://jsdoc.app/tags-typedef)
 
 ## JS23 Variable Parameter in Funktionen oder Methoden vermeiden {#variable-parameter-in-funktionen-oder-methoden-vermeiden}
 
