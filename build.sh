@@ -1,20 +1,33 @@
 #!/bin/sh
 
 # fail on error, shw all commands
-set -e -x
-
-cd guidelines/de-DE
+set -e
 
 currentDir=$(pwd)
 
-node ../../.ops/headliner/index.js .
-
-echo "Processing allrules.md.hbs"
-cd ../../.ops/hbscli
+cd ./.ops/hbscli
 npm install
 cd $currentDir
-alias hbs="../../.ops/hbscli/index.js"
 
-node hbs headlines.json allrules.md.hbs allrules.hbs
+function buildLang {
+  langDir=$1
+  cd $langDir
 
-cd ..
+  echo "Processing ${langDir}/headlines.json"
+  node ../../.ops/headliner/index.js .
+
+  echo "Processing ${langDir}/allrules.md.hbs"
+  
+  hbs="../../.ops/hbscli/index.js"
+
+  node $hbs headlines.json allrules.md.hbs allrules.md
+  cd $currentDir
+}
+
+echo "Building all languages..."
+
+echo "Building German..."
+buildLang guidelines/de-DE
+
+cd $currentDir
+echo "Done."
