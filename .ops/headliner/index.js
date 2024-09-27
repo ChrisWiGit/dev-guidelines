@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 /*
 CLI um eine MD-Datei zu durchgehen und alle Headlines mit einer Richtliniennummer zu versehen.
 
