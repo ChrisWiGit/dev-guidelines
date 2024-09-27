@@ -25,6 +25,17 @@
       "program": "${workspaceFolder}\\.ops\\headliner\\index.js",
       "args": ["test.md"],
       "cwd": "${workspaceFolder}/.ops/headliner"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "HBS CLI",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}\\.ops\\hbscli2\\index.js",
+      "args": ["headlines.json", "allrules.md.hbs", "output.md"],
+      "cwd": "${workspaceFolder}/.ops/hbscli2"
     }
   ]
 }
