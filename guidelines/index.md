@@ -4,7 +4,7 @@ layout: home
 
 hero:
   name: "Software Guidelines"
-  tagline: "Software is really hard"
+  tagline: "Making Software is really hard"
   actions:
     - theme: brand
       text: Deutsch
