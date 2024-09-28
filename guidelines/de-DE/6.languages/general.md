@@ -14,10 +14,24 @@ Jede Richtliniennummer besteht aus dem Buchstaben **GL**(General Languages) gefo
 
 ## GL1 Zielgruppe {#zielgruppe}
 
-Schreibe Code und Dokumentation so, als würdest du für andere Entwickler schreiben, die deinen Code lesen werden.
+::: info Weisheit
+**Code wird öfters gelesen als geschrieben.**
+:::
 
-::: info
-Code wird öfters gelesen als geschrieben.
+Schreibe Code und Dokumentation so, als würdest du für andere Entwickler schreiben, die deinen Code lesen werden.
+Frage andere Entwickler, ob sie deinen Code verstehen und ob sie dir Feedback oder Verbesserungsvorschläge geben können.
+
+::: details Senior-Entwickler vs. Junior-Entwickler
+
+Beim Verständnis von Code sollte es keine Rolle spielen, ob der Entwickler ein Senior- oder Junior-Entwickler ist.
+Die große Erfahrung bei Senior-Entwicklern kann dazu führen, dass sie unnötig komplexen Code schreiben, der nicht nur für Junior-Entwickler schwer zu verstehen ist.
+Es ist daher wichtig, dass Code so geschrieben wird, dass er von jedem Entwickler verstanden werden kann.
+Beide Seiten sollen von der Zusammenarbeit profitieren und voneinander lernen.
+
+Junior-Entwickler sollen sich nicht scheuen, Fragen zu stellen, wenn sie etwas nicht verstehen.
+Dagegen sollen Senior-Entwickler offen für Fragen sein und bereit sein, ihr Wissen zu teilen, denn auch sie waren einmal Junior-Entwickler.
+Dadurch können Junior-Entwickler viel lernen und werden so schneller zu wertvollen Teammitgliedern.
+
 :::
 
 ## GL2 Anwendung der Prinzipien der Softwareentwicklung {#anwendung-der-prinzipien-der-softwareentwicklung}
@@ -79,6 +93,7 @@ Ein Projekt soll mit einem einzigen Befehl gebaut werden können. Dies erleichte
 ## GL8 Einsatz von Linter und Formatter {#einsatz-von-linter-und-formatter}
 
 Von Anfang an sollen für Projekte Linter und automatische Code-Formatter eingesetzen, um sicherzustellen, dass der Code konsistent und fehlerfrei ist.
+Für alle Entwickler im Team müssen die gleichen Regeln konfiguriert werden, um konsistenten Code zu gewährleisten und VCS-Konflikte zu vermeiden.
 
 ## GL9 Schreiben von Unit-Tests {#schreiben-von-unit-tests}
 
@@ -104,7 +119,7 @@ Kommentare als Code Dokumentation (z.B. JavaDoc, JsDoc) sind eine Ausnahme und m
 :::
 
 ::: info
-Code Kommentare beschreiben, wie Code funktioniert.
+Code Kommentare beschreiben, wie Code funktioniert (Das macht auch schon der Code selbst).
 
 Code Dokumentation beschreibt wie Code verwendet werden soll, wozu er dient, welche Laufzeitbedingungen er hat und welche Fehler er werfen kann.
 :::
@@ -150,21 +165,44 @@ Der Aufwand für neue Features und Bugfixes wird durch Refactoring reduziert, da
 
 :::
 
-## Trennung von BusLogik und Daten
+## GL13 Einsatz von modellgetriebener Entwicklung {#model-getriebener-entwicklung}
 
-::: warning TODO
-TODO
-Datenobjekte sollen nur Daten enthalten und Methoden, die damit umgehen.
+Es soll eine modellgetriebene Entwicklung bevorzugt werden, um die Softwareentwicklung zu verbessern und zu automatisieren.
+
+Die modellgetriebene Entwicklung (Model Driven Development) ist ein Ansatz, bei dem die Softwareentwicklung auf Modellen basiert.
+Es hat den Vorteil, dass die Modelle unabhängig von der Implementierung sind und daher leichter zu verstehen und zu warten sind.
+
+Dabei wird die Software durch Entitäten oder Domänenobjekte und deren Interaktion untereinander als abstraktes Modell in einer Sprache wie UML beschrieben (Modellierung).
+Das Modell kann dann, teilweise automatisiert, in Code umgewandelt werden.
+
+Durch den Einsatz von Modellen soll außerdem eine Trennung von Datenobjekten und Geschäftslogik erreicht werden, um die Wartbarkeit und Erweiterbarkeit der Software zu verbessern.
+
+::: details Model Driven Development vs. Domain Driven Design
+
+**Model Driven Development (MDE)** konzentriert sich auf die Modellierung von Software.
+Es versucht, durch den Einsatz von Modellen auf höheren Abstraktionsebenen den Softwareentwicklungsprozess zu verbessern und zu automatisieren. 
+Diese Modelle werden oft direkt in Code übersetzt (Code-Generierung).
+In MDE beschreibt man die Objekte (Entitäten) und ihre Beziehungen oft in Form von Modellen, z.B. UML-Diagrammen (Unified Modeling Language). 
+Die Idee ist, dass man von diesen Modellen ausgeht und sie schrittweise verfeinert, bis sie entweder automatisch in lauffähigen Code umgewandelt werden oder als Grundlage für die Implementierung dienen.
+Die Interaktionen zwischen den Objekten können in den Modellen beschrieben werden und dann in eine Implementierung überführt werden, in der die verschiedenen Objekten über APIs, Methodenaufrufe oder Events miteinander interagieren.
+
+**Domain Driven Design (DDE)** hingegen konzentriert sich auf die Modellierung von Domänenwissen und die Implementierung von Software, die dieses Domänenwissen umsetzt.
+Dabei wird eine starke Trennung zwischen der Domäne und der technischen Implementierung vorgenommen.
+Das Domänenmodell steht dabei im Mittelpunkt und wird durch die Implementierung umgesetzt.
+Die Domänenobjekte spielen eine zentrale Rolle und werden durch die Geschäftslogik und nicht durch technische Aspekte bestimmt.
+In DDD werden Entitäten oft durch Begriffe aus der „Ubiquitous Language“ (eine gemeinsame Sprache zwischen Entwicklern und Fachexperten) beschrieben, sodass das Modell die Realität des Geschäfts widerspiegelt.
+In DDD wird die Interaktion zwischen den Entitäten durch bestimmte Muster wie Aggregate (Sammlung verwandter Entitäten), Repositories (Zugriff auf gespeicherte Entitäten) und Services strukturiert. Diese Interaktionen spiegeln die realen Geschäftsprozesse wider, die die Entitäten repräsentieren.
+
 :::
 
-## GL13 Performance-Optimierungen {#performance-optimierungen}
+## GL14 Performance-Optimierungen {#performance-optimierungen}
 
-Auf Optimierung ohne Grund soll verzichtet werden.
+**Auf Optimierung ohne Grund soll verzichtet werden.**
 
-- Es ist besser, den Code zuerst zu schreiben und dann zu optimieren, wenn es notwendig ist.
+- Code soll zuerst nach allen Regeln und Prinzipien geschrieben und automatisiert getestet werden.
 - Optimierungen dürfen nur mit einem Benchmark durchgeführt werden, um das Optimierungsergebnis zu überprüfen.
 
-## GL14 Einheitliche Fehlerbehandlung {#einheitliche-fehlerbehandlung}
+## GL15 Einheitliche Fehlerbehandlung {#einheitliche-fehlerbehandlung}
 
 - Fehler/Ausnahmen sollen einheitlich über den gesamten Code behandelt werden.
 - Das Framework oder eine globale Fehlerbehandlung behandelt allgemeine Fehler und informiert den Benutzer.
@@ -183,11 +221,11 @@ Lokale Fehlerbehandlung statt globaler Fehlerbehandlung führt zu unaufgeräumte
 Oftmals wird die Fehlerbehandlung vollständig vergessen oder ignoriert, was zu unterschiedlicher Behandlung von Fehlern führt.
 :::
 
-## GL15 Verwenden aussagekräftige Rückgabewerte und -typen {#verwenden-aussagekraeftige-rueckgabewerte-und-typen}
+## GL16 Verwenden aussagekräftige Rückgabewerte und -typen {#verwenden-aussagekraeftige-rueckgabewerte-und-typen}
 
 Wenn eine Methode einen Wert zurückgibt, soll dieser Wert aussagekräftig sein und genau das darstellen, was die Methode tut. Es ist auch hilfreich, konsistente Rückgabetypen zu verwenden.
 
-## GL16 Gesetz von Demeter {#gesetz-von-demeter}
+## GL17 Gesetz von Demeter {#gesetz-von-demeter}
 
 Objekte sollen nur mit Objekten kommunizieren, die sie direkt kennen. Das bedeutet, dass ein Objekt nur Methoden von Objekten aufrufen soll, die es selbst erstellt hat, die als Parameter übergeben wurden oder die es als Eigenschaft besitzt.
 Dies verhindert eine zu starke Kopplung zwischen den Objekten.
@@ -203,7 +241,7 @@ person.department().manager().address().streetName();
 addressDI.streetName();
 ```
 
-## GL17 Einheitliche Namensgebung {#einheitliche-namensgebung}
+## GL18 Einheitliche Namensgebung {#einheitliche-namensgebung}
 
 Code wird öfters gelesen als geschrieben.
 Daher ist es wichtig, dass die Namensgebung konsistent und aussagekräftig ist.
@@ -214,7 +252,7 @@ Detailliertere Regeln dazu findest du in [Einheitliche Namensgebung](./naming.md
 Gute Code beschreibt sich selbst.
 :::
 
-## GL18 Sicherheit {#sicherheit}
+## GL19 Sicherheit {#sicherheit}
 
 Sicherheit in der Entwicklung ist eine nicht-funktionale Anforderung, die in jedem Schritt der Softwareentwicklung berücksichtigt werden muss.
 
@@ -235,3 +273,11 @@ Allgemein gilt:
 ::: warning Fehlende Eingabeprüfung
 Die fehlende oder ungenügende Prüfung von Benutzereingaben ist die häufigste Ursache für Sicherheitslücken.
 :::
+
+## GL20 Behebung der Wurzel des Problems {#behebung-die-wurzel-des-problems}
+
+Es soll immer die Wurzel des Problems behoben werden und nicht nur die Symptome.
+
+- Symptome sind oft nur die Auswirkungen eines tieferliegenden Problems.
+- Temporäre Lösungen bleiben oft bestehen und führen zu weiteren Problemen.
+- Bei der Suche des eigentlichen Ursache werden oft weitere Probleme entdeckt und behoben.
