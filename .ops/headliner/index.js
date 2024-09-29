@@ -131,7 +131,7 @@ function addRuleNumber(str, ruleNumber, state) {
     isMainHeader: isMainHeader(str),
     ruleStr: `${state.prefix}${ruleNumber}`,
     title: newTitle,
-    filePath: state.relativeFilePath,
+    filePath: state.relativeFilePath.replace(/\\/g, "/"),
     anchor: isSubHeader(str) ? "" : extractAnchor(str),
   });
 
