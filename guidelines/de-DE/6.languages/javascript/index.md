@@ -2681,6 +2681,9 @@ Wenn Objekte, wie `User` oder jede andere Art von Entität verwendet werden, und
 Spezielle Fälle wie *nicht gefunden*, *ungültig*, *leer*, *fehlerhaft*, etc. werden oft durch spezielle Werte wie `null`, `undefined`, `-1`, `0`, `''`, `false`, etc. repräsentiert.
 Dies führt dazu, dass im Code ständig überprüft werden muss, ob der Wert speziell ist und entsprechend behandelt werden muss.
 
+Wird diese Prüfung nicht gemacht und vergessen, kommt es zu Fehlern wie `Null-Pointer-Exceptions`, `undefined is not a function`, `TypeError: Cannot read property '...' of null`, etc.
+Diese Fehler sind schwer zu finden und zu beheben, da sie oft an einer anderen Stelle im Code auftreten, als wo der Fehler tatsächlich liegt.
+
 ```javascript
 function getUser(id) {
     const user = getUserFromDatabase(id);
