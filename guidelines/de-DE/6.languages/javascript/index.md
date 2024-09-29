@@ -576,7 +576,7 @@ Tools wie ESLint und Prettier sollen verwendet werden, um sicherzustellen, dass 
 
 Mit dem Einsatz von [JSDoc](.#jsdoc-kommentare-fuer-javascript-methoden-funktionen-variablen-objekte-und-typen) können auch Typen geprüft werden.
 
-## JS11 Optionaler Operator ?. / Optional Chaining verwenden {#optionaler-operator-optional-chaining-verwenden}
+## JS10 Optionaler Operator ?. / Optional Chaining verwenden {#optionaler-operator-optional-chaining-verwenden}
 
 Der optionale Operator `?.` oder Optional Chaining soll für den Zugriff auf Unterschlüssel verwendet werde, ohne explizit auf `null` oder `undefined` prüfen zu müssen.
 
@@ -586,7 +586,7 @@ Alternativ kann auch das [JS15 Verwendung von `Optional` in JavaScript-Funktione
 
 :::
 
-### JS11 Probleme
+### JS10 Probleme
 
 In JavaScript besteht oft die Notwendigkeit, auf verschachtelte Schlüssel in Objekten oder Arrays zuzugreifen.
 Dabei kann es vorkommen, dass einige der Zwischenschlüssel nicht existieren oder dass Methoden undefiniert sein können.
@@ -609,7 +609,7 @@ if (a && a.b && a.b.e && a.b.e[0] && a.b.e[0].f != null) {
 }
 ```
 
-### JS11 Lösung
+### JS10 Lösung
 
 Um den Code übersichtlicher und robuster zu gestalten, kann der optionale Operator `?.` (Optional Chaining) verwendet werden. Dieser Operator prüft automatisch, ob der vorherige Schlüssel existiert, und greift nur dann auf den nächsten Schlüssel zu, wenn er vorhanden ist.
 soll ein Schlüssel nicht existieren, wird keine weitere Aktion ausgeführt und das Ergebnis ist `undefined`.
@@ -641,13 +641,13 @@ a.b.e[0]?.f != null;
 console.log('Defined', a.b.e[0]?.f == null);
 ```
 
-### JS11 Vorteile
+### JS10 Vorteile
 
 - Vereinfachung des Codes durch Reduzierung von redundanten `if`-Bedingungen
 - Lesbarkeit und Wartbarkeit des Codes werden verbessert
 - Verringertes Risiko von Fehlern durch Vergessen oder falsche Anwendung von `null`- oder `undefined`-Prüfungen
 
-### JS11 Nachteile
+### JS10 Nachteile
 
 - Keine direkte Unterstützung in älteren JavaScript-Versionen (vor ECMAScript 2020)
 - Verwendung des optionalen Operators kann dazu führen, dass Fehler später erkannt werden, da `undefined`-Werte nicht sofort als solche erkannt werden
@@ -666,15 +666,15 @@ const value = obj?.defined?.value;
 
 :::
 
-### JS11 Weiterführende Informationen
+### JS10 Weiterführende Informationen
 
 Weitere Informationen zur Verwendung des optionalen Operators `?.` oder Optional Chaining in JavaScript findest du in der [Mozilla Developer Network (MDN) Dokumentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining). Dort werden die Funktionsweise und die verschiedenen Anwendungsfälle ausführlich erläutert.
 
-## JS12 Auf null und undefined prüfen {#auf-null-und-undefined-pruefen}
+## JS11 Auf null und undefined prüfen {#auf-null-und-undefined-pruefen}
 
 Bei der Prüfung auf `null` oder `undefined` soll immer `value == null` verwendet werden, um sicherzustellen, dass nur `null` oder `undefined` erkannt werden.
 
-### JS12 Problem
+### JS11 Problem
 
 Bei der Überprüfung auf `null` oder `undefined` ist es wichtig, die korrekte Überprüfung durchzuführen, da andernfalls unerwartet auch Werte wie 0, "", oder false fälschlicherweise als falsy-Werte erkannt werden können.
 
@@ -693,7 +693,7 @@ if (myObject === null || myObject === undefined || typeof myObject === 'undefine
 }
 ```
 
-### JS12 Lösung
+### JS11 Lösung
 
 Um sicherzustellen, dass **nur** `null` oder `undefined` erkannt werden und andere falsy-Werte ausgeschlossen werden, kann die folgende Überprüfung verwendet werden:
 
@@ -706,21 +706,21 @@ if (myObject == null) {
 
 Die Verwendung von zwei Gleichheitszeichen `==` anstelle von drei `===` ist hierbei wichtig, da so `undefined` und `null` erkannten werden.
 
-### JS12 Vorteile
+### JS11 Vorteile
 
 - Korrekte Überprüfung auf `null` oder `undefined`
 - Vermeidung von unerwarteten Fehlern durch falsche Erkennung von falsy-Werten
 
-### JS12 Nachteile
+### JS11 Nachteile
 
 - Werte wie NaN werden nicht erkannt
 - ESLint muss entsprechend konfiguriert werden, um die Verwendung von `==` bei null Vergleich zu erlauben. Dies ist möglich, indem die Regel `eqeqeq` auf [smart](https://eslint.org/docs/latest/rules/eqeqeq#smart) umgestellt wird.
 
-## JS13 Object destructuring / Object Eigenschaften bekommen {#object-destructuring-object-eigenschaften-bekommen}
+## JS12 Object destructuring / Object Eigenschaften bekommen {#object-destructuring-object-eigenschaften-bekommen}
 
 Beim Object Destructuring werden die Eigenschaften eines Objekts in einzelne Variablen aufgeteilt und gespeichert.
 
-### JS13 Problem
+### JS12 Problem
 
 ```javascript
 const car = {
@@ -732,7 +732,7 @@ const speed = car.speed;
 const color = car.color;
 ```
 
-### JS13 Lösung
+### JS12 Lösung
 
 Um den Code zu vereinfachen und die Eigenschaften eines Objekts direkt in Variablen zu speichern, kann das Object Destructuring verwendet werden:
 
@@ -745,16 +745,16 @@ const car = {
 const { speed, color } = car;
 ```
 
-### JS13 Vorteile
+### JS12 Vorteile
 
 - Kürzerer und lesbarerer Code
 - Direkter Zugriff auf die gewünschten Eigenschaften des Objekts
 
-## JS14 Verwendung von async und await {#verwendung-von-async-und-await}
+## JS13 Verwendung von async und await {#verwendung-von-async-und-await}
 
 Die Verwendung von `async` und `await` soll verwendet werden, um asynchrone Funktionen in JavaScript zu vereinfachen und lesbarer zu machen.
 
-### JS14 Problem
+### JS13 Problem
 
 Traditionell wurden asynchrone Operationen in JavaScript mithilfe von Callback-Funktionen oder Promises behandelt.
 Dies führte jedoch oft zu sogenanntem "Callback-Hell" oder zu komplexem und schwer verständlichem Code, insbesondere bei mehreren aufeinanderfolgenden asynchronen Operationen.
@@ -769,7 +769,7 @@ getData(function(result) {
 });
 ```
 
-### JS14 Lösung
+### JS13 Lösung
 
 Dank `async` und `await` kann asynchroner Code lesbarer und besser handhabbar gemacht werden.
 Durch das Hinzufügen des `async`-Schlüsselworts zu einer Funktion wird diese automatisch zu einer asynchronen Funktion.
@@ -808,7 +808,7 @@ Es ist wichtig, dass Fehlerbehandlung in asynchronen Operationen nicht vergessen
 
 :::
 
-### JS14 Vorteile
+### JS13 Vorteile
 
 - Lesbarer und verständlicher Code
 - Reduzierung der Verschachtelung von Callbacks ("Callback-Hell")
@@ -816,16 +816,16 @@ Es ist wichtig, dass Fehlerbehandlung in asynchronen Operationen nicht vergessen
 - Bessere Kontrolle über asynchrone Abläufe und Reihenfolge der Operationen
 - Einfachere Fehlerbehandlung
 
-### JS14 Nachteile
+### JS13 Nachteile
 
 - Verwendung von `async` und `await` erfordert ECMAScript 2017 (ES8) oder höher
 - Exception-Handling ist notwendig.
 
-### JS14 Weiterführende Literatur/Links
+### JS13 Weiterführende Literatur/Links
 
 - [Async functions - MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)
 
-## JS15 Begrenzte Zeilenanzahl in Methoden/Funktionen {#begrenzte-zeilenanzahl-in-methoden-funktionen}
+## JS14 Begrenzte Zeilenanzahl in Methoden/Funktionen {#begrenzte-zeilenanzahl-in-methoden-funktionen}
 
 Codezeilen in Methoden und Funktionen sollen auf eine begrenzte Anzahl beschränkt werden, um die Lesbarkeit und Wartbarkeit des Codes zu verbessern.
 
@@ -856,7 +856,7 @@ Viele Entwicklungsumgebungen bieten eine Möglichkeit, die zyklomatische Komplex
 Beachte jedoch auch hier, dass die zyklomatische Komplexität nur ein Indikator für die Komplexität eines Codes ist und nicht alle Aspekte der Lesbarkeit und Wartbarkeit abdeckt.
 :::
 
-### JS15 Problem
+### JS14 Problem
 
 Methoden oder Funktionen mit einer großen Anzahl von Codezeilen können schwer zu lesen, zu verstehen und zu warten sein. Lange Methoden können verschiedene Aufgaben vermischen und die Einhaltung des Single Responsibility Principle erschweren.
 
@@ -898,7 +898,7 @@ function processUserData(user) {
 }
 ```
 
-### JS15 Lösung
+### JS14 Lösung
 
 Um die Lesbarkeit und Verständlichkeit des Codes zu verbessern, sollen Methoden und Funktionen auf eine begrenzte Anzahl von Zeilen beschränkt sein. Komplexe Aufgaben sollen in kleinere Teilfunktionen ausgelagert werden, um die Verantwortlichkeiten klarer zu trennen.
 
@@ -956,7 +956,7 @@ function saveUser(user) {
 
 ```
 
-### JS15 Vorteile
+### JS14 Vorteile
 
 - Verbesserte Lesbarkeit und Verständlichkeit des Codes durch kleinere und fokussierte Methoden/Funktionen
 - Einfachere Wartbarkeit und Testbarkeit durch klar abgegrenzte Verantwortlichkeiten
@@ -995,19 +995,19 @@ Es ist jedoch wichtig, ein Gleichgewicht zu finden, um eine übermäßige Fragme
 Siehe zu Prinzipien und Vorteilen auch [Prinzipien der Softwareentwicklung](../../2.principles/principles).
 :::
 
-### JS15 Nachteile
+### JS14 Nachteile
 
 Die strikte Begrenzung der Zeilenanzahl kann zu einer übermäßigen Fragmentierung des Codes führen, wenn kleinere Methoden oder Funktionen unnötig erstellt werden.
 
-### JS15 Ausnahmen
+### JS14 Ausnahmen
 
 Die Anzahl der Codezeilen in einer Methode oder Funktion kann je nach Kontext und Komplexität des Codes variieren.
 
-## JS10 Verwenden aussagekräftige Rückgabewerte und -typen {#verwenden-aussagekraeftige-rueckgabewerte-und-typen}
+## JS15 Verwenden aussagekräftige Rückgabewerte und -typen {#verwenden-aussagekraeftige-rueckgabewerte-und-typen}
 
 Wenn eine Methode einen Wert zurückgibt, soll dieser Wert aussagekräftig sein und genau das darstellen, was die Methode tut.
 
-### JS10 Problem
+### JS15 Problem
 
 Oftmals spiegelt der Rückgabe-Wert einer Funktion nicht genau wider, was die Funktion tut.
 Dies kann zu Verwirrung führen und die Lesbarkeit und Wartbarkeit des Codes beeinträchtigen.
@@ -1025,7 +1025,7 @@ function validate(user) {
 }
 ```
 
-### JS10 Lösung
+### JS15 Lösung
 
 Es können unterschiedliche Ansätze verwendet werden, um aussagekräftige Rückgabewerte und -typen zu verwenden:
 
@@ -1045,13 +1045,13 @@ function findUserById(id) {
 }
 ```
 
-##
+## JS16  {#}
 
-### JS10 Methoden/Funktionen geben für alle Pfade einen Wert zurück
+### JS16 Methoden/Funktionen geben für alle Pfade einen Wert zurück
 
 Methoden oder Funktionen, die generell einen Wert zurückgeben, müssen für alle Pfade einen Wert zurückgeben.
 
-## Problem
+## JS17 Problem {#problem}
 
 In JavaScript ist es möglich, dass eine Funktion keinen expliziten Rückgabewert hat, was zu unerwartetem Verhalten führen kann.
 Wenn ein Pfad ein einfaches `return`-Statement hat, aber andere Pfade nicht, wird `undefined` implizit zurückgegeben.
@@ -1070,7 +1070,7 @@ function getUserById(id) {
 }
 ```
 
-### Lösung
+### JS17 Lösung
 
 - Eine Funktion soll nie `undefined` oder `null` zurückgeben, sondern immer einen Wert oder ein Objekt, das den Status des Ergebnisses darstellt.
 - Jeder Ablaufpfad in einer Funktion muss ein return-Statement haben, um sicherzustellen, dass immer ein Wert zurückgegeben wird.
@@ -1114,17 +1114,17 @@ Funktionen/Methoden, die generell keinen Wert zurückgeben, fallen nicht unter d
 
 :::
 
-### Ausnahmen
+### JS17 Ausnahmen
 
 Generell kann auch `null` ein gültiger Rückgabewert sein, wenn er explizit verwendet wird, um einen speziellen Zustand oder eine Bedeutung zu kennzeichnen.
 Dieser Zustand muss jedoch in der JSDoc-Dokumentation klar dokumentiert sein, um Missverständnisse zu vermeiden.
 Generell sollte man solche Methoden jedoch nur für interne Zwecke verwenden und nicht als öffentliche API bereitstellen.
 
-## JS16 Methoden/Funktionen, die Mengen zurückgeben sollen niemals null oder undefined zurückgeben {#methoden-funktionen-die-mengen-zurueckgeben-sollen-niemals-null-oder-undefined-zurueckgeben}
+## JS18 Methoden/Funktionen, die Mengen zurückgeben sollen niemals null oder undefined zurückgeben {#methoden-funktionen-die-mengen-zurueckgeben-sollen-niemals-null-oder-undefined-zurueckgeben}
 
 Methoden oder Funktionen, die Mengen wie Arrays zurückgeben, sollen nie `null` oder `undefined` zurückgeben, sondern leere Mengen oder Objekte.
 
-### JS16 Problem
+### JS18 Problem
 
 Das Zurückgeben von null als Ergebnis einer Methode/Funktion, die eine Liste, HashMap oder ein Array zurückgibt, kann zu Zugriffsfehlern (undefined) und unerwartetem Verhalten führen.
 Es erfordert zusätzliche Überprüfungen auf null und erhöht die Komplexität des Aufrufercodes.
@@ -1138,7 +1138,7 @@ getNames() {
 }
 ```
 
-### JS16 Lösung
+### JS18 Lösung
 
 Um Zugriffsfehler und unerwartetes Verhalten zu vermeiden, sollen Methoden/Funktionen stattdessen ein leeres Objekt oder Array zurückgeben.
 
@@ -1151,24 +1151,24 @@ function getNames() {
 }
 ```
 
-### JS16 Vorteile
+### JS18 Vorteile
 
 - Vermeidung von Zugriffsfehlern und unerwartetem Verhalten
 - Einfachere Handhabung und weniger Überprüfungen auf null im Aufrufercode
 - Verbesserte Robustheit und Stabilität des Codes
 
-### JS16 Ausnahmen
+### JS18 Ausnahmen
 
 Es kann Situationen geben, in denen die Rückgabe von null sinnvoll ist, z. B. wenn null einen speziellen Zustand oder eine Bedeutung hat.
 In solchen Fällen ist es wichtig, die Dokumentation klar zu kommunizieren und sicherzustellen, dass der Aufrufercode angemessen darauf reagiert.
 
-### JS16 Weiterführende Literatur/Links
+### JS18 Weiterführende Literatur/Links
 
 - [Effective Java: Item 54 - Return Empty Arrays or Collections, Not Nulls](https://www.amazon.com/dp/0321356683)
 - [Null or Empty Collection in Java](https://www.baeldung.com/java-null-empty-collection) (für Java)
 - [Avoiding Null in JavaScript](https://dmitripavlutin.com/avoid-null-undefined-javascript/) (für JavaScript)
 
-## JS17 Verwendung von `Optional` in JavaScript-Funktionen {#verwendung-von-optional-in-javascript-funktionen}
+## JS19 Verwendung von `Optional` in JavaScript-Funktionen {#verwendung-von-optional-in-javascript-funktionen}
 
 Eine Funktion oder Methode, die dennoch `null`, `undefined` oder `NaN` zurückgeben muss, soll stattdessen die `Optional`-Klasse verwenden, um den Status des Ergebnisses zu kennzeichnen.
 
@@ -1176,7 +1176,7 @@ Eine Funktion oder Methode, die dennoch `null`, `undefined` oder `NaN` zurückge
 [Methoden/Funktionen sollen niemals null oder undefined zurückgeben](.#js20-methodenfunktionen-sollen-niemals-null-oder-undefined-zuruckgeben)
 :::
 
-### JS17 Problem
+### JS19 Problem
 
 Das Zurückgeben von `null`, `undefined` oder `NaN` aus einer Funktion kann zu Fehlern führen, insbesondere wenn nicht überprüft wird, ob das Ergebnis vorhanden ist oder nicht.
 
@@ -1189,7 +1189,7 @@ function divide(a, b) {
 }
 ```
 
-### JS17 Lösung
+### JS19 Lösung
 
 Die Verwendung des `Optional`-Objekts ermöglicht es, den Status des Ergebnisses klar zu kennzeichnen, anstatt `null`, `undefined` oder `NaN` zurückzugeben.
 
@@ -1203,23 +1203,23 @@ function divide(a, b) {
 }
 ```
 
-### JS17 Vorteile
+### JS19 Vorteile
 
 - Klarere Kennzeichnung des Zustands des Ergebnisses durch Verwendung von `Optional`
 - Bessere Fehlervermeidung durch explizite Behandlung von leeren Ergebnissen
 - Verbesserte Lesbarkeit des Codes durch den Verzicht auf `null` oder `undefined`
 
-### JS17 Nachteile
+### JS19 Nachteile
 
 - Zusätzlicher Overhead durch die Verwendung von `Optional`
 - Potenziell erhöhter Komplexitätsgrad in der Verwendung des `Optional`-Objekts
 - Abhängigkeit von der Implementierung der `Optional`-Klasse
 
-### JS17 Ausnahmen
+### JS19 Ausnahmen
 
 Die Verwendung von `Optional` in JavaScript ist eine Designentscheidung und keine Sprachfunktion. Es ist optional und soll basierend auf den Anforderungen des Projekts und der Teampräferenz eingesetzt werden.
 
-### JS17 Weiterführende Literatur/Links
+### JS19 Weiterführende Literatur/Links
 
 - [Optional Chaining Operator - JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining) (Alternatives Muster zur Behandlung von `null`- und `undefined`-Werten)
 
@@ -1308,7 +1308,7 @@ Optional.isOptional = function(optional) {
 
 :::
 
-## JS18 Verwendung der npm-Bibliothek optional.js zur Rückgabe von Optional in JavaScript {#verwendung-der-npm-bibliothek-optional-js-zur-rueckgabe-von-optional-in-javascript}
+## JS20 Verwendung der npm-Bibliothek optional.js zur Rückgabe von Optional in JavaScript {#verwendung-der-npm-bibliothek-optional-js-zur-rueckgabe-von-optional-in-javascript}
 
 Es ist einfach in JavaScript, die npm-Bibliothek optional.js zu verwenden, um die Rückgabe von Optional-Objekten anstelle von null oder anderen Fehlertypen zu ermöglichen.
 Durch die Verwendung von Optional-Objekten wird deutlich, dass eine Funktion möglicherweise keinen Wert zurückgibt und ermöglicht eine bessere Behandlung von optionalen Werten.
@@ -1319,7 +1319,7 @@ Es kann besser sein, die Abhängigkeiten des eigenen Projekts zu minimieren und 
 
 :::
 
-### JS18 Problem
+### JS20 Problem
 
 In JavaScript ist es üblich, dass Funktionen null, undefined oder andere Werte zurückgeben, um das Fehlen eines erwarteten Werts zu kennzeichnen.
 Dies kann zu Verwirrung und unerwartetem Verhalten führen, da der Rückgabewert möglicherweise nicht explizit auf das Fehlen des Werts überprüft wird.
@@ -1339,7 +1339,7 @@ if (user) {
 }
 ```
 
-### JS18 Lösung
+### JS20 Lösung
 
 Durch die Verwendung der optional.js-Bibliothek können Funktionen Optional-Objekte zurückgeben, um das Fehlen eines Werts explizit zu kennzeichnen. Dadurch wird die Code-Klarheit verbessert und die Behandlung von optionalen Werten erleichtert.
 
@@ -1358,27 +1358,27 @@ if (userOptional.isPresent()) {
 }
 ```
 
-### JS18 Vorteile
+### JS20 Vorteile
 
 - Bessere Behandlung von optionalen Werten durch die Verwendung von Optional-Objekten
 - Explizite Kennzeichnung des Fehlens eines Werts
 - Einfachere Überprüfung des Vorhandenseins eines Werts und Zugriff auf den Wert mit den Methoden von Optional
 
-### JS18 Nachteile
+### JS20 Nachteile
 
 - Einführung einer zusätzlichen Abhängigkeit durch die Verwendung der optional.js-Bibliothek
 - API Methoden, die optional.js-Bibliothek verwenden erfordern, dass Nutzer der API die optional.js-Bibliothek einbinden, kennen und verwenden müssen.
 
-### JS18 Ausnahmen
+### JS20 Ausnahmen
 
 Es kann Situationen geben, in denen die Verwendung der optional.js-Bibliothek nicht angemessen ist, z. B. wenn das Projekt bereits eine andere Lösung für die Behandlung von optionalen Werten verwendet oder wenn die Einführung einer zusätzlichen Abhängigkeit vermieden werden soll.
 
-### JS18 Weiterführende Literatur/Links
+### JS20 Weiterführende Literatur/Links
 
 - [optional.js - npm](https://www.npmjs.com/package/optional-js)
 - [Avoiding Null in JavaScript: An Introduction to Optional Values](https://dev.to/marcellomontemagno/avoiding-null-in-javascript-an-introduction-to-optional-values-4m22)
 
-## JS19 If-Bedingungen ohne Else und mit Return {#if-bedingungen-ohne-else-und-mit-return}
+## JS21 If-Bedingungen ohne Else und mit Return {#if-bedingungen-ohne-else-und-mit-return}
 
 If-Bedingungen, die ein Return enthalten, sollen kein `else` enthalten, um die Lesbarkeit des Codes zu verbessern und die Verschachtelung von Bedingungen zu reduzieren.
 
@@ -1390,7 +1390,7 @@ Im Folgenden sind sich widersprechende Regeln aufgeführt, die bei der Reihenfol
 - Die Bedingung, welche eine positive Bedingung prüft, sollte zuerst geprüft werden.
 - Die Bedingung, welche am häufigsten zutrifft, sollte zuerst geprüft werden.
 
-### JS19 Problem
+### JS21 Problem
 
 If-Bedingungen mit einem Return und einem dazugehörigen else-Block können die Lesbarkeit des Codes beeinträchtigen und zu unnötiger Verschachtelung führen.
 
@@ -1404,7 +1404,7 @@ function calculate(x) {
 }
 ```
 
-### JS19 Lösung
+### JS21 Lösung
 
 Durch Entfernen des else-Blocks und direktes Rückgabestatement wird der Code lesbarer und die Verschachtelung von Bedingungen reduziert.
 
@@ -1418,20 +1418,20 @@ function calculate(x) {
 }
 ```
 
-### JS19 Vorteile
+### JS21 Vorteile
 
 - Verbesserte Lesbarkeit und Klarheit des Codes
 - Pfade durch die Funktion sind klarer und leichter nachvollziehbar
 - Reduzierung der Verschachtelung von Bedingungen
 - Vereinfachte Struktur und Fluss des Codes
 
-### JS19 Weiterführende Literatur/Links
+### JS21 Weiterführende Literatur/Links
 
 - [Guard Pattern](.#js12-guard-pattern)
 - [Clean Code: A Handbook of Agile Software Craftsmanship](https://www.amazon.com/dp/0132350882)
 - [JavaScript: The Good Parts](https://www.amazon.com/dp/0596517742)
 
-## JS20 Guard Pattern {#guard-pattern}
+## JS22 Guard Pattern {#guard-pattern}
 
 Guard-Klauseln sollen verwendet werden, um unerwünschte Ausführungszweige frühzeitig zu beenden und die Lesbarkeit des Codes zu verbessern.
 
@@ -1443,7 +1443,7 @@ Im Folgenden sind sich widersprechende Regeln aufgeführt, die bei der Reihenfol
 - Die Bedingung, welche eine positive Bedingung prüft, sollte zuerst geprüft werden.
 - Die Bedingung, welche am häufigsten zutrifft, sollte zuerst geprüft werden.
 
-### JS20 Problem
+### JS22 Problem
 
 In JavaScript müssen oft komplexe Bedingungen geprüft werden, um unerwünschte Ausführungszweige zu verhindern oder ungültige Eingaben abzufangen. Dies kann zu verschachteltem Code führen, der schwer zu lesen und zu warten ist.
 
@@ -1455,7 +1455,7 @@ function processInput(input) {
 }
 ```
 
-### JS20 Lösung
+### JS22 Lösung
 
 Das Guard Pattern ermöglicht es, Bedingungsprüfungen klarer und lesbarer zu gestalten, indem wir unerwünschte Fälle frühzeitig abfangen und beenden.
 
@@ -1469,17 +1469,17 @@ function processInput(input) {
 }
 ```
 
-### JS20 Vorteile
+### JS22 Vorteile
 
 - Verbesserte Lesbarkeit des Codes durch eine klare und frühzeitige Abhandlung unerwünschter Fälle
 - Reduzierung der Verschachtelung von Bedingungsprüfungen
 - Einfache Erweiterbarkeit und Wartbarkeit des Codes
 
-### JS20 Weiterführende Literatur/Links
+### JS22 Weiterführende Literatur/Links
 
 - [Guard Clause Pattern - Refactoring.Guru](https://refactoring.guru/smells/guard-clauses)
 
-## JS21 Positiv formulierte If-Bedingungen und Auslagerung komplexer Bedingungen {#positiv-formulierte-if-bedingungen-und-auslagerung-komplexer-bedingungen}
+## JS23 Positiv formulierte If-Bedingungen und Auslagerung komplexer Bedingungen {#positiv-formulierte-if-bedingungen-und-auslagerung-komplexer-bedingungen}
 
 If-Bedingungen sollen positiv formuliert werden und komplexe Bedingungen sollen in temporäre Variablen ausgelagert werden, um die Lesbarkeit und Wartbarkeit des Codes zu verbessern.
 
@@ -1491,7 +1491,7 @@ Generell ist die KISS-Regel (Keep It Simple, Stupid) zu beachten.
 
 :::
 
-### JS21 Problem
+### JS23 Problem
 
 Komplexe Bedingungen in If-Anweisungen können den Code schwer verständlich machen, insbesondere wenn sie negativ formuliert sind. Lange und verschachtelte Bedingungen erschweren die Lesbarkeit und können zu Fehlern führen.
 
@@ -1507,7 +1507,7 @@ if (!(name === "" || age < 18 || !isAuthorized)) {
 }
 ```
 
-### JS21 Lösung
+### JS23 Lösung
 
 Durch die positive Formulierung der Bedingungen und die Auslagerung komplexer Ausdrücke in temporäre Variablen wird der Code lesbarer und verständlicher.
 
@@ -1531,27 +1531,27 @@ if (!isNameEmpty && !isUnderAge && isNotAuthorized) {
 }
 ```
 
-### JS21 Vorteile
+### JS23 Vorteile
 
 - Verbesserte Lesbarkeit des Codes durch positiv formulierte Bedingungen
 - Reduzierung der Verschachtelung und Komplexität von If-Anweisungen
 - Bessere Wartbarkeit des Codes durch klare und beschreibende Variablen
 
-### JS21 Nachteile
+### JS23 Nachteile
 
 - Alternativ kann ein Kommentar die If-Bedingung beschreiben, aber bei einer Änderung muss daran gedacht werden auch den Kommentar anzupassen.
 - Das Auslagern von Bedingungen in temporäre Variablen kann zu einem erhöhten Speicherverbrauch führen, insbesondere bei komplexen Ausdrücken. Dies ist normalerweise vernachlässigbar, kann jedoch in speziellen Situationen berücksichtigt werden.
 
-### JS21 Ausnahmen
+### JS23 Ausnahmen
 
 Es gibt Fälle, in denen das Auslagern von Bedingungen in temporäre Variablen nicht sinnvoll ist, z. B. wenn die Bedingung nur an einer Stelle verwendet wird und keine weitere Klarheit oder Wartbarkeit gewonnen wird.
 
-### JS21 Weiterführende Literatur/Links
+### JS23 Weiterführende Literatur/Links
 
 - [The Art of Readable Code - Simple Conditionals](https://www.amazon.com/dp/0596802293)
 - [Clean Code: A Handbook of Agile Software Craftsmanship](https://www.amazon.com/dp/0132350882)
 
-## JS22 Exceptions in JavaScript nicht einfach loggen und unverändert wieder werfen {#exceptions-in-javascript-nicht-einfach-loggen-und-unveraendert-wieder-werfen}
+## JS24 Exceptions in JavaScript nicht einfach loggen und unverändert wieder werfen {#exceptions-in-javascript-nicht-einfach-loggen-und-unveraendert-wieder-werfen}
 
 Exceptions sollen in JavaScript nicht einfach nur geloggt und unverändert wieder geworfen werden.
 
@@ -1563,7 +1563,7 @@ Stattdessen ist es wichtig, Exceptions sinnvoll zu behandeln und angemessene Ma�
 Aber nicht beides.
 :::
 
-### JS22 Problem
+### JS24 Problem
 
 Das einfache Loggen und unveränderte Werfen von Exceptions führt oft dazu, dass die eigentliche Ursache des Problems verschleiert wird.
 Es erschwert auch die Fehlerbehandlung und das Debugging des Codes.
@@ -1577,7 +1577,7 @@ try {
 }
 ```
 
-### JS22 Lösung
+### JS24 Lösung
 
 Es ist wichtig, die Ursache der Exception zu verstehen und entsprechend zu reagieren. Dies kann das Ergreifen von Fehlerbehandlungsmaßnahmen, das Aufzeigen von aussagekräftigen Fehlermeldungen oder das Umwandeln der Exception in eine andere Form sein.
 
@@ -1591,26 +1591,26 @@ try {
 }
 ```
 
-### JS22 Vorteile
+### JS24 Vorteile
 
 - Klare Behandlung und Reaktion auf Exceptions
 - Verbesserte Fehlerbehandlung und Debugging-Möglichkeiten
 - Besseres Verständnis der Ursachen von Fehlern
 
-### JS22 Ausnahmen
+### JS24 Ausnahmen
 
 In einigen Fällen kann es sinnvoll sein, Exceptions zu loggen und unverändert wieder zu werfen. Dies ist jedoch eher die Ausnahme und soll gut begründet sein, z.B. wenn der Code in einem bestimmten Kontext läuft, der spezielle Anforderungen hat.
 
-### JS22 Weiterführende Literatur/Links
+### JS24 Weiterführende Literatur/Links
 
 - [Exception Handling Best Practices in JavaScript](https://www.toptal.com/javascript/exception-handling-javascript-best-practices)
 - [JavaScript Error Handling: Best Practices](https://blog.bitsrc.io/javascript-error-handling-best-practices-329c5f6e5d33)
 
-## JS23 Benennung von Methoden mit verschiedenen Präfixen für Synchronität und Ergebnisverhalten {#benennung-von-methoden-mit-verschiedenen-praefixen-fuer-synchronitaet-und-ergebnisverhalten}
+## JS25 Benennung von Methoden mit verschiedenen Präfixen für Synchronität und Ergebnisverhalten {#benennung-von-methoden-mit-verschiedenen-praefixen-fuer-synchronitaet-und-ergebnisverhalten}
 
 Es ist eine bewährte Praxis bei der Benennung von Methoden in JavaScript und Java, unterschiedliche Präfixe zu verwenden, um die Synchronität und das Ergebnisverhalten der Methode zu kennzeichnen. Das Präfix "get" soll für synchronen Zugriff verwendet werden und immer einen Wert zurückgeben, während die Präfixe "fetch" oder "request" für asynchronen Zugriff stehen, der länger dauern und auch fehlschlagen kann.
 
-### JS23 Problem
+### JS25 Problem
 
 Bei der Benennung von Methoden ist es wichtig, klare Hinweise auf die Synchronität und das Ergebnisverhalten der Methode zu geben.
 Unklare oder inkonsistente Benennung kann zu Missverständnissen und unerwartetem Verhalten führen.
@@ -1627,7 +1627,7 @@ async function getAsyncData() {
 }
 ```
 
-### JS23 Lösung
+### JS25 Lösung
 
 Um die Synchronität und das Ergebnisverhalten einer Methode klarer zu kennzeichnen, sollen unterschiedliche Präfixe verwendet werden. Das Präfix "get" soll für synchronen Zugriff verwendet werden und immer einen Wert zurückgeben. Die Präfixe "fetch" oder "request" sollen für asynchronen Zugriff stehen, der länger dauern und auch fehlschlagen kann.
 
@@ -1645,32 +1645,32 @@ async function fetchResource() {
 }
 ```
 
-### JS23 Vorteile
+### JS25 Vorteile
 
 - Klare und eindeutige Benennung, die die Synchronität und das Ergebnisverhalten einer Methode widerspiegelt
 - Verbesserte Lesbarkeit und Verständlichkeit des Codes
 - Einfachere Fehlersuche und Debugging-Möglichkeiten
 
-### JS23 Ausnahmen
+### JS25 Ausnahmen
 
 Es kann Situationen geben, in denen die Verwendung von anderen Präfixen oder Benennungsmustern angemessen ist, abhängig von den spezifischen Anforderungen und Konventionen des Projekts.
 Es ist wichtig, einheitliche Benennungsstandards innerhalb des Projekts festzulegen und zu dokumentieren.
 
-### JS23 Weiterführende Literatur/Links
+### JS25 Weiterführende Literatur/Links
 
 - [Method Naming Conventions in Java](https://www.baeldung.com/java-method-naming-conventions)
 - [JavaScript Naming Conventions](https://www.robinwieruch.de/javascript-naming-conventions)
 
-## JS24 JSDoc Kommentare für JavaScript-Methoden, Funktionen, Variablen, Objekte und Typen {#jsdoc-kommentare-fuer-javascript-methoden-funktionen-variablen-objekte-und-typen}
+## JS26 JSDoc Kommentare für JavaScript-Methoden, Funktionen, Variablen, Objekte und Typen {#jsdoc-kommentare-fuer-javascript-methoden-funktionen-variablen-objekte-und-typen}
 
 Methoden, Funktionen, Variablen, Objekte und Typen in JavaScript sollen mit JSDoc-Kommentaren annotiert werden, um eine klare Dokumentation und Typisierung der Parameter und des Rückgabewerts zu ermöglichen.
 
-### JS24 Problem
+### JS26 Problem
 
 JavaScript ist eine dynamisch typisierte Sprache, was zu einer geringeren Typsicherheit und Dokumentation führen kann.
 Parameter, Variablen und Rückgabewerte von Methoden und Funktionen sind nicht explizit typisiert und dokumentiert, was zu Verwirrung und Fehlern führen kann.
 
-### JS24 Lösung
+### JS26 Lösung
 
 Die Verwendung von JSDoc-Kommentaren ermöglicht es, Methoden, Funktionen, Variablen, Objekte und Typen in JavaScript klar zu dokumentieren und zu typisieren.
 Auf diese Art können auch Objekte und jede andere Art von Datenstrukturen dokumentiert werden.
@@ -1680,9 +1680,9 @@ Moderne Entwicklungsumgebungen und Tools wie Visual Studio Code, WebStorm und ES
 Diese Tools melden Probleme bei inkompatiblen Typen und fehlenden Parametern oder Rückgabewerten.
 :::
 
-### JS24 Beispiele
+### JS26 Beispiele
 
-#### JS24 Methoden und Funktionen
+#### JS26 Methoden und Funktionen
 
 :::warning Beachte!
 JSDoc-Kommentare beginnen mit `/**` und enden mit `*/`.
@@ -1701,7 +1701,7 @@ Jede Zeile innerhalb des Kommentars beginnt mit `*`.
  */
 ```
 
-#### JS24 Variablen
+#### JS26 Variablen
 
 ```javascript
 /**
@@ -1730,7 +1730,7 @@ let nullableVar = null;
 let NotNullVar = 0;
 ```
 
-#### JS24 Objekte deklarieren
+#### JS26 Objekte deklarieren
 
 Objekt-Variablen können direkt mit `@type` dokumentiert werden.
 
@@ -1754,7 +1754,7 @@ let user = {
 };
 ```
 
-#### JS24 Typen definieren
+#### JS26 Typen definieren
 
 Wenn ein Objekt mehrmals verwendet wird, kann der Typ mit `@typedef` definiert werden.
 
@@ -1778,16 +1778,16 @@ Im Gegensatz zu `@type`, welches den Typ einer Variablen oder eines Objekts angi
 let user;
 ```
 
-### JS24 Siehe dazu
+### JS26 Siehe dazu
 
 - [JSDoc @type](https://jsdoc.app/tags-type) erklärt die verschiedenen Tags und ihre Verwendung:
 - [JSDoc @typedef](https://jsdoc.app/tags-typedef)
 
-## JS25 Variable Parameter in Funktionen oder Methoden vermeiden {#variable-parameter-in-funktionen-oder-methoden-vermeiden}
+## JS27 Variable Parameter in Funktionen oder Methoden vermeiden {#variable-parameter-in-funktionen-oder-methoden-vermeiden}
 
 Variable Parameter in Funktionen oder Methoden sollen vermieden werden, wenn bereits Parameter mit spezifischen Typen oder Strukturen definiert sind.
 
-### JS25 Problem
+### JS27 Problem
 
 Variable Parameter in Funktionen oder Methoden in Kombination mit weiteren vorangestellten unterschiedlichen Parametern können zu Verwirrung und unerwartetem Verhalten führen.
 
@@ -1797,7 +1797,7 @@ function fetchData(url, headers, options, ...params) {
 }
 ```
 
-### JS25 Lösung
+### JS27 Lösung
 
 Verwende stattdessen spezifische Parameter oder separate Funktionen/Methoden, um das Verhalten klarer zu kennzeichnen.
 
@@ -1811,7 +1811,7 @@ function fetchDataWithParams(url, ...params) {
 }
 ```
 
-### JS25 Ausnahmen
+### JS27 Ausnahmen
 
 Wenn die Funktion oder Methode nur ein vorangestellten Parameter besitzt, kann der Restparameter `...params` verwendet werden, um eine variable Anzahl von Argumenten zu akzeptieren.
 Eine Verwechslung mit den vorangestellten Parametern ist in diesem Fall unwahrscheinlich.
@@ -1856,12 +1856,12 @@ Jetzt stell dir vor, dass es mehr als 2 spezifische Parameter gibt und du versuc
 
 :::
 
-## JS26 Boolean-Parameter in Funktionen oder Methoden vermeiden {#boolean-parameter-in-funktionen-oder-methoden-vermeiden}
+## JS28 Boolean-Parameter in Funktionen oder Methoden vermeiden {#boolean-parameter-in-funktionen-oder-methoden-vermeiden}
 
 Boolean als Parameter in Funktionen oder Methoden sollen nicht verwendet werden.
 Stattdessen sollen eigene Funktionen oder Methoden mit entsprechenden Namen und Parametern erstellt werden, weil damit das Verhalten der Funktion oder Methode klarer wird.
 
-### JS26 Problem
+### JS28 Problem
 
 Boolean-Parameter in Funktionen oder Methoden können zu Verwirrung und unerwartetem Verhalten führen, da der Aufrufer den Zweck des Parameters erraten muss.
 
@@ -1875,7 +1875,7 @@ function fetchData(url, async) {
 }
 ```
 
-### JS26 Lösung
+### JS28 Lösung
 
 Verwende stattdessen spezifische Parameter oder separate Funktionen/Methoden, um das Verhalten klarer zu kennzeichnen.
 
@@ -1889,11 +1889,11 @@ function fetchData(url) {
 }
 ```
 
-## JS27 Default Parameter in Funktionen oder Methoden {#default-parameter-in-funktionen-oder-methoden}
+## JS29 Default Parameter in Funktionen oder Methoden {#default-parameter-in-funktionen-oder-methoden}
 
 Default Parameter in Funktionen oder Methoden sollen nicht verwendet werden.
 
-### JS27 Problem
+### JS29 Problem
 
 Default Parameter in Funktionen oder Methoden können zu unerwartetem Verhalten führen, wenn der Aufrufer den Standardwert nicht erwartet oder überschreibt.
 
@@ -1905,7 +1905,7 @@ function increment(value, step = 10) {
 }
 ```
 
-### JS27 Lösung
+### JS29 Lösung
 
 Verwende stattdessen separate Funktionen oder Methoden mit spezifischen Parametern, um das Verhalten klarer zu kennzeichnen.
 
@@ -1919,25 +1919,25 @@ function incrementByTen(value) {
 }
 ```
 
-### JS27 Vorteile
+### JS29 Vorteile
 
 - Klarere und verständlichere Funktionen und Methoden
 - Vermeidung von unerwartetem Verhalten durch Standardwerte
 - Einfachere Wartung und Erweiterung des Codes
 - Nachträgliches Refactoring bzw. Änderungen des Standardwertes sind einfach, weil einfach eine neue Funktion erstellt wird.
 
-### JS27 Nachteile
+### JS29 Nachteile
 
 - Mehr Code und mehr Tests, da separate Funktionen oder Methoden erstellt werden müssen
 - Möglicherweise mehr Code-Duplizierung, wenn die Funktionen oder Methoden ähnliche Logik enthalten
 - Mehr Aufwand bei der Benennung von Funktionen oder Methoden
 - Mehr Aufwand bei der Dokumentation von Funktionen oder Methoden
 
-## JS28 Template Strings {#template-strings}
+## JS30 Template Strings {#template-strings}
 
 Template Literals (`` ` ``) sollen verwendet werden, um Strings in JavaScript zu erstellen, anstatt die veraltete Methode mit `+` zu verwenden.
 
-### JS28 Beispiel
+### JS30 Beispiel
 
 ```javascript
 const name = 'Alice';
@@ -1948,20 +1948,20 @@ console.log('Hello, ' + name + '!');
 console.log(`Hello, ${name}!`);
 ```
 
-## JS29 Spread-Operator {#spread-operator}
+## JS31 Spread-Operator {#spread-operator}
 
 Der Spread-Operator (`...`) soll verwendet werden, um Arrays zusammenzuführen oder Objekte zu kopieren, anstatt Schleifen oder Methoden wie `concat()` oder `Object.assign()` zu verwenden.
 
-### JS29 Problem
+### JS31 Problem
 
 Um Arrays zusammenzuführen oder Objekte zu kopieren, werden oft Schleifen oder Methoden wie `concat()` oder `Object.assign()` verwendet.
 Dies ist jedoch umständlich und unübersichtlich.
 
-### JS29 Lösung
+### JS31 Lösung
 
 Der Spread-Operator (`...`) ermöglicht es, Arrays zusammenzuführen oder Objekte zu kopieren, indem er die Elemente oder Eigenschaften in ein neues Array oder Objekt einfügt.
 
-#### JS29 Arrays zusammenführen
+#### JS31 Arrays zusammenführen
 
 ```javascript
 const arr1 = [1, 2, 3];
@@ -1987,7 +1987,7 @@ console.log(result[0]); // { a: 42 }
 
 :::
 
-#### JS29 Objekte kopieren
+#### JS31 Objekte kopieren
 
 ```javascript
 const obj1 = { a: 1, b: 2 };
@@ -2043,13 +2043,13 @@ Beachte jedoch:
 
 :::
 
-## JS30 Arrow Funktion statt `function` {#arrow-funktion-statt-function}
+## JS32 Arrow Funktion statt `function` {#arrow-funktion-statt-function}
 
 Arrow Functions (`() => {}`) sollen verwendet werden, um Funktionen in JavaScript zu definieren, anstatt der traditionellen `function`-Syntax.
 
 `me = this` soll vermieden werden.
 
-### JS30 Problem
+### JS32 Problem
 
 Traditionelle Funktionen (`function`) haben einen eigenen Wert für `this`, was es umständlich macht, auf das äußere `this` zuzugreifen.
 
@@ -2092,7 +2092,7 @@ callCallback(function() {
 
 :::
 
-### JS30 Lösung
+### JS32 Lösung
 
 Arrow Functions (`() => {}`) haben kein eigenes `this`, sondern erben es vom umgebenden Kontext, was es einfacher macht, auf das äußere `this` zuzugreifen.
 
@@ -2112,7 +2112,7 @@ function Person() {
 Jedoch können `anonyme Funktionen` auch mit `function` erstellt werden..
 :::
 
-### JS30 Ausnahmen
+### JS32 Ausnahmen
 
 Es gibt Fälle, in denen traditionelle Funktionen (`function`) bevorzugt werden, z.B. wenn `this` explizit benötigt wird oder wenn `arguments` verwendet werden soll.
 
@@ -2138,7 +2138,7 @@ function outerKontext() {
 
 ```
 
-## JS31 Ternärer Operator {#ternaerer-operator}
+## JS33 Ternärer Operator {#ternaerer-operator}
 
 Der ternäre Operator (`condition ? expression1 : expression2`) soll verwendet werden, um einfache Bedingungen in einer einzigen Zeile zu schreiben.
 Er ist einfach zu lesen und zu schreiben.
@@ -2163,16 +2163,16 @@ Der ternäre Operator ist auch bekannt als bedingter Operator oder `Elvis Operat
 - Bei komplexeren Bedingungen oder Ausdrücken kann auch eine separate Funktion verwendet werden.
 :::
 
-## JS32 Array Prototype Methoden {#array-prototype-methoden}
+## JS34 Array Prototype Methoden {#array-prototype-methoden}
 
 Der Einsatz von Array-Methoden wie `map()`, `filter()`, `reduce()`, `find()`, `every()`, `some()` und anderen soll bevorzugt werden, um Arrays zu durchlaufen und Operationen auf den Elementen durchzuführen, um die Lesbarkeit und Wartbarkeit des Codes zu verbessern.
 
-### JS32 Problem
+### JS34 Problem
 
 Oftmals werden Schleifen verwendet, um Arrays zu durchlaufen und Operationen auf den Elementen durchzuführen.
 Dies ist jedoch umständlich und unübersichtlich.
 
-### JS32 Lösung
+### JS34 Lösung
 
 Array-Methoden wie `map()`, `filter()`, `reduce()`, `find()`, `every()`, `some()` und andere bieten eine elegante und effiziente Möglichkeit, Arrays zu durchlaufen und Operationen auf den Elementen durchzuführen.
 
@@ -2218,15 +2218,15 @@ const sum = [1, 2, 3]
 
 :::
 
-### JS32 Weiterführende Literatur/Links
+### JS34 Weiterführende Literatur/Links
 
 - [MDN Web Docs: Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
 
-## JS33 Import/Export {#import-export}
+## JS35 Import/Export {#import-export}
 
 Der `import`- und `export`-Mechanismus soll verwendet werden, um Module in JavaScript zu organisieren und zu verwalten.
 
-### JS33 Benannter Export
+### JS35 Benannter Export
 
 Im folgenden Beispiel wird ein Export mit einem Namen definiert.
 
@@ -2239,7 +2239,7 @@ export const VALUE = 42;
 import { sum, VALUE } from './export.js';
 ```
 
-### JS33 Default Export
+### JS35 Default Export
 
 Im folgenden Beispiel wird ein Export als Standard definiert.
 
@@ -2266,7 +2266,7 @@ export default const anotherSum = (a, b) => a + b;
 import mySum, { sum } from './export.js';
 ```
 
-### JS33 Namespace-Import
+### JS35 Namespace-Import
 
 Namespace-Import ermöglicht es, alle Exporte eines Moduls in einem Objekt zu importieren.
 
@@ -2281,7 +2281,7 @@ console.log(myExports.sum(1, 2)); // 3
 console.log(myExports.VALUE); // 42
 ```
 
-### JS33 Aliase-Import
+### JS35 Aliase-Import
 
 Du kannst auch Aliase für benannte Importe verwenden.
 
@@ -2289,7 +2289,7 @@ Du kannst auch Aliase für benannte Importe verwenden.
 import { sum as add, VALUE as NUMBER } from './export.js';
 ```
 
-## JS34 Einsatz von Set und Map statt Arrays und Objekten {#einsatz-von-set-und-map-statt-arrays-und-objekten}
+## JS36 Einsatz von Set und Map statt Arrays und Objekten {#einsatz-von-set-und-map-statt-arrays-und-objekten}
 
 Seit ECMAScript 6 (ES6) gibt es die Datentypen `Set` und `Map`, die für die Verwaltung eindeutiger Werte und Schlüssel-Wert-Paare verwendet werden können.
 
@@ -2298,24 +2298,24 @@ Seit ECMAScript 6 (ES6) gibt es die Datentypen `Set` und `Map`, die für die Ver
 
 Verwende `Set` und `Map`, um eindeutige Werte und Schlüssel-Wert-Paare effizient und einfach zu verwalten, anstatt Arrays und Objekte zu verwenden.
 
-### JS34 Problem
+### JS36 Problem
 
 Arrays und Objekte werden oft für die Verwaltung von eindeutigen Werten und Schlüssel-Wert-Paaren verwendet.
 Dies ist jedoch oftmals aufwändig und unübersichtlich und in anderen Sprachen gibt es spezielle Datentypen für diese Zwecke.
 Oftmals entwickeln Entwickler eigene Lösungen, um eindeutige Werte oder Schlüssel-Wert-Paare zu verwalten.
 
-### JS34 Lösung
+### JS36 Lösung
 
 Die Verwendung von `Set` und `Map` ermöglicht eine effiziente und einfache Verwaltung von eindeutigen Werten und Schlüssel-Wert-Paaren.
 
-#### JS34 Set
+#### JS36 Set
 
 ```javascript
 const uniqueNumbers = new Set([1, 2, 3, 1, 2, 3]);
 console.log(uniqueNumbers); // Set { 1, 2, 3 }
 ```
 
-#### JS34 Map
+#### JS36 Map
 
 ```javascript
 const keyValuePairs = new Map([
@@ -2341,18 +2341,18 @@ console.log(complexMap); // Map { { a: 1 } => 'value1', { b: 2 } => 'value2', { 
 
 :::
 
-### JS34 Weiterführende Literatur/Links
+### JS36 Weiterführende Literatur/Links
 
 - [MDN Web Docs: Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set)
 - [MDN Web Docs: Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
 
-## JS35 Abschließende Kommas {#abschliessende-kommas}
+## JS37 Abschließende Kommas {#abschliessende-kommas}
 
 Trailing Commas sollen verwendet werden, um die Wartbarkeit des Codes zu erhöhen.
 
 Trailing Commas sind Kommata, die am Ende von Arrays, Objekten, Funktionsparametern und Argumenten stehen.
 
-### JS35 Problem
+### JS37 Problem
 
 Das einfache und schnelle Hinzufügen oder Entfernen von Elementen oder Eigenschaften in Arrays oder Objekten kann zu Fehlern wegen fehlendem vorangestellten oder nachgestellten Komma führen.
 
@@ -2367,7 +2367,7 @@ const numbers = [
 ];
 ```
 
-### JS35 Lösung
+### JS37 Lösung
 
 Trailing Commas können verwendet werden, um das Hinzufügen oder Entfernen von Elementen oder Eigenschaften in Arrays oder Objekten zu erleichtern.
 
@@ -2393,11 +2393,11 @@ Trailing Commas sind in Arrays, Objekten, Funktionsparametern, Funktionsargument
 Trailing Commas sind in JSON nicht erlaubt und können zu Syntaxfehlern führen.
 :::
 
-### JS35 Weiterführende Literatur/Links
+### JS37 Weiterführende Literatur/Links
 
 - [MDN Web Docs: Trailing Commas](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Trailing_commas)
 
-## JS36 for, forEach, for of, for in {#for-foreach-for-of-for-in}
+## JS38 for, forEach, for of, for in {#for-foreach-for-of-for-in}
 
 In JavaScript gibt es verschiedene Möglichkeiten zu iterieren.
 
@@ -2410,7 +2410,7 @@ Es soll die Methode verwendet werden, die am besten zur Aufgabe passt, um die Le
 
 Vermische jedoch die Methoden nicht im gleichen (Funktions- oder Modul)Kontext, wenn es nicht unbedingt notwendig ist.
 
-### JS36 for-Schleife
+### JS38 for-Schleife
 
 Die ursprüngliche `for`-Schleife ist die am meisten verwendete Schleife in JavaScript.
 Sie besteht aus drei Teilen: Initialisierung, Bedingung und Inkrementierung/Dekrementierung.
@@ -2448,7 +2448,7 @@ for (let i = 0; i < 5; i--) {
 
 :::
 
-### JS36 forEach-Methode
+### JS38 forEach-Methode
 
 Die `forEach`-Methode wird auf Arrays verwendet und führt eine Funktion für jedes Element im Array aus.
 
@@ -2465,7 +2465,7 @@ numbers.forEach(console.log);
 Die `forEach`-Methode existiert für die Prototypen von `Array`, `Map`, `Set`, `String` und einigen mehr.
 :::
 
-### JS36 for...of-Schleife
+### JS38 for...of-Schleife
 
 Die `for...of`-Schleife (neu seit ES6) ist eine moderne Schleife, die für `Arrays`, `Strings`, `Sets`, `Maps` und andere iterierbare Objekte verwendet wird.
 
@@ -2491,7 +2491,7 @@ for (const [first, second] of numbers) {
 Die `for...of`-Schleife kann nicht direkt auf Objekte verwendet werden, da diese nicht iterierbar sind.
 :::
 
-### JS36 for...in-Schleife
+### JS38 for...in-Schleife
 
 Die `for...in`-Schleife wird verwendet, um über die Schlüssel (und Werte) eines Objekts zu iterieren.
 
@@ -2514,14 +2514,14 @@ for (const [key, value] of Object.entries(person)) {
 }
 ```
 
-### JS36 Weiterführende Literatur/Links
+### JS38 Weiterführende Literatur/Links
 
 - [MDN Web Docs: for](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for)
 - [MDN Web Docs: Array.prototype.forEach()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
 - [MDN Web Docs: for...in](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in)
 - [MDN Web Docs: for...of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of)
 
-## JS37 Methoden-Verkettung {#methoden-verkettung}
+## JS39 Methoden-Verkettung {#methoden-verkettung}
 
 Die Methoden-Verkettung soll verwendet werden, um Methodenaufrufe auf einem Objekt in einer einzigen Anweisung zu verkettet.
 
@@ -2530,7 +2530,7 @@ Dies wird beispielsweise bei Array-Methoden wie `map()`, `filter()`, `reduce()` 
 
 Verwende Methoden-Verkettung, um den Code kompakter und lesbarer zu machen.
 
-### JS37 Beispiel
+### JS39 Beispiel
 
 ```javascript
 const numbers = [1, 2, 3, 4, 5];
@@ -2541,7 +2541,7 @@ const sum = numbers
     .reduce((acc, x) => acc + x, 0);
 ```
 
-### JS37 Regeln
+### JS39 Regeln
 
 - Jeder Methodenaufruf wird auf einer neuen Zeile eingerückt (entsprechend den ESLint-Regeln).
 - Jeder Methodenaufruf wird durch einen Punkt (`.`) **vorangehend** zum Methodennamen getrennt.
@@ -2554,20 +2554,20 @@ const sum = numbers
     .reduce(addSum, 0);
 ```
 
-### JS37 Vorteile
+### JS39 Vorteile
 
 - Kompakter und lesbarer Code
 - Einfache Verkettung von Methodenaufrufen
 - Bessere Performance durch Vermeidung von Zwischenvariablen
 - Einfache Wiederverwendung von Methodenketten
 
-### JS37 Ausnahmen
+### JS39 Ausnahmen
 
 - Übermäßige Verkettung von Methoden kann die Lesbarkeit beeinträchtigen.
 - Bei komplexen Operationen oder Bedingungen ist es besser, die Methodenaufrufe aufzuteilen.
 - Bei der Verkettung von Methoden ist darauf zu achten, dass die Reihenfolge der Methodenaufrufe korrekt ist.
 
-## JS38 Unbenutzte Variablen und Parameter {#unbenutzte-variablen-und-parameter}
+## JS40 Unbenutzte Variablen und Parameter {#unbenutzte-variablen-und-parameter}
 
 Es sollen keine unbenutzten Variablen und Parameter im Code vorhanden sein.
 
@@ -2603,7 +2603,7 @@ Von [Stack Overflow](https://stackoverflow.com/questions/64052318/how-to-disable
 
 :::
 
-### JS38 Problem
+### JS40 Problem
 
 Unbenutzte Variablen und Parameter können zu Verwirrung und unerwartetem Verhalten führen.
 
@@ -2611,7 +2611,7 @@ Das Entfernen von unbenutzten Parametern ist jedoch auch nicht möglich, wenn di
 
 Vererbung und Interfaces können auch unbenutzte Parameter erzeugen.
 
-### JS38 Lösung
+### JS40 Lösung
 
 - Entferne alle Parameter, wenn keiner davon benutzt wird.
 - Entferne den Parameter, wenn er eindeutig unbenutzt ist.
@@ -2625,19 +2625,19 @@ function sum(a, b, _) {
 
 ```
 
-### JS38 Vorteile
+### JS40 Vorteile
 
 - Sauberer und wartbarer Code
 - Vermeidung von Verwirrung und unerwartetem Verhalten
 - Bessere Lesbarkeit und Verständlichkeit des Codes
 
-### JS38 Nachteile
+### JS40 Nachteile
 
 - Der Unterstrich kann zu Verwirrung führen, wenn er nicht als Platzhalter für unbenutzte Variablen oder Parameter verwendet wird.
 - Spätere Erweiterungen der Funktion oder Methode lassen den Namen des originalen Parameters vermissen, wenn der Unterstrich verwendet wird.
 **Bitte beachten**, dass eine Erweiterung einer vorhandenen Methode gegen das [OCP Prinzip](../../2.principles/principles#open-closed-principle) verstößt.
 
-### JS38 Ausnahmen
+### JS40 Ausnahmen
 
 - Bei bereits vorhandene Funktionen oder Methoden besteht die Gefahr, dass das entfernen eines Parameters und damit einer semantischen Änderung der Reihenfolge der Parameter zu Fehlern beim Aufruf von vorhandenen Code führt.
 
