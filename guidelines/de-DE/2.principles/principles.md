@@ -114,12 +114,12 @@ Das `Low Coupling` Prinzip besagt, dass Software so entwickelt werden sollte, da
 Module, Klassen und Komponenten sollten immer eine niedrige Kopplung und eine hohe Kohäsion haben.
 
 Durch eine niedrige Kopplung können Module, Klassen und Komponenten wieder verwendet und leichter getestet werden.
-Durch eine hohe Kohäsion sind Module, Klassen und Komponenten nur einer Aufgabe verpflichtet und haben eine klare Verantwortlichkeit ([Single Responsibility Principle](#single-responsibility-principle)).
+Durch eine hohe Kohäsion sind Module, Klassen und Komponenten nur einer Aufgabe verpflichtet und haben eine klare Verantwortlichkeit ([Single Responsibility Principle](.#single-responsibility-principle)).
 
 ::: info Kopplung und Kohäsion
 `Kopplung` ist die Abhängigkeit zwischen zwei oder mehr Modulen oder Komponenten.
 Sie beschreibt, wie stark zwei oder mehr Module oder Komponenten voneinander abhängig sind.
-`Kohäsion` ist die Gemeinsamkeit innerhalb eines Moduls, Klasse oder einer Komponente.
+`Kohäsion` ist die Zusammengehörigkeit von Funktionalitäten innerhalb eines Moduls, Klasse oder einer Komponente.
 Sie beschreibt, wie stark die Funktionalität innerhalb eines Moduls, Klasse oder einer Komponente zusammenhängt.
 :::
 

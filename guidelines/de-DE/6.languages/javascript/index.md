@@ -61,7 +61,6 @@ Nur behandelbare Fehler sollen selbst behandelt werden.
 - Der Einsatz eines Modellansatzes wie MVC, MVP oder MVVM kann helfen, die Business-Logik von der UI zu trennen.
 - Architekturansätze wie Domain-Driven Design (DDD), Model-Driver Architecture (MDA) oder Clean Architecture können ebenfalls helfen, die Abhängigkeiten zu reduzieren und die Business-Logik zu isolieren.
 
-
 ```javascript
 
 function onClick() {
@@ -255,7 +254,7 @@ Jedoch wird insgesamt mehr Code geschrieben, da die Trennung zu mehr Methoden f�
 ### JS3 Ausnahmen
 
 - In kleinen Anwendungen oder Prototypen kann die Trennung von Operations- und Integration-Logik übertrieben sein.
-- Die strikte Trennung kann in manchen Fällen unnötigen Overhead verursachen (siehe Trennung von `getOrCreateUser` und `getUser`).	
+- Die strikte Trennung kann in manchen Fällen unnötigen Overhead verursachen (siehe Trennung von `getOrCreateUser` und `getUser`). 
 
 ```javascript
 class UserService {
@@ -297,7 +296,6 @@ class UserService {
 }
 ```
 
-
 <!-- ## P8 IOSP {#iosp}
 
 Das `Integration Operation Segregation Principle` besagt, dass Code entweder Operations-Logik oder Integration-Logik enthalten sollte, aber nicht beides.
@@ -308,15 +306,12 @@ Solch getrennte Logiken ermöglichen leichteres Testen und erhöht die Verständ
 * 
 * Indem in Methoden verhaltenserzeugende Anweisungen (Logik) gemischt mit Aufrufen anderer Methoden derselben Codebasis steht, ist nicht mehr klar erkennbar, wie Gesamtverhalten entsteht; die Anweisungen sind ja verschmiert über eine u.U. sehr tiefe Hierarchie. Zudem tendieren Methoden mit solcher Mischung dazu, unbegrenzt zu wachsen.
 
-
 Dem stellt sich das IOSP mit einer klaren Trennung entgegen:
-
 
 Entweder enthält eine Methode nur Logik, d.h. Transformationen, Kontrollstrukturen oder I/O- bzw. allgemeiner: API-Aufrufe. Dann wird sie Operation genannt.
 Oder eine Methode enthält keinerlei Logik, sondern nur Aufrufe von anderen Methoden derselben Codebasis. Dann wird sie Integration genannt.
 
 Diese strikte Unterscheidung führt zu mehrerlei positiven Effekten:
-
 
 Methoden tendieren dazu, sehr kurz zu bleiben. Denn mehr als 10, 20 oder 30 Zeilen reine Logik oder ausschließlich Methodenaufrufe „fühlen sich nicht gut an“. Da eine Mischung nicht erlaubt ist, werden weitere kleine Methoden extrahiert.
 Kurze Methoden, die nur Logik enthalten, sind leicht zu testen, da sie keine Abhängigkeiten haben.
@@ -328,10 +323,6 @@ Integrationen lassen sich leicht durch „Zwischenschieben“ weiterer Methoden 
 Das IOSP lässt sich „aus dem Stand“ von jedem Entwickler guten Willens anwenden. Seine Einhaltung ist durch jedermann leicht zu überprüfen. Integrationen und Operationen unterscheiden sich in der Form deutlich. Weitere Details, insbesondere zur Abgrenzung zum Dependency Inversion Principle (DIP), findest du bspw. hier.
 * 
 * -->
-
-
-
-
 
 ## JS4 Anwendung von ES6 Features {#anwendung-von-es6-features}
 
@@ -527,7 +518,7 @@ const myConstant = 42;
 ## JS8 Verwendung von `const` für alle Variablen in JavaScript und Kennzeichnung von Nicht-Konstanten {#verwendung-von-const-fuer-alle-variablen-in-javascript-und-kennzeichnung-von-nicht-konstanten}
 
 Um unbeabsichtigtes Ändern von Variablen zu vermeiden, soll in JavaScript das Schlüsselwort `const` für alle Variablen verwendet werden.
-In Fällen, in denen die Verwendung von `const` nicht möglich ist, soll ein Kommentar mit dem Inhalt "nonconst" hinzugefügt werden.
+In Fällen, in denen die Verwendung von `const` nicht möglich ist, soll ein Kommentar mit dem Inhalt `/*nonconst*/` hinzugefügt werden.
 
 ### JS8 Problem
 
@@ -554,8 +545,12 @@ const age = 30;
 
 // ...
 
-// nonconst: Variable muss sich ändern
+/*nonconst*/ let count = 0;
+
+// oder
+/*nonconst*/
 let count = 0;
+
 count++;
 ```
 
@@ -580,55 +575,6 @@ In solchen Fällen kann die Kennzeichnung mit einem Kommentar "//nonconst" helfe
 Tools wie ESLint und Prettier sollen verwendet werden, um sicherzustellen, dass der Code konsistent und weniger fehleranfällig ist.
 
 Mit dem Einsatz von [JSDoc](.#jsdoc-kommentare-fuer-javascript-methoden-funktionen-variablen-objekte-und-typen) können auch Typen geprüft werden.
-
-## JS10 Verwenden aussagekräftige Rückgabewerte und -typen {#verwenden-aussagekraeftige-rueckgabewerte-und-typen}
-
-Wenn eine Methode einen Wert zurückgibt, soll dieser Wert aussagekräftig sein und genau das darstellen, was die Methode tut.
-
-### JS10 Problem
-
-Oftmals spiegelt der Rückgabe-Wert einer Funktion nicht genau wider, was die Funktion tut.
-Dies kann zu Verwirrung führen und die Lesbarkeit und Wartbarkeit des Codes beeinträchtigen.
-
-Im folgenden Beispiel wird ein Benutzer-Objekt geprüft, jedoch ein String zurückgegeben anstatt eines booleschen Wertes.
-
-```javascript
-function validate(user) {
-    if (user !== null && user !== undefined) {
-        return "valid";
-    } 
-
-    return "invalid";
-}
-```
-
-### JS10 Lösung
-
-Es können unterschiedliche Ansätze verwendet werden, um aussagekräftige Rückgabewerte und -typen zu verwenden:
-
-- Verwendung von booleschen Werten (`true`/`false`) für Ja/Nein-Entscheidungen
-- Verwendung von spezifischen Werten wie `Symbol`, um den Status oder das Ergebnis einer Operation darzustellen
-
-### JS10 Regeln für Rückgabewerte mit undefined
-
-- Eine Funktion soll nie undefined zurückgeben, sondern immer einen Wert oder ein Objekt, das den Status des Ergebnisses darstellt.
-- Jeder Ablaufpfad in einer Funktion muss ein return-Statement haben, um sicherzustellen, dass immer ein Wert zurückgegeben wird.
-- Statt undefined kann auch Optional oder ein anderes Objekt verwendet werden, um den Status des Ergebnisses zu kennzeichnen.
-Siehe dazu auch [JS15 Verwendung von `Optional` in JavaScript-Funktionen](.#js15-verwendung-von-optional-in-javascript-funktionen).
-
-Beispiel:
-
-```javascript
-function findUserById(id) {
-  const user = db.findUser(id);
-  if (user) {
-    return user;
-  }
-  return undefined;
-  // statt dessen eine Exception werfen oder ein Optional-Objekt zurückgeben
-  throw new UserNotFoundException('User not found');
-}
-```
 
 ## JS11 Optionaler Operator ?. / Optional Chaining verwenden {#optionaler-operator-optional-chaining-verwenden}
 
@@ -1056,9 +1002,125 @@ Die strikte Begrenzung der Zeilenanzahl kann zu einer übermäßigen Fragmentier
 ### JS15 Ausnahmen
 
 Die Anzahl der Codezeilen in einer Methode oder Funktion kann je nach Kontext und Komplexität des Codes variieren.
-Es ist wichtig sich nicht auf die letzte Codezeile zu versteifen, sondern die Lesbarkeit und Wartbarkeit des Codes zu priorisieren.
 
-## JS16 Methoden/Funktionen sollen niemals null oder undefined zurückgeben {#methoden-funktionen-sollen-niemals-null-oder-undefined-zurueckgeben}
+## JS10 Verwenden aussagekräftige Rückgabewerte und -typen {#verwenden-aussagekraeftige-rueckgabewerte-und-typen}
+
+Wenn eine Methode einen Wert zurückgibt, soll dieser Wert aussagekräftig sein und genau das darstellen, was die Methode tut.
+
+### JS10 Problem
+
+Oftmals spiegelt der Rückgabe-Wert einer Funktion nicht genau wider, was die Funktion tut.
+Dies kann zu Verwirrung führen und die Lesbarkeit und Wartbarkeit des Codes beeinträchtigen.
+Es ist zudem ohne Dokumentation schwer zu verstehen, welche Rückgabewerte eine Funktion haben kann und was diese bedeuten.
+
+Im folgenden Beispiel wird ein Benutzer-Objekt geprüft, jedoch ein String zurückgegeben anstatt eines booleschen Wertes.
+
+```javascript
+function validate(user) {
+    if (user !== null && user !== undefined) {
+        return "valid";
+    } 
+
+    return "invalid";
+}
+```
+
+### JS10 Lösung
+
+Es können unterschiedliche Ansätze verwendet werden, um aussagekräftige Rückgabewerte und -typen zu verwenden:
+
+- Verwendung von booleschen Werten (`true`/`false`) für Ja/Nein-Entscheidungen
+- Verwendung von spezifischen Werten wie `Symbol`, um den Status oder das Ergebnis einer Operation darzustellen
+
+Beispiel:
+
+```javascript
+function findUserById(id) {
+  const user = db.findUser(id);
+  if (user) {
+    return user;
+  }
+  // statt dessen eine Exception werfen oder ein Optional-Objekt zurückgeben
+  throw new UserNotFoundException('User not found');
+}
+```
+
+##
+
+### JS10 Methoden/Funktionen geben für alle Pfade einen Wert zurück
+
+Methoden oder Funktionen, die generell einen Wert zurückgeben, müssen für alle Pfade einen Wert zurückgeben.
+
+## Problem
+
+In JavaScript ist es möglich, dass eine Funktion keinen expliziten Rückgabewert hat, was zu unerwartetem Verhalten führen kann.
+Wenn ein Pfad ein einfaches `return`-Statement hat, aber andere Pfade nicht, wird `undefined` implizit zurückgegeben.
+Ein Benutzer dieser Methode/Funktion, der nicht auf `undefined` prüft, muss zuerst sicherstellen, dass der Rückgabewert nicht `undefined` ist, bevor er ihn verwendet.
+Dieser Vorgang wird oft vergessen und kann zu Fehlern führen, die schwer zu finden sind.
+
+Generell ist der Rückgabewert `null` keine Lösung, da er sich von `undefined` nur in der Semantik unterscheidet.
+
+```javascript
+function getUserById(id) {
+    if (id === 1) {
+        return { id: 1, name: 'Alice' };
+    }
+    // Kein explizites return-Statement. 
+    // Es wird implizit `undefined` zurückgegeben.
+}
+```
+
+### Lösung
+
+- Eine Funktion soll nie `undefined` oder `null` zurückgeben, sondern immer einen Wert oder ein Objekt, das den Status des Ergebnisses darstellt.
+- Jeder Ablaufpfad in einer Funktion muss ein return-Statement haben, um sicherzustellen, dass immer ein Wert zurückgegeben wird.
+- Statt `undefined` kann Optional verwendet werden, um den Status des Ergebnisses zu kennzeichnen.
+Siehe dazu auch [JS15 Verwendung von `Optional` in JavaScript-Funktionen](.#js15-verwendung-von-optional-in-javascript-funktionen).
+- Es kann auch ein spezieller Wert als Objekt zurückgegeben werden, um den Status des Ergebnisses zu kennzeichnen (siehe Beispiel unten).
+
+```javascript
+class EmptyUser extends User {
+    static create() {
+       return Object.freeze(new EmptyUser())
+    }
+    constructor() {
+        super(-1, 'Unknown');
+    }
+    isValid() {
+        return false;
+    }
+}
+
+class User {
+    static EMPTY = EmptyUser.create();
+    
+    isValid() {
+        return true;
+    }
+    // ...
+}
+
+function getUserById(id) {
+    if (id === 1) {
+        return new User(1, 'Alice'); //oder Erstellung über Factory
+    }
+    return User.EMPTY; // oder return Optional.empty();
+}
+```
+
+::: info Hinweis
+
+Funktionen/Methoden, die generell keinen Wert zurückgeben, fallen nicht unter diese Regel.
+
+:::
+
+### Ausnahmen
+
+Generell kann auch `null` ein gültiger Rückgabewert sein, wenn er explizit verwendet wird, um einen speziellen Zustand oder eine Bedeutung zu kennzeichnen.
+Dieser Zustand muss jedoch in der JSDoc-Dokumentation klar dokumentiert sein, um Missverständnisse zu vermeiden.
+Generell sollte man solche Methoden jedoch nur für interne Zwecke verwenden und nicht als öffentliche API bereitstellen.
+
+## JS16 Methoden/Funktionen, die Mengen zurückgeben sollen niemals null oder undefined zurückgeben {#methoden-funktionen-die-mengen-zurueckgeben-sollen-niemals-null-oder-undefined-zurueckgeben}
 
 Methoden oder Funktionen, die Mengen wie Arrays zurückgeben, sollen nie `null` oder `undefined` zurückgeben, sondern leere Mengen oder Objekte.
 

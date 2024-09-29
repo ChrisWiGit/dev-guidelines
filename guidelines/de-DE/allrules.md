@@ -48,7 +48,7 @@ layout: doc
 - [GL17 Gesetz von Demeter](6.languages\general.md#gesetz-von-demeter)
 - [GL18 Einheitliche Namensgebung](6.languages\general.md#einheitliche-namensgebung)
 - [GL19 Sicherheit](6.languages\general.md#sicherheit)
-- [GL20 Behebung die Wurzel des Problems](6.languages\general.md#behebung-die-wurzel-des-problems)
+- [GL20 Behebung der Wurzel des Problems](6.languages\general.md#behebung-die-wurzel-des-problems)
 
 ## Allgemein Regeln für Namen
 
@@ -88,7 +88,7 @@ layout: doc
 - [JS13 Object destructuring / Object Eigenschaften bekommen](6.languages\javascript\index.md#object-destructuring-object-eigenschaften-bekommen)
 - [JS14 Verwendung von async und await](6.languages\javascript\index.md#verwendung-von-async-und-await)
 - [JS15 Begrenzte Zeilenanzahl in Methoden/Funktionen](6.languages\javascript\index.md#begrenzte-zeilenanzahl-in-methoden-funktionen)
-- [JS16 Methoden/Funktionen sollen niemals null oder undefined zurückgeben](6.languages\javascript\index.md#methoden-funktionen-sollen-niemals-null-oder-undefined-zurueckgeben)
+- [JS16 Methoden/Funktionen, die Mengen zurückgeben sollen niemals null oder undefined zurückgeben](6.languages\javascript\index.md#methoden-funktionen-die-mengen-zurueckgeben-sollen-niemals-null-oder-undefined-zurueckgeben)
 - [JS17 Verwendung von &#x60;Optional&#x60; in JavaScript-Funktionen](6.languages\javascript\index.md#verwendung-von-optional-in-javascript-funktionen)
 - [JS18 Verwendung der npm-Bibliothek optional.js zur Rückgabe von Optional in JavaScript](6.languages\javascript\index.md#verwendung-der-npm-bibliothek-optional-js-zur-rueckgabe-von-optional-in-javascript)
 - [JS19 If-Bedingungen ohne Else und mit Return](6.languages\javascript\index.md#if-bedingungen-ohne-else-und-mit-return)

@@ -112,7 +112,8 @@ Tests helfen dabei, sicherzustellen, dass der Code nach dem Refactoring immer no
 - Kommentare dienen
   - zur Erklärung von komplexen Algorithmen oder Geschäftsregeln, die nicht offensichtlich sind und nicht vereinfacht werden können.
   - Meta-Informationen, die der Entwickler zur Klärung benötigt (z.B. warum etwas gemacht wurde).
-  - TODOs, die noch erledigt werden müssen.
+  - Entscheidungen, die getroffen wurden und nicht aus dem Code hervorgehen.
+  - TODOs, die noch erledigt werden müssen, erhalten dazu eine Ticketnummer.
 
 ::: warning Hinweis
 Kommentare als Code Dokumentation (z.B. JavaDoc, JsDoc) sind eine Ausnahme und müssen immer verwendet werden.
@@ -131,6 +132,10 @@ Entwickler sollen sich nicht im Code selbst verwirklichen, sondern Code so schre
 
 Um Code daher nicht unnötig komplex zu machen, darf daher auch nur das Notwendige implementiert werden, um die Anforderungen zu erfüllen.
 Das Vorgehen nach "Könnte später nützlich sein" soll vermieden werden und nur in Absprache mit dem Team umgesetzt werden.
+
+Mögliche Konfigurationsparameter sollen nur dann implementiert werden, wenn sie auch wirklich benötigt werden.
+Jede neue Einstellung zur Laufzeit soll gut dokumentiert und getestet werden, damit sie nicht zu unerwartetem Verhalten führt.
+Jede unnötige Einstellung zur Laufzeit kann zu Fehlern und Missbrauch führen.
 
 ## GL12 Ständiges Refactoring {#staendiges-refactoring}
 
