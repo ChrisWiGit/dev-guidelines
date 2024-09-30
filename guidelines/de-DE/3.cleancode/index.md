@@ -4,7 +4,7 @@ layout: home
 
 hero:
   name: "Clean Code"
-  text: "Clean Code"
+  text: "Craftsmanship/ Craftwomanship"
   tagline: "Guter Code ist Einstellungssache"
   actions:
     - theme: brand
@@ -18,11 +18,6 @@ hero:
       link: ./whycleancode
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+
 ---
 

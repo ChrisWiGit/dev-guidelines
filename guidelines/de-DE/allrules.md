@@ -119,6 +119,8 @@ layout: doc
 
 ## Regeln für Java
 
+- [J1 Allgemeine Regeln](6.languages/java/index.md#allgemeine-regeln)
+- [J2 Abstraktionsschichten](6.languages/java/index.md#abstraktionsschichten)
 
 ## Allgemeine Regeln für das Refactoring
 

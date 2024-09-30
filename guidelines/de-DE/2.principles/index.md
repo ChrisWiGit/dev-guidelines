@@ -12,7 +12,7 @@ hero:
       link: ./principles
     - theme: alt
       text: Literatur
-      link: ./literature
+      link: ../sources
 
 features:
 
