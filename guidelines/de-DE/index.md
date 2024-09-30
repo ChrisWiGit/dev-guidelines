@@ -10,10 +10,13 @@ hero:
     - theme: brand
       text: Allgemeines
       link: ./general
-    - theme: alt
+    - theme: brand
+      text: Qualitäten
+      link: ./quality-terms
+    - theme: brand
       text: Glossar
       link: ./allrules
-    - theme: alt
+    - theme: brand
       text: Literatur/Quellen
       link: ./sources
 

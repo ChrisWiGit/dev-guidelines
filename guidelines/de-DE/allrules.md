@@ -54,6 +54,7 @@ layout: doc
 - [GL18 Einheitliche Namensgebung](6.languages/general.md#einheitliche-namensgebung)
 - [GL19 Sicherheit](6.languages/general.md#sicherheit)
 - [GL20 Behebung der Wurzel des Problems](6.languages/general.md#behebung-die-wurzel-des-problems)
+- [GL21 Logging](6.languages/general.md#logging)
 
 ## Allgemein Regeln für Namen
 
@@ -193,3 +194,4 @@ layout: doc
 
 ### Architekturmuster
 
+- [DPA1 Bekannte Architekturmuster](4.designpatterns/architectural.md#bekannte-architekturmuster)

@@ -286,3 +286,41 @@ Es soll immer die Wurzel des Problems behoben werden und nicht nur die Symptome.
 - Symptome sind oft nur die Auswirkungen eines tieferliegenden Problems.
 - Temporäre Lösungen bleiben oft bestehen und führen zu weiteren Problemen.
 - Bei der Suche des eigentlichen Ursache werden oft weitere Probleme entdeckt und behoben.
+
+## GL21 Logging {#logging}
+
+Logging gibt es in verschiedenen Stufen
+
+- Debug: Detaillierte Informationen für die Entwickler
+- Info: Informationen über den Ablauf des Programms
+- Warn: Warnungen, die auf Probleme hinweisen, die behoben werden sollten, aber nicht dazu führen, dass das Programm nicht funktioniert.
+- Error: Fehler, die das Programm möglicherweise zum Absturz bringen und die behoben werden müssen.
+
+Folgendes ist zu beachten:
+
+- Eine Log-Meldung soll im Code nur dann ausgegeben werden, wenn das entsprechende Log-Level aktiviert ist.
+  - Gegebenenfalls muss eine Log-Meldung auch mit einem `if`-Statement oder anderen Conditional-Patterns umgeben werden, um die Ausgabe zu verhindern.
+- Log-Meldungen sollen aussagekräftig sein und den Kontext der Meldung enthalten.
+  - Die Sprache ist Englisch.
+  - Log-Meldungen sollten auch von anderen Personen als Entwickler verstanden werden.
+  - Auf Rechtschreibung und Grammatik ist zu achten.
+- Log-Meldungen dürfen keine sensiblen Daten wie Passwörter oder personenbezogene Daten enthalten.
+  - Diese sollen vor dem Loggen entfernt oder unkenntlich gemacht werden.
+- Log-Meldungen sollen mit einem durch das Framework bereitgestellten Logger ausgegeben werden.
+  - Direktes Ausgeben von Log-Meldungen auf der Konsole oder in Dateien ist für Produktivumgebungen nicht erlaubt.
+- Log-Meldungen sollen Platzhalter verwenden, die durch das Logging-Framework ersetzt werden (z.B. `log.debug("User {} logged in", user.getName())`).
+  - Dies verhindert Sicherheitslücken durch die direkte Ausgabe von Benutzereingaben.
+- Log-Meldungen sollen eindeutig sein.
+  - Mehrere Log-Meldungen sollen nicht denselben Text haben.
+  - Log-Meldungen sollen nicht mehrfach ausgegeben werden.
+
+Log-Texte enthalten die folgenden Informationen:
+
+- Datum und Uhrzeit (durch das Logging-Framework)
+- Log-Level (durch das Logging-Framework)
+- Klassenname und Methode (durch das Logging-Framework)
+- Nachricht, eins oder mehrere von:
+  - Was ist passiert? (Fehler beim Ausführen von Methode X)
+  - Was ist der Kontext? (Methode, Datenbank, Datei, Benutzer, etc.)
+  - Was ist das Problem? (SQL Fehler, Datei nicht gefunden, Benutzer gesperrt, etc.)
+  - Lösungsvorschlag, wenn möglich
