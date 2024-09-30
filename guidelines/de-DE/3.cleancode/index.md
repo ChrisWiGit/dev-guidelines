@@ -16,6 +16,9 @@ hero:
     - theme: alt
       text: Warum Clean Code?
       link: ./whycleancode
+    - theme: brand
+      text: Literatur
+      link: ../sources
 
 features:
 

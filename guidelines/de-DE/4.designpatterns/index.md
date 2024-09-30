@@ -21,6 +21,9 @@ hero:
     - theme: alt
       text: Architekturmuster
       link: ./architectural
+    - theme: brand
+      text: Literatur
+      link: ../sources
   
 
   # hier image mit übersicht

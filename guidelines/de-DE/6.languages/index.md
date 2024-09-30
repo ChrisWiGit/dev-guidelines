@@ -22,4 +22,7 @@ hero:
     - theme: alt
       text: Vue 3
       link: ./vue/
+    - theme: brand
+      text: Literatur
+      link: ../sources
 ---
