@@ -8,12 +8,8 @@ hero:
   tagline: "Langlebiger Code ist eine Sache des Refactorings"
   actions:
     - theme: brand
-      text: Übersicht
-      link: ./overview
-    - theme: brand
-      text: Allgemeine Regeln
+      text: Übersicht und allgemeine Regeln
       link: ./general
-
 features:
   - title: Java
     details: Refactoring für Java

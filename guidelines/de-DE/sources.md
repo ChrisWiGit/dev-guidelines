@@ -20,4 +20,5 @@ Diese Richtlinien wurden auf der Basis der folgenden Quellen erstellt:
 
 ## Deutsch
 
+- Balzert, Helmut, Lehrbuch der Software-Technik, Softwaremanagement, Spektrum Akademie Verlag, 2008, (2. Auflage), ISBN: 9783827404800
 - Maximiliano Contieri, Clean Code Kochbuch: Rezepte für gutes Code-Design und bessere Softwarequalität, O'Reilly, 2024, ISBN: 9783960092438
