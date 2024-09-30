@@ -211,43 +211,12 @@ Eingabedaten sollten immer validiert und geprüft werden, damit die Fehlerfälle
 Die `Rule of Explicitness` (Regel der Eindeutigkeit/Unmissverständlichkeit) besagt, dass explizite Lösungen einfacher zu verstehen und zu warten sind als implizite Lösungen.
 Implizite Lösungen erfordert, dass ein Entwickler zwischen den Zeilen lesen muss, um zu verstehen, wie die Lösung funktioniert.
 
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
+## P20 Don't trust google {#don-t-trust-google}
+
+Quellen und Quellcode, die aus einer Suchmaschine stammen, müssen immer überprüft und validiert werden.
+Die Qualität von Quellcode, der aus einer Suchmaschine stammt, ist oft fragwürdig und kann zu Sicherheitslücken und Fehlern führen.
+
+* Prüfe, ob es bereits eine Inhouse-Lösung gibt.
+* Die Lizenz muss überprüft werden.
+Die Verwendung von Lizenzen, die nicht mit den Unternehmensrichtlinien übereinstimmen ist nicht erlaubt.
+* Wenn Quelltext übernommen wird, muss ein Test dafür geschrieben werden.

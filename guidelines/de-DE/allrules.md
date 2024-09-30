@@ -26,6 +26,7 @@ layout: doc
 - [P17 UFT](2.principles/principles.md#uft)
 - [P18 FF](2.principles/principles.md#ff)
 - [P19 RoE](2.principles/principles.md#roe)
+- [P20 Don&#x27;t trust google](2.principles/principles.md#don-t-trust-google)
 
 ## Allgemeine Regeln für alle Sprachen (GL)
 
@@ -152,4 +153,38 @@ layout: doc
 - [AI1 Was ist KI nicht?](8.ai.md#was-ist-ki-nicht)
 - [AI2 Traue keiner KI](8.ai.md#traue-keiner-ki)
 - [AI3 Sicherheit in den KI Code-Ergebnissen](8.ai.md#sicherheit-in-den-ki-code-ergebnissen)
+
+## Entwurfsmuster
+
+### Verhaltensmuster
+
+- [DPB1 Chain of Responsibility](4.designpatterns/behavioral.md#chain-of-responsibility)
+- [DPB2 Command](4.designpatterns/behavioral.md#command)
+- [DPB3 Interpreter](4.designpatterns/behavioral.md#interpreter)
+- [DPB4 Iterator](4.designpatterns/behavioral.md#iterator)
+- [DPB5 Mediator](4.designpatterns/behavioral.md#mediator)
+- [DPB6 Memento](4.designpatterns/behavioral.md#memento)
+- [DPB7 Observer](4.designpatterns/behavioral.md#observer)
+- [DPB8 State](4.designpatterns/behavioral.md#state)
+- [DPB9 Singleton](4.designpatterns/behavioral.md#singleton)
+- [DPB10 Template Method / Vorlage](4.designpatterns/behavioral.md#template-method-vorlage)
+- [DPB11 Visitor](4.designpatterns/behavioral.md#visitor)
+
+### Strukturmuster
+
+- [DPC1 Singleton](4.designpatterns/creational.md#singleton)
+- [DPC2 Factory Method](4.designpatterns/creational.md#factory-method)
+- [DPC3 Abstract Factory](4.designpatterns/creational.md#abstract-factory)
+- [DPC4 Builder](4.designpatterns/creational.md#builder)
+- [DPC5 Prototype](4.designpatterns/creational.md#prototype)
+
+### Erschaffungsmuster
+
+- [DPC1 Singleton](4.designpatterns/creational.md#singleton)
+- [DPC2 Factory Method](4.designpatterns/creational.md#factory-method)
+- [DPC3 Abstract Factory](4.designpatterns/creational.md#abstract-factory)
+- [DPC4 Builder](4.designpatterns/creational.md#builder)
+- [DPC5 Prototype](4.designpatterns/creational.md#prototype)
+
+### Architekturmuster
 

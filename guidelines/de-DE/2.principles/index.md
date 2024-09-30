@@ -70,5 +70,8 @@ features:
 - title: RoE
   details: "Rule of Explicitness"
   link: ./principles#roe
+- title: DTG
+  details: "Don't trust google"
+  link: ./principles#don-t-trust-google
 
 ---

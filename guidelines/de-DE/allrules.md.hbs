@@ -101,3 +101,36 @@ layout: doc
 {{/if}}
 {{/each}}
 
+## Entwurfsmuster
+
+### Verhaltensmuster
+
+{{#each DPB}}
+{{#if isMainHeader}} 
+- [{{ruleStr}} {{title}}]({{filePath}}{{anchor}})
+{{/if}}
+{{/each}}
+
+### Strukturmuster
+
+{{#each DPC}}
+{{#if isMainHeader}} 
+- [{{ruleStr}} {{title}}]({{filePath}}{{anchor}})
+{{/if}}
+{{/each}}
+
+### Erschaffungsmuster
+
+{{#each DPC}}
+{{#if isMainHeader}} 
+- [{{ruleStr}} {{title}}]({{filePath}}{{anchor}})
+{{/if}}
+{{/each}}
+
+### Architekturmuster
+
+{{#each DPA}}
+{{#if isMainHeader}}
+- [{{ruleStr}} {{title}}]({{filePath}}{{anchor}})
+{{/if}}
+{{/each}}

@@ -220,18 +220,6 @@ features:
       width: 36
       height: 36
       alt: Visitor zählt zu den Creational Patterns
-  
-  
-  
-  - title: Creational Patterns
-    details: "Singleton, Factory Method, Abstract Factory, Builder, Prototype"
-    link: ./creational
-  - title: Structural Patterns
-    details: "Adapter, Bridge, Composite, Decorator, Facade, Flyweight, Proxy"
-    link: ./structural
-  - title: Behavioral Patterns
-    details: "Chain of Responsibility, Command, Interpreter, Iterator, Mediator, Memento, Observer, State, Strategy, Template Method, Visitor"
-    link: ./behavioral
 
 
 ---
@@ -250,7 +238,7 @@ const config = {
 export default config
 ```
 
-```ts [example.ts]	
+```ts [example.ts] 
 /**
  * @type {import('vitepress').UserConfig}
  */
