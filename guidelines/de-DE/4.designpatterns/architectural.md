@@ -4,8 +4,6 @@ outline: [2, 2]
 customRulePrefix: DPA
 customIgnoreTitlesForRules: [Einleitung]
 ---
-<img src="./image/brickwall_light_128.png" alt="Creational Pattern" width="36" height="36"><br>
-
 # Architekturmuster
 
 ## Einleitung {#einleitung}

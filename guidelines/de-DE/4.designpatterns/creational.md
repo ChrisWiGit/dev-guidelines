@@ -7,7 +7,7 @@ customRulePrefix: DPC
 customIgnoreTitlesForRules: [Einleitung]
 
 ---
-<img src="./image/brickwall_light_128.png" alt="Creational Pattern" width="36" height="36"><br>
+<img src="/brickwall_light_128.png" alt="Creational Pattern" width="36" height="36"><br>
 
 # Entwurfsmuster - Creational Patterns
 

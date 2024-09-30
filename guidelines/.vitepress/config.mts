@@ -39,5 +39,5 @@ export default defineConfig({
       link: '/en-US/index' // default /fr/ -- shows on navbar translations menu, can be external
     }
   },
-  head: [['link', { rel: 'icon', type: "image/png", href: 'favicon.png' }]]
+  head: [['link', { rel: 'icon', type: "image/png", href: '/dev-guidelines/favicon.png' }]]
 })

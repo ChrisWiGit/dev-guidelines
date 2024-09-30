@@ -7,7 +7,7 @@ customRulePrefix: DPB
 customIgnoreTitlesForRules: [Einleitung]
 
 ---
-<img src="./image/behaviour_light_128.png" alt="Creational Pattern" width="36" height="36"><br>
+<img src="/behaviour_light_128.png" alt="Creational Pattern" width="36" height="36"><br>
 
 # Entwurfsmuster - Verhaltensmuster
 

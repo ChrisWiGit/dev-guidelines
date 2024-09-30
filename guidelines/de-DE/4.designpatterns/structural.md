@@ -7,7 +7,7 @@ customRulePrefix: DPS
 customIgnoreTitlesForRules: [Einleitung]
 
 ---
-<img src="./image/diagram_light_128.png" alt="Creational Pattern" width="36" height="36"><br>
+<img src="/diagram_light_128.png" alt="Creational Pattern" width="36" height="36"><br>
 
 # Entwurfsmuster - Strukturmuster
 

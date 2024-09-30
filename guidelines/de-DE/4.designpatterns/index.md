@@ -37,7 +37,7 @@ features:
     details: "Einzelstück, Singleton"
     link: ./creational#singleton
     icon: 
-      src: image/brickwall_light_128.png
+      src: /brickwall_light_128.png
       width: 36
       height: 36
       alt: Singleton zählt zu den Creational Patterns
@@ -45,7 +45,7 @@ features:
     details: "Fabrikmethode, Factory Method"
     link: ./creational#factory-method
     icon:
-      src: image/brickwall_light_128.png
+      src: /brickwall_light_128.png
       width: 36
       height: 36
       alt: Factory Method zählt zu den Creational Patterns
@@ -53,7 +53,7 @@ features:
     details: "Abstrakte Fabrik, Abstract Factory"
     link: ./creational#abstract-factory
     icon:
-      src: image/brickwall_light_128.png
+      src: /brickwall_light_128.png
       width: 36
       height: 36
       alt: Abstract Factory zählt zu den Creational Patterns
@@ -61,7 +61,7 @@ features:
     details: "Erbauer, Builder"
     link: ./creational#builder
     icon:
-      src: image/brickwall_light_128.png
+      src: /brickwall_light_128.png
       width: 36
       height: 36
       alt: Builder zählt zu den Creational Patterns
@@ -69,7 +69,7 @@ features:
     details: "Prototyp, Prototype"
     link: ./creational#prototype
     icon:
-      src: image/brickwall_light_128.png
+      src: /brickwall_light_128.png
       width: 36
       height: 36
       alt: Prototype zählt zu den Creational Patterns
@@ -80,7 +80,7 @@ features:
     details: "Adapter"
     link: ./structural#adapter
     icon:
-      src: image/diagram_light_128.png
+      src: /diagram_light_128.png
       width: 36
       height: 36
       alt: Adapter zählt zu den Creational Patterns
@@ -88,7 +88,7 @@ features:
     details: "Brücke, Bridge"
     link: ./structural#bridge
     icon:
-      src: image/diagram_light_128.png
+      src: /diagram_light_128.png
       width: 36
       height: 36
       alt: Bridge zählt zu den Creational Patterns
@@ -96,7 +96,7 @@ features:
     details: "Zusammengesetzt, Composite"
     link: ./structural#composite
     icon:
-      src: image/diagram_light_128.png
+      src: /diagram_light_128.png
       width: 36
       height: 36
       alt: Composite zählt zu den Creational Patterns
@@ -104,7 +104,7 @@ features:
     details: "Dekorateur, Decorator"
     link: ./structural#decorator
     icon:
-      src: image/diagram_light_128.png
+      src: /diagram_light_128.png
       width: 36
       height: 36
       alt: Decorator zählt zu den Creational Patterns
@@ -112,7 +112,7 @@ features:
     details: "Fassade, Facade"
     link: ./structural#facade
     icon:
-      src: image/diagram_light_128.png
+      src: /diagram_light_128.png
       width: 36
       height: 36
       alt: Facade zählt zu den Creational Patterns
@@ -120,7 +120,7 @@ features:
     details: "Fliegengewicht, Flyweight"
     link: ./structural#flyweight
     icon:
-      src: image/diagram_light_128.png
+      src: /diagram_light_128.png
       width: 36
       height: 36
       alt: Flyweight zählt zu den Creational Patterns
@@ -128,7 +128,7 @@ features:
     details: "Stellvertreter, Proxy"
     link: ./structural#proxy
     icon:
-      src: image/diagram_light_128.png
+      src: /diagram_light_128.png
       width: 36
       height: 36
       alt: Proxy zählt zu den Creational Patterns      
@@ -139,7 +139,7 @@ features:
     details: Eine Anfrage von mehr als einem Objekt bearbeiten
     link: ./behavioral#chainofresponsibility
     icon:
-      src: image/behaviour_light_128.png
+      src: /behaviour_light_128.png
       width: 36
       height: 36
       alt: Chain of Responsibility zählt zu den Creational Patterns
@@ -147,7 +147,7 @@ features:
     details: Sender und Empfänger entkoppeln
     link: ./behavioral#command
     icon:
-      src: image/behaviour_light_128.png
+      src: /behaviour_light_128.png
       width: 36
       height: 36
       alt: Command zählt zu den Creational Patterns
@@ -155,7 +155,7 @@ features:
     details: Für das Interpretieren von Sprachen
     link: ./behavioral#interpreter
     icon:
-      src: image/behaviour_light_128.png
+      src: /behaviour_light_128.png
       width: 36
       height: 36
       alt: Interpreter zählt zu den Creational Patterns
@@ -163,7 +163,7 @@ features:
     details: Für das Durchlaufen von Datenstrukturen
     link: ./behavioral#iterator
     icon:
-      src: image/behaviour_light_128.png
+      src: /behaviour_light_128.png
       width: 36
       height: 36
       alt: Iterator zählt zu den Creational Patterns
@@ -171,7 +171,7 @@ features:
     details: Für die Kommunikation zwischen Objekten
     link: ./behavioral#mediator
     icon:
-      src: image/behaviour_light_128.png
+      src: /behaviour_light_128.png
       width: 36
       height: 36
       alt: Mediator zählt zu den Creational Patterns
@@ -179,7 +179,7 @@ features:
     details: Für das Speichern und Wiederherstellen von Zuständen von Objekten
     link: ./behavioral#memento
     icon:
-      src: image/behaviour_light_128.png
+      src: /behaviour_light_128.png
       width: 36
       height: 36
       alt: Memento zählt zu den Creational Patterns
@@ -187,7 +187,7 @@ features:
     details: Für das Benachrichtigen von Objekten über Änderungen
     link: ./behavioral#observer
     icon:
-      src: image/behaviour_light_128.png
+      src: /behaviour_light_128.png
       width: 36
       height: 36
       alt: Observer zählt zu den Creational Patterns
@@ -195,7 +195,7 @@ features:
     details: Für das Ändern des Verhaltens eines Objekts anhand seines Zustands
     link: ./behavioral#state
     icon:
-      src: image/behaviour_light_128.png
+      src: /behaviour_light_128.png
       width: 36
       height: 36
       alt: State zählt zu den Creational Patterns
@@ -203,7 +203,7 @@ features:
     details: Um Algorithmen austauschbar zu machen
     link: ./behavioral#strategy
     icon:
-      src: image/behaviour_light_128.png
+      src: /behaviour_light_128.png
       width: 36
       height: 36
       alt: Strategy zählt zu den Creational Patterns
@@ -211,7 +211,7 @@ features:
     details: Basisklassen erlauben Unterklassen, Schritte zu überschreiben
     link: ./behavioral#templatemethod
     icon:
-      src: image/behaviour_light_128.png
+      src: /behaviour_light_128.png
       width: 36
       height: 36
       alt: Template Method zählt zu den Creational Patterns
@@ -219,7 +219,7 @@ features:
     details: Trennung von Datenstruktur und Operationen
     link: ./behavioral#visitor
     icon:
-      src: image/behaviour_light_128.png
+      src: /behaviour_light_128.png
       width: 36
       height: 36
       alt: Visitor zählt zu den Creational Patterns
