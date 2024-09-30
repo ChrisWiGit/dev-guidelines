@@ -38,5 +38,6 @@ export default defineConfig({
       lang: 'en-US', // optional, will be added  as `lang` attribute on `html` tag
       link: '/en-US/index' // default /fr/ -- shows on navbar translations menu, can be external
     }
-  }
+  },
+  head: [['link', { rel: 'icon', type: "image/png", href: 'favicon.png' }]]
 })
