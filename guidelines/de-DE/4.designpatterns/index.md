@@ -77,7 +77,7 @@ features:
     details: "Adapter"
     link: ./structural#adapter
     icon:
-      src: image/sign-post_light_128.png
+      src: image/diagram_light_128.png
       width: 36
       height: 36
       alt: Adapter zählt zu den Creational Patterns
@@ -85,7 +85,7 @@ features:
     details: "Brücke, Bridge"
     link: ./structural#bridge
     icon:
-      src: image/sign-post_light_128.png
+      src: image/diagram_light_128.png
       width: 36
       height: 36
       alt: Bridge zählt zu den Creational Patterns
@@ -93,7 +93,7 @@ features:
     details: "Zusammengesetzt, Composite"
     link: ./structural#composite
     icon:
-      src: image/sign-post_light_128.png
+      src: image/diagram_light_128.png
       width: 36
       height: 36
       alt: Composite zählt zu den Creational Patterns
@@ -101,7 +101,7 @@ features:
     details: "Dekorateur, Decorator"
     link: ./structural#decorator
     icon:
-      src: image/sign-post_light_128.png
+      src: image/diagram_light_128.png
       width: 36
       height: 36
       alt: Decorator zählt zu den Creational Patterns
@@ -109,7 +109,7 @@ features:
     details: "Fassade, Facade"
     link: ./structural#facade
     icon:
-      src: image/sign-post_light_128.png
+      src: image/diagram_light_128.png
       width: 36
       height: 36
       alt: Facade zählt zu den Creational Patterns
@@ -117,7 +117,7 @@ features:
     details: "Fliegengewicht, Flyweight"
     link: ./structural#flyweight
     icon:
-      src: image/sign-post_light_128.png
+      src: image/diagram_light_128.png
       width: 36
       height: 36
       alt: Flyweight zählt zu den Creational Patterns
@@ -125,7 +125,7 @@ features:
     details: "Stellvertreter, Proxy"
     link: ./structural#proxy
     icon:
-      src: image/sign-post_light_128.png
+      src: image/diagram_light_128.png
       width: 36
       height: 36
       alt: Proxy zählt zu den Creational Patterns      

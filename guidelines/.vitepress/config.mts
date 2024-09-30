@@ -23,7 +23,7 @@ export default defineConfig({
       provider: 'local'
     },
     footer: {
-      message: '<a href="https://github.com/ChrisWiGit/dev-guidelines">Dev Guidelines GitHub Source</a>  Credits: Icons used from <a href="https://support.freepik.com/">FreePik.com</a>',
+      message: '<a href="https://github.com/ChrisWiGit/dev-guidelines">Dev Guidelines GitHub Source</a>  Credits: Icons used from <a href="https://www.freepik.com">FreePik.com</a>',
       copyright: '<a href="https://github.com/ChrisWiGit/dev-guidelines?tab=CC-BY-SA-4.0-1-ov-file#readme">CC Attribution-ShareAlike 4.0 International</a>'
     }
   },
