@@ -42,11 +42,11 @@ Selbst wenn Entwickler eine Ausbildung oder ein Hochschulstudium absolviert habe
 Auch so genannte Senior-Entwickler, die schon viele Jahre in der Softwareentwicklung tätig sind, haben oftmals wenig Ahnung von Softwarearchitektur und Design Patterns, da sie in ihrer täglichen Arbeit regelmäßig nur mit der (schnellen) Lösung von Problemen beschäftigt sind.
 Code wird nicht selten nur geschrieben, um ein Problem zu lösen, ohne sich Gedanken über die Wartbarkeit und Erweiterbarkeit des Codes zu machen.
 Dies führt zu einer hohen technischen Verschuldung, die in vielen Fällen nicht mehr abgebaut werden kann und die Softwareentwicklung nicht nur immer langsamer und teurer macht, sondern mit hoher Wahrscheinlichkeit auch zum Konkurs des Unternehmens führen kann.
+Der Verfall kann auch nicht aufgehalten werden, indem einfach neue Entwickler eingestellt werden, die helfen sollen den Code zu verbessern und natürlich weiter mit neuen Features zu erweitern.
+Die neuen Entwickler werden mit hoher Wahrscheinlichkeit und durch das Management gezwungenermaßen die gleichen Fehler machen wie ihre Vorgänger, jedoch müssen sie mit dem zusätzlichen Ballast und Komplexität des alten Codes zurechtkommen.
 
-Durch einheitliche Richtlinien und Standards wird die Softwareentwicklung außerdem auch für neue Entwickler einfacher, da sie sich schneller in den Code einarbeiten können und die Eigenheiten des Codes nicht erst mühsam erlernen müssen.
-
-Wenn Softwareprodukte von Anfang an nach festen Regeln und Prinzipien entwickelt werden, verbessert dies nicht nur die Qualität der Software, sondern senkt auch die Kosten und erhöht die Zufriedenheit von Anwendern und Entwicklern.
-Die Softwareentwicklung wird effizienter und die Software wird langlebiger und wartbarer, was zu einer gleichbleibenden oder höheren Produktivität (mehr Funktionen in kürzerer Zeit) führt.
+**Wenn Softwareprodukte und insbesondere Code von Anfang an nach festen Regeln und Prinzipien entwickelt werden, verbessert dies nicht nur die Qualität der Software und des Produkts, sondern senkt auch die Kosten und erhöht die Zufriedenheit von Anwendern und Entwicklern.
+Die Softwareentwicklung wird effizienter und die Software wird langlebiger und wartbarer, was zu einer gleichbleibenden oder höheren Produktivität (mehr Funktionen in kürzerer Zeit) führt.**
 
 ::: info Kurz
 
