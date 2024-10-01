@@ -1924,7 +1924,7 @@ function increment(value, step = 10) {
 
 ### JS28 Lösung
 
-Verwende stattdessen separate Funktionen oder Methoden mit spezifischen Parametern, um das Verhalten klarer zu kennzeichnen.
+Verwende stattdessen separate Funktionen oder Methoden mit spezifischen Namen, um das Verhalten klarer zu kennzeichnen.
 
 ```javascript
 function incrementValueBy(value, step) {
