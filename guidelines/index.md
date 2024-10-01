@@ -8,7 +8,7 @@ hero:
   tagline: "Making Software is really really hard"
   actions:
     - theme: brand
-      text: Deutsch (in Arbeit, 60%)
+      text: Deutsch (in Arbeit, 59%)
       link: ./de-DE/
     - theme: brand
       text: English (incomplete, 1%)

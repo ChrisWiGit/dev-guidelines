@@ -21,35 +21,79 @@ hero:
       link: ./sources
 
 features:
-  - title: Allgemeines
+  - title: Allgemeines (100%)
     details: Allgemeines zum Leitfaden
     link: ./general
-  - title: Gesundheit
+    icon: 
+      src: /flag.png
+      width: 36
+      height: 36
+  - title: Gesundheit (100%)
     details: Regeln zur Gesundheit
     link: ./1.health/ 
-  - title: Prinzipien der SE
+    icon:
+      src: /health.png
+      width: 36
+      height: 36
+  - title: Prinzipien der SE (100%)
     details: Prinzipien der Softwareentwicklung
     link: ./2.principles/
-  - title: Clean Code
+    icon:
+      src: /principles.png
+      width: 36
+      height: 36
+  - title: Clean Code (20%)
     details: Clean Code Regeln
     link: ./3.cleancode/
-  - title: Design Patterns
+    icon:
+      src: /cleancode.png
+      width: 36
+      height: 36
+  - title: Design Patterns (50%)
     details: Entwurfsmuster in der Softwareentwicklung
     link: ./4.designpatterns/
-  - title: Refactoring
+    icon:
+      src: /designpatterns.png
+      width: 36
+      height: 36
+  - title: Refactoring (33%)
     details: Regeln zum Refactoring
     link: ./5.refactoring/
-  - title: Sprachen
+    icon:
+      src: /refactoring.png
+      width: 36
+      height: 36
+  - title: Sprachen (50%)
     details: Richtlinien zu den Sprachen und Frameworks Java, JavaScript, Vue
     link: ./6.languages/
-  - title: Code Reviews
+    icon:
+      src: /languages.png
+      width: 36
+      height: 36
+  - title: Code Reviews (40%)
     details: Regeln für Code Reviews
     link: ./7.reviews
-  - title: Künstliche Intelligenz
+    icon:
+      src: /codereviews.png
+      width: 36
+      height: 36
+  - title: Barrierefreiheit (1%)
+    details: Regeln für barrierefreie Software
+    link: ./8.accessibility
+    icon:
+      src: /accessibility.png
+      width: 36
+      height: 36
+  - title: Künstliche Intelligenz (100%)
     details: KI in der Softwareentwicklung
-    link: ./8.ai
+    link: ./9.ai
+    icon:
+      src: /ai.png
+      width: 36
+      height: 36
   
 ---
+
 
 # Startseite
 

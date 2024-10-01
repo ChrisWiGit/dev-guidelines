@@ -1,5 +1,6 @@
 ---
 layout: doc
+outline: [2,2]
 customRulePrefix: P
 customIgnoreTitlesForRules: [Einleitung]
 ---
@@ -19,7 +20,7 @@ Damit kann eine Regel eindeutig identifiziert werden, z.B. für ein Code-Review.
 
 ## P1 SOLID {#solid}
 
-SOLID ist das grundlegenste Prinzip der Softwareentwicklung.
+SOLID ist das grundlegendste Prinzip der Softwareentwicklung.
 Es steht für die fünf Prinzipien der Softwareentwicklung:
 
 * Single Responsibility Principle,
@@ -44,7 +45,7 @@ Das Open/Closed Principle besagt, dass Software so entwickelt werden sollte, das
 
 Das bedeutet, dass Software so entwickelt werden sollte, dass sie leicht erweitert werden kann, ohne dass der bestehende Code geändert werden muss.
 
-### P3 Probleme
+### P3 Problem
 
 Viele Fehler entstehen durch Änderungen an bestehendem Code, insbesondere wenn keine Tests vorhanden sind.
 Wenn vorhandener Code geändert wird, müssen Tests angepasst werden, was zu einem erhöhten Aufwand führt.
@@ -69,7 +70,7 @@ Wenn Objekte einer abgeleiteten Klasse nicht so verwendet werden können, wie Ob
 Abgeleitete Klassen sollten so entwickelt werden, dass sie Objekte der Basisklasse ersetzen können, ohne dass es zu Fehlern oder unerwartetem Verhalten kommt.
 Methoden müssen die gleichen Parameter akzeptieren und die gleichen Rückgabewerte liefern.
 Methoden dürfen keine zusätzlichen Parameter haben und dürfen keine zusätzlichen Ausnahmen werfen.
-Das Verhalten der Methoden muss das gleiche sein wie das der Basisklasse, bzw. der Interface-Beschreibung.
+Das Verhalten der Methoden muss das gleiche sein wie das der Basisklasse beziehungsweise der Interface-Beschreibung.
 
 ## P5 Interface Segregation Principle {#interface-segregation-principle}
 
