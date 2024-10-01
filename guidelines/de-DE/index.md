@@ -51,3 +51,22 @@ features:
   
 ---
 
+# Startseite
+
+Dies ist die deutsche Version des Leitfadens für Softwareentwicklungsrichtlinien.
+
+## Haftungsausschluss
+
+Dieser Leitfaden ist eine Sammlung von Regeln und Empfehlungen, die auf den Erfahrungen und dem Wissen der Autoren im Bereich der Softwareentwicklung beruhen.
+Die Autoren übernehmen keine Haftung für Schäden, die sich aus der Anwendung der Regeln ergeben.
+Die Anwendung der Regeln erfolgt auf eigenes Risiko.
+
+## KI-gestützte Texte
+
+Viele der Texte in diesem Leitfaden wurden von KI-Systemen **unterstützend** während des Schreibprozesses generiert und entsprechend angepasst oder umgestaltet.
+Die Texte wurden von den Autoren zeitnah und sorgfältig geprüft, überarbeitet und mit den Quellen abgeglichen.
+Der Prozess wurde so gestaltet, dass die Autoren die Kontrolle über die Inhalte behielten, während die KI-Systeme als unterstützende Werkzeuge eingesetzt wurden.
+Die Texte wurden immer nur in kleinen Teilen (1-3 Sätze) generiert und dann von den Autoren überarbeitet und angepasst.
+Ganze Abschnitte oder Kapitel wurden nie auf einmal von KI-Systemen generiert.
+
+Trotzdem können sich Fehler eingeschlichen haben!

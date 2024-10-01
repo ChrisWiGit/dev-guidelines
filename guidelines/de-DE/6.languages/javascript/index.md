@@ -1500,7 +1500,7 @@ function processInput(input) {
 
 If-Bedingungen sollen positiv formuliert werden und komplexe Bedingungen sollen in temporäre Variablen ausgelagert werden, um die Lesbarkeit und Wartbarkeit des Codes zu verbessern.
 
-::: Beachte
+::: info Beachte
 
 Die Aufsplittung von If-Bedingungen ist sehr abhängig vom Verständnis des Entwicklers und soll mit Sinn und Verstand eingesetzt werden.
 
