@@ -16,6 +16,44 @@ Es ist normal, dass du mit der einen oder anderen Regel nicht einverstanden bist
 Wichtig dabei ist jedoch, dass du dies kommunizierst, darüber im Team diskutierst und eine neue Regelung als Ersatz findest.
 :::
 
+::: info Entwicklerinnen und Entwickler
+
+Glücklicherweise entscheiden sich immer mehr Frauen für eine Karriere in der Softwareentwicklung.
+Dieser positive Trend soll weiter gefördert werden, um die Vielfalt in der Softwareentwicklung zu erhöhen, denn Vielfalt führt zu besseren Lösungen und Produkten.
+
+Leider sind die Diskussionen über das generische Maskulinum in der deutschen Sprache noch nicht abgeschlossen.
+Dennoch haben sich die Autoren entschieden, in diesem Dokument das generische Maskulinum zu verwenden, um die Lesbarkeit zu erhöhen.
+
+**Natürlich sind alle Richtlinien und Regeln in diesem Dokument für Entwicklerinnen und Entwickler gleichermaßen gültig.**
+
+:::
+
+## Warum Richtlinien?
+
+In Deutschland gibt es allein für das Bauwesen rund [3900 Normen](https://www.din.de/de/mitwirken/normenausschuesse/nabau/baukosten-normen), viele hundert ISO-Normen regeln die Qualität von Produkten und Dienstleistungen (z.B. [ISO 9001](https://www.iso.org/standard/62085.html) für Qualitätsmanagement, [25010 für Software-Qualität](https://iso25000.com/index.php/en/iso-25000-standards/iso-25010)) und die Europäische Union hat viele weitere Richtlinien, um den Binnenmarkt zu regeln und Produkte sicherer zu machen.
+Und wer keinen Stromschlag von einer Elektroinstallation bekommen will, sollte sich an die [VDE-Normen](https://www.vde-verlag.de/standards.html) halten.
+
+Im Gegensatz dazu wird in der Softwareentwicklung oft noch nach dem Prinzip "Learning by Doing" gearbeitet.
+Viele etablierte Regeln und Prinzipien sind den Entwicklern unbekannt oder werden einfach ignoriert.
+Dies geschieht tagtäglich in vielen, auch namhaften Unternehmen und führt zu schlechter Softwarequalität, hohen Wartungskosten und großer Frustration bei den Anwendern.
+
+Software wird aufgrund ihrer immateriellen Form gerne als ein einfach und schnell zu erstellendes Produkt angesehen, das man nebenbei entwickeln kann (*"Der Praktikant macht das schon"*).
+Selbst wenn Entwickler eine Ausbildung oder ein Hochschulstudium absolviert haben, fehlt ihnen das Wissen und die Erfahrung, um große und komplexe Unternehmenssoftware zu entwickeln.
+Auch so genannte Senior-Entwickler, die schon viele Jahre in der Softwareentwicklung tätig sind, haben oftmals wenig Ahnung von Softwarearchitektur und Design Patterns, da sie in ihrer täglichen Arbeit regelmäßig nur mit der (schnellen) Lösung von Problemen beschäftigt sind.
+Code wird nicht selten nur geschrieben, um ein Problem zu lösen, ohne sich Gedanken über die Wartbarkeit und Erweiterbarkeit des Codes zu machen.
+Dies führt zu einer hohen technischen Verschuldung, die in vielen Fällen nicht mehr abgebaut werden kann und die Softwareentwicklung nicht nur immer langsamer und teurer macht, sondern mit hoher Wahrscheinlichkeit auch zum Konkurs des Unternehmens führen kann.
+
+Durch einheitliche Richtlinien und Standards wird die Softwareentwicklung außerdem auch für neue Entwickler einfacher, da sie sich schneller in den Code einarbeiten können und die Eigenheiten des Codes nicht erst mühsam erlernen müssen.
+
+Wenn Softwareprodukte von Anfang an nach festen Regeln und Prinzipien entwickelt werden, verbessert dies nicht nur die Qualität der Software, sondern senkt auch die Kosten und erhöht die Zufriedenheit von Anwendern und Entwicklern.
+Die Softwareentwicklung wird effizienter und die Software wird langlebiger und wartbarer, was zu einer gleichbleibenden oder höheren Produktivität (mehr Funktionen in kürzerer Zeit) führt.
+
+::: info Kurz
+
+Softwareentwicklung wird zu einer Ingenieursdisziplin, die nach festen Regeln und Prinzipien arbeitet und nicht mehr nach dem Prinzip "Learning by Doing".
+
+:::
+
 ## Abschnitte
 
 Die Richtlinien sind in mehrere Abschnitte unterteilt, die dir helfen sollen, mit der Zeit immer besser bei der Entwicklung von Software zu werden.
