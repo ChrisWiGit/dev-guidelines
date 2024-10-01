@@ -37,4 +37,5 @@ Es gibt folgende Abschnitte:
 
 ## Nutzen
 
-Du kannst die Richtlinien gesamt oder in Teilen nutzen. Du kannst sie auch an deine Bedürfnisse anpassen und sie in deinem Team verwenden.
+Du kannst die Richtlinien gesamt oder in Teilen nutzen. Du kannst sie auch an deine Bedürfnisse anpassen und sie in deinem Team verwenden,
+solange du die [Lizenz](../.#license) beachtest.

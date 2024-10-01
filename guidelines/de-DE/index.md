@@ -61,12 +61,23 @@ Dieser Leitfaden ist eine Sammlung von Regeln und Empfehlungen, die auf den Erfa
 Die Autoren übernehmen keine Haftung für Schäden, die sich aus der Anwendung der Regeln ergeben.
 Die Anwendung der Regeln erfolgt auf eigenes Risiko.
 
-## KI-gestützte Texte
+## KI-unterstützte Texte
 
-Viele der Texte in diesem Leitfaden wurden von KI-Systemen **unterstützend** während des Schreibprozesses generiert und entsprechend angepasst oder umgestaltet.
+Viele der Texte in diesem Leitfaden wurden während des Schreibprozesses von KI-Systemen **unterstützt** generiert und entsprechend angepasst oder umgestaltet.
 Die Texte wurden von den Autoren zeitnah und sorgfältig geprüft, überarbeitet und mit den Quellen abgeglichen.
 Der Prozess wurde so gestaltet, dass die Autoren die Kontrolle über die Inhalte behielten, während die KI-Systeme als unterstützende Werkzeuge eingesetzt wurden.
-Die Texte wurden immer nur in kleinen Teilen (1-3 Sätze) generiert und dann von den Autoren überarbeitet und angepasst.
+Die Texte wurden immer nur in kleinen Teilen (1-3 Sätze) generiert und dann von den Autoren überarbeitet und angepasst, um den Lesefluss und das Verständnis zu verbessern.
 Ganze Abschnitte oder Kapitel wurden nie auf einmal von KI-Systemen generiert.
+Daneben wurde KI eingesetzt, um Stil, Grammatik und Rechtschreibung zu überprüfen und zu verbessern.
 
 Trotzdem können sich Fehler eingeschlichen haben!
+
+Auf eine Kennzeichnung dieser KI-generierten Texte zur Unterscheidung von manuell erstellten Texten wurde verzichtet, da dies einen unvertretbar hohen Aufwand bedeutet hätte.
+Es steht den Lesern frei, die Texte selbst zu überarbeiten, umzuschreiben oder zu ergänzen.
+
+## Einsatz von KI
+
+Diese Dokumentation ist frei zum Gebrauch und Open Source unter der [Creative Commons Lizenz](../index#lizenz)
+Sie wurde in der Freizeit der Autoren erstellt.
+Daher halten die Autoren den Einsatz von KI-Systemen für gerechtfertigt, da die Erstellung der Dokumentation sonst viel zu zeitaufwändig wäre.
+Durch die enge Kontrolle der generierten Texte durch die Autoren konnte sichergestellt werden, dass die Texte den eigenen Qualitätsansprüchen genügen und die KI-Tools keine halluzinierten Texte generieren.
