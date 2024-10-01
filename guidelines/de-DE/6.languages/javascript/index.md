@@ -337,7 +337,7 @@ Stattdessen sollen `const` und `let` verwendet werden, um die Sichtbarkeit von V
 
 ## JS5 Benennung von Variablen, Funktionen, Klassen und mehr {#benennung-von-variablen-funktionen-klassen-und-mehr}
 
-- Variablen sind im **camelCase** zu benennen: `myVariable`.
+- Variablen sind im **camelCase** <img src="/camel.png" width="24" height="24" alt="camelCase" style="display: inline;" /> zu benennen: `myVariable`.
 - Funktionen oder Methoden sind im **camelCase** zu benennen `myFunction()` oder `myMethod()`.
 - Klassen sind im **PascalCase** zu benennen `MyClass`.
 - Globale Konstanten sind in **UPPER_SNAKE_CASE** zu benennen `MY_CONSTANT`.

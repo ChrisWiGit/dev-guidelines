@@ -264,3 +264,12 @@ Die Qualität von Quellcode, der aus einer Suchmaschine stammt, ist oft fragwür
 * Die Lizenz muss überprüft werden.
 Die Verwendung von Lizenzen, die nicht mit den Unternehmensrichtlinien übereinstimmen ist nicht erlaubt.
 * Wenn Quelltext übernommen wird, muss ein Test dafür geschrieben werden.
+
+## P25 Behandle Warnungen als Fehler {#behandle-warnungen-als-fehler}
+
+Warnungen im Code sollten immer als Fehler behandelt werden und entsprechend behoben werden.
+
+Werden Warnungen ignoriert, können sie in bestimmten Fällen zu Fehlern führen, die nicht leicht zu finden sind.
+Ausnahmen können gemacht werden, wenn die Warnung definitiv nicht zutrifft oder wenn sie zum aktuellen Zeitpunkt nicht behoben werden kann.
+
+Warnungen sollten im Zuge eines Refactorings Stück für Stück behoben werden.

@@ -63,7 +63,7 @@ features:
       src: /refactoring.png
       width: 36
       height: 36
-  - title: Sprachen (50%)
+  - title: Sprachen (60%)
     details: Richtlinien zu den Sprachen und Frameworks Java, JavaScript, Vue
     link: ./6.languages/
     icon:

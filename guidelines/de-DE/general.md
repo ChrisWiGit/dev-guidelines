@@ -36,7 +36,7 @@ Damit kann eine Regel eindeutig identifiziert werden, z.B. für ein Code-Review.
 
 Es gibt folgende Abschnitte:
 
-* **G** für Gesundheit. Siehe [Gesundheit](./1.health/)
+- **G** für Gesundheit. Siehe [Gesundheit](./1.health/)
 
 ## Nutzen
 
@@ -51,3 +51,8 @@ Wichtig ist, dass eine einheitliche Linie in der Softwareentwicklung eingehalten
 Nur so kann in einem Team effizient gearbeitet werden.
 
 :::
+
+## Können vs. Sollen
+
+- In diesem Dokument werden alle Regeln die mit `soll`/`sollen` beginnen als verbindlich angesehen.
+- Regeln mit `kann`/`können` sind optional und können je nach Bedarf angewendet werden.

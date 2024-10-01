@@ -31,6 +31,7 @@ layout: doc
 - [P22 FF](2.principles/principles.md#ff)
 - [P23 RoE](2.principles/principles.md#roe)
 - [P24 Don&#x27;t trust google](2.principles/principles.md#don-t-trust-google)
+- [P25 Behandle Warnungen als Fehler](2.principles/principles.md#behandle-warnungen-als-fehler)
 
 ## Allgemeine Regeln für alle Sprachen (GL)
 
@@ -58,24 +59,34 @@ layout: doc
 
 ## Allgemein Regeln für Namen
 
-- [GN1 Allgemeine Regeln](6.languages/naming.md#allgemeine-regeln)
-- [GN2 Schreibweise](6.languages/naming.md#schreibweise)
-- [GN3 Prefixe und Suffixe](6.languages/naming.md#prefixe-und-suffixe)
-- [GN4 Ganzzahlen](6.languages/naming.md#ganzzahlen)
-- [GN5 Fließkommazahlen](6.languages/naming.md#fliesskommazahlen)
-- [GN6 Boolean](6.languages/naming.md#boolean)
-- [GN7 Strings](6.languages/naming.md#strings)
-- [GN8 Listen](6.languages/naming.md#listen)
-- [GN9 Maps, Dictionary](6.languages/naming.md#maps-dictionary)
-- [GN10 Tuple](6.languages/naming.md#tuple)
-- [GN11 Optional](6.languages/naming.md#optional)
-- [GN12 Klassen](6.languages/naming.md#klassen)
-- [GN13 Interfaces](6.languages/naming.md#interfaces)
-- [GN14 Funktionen und Methoden](6.languages/naming.md#funktionen-und-methoden)
-- [GN15 Methodenpaare](6.languages/naming.md#methodenpaare)
-- [GN16 Methoden mit Boolean-Rückgabewerten](6.languages/naming.md#methoden-mit-boolean-rueckgabewerten)
-- [GN17 Getter und Setter](6.languages/naming.md#getter-und-setter)
-- [GN18 Build-Pattern Methoden](6.languages/naming.md#build-pattern-methoden)
+- [GN1 Konventionen durch eingesetzte Sprache](6.languages/naming.md#konventionen-durch-eingesetzte-sprache)
+- [GN2 Allgemeine Regeln](6.languages/naming.md#allgemeine-regeln)
+- [GN3 Unspezifische Namen](6.languages/naming.md#unspezifische-namen)
+- [GN4 Schreibweise](6.languages/naming.md#schreibweise)
+- [GN5 Präfixe und Suffixe](6.languages/naming.md#praefixe-und-suffixe)
+- [GN6 Variablen](6.languages/naming.md#variablen)
+- [GN7 mögliche Nullwerte in Variablen](6.languages/naming.md#moegliche-nullwerte-in-variablen)
+- [GN8 Schleifenvariablen](6.languages/naming.md#schleifenvariablen)
+- [GN9 Ganzzahlen](6.languages/naming.md#ganzzahlen)
+- [GN10 Fließkommazahlen](6.languages/naming.md#fliesskommazahlen)
+- [GN11 Boolean](6.languages/naming.md#boolean)
+- [GN12 Strings](6.languages/naming.md#strings)
+- [GN13 Listen, Sets](6.languages/naming.md#listen-sets)
+- [GN14 Maps, Dictionary](6.languages/naming.md#maps-dictionary)
+- [GN15 Tuple](6.languages/naming.md#tuple)
+- [GN16 Optional](6.languages/naming.md#optional)
+- [GN17 Namensräume und Packages](6.languages/naming.md#namespaces-packages)
+- [GN18 Klassen](6.languages/naming.md#klassen)
+- [GN19 Interfaces](6.languages/naming.md#interfaces)
+- [GN20 Funktionen und Methoden](6.languages/naming.md#funktionen-und-methoden)
+- [GN21 Funktionen- und Methodenparameter](6.languages/naming.md#funktionen-und-methodenparameter)
+- [GN22 Methodenpaare](6.languages/naming.md#methodenpaare)
+- [GN23 Methoden mit Boolean-Rückgabewerten](6.languages/naming.md#methoden-mit-boolean-rueckgabewerten)
+- [GN24 Getter und Setter](6.languages/naming.md#getter-und-setter)
+- [GN25 Build-Pattern Methoden](6.languages/naming.md#build-pattern-methoden)
+- [GN26 Factory-Methode](6.languages/naming.md#factory-method)
+- [GN27 Verwechslung von Verben und Adjektive](6.languages/naming.md#verwechslung-von-verben-und-adjektive)
+- [GN28 Asynchrone Methoden](6.languages/naming.md#asynchrone-methoden)
 
 ## Regeln für JavaScript
 
@@ -156,9 +167,9 @@ layout: doc
 
 ## Regeln für das Arbeiten mit Künstlicher Intelligenz
 
-- [AI1 Was ist KI nicht?](8.ai.md#was-ist-ki-nicht)
-- [AI2 Traue keiner KI](8.ai.md#traue-keiner-ki)
-- [AI3 Sicherheit in den KI Code-Ergebnissen](8.ai.md#sicherheit-in-den-ki-code-ergebnissen)
+- [AI1 Was ist KI nicht?](9.ai.md#was-ist-ki-nicht)
+- [AI2 Traue keiner KI](9.ai.md#traue-keiner-ki)
+- [AI3 Sicherheit in den KI Code-Ergebnissen](9.ai.md#sicherheit-in-den-ki-code-ergebnissen)
 
 ## Entwurfsmuster
 

@@ -17,10 +17,22 @@ features:
   - title: Java
     details: Refactoring für Java
     link: ./java
+    icon: 
+      src: /java.png
+      width: 36
+      height: 36
   - title: JavaScript / Ecma-Script
     details: Refactoring für JavaScript und TypeScript
     link: ./javascript
+    icon:
+      src: /javascript.png
+      width: 36
+      height: 36
   - title: Vue 3
     details: Refactoring für Vue 3
     link: ./vue
+    icon:
+      src: /vue.png
+      width: 36
+      height: 36
 ---

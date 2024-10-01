@@ -8,21 +8,37 @@ hero:
   tagline: "Guter Code ist langweilig"
   actions:
     - theme: brand
-      text: Allgemeine Richtlinien
+      text: Allgemeine Richtlinien für alle Sprachen
       link: ./general
-    - theme: alt
-      text: Einheitliche Namensgebung
-      link: ./naming
-    - theme: alt
-      text: Java
-      link: ./java/
-    - theme: alt
-      text: JavaScript / Ecma-Script
-      link: ./javascript/
-    - theme: alt
-      text: Vue 3
-      link: ./vue/
-    - theme: brand
-      text: Literatur
-      link: ../sources
+
+features:
+  - title: Allgemeine Regeln für Namen
+    details: Einheitliche Namensgebung
+    link: ./naming
+    icon: 
+      src: /naming.png
+      width: 36
+      height: 36
+  - title: Java
+    details: Java-Programmierung
+    link: ./java/
+    icon: 
+      src: /java.png
+      width: 36
+      height: 36
+  - title: JavaScript / Ecma-Script
+    details: JavaScript-Programmierung
+    link: ./javascript/
+    icon:
+      src: /javascript.png
+      width: 36
+      height: 36
+  - title: Vue 3
+    details: Vue 3-Programmierung
+    link: ./vue/
+    icon:
+      src: /vue.png
+      width: 36
+      height: 36
+
 ---
