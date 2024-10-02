@@ -8,6 +8,9 @@ customIgnoreTitlesForRules: [Einleitung]
 
 ## Einleitung {#einleitung}
 
+> Das zweit-schwierigste Problem in der IT ist die Kunden zu verstehen, was sie wollen.
+> Das schwierigste Problem ist, gute Namen zu finden.
+
 Allen Kapiteln wurde eine eindeutige Nummerierung, der Richtliniennummer, hinzugefügt, um eine eindeutige Identifikation zu ermöglichen.
 Jede Richtliniennummer besteht aus dem Buchstaben **GN**(General Naming) gefolgt von einer Nummer, die den Abschnitt identifiziert. Damit kann eine Regel eindeutig identifiziert werden, z.B. für ein Code-Review.
 
@@ -24,7 +27,9 @@ Es soll von den hier vorgegebenen Regeln abgewichen werden, wenn die Sprache spe
 ## GN2 Allgemeine Regeln {#allgemeine-regeln}
 
 - Verwende die Sprache der Domäne, in der die Software entwickelt wird.
-  - Mache dich mit der Domänensprache vertraut, um die richtigen Namen zu verwenden.
+  - Verwende Namen, die auch für das Geschäftsmodell oder die Domäne verständlich sind.
+  - Vermeide das ersetzen von Domänenspezifischen Namen durch technische Namen (`Item` statt `Article` oder sogar `Invoice`).
+Andernfalls müssen Entwickler ständig zwischen der Domäne und der technischen Sprache wechseln.
 - Prüfe, ob der Name korrekt geschrieben ist (z.B. `Asterisk` statt `Asterix`).
 - Verwende so kurze und präzise Namen wie möglich, aber so lang wie nötig.
 - Verwende die gleichen Wörter für die gleichen Konzepte in der gesamten Codebasis (Konsistenz, z.B. `Account` statt `User`).
@@ -32,6 +37,7 @@ Es soll von den hier vorgegebenen Regeln abgewichen werden, wenn die Sprache spe
 - Vermeide Zahlen in Namen, wenn sie nicht Teil des Namens sind (z.B. `user1` statt `user`).
 - Vermeide komplizierte oder nicht gebräuchliche Wörter (z.B. `abracadabra` statt `magic`).
 - Vermeide Überraschungen in Namen, weil der Name nicht das beschreibt, was der Wert enthält oder die Methode tut (Least astonishment)
+- Übertreibe es nicht mit der Wortwahl, bleibe einfach und verständlich (`release` statt `relinquish` oder `giveUp`).
 
 Beispiele:
 
@@ -419,3 +425,11 @@ Methoden sollen anhand ihrer Funktionalität benannt werden, nicht anhand ihrer 
 
 - `loadUserDataAsync`, `requestUserData` lädt die Benutzerdaten asynchron
 - `loadUserData`, `sendUserData` lädt die Benutzerdaten synchron
+
+## Unbenutzte Namen in Variablen und Parameter
+
+Es sollen keine unbenutzten Variablen und Parameter im Code vorhanden sein.
+
+- Wenn die Funktionsdeklaration die Parameter vorschreibt, kann `_` als Platzhalter für unbenutzte Parameter verwendet werden.
+- Mehrere unbenutzte Parameter können durch `(_, __, ___)` etc. gekennzeichnet werden.
+- Ist der Einsatz von `_` nicht möglich, sollen die Parameter umbenannt werden, um zu verdeutlichen, dass sie nicht verwendet werden (`unused` bzw. `unusedName1`, `unusedName2`).

@@ -297,34 +297,6 @@ class UserService {
 }
 ```
 
-<!-- ## P8 IOSP {#iosp}
-
-Das `Integration Operation Segregation Principle` besagt, dass Code entweder Operations-Logik oder Integration-Logik enthalten sollte, aber nicht beides.
-Solch getrennte Logiken ermöglichen leichteres Testen und erhöht die Verständlichkeit des Codes durch kleinere und einfachere Methoden/Funktionen.
-
-* Eine Methode/Funktion sollte Operations-Logik (Bedingungen, Schleifen, etc.) enthalten, die die Geschäftsregeln implementiert und/oder API-Aufrufe (oder derart) durchführt.
-* Eine Methode/Funktion sollte Integration-Logik enthalten, die anderen Code verwendet, um die Operations-Logik zu implementieren. 
-* 
-* Indem in Methoden verhaltenserzeugende Anweisungen (Logik) gemischt mit Aufrufen anderer Methoden derselben Codebasis steht, ist nicht mehr klar erkennbar, wie Gesamtverhalten entsteht; die Anweisungen sind ja verschmiert über eine u.U. sehr tiefe Hierarchie. Zudem tendieren Methoden mit solcher Mischung dazu, unbegrenzt zu wachsen.
-
-Dem stellt sich das IOSP mit einer klaren Trennung entgegen:
-
-Entweder enthält eine Methode nur Logik, d.h. Transformationen, Kontrollstrukturen oder I/O- bzw. allgemeiner: API-Aufrufe. Dann wird sie Operation genannt.
-Oder eine Methode enthält keinerlei Logik, sondern nur Aufrufe von anderen Methoden derselben Codebasis. Dann wird sie Integration genannt.
-
-Diese strikte Unterscheidung führt zu mehrerlei positiven Effekten:
-
-Methoden tendieren dazu, sehr kurz zu bleiben. Denn mehr als 10, 20 oder 30 Zeilen reine Logik oder ausschließlich Methodenaufrufe „fühlen sich nicht gut an“. Da eine Mischung nicht erlaubt ist, werden weitere kleine Methoden extrahiert.
-Kurze Methoden, die nur Logik enthalten, sind leicht zu testen, da sie keine Abhängigkeiten haben.
-Kurze Methoden, die nur Logik enthalten, sind vergleichsweise leicht zu verstehen. Der Methodenname kann wirklich bedeutungsstiftend wirken.
-Kurze Methoden, die ausschließlich integrieren, sind sehr gut zu verstehen und beschreiben „auf einen Blick“, was geschieht.
-Die Korrektheit von Integrationen lässt sich sehr leicht durch Augenscheinnahme prüfen. Es ist lediglich festzustellen, ob Verarbeitungsschritte grundsätzlich in der korrekten Reihenfolge angeordnet sind. Den Rest übernimmt der Compiler – bzw. die Testabdeckung der Operationen.
-Integrationen lassen sich leicht durch „Zwischenschieben“ weiterer Methoden erweitern, um neue Anforderungen zu erfüllen. Die Verständlichkeit bleibt dabei erhalten.
-
-Das IOSP lässt sich „aus dem Stand“ von jedem Entwickler guten Willens anwenden. Seine Einhaltung ist durch jedermann leicht zu überprüfen. Integrationen und Operationen unterscheiden sich in der Form deutlich. Weitere Details, insbesondere zur Abgrenzung zum Dependency Inversion Principle (DIP), findest du bspw. hier.
-* 
-* -->
-
 ## JS4 Anwendung von ES6 Features {#anwendung-von-es6-features}
 
 Mit ES6 stehen viele neue Möglichkeiten zur Verfügung, um den Code zu verbessern.
@@ -377,7 +349,7 @@ class MyClass {
 
 ::: details Schein-Konstanten
 
-Objekte oder Arrays sind immer veränderbar, auch wenn sie mit `const` deklariert werden.
+Objekte oder Array-Inhalte sind immer veränderbar, auch wenn sie mit `const` deklariert werden.
 Nur die Zuweisung der Variable ist konstant, nicht der Wert.
 
 Mit `Object.freeze()` können Objekte **und** Arrays tatsächlich konstant gemacht werden.
@@ -516,10 +488,15 @@ const myConstant = 42;
 // myConstant ist hier sichtbar
 ```
 
-## JS8 Verwendung von `const` für alle Variablen in JavaScript und Kennzeichnung von Nicht-Konstanten {#verwendung-von-const-fuer-alle-variablen-in-javascript-und-kennzeichnung-von-nicht-konstanten}
+## JS8 Verwendung von `const` für alle Variablen und Kennzeichnung von Nicht-Konstanten {#verwendung-von-const-fuer-alle-variablen-und-kennzeichnung-von-nicht-konstanten}
 
-Um unbeabsichtigtes Ändern von Variablen zu vermeiden, soll in JavaScript das Schlüsselwort `const` für alle Variablen verwendet werden.
-In Fällen, in denen die Verwendung von `const` nicht möglich ist, soll ein Kommentar mit dem Inhalt `/*nonconst*/` hinzugefügt werden.
+Variablen enthalten für gewöhnlich Werte, die sich während der Laufzeit des Programms nicht ändern.
+Eine erneute Zuweisung von Werten zu Variablen kann zu unerwartetem Verhalten führen, weil sich der Wert plötzlich ändert oder versehentlich undefiniert wird.
+
+- Variablen sollen daher mit `const` deklariert werden, um sicherzustellen, dass sie nicht versehentlich geändert werden.
+- Eine erneute Zuweisung von Werten zu Variablen soll vermieden werden, um unerwartetes Verhalten zu vermeiden.
+Stattdessen sollen neue Variablen deklariert werden, wenn ein neuer Wert benötigt wird.
+- Ist eine erneute Zuweisung von Werten notwendig, soll ein Kommentar mit dem Inhalt `/*nonconst*/` hinzugefügt werden, um darauf hinzuweisen und dies auch einem Code-Review zu signalisieren, dass der Entwickler sich der Änderung bewusst ist.
 
 ### JS8 Problem
 
@@ -534,11 +511,13 @@ let age = 30;
 // ...
 
 name = "Jane"; // Unbeabsichtigte Änderung der Variable
+
 ```
 
 ### JS8 Lösung
 
-Um unbeabsichtigtes Ändern von Variablen zu vermeiden, sollen alle Variablen mit `const` deklariert werden. In Fällen, in denen die Verwendung von `const` nicht möglich ist (z. B. bei Variablen, die sich ändern müssen), soll ein Kommentar mit dem Inhalt "nonconst" hinzugefügt werden, um darauf hinzuweisen.
+Um unbeabsichtigtes Ändern von Variablen zu vermeiden, sollen alle Variablen mit `const` deklariert werden.
+In Fällen, in denen die Verwendung von `const` nicht möglich ist (z. B. bei Variablen, die sich ändern müssen), soll ein Kommentar mit dem Inhalt "nonconst" hinzugefügt werden, um darauf hinzuweisen.
 
 ```javascript
 const name = "John";
@@ -553,6 +532,7 @@ const age = 30;
 let count = 0;
 
 count++;
+
 ```
 
 ### JS8 Vorteile
@@ -1626,6 +1606,13 @@ In einigen Fällen kann es sinnvoll sein, Exceptions zu loggen und unverändert 
 ## JS24 Benennung von Methoden mit verschiedenen Präfixen für Synchronität und Ergebnisverhalten {#benennung-von-methoden-mit-verschiedenen-praefixen-fuer-synchronitaet-und-ergebnisverhalten}
 
 Es ist eine bewährte Praxis bei der Benennung von Methoden in JavaScript und Java, unterschiedliche Präfixe zu verwenden, um die Synchronität und das Ergebnisverhalten der Methode zu kennzeichnen. Das Präfix "get" soll für synchronen Zugriff verwendet werden und immer einen Wert zurückgeben, während die Präfixe "fetch" oder "request" für asynchronen Zugriff stehen, der länger dauern und auch fehlschlagen kann.
+
+::: info get-Präfix
+
+Verwechsle das get-Präfix nicht mit dem get-Präfix in Java, das für Getter-Methoden verwendet wird.
+`get-` in JavaScript soll für synchronen Zugriff für eine berechnete Eigenschaft oder ein Ergebnis stehen.
+
+:::
 
 ### JS24 Problem
 

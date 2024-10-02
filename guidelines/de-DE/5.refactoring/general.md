@@ -36,12 +36,20 @@ Viele Entwickler haben jedoch Angst vor Refactoring, da sie befürchten, dass es
 Trotzdem merken sie irgendwann, dass der Code so unübersichtlich und komplex geworden ist, dass er Schmerzen verursacht, ihn zu ändern.
 :::
 
+::: details Refactoring vs. Refaktorisierung vs. Refaktorierung
+
+- **Refactoring** ist der Prozess, bei dem der Code verbessert wird, ohne das Verhalten zu ändern.
+- **Refaktorierung** ist der Prozess, bei dem der Code verbessert wird, ohne das Verhalten zu ändern.
+- **Refaktorisierung** ist die Tätigkeit, die während des Refactorings durchgeführt wird.
+
+:::
+
 ## Warum Refactoring? {#warum-refactoring}
 
 > Code altert nicht, er wird alt.
 
 Die Entwicklung eines Produkts ist ein Lernprozess.
-Während der Entwicklung lernen wir mehr über die Anforderungen, die Technologien und die Architektur. 
+Während der Entwicklung lernen wir mehr über die Anforderungen, die Technologien und die Architektur.
 Dieses wissen besteht allerdings bei den wenigsten Projekten von Anfang an.
 Außerdem ändern sich Anforderungen und Technologien im Laufe der Zeit, so dass spätere Änderungen am Code, der für frühere Anforderungen geschrieben wurde, notwendig werden.
 Diese Änderungen am Code werden oft einfach irgendwie hinzugefügt, ohne, dass der originale Code dafür ausgelegt war.
