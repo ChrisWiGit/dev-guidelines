@@ -10,7 +10,10 @@ hero:
     - theme: brand
       text: Allgemeine Richtlinien
       link: ./general
-    - theme: alt
+    - theme: brand
       text: Benutzeroberfläche
       link: ./ui
+    - theme: brand
+      text: Quellen
+      link: ./sources
 ---
