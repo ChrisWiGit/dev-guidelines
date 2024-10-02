@@ -426,7 +426,7 @@ Methoden sollen anhand ihrer Funktionalität benannt werden, nicht anhand ihrer 
 - `loadUserDataAsync`, `requestUserData` lädt die Benutzerdaten asynchron
 - `loadUserData`, `sendUserData` lädt die Benutzerdaten synchron
 
-## Unbenutzte Namen in Variablen und Parameter
+## GN29 Unbenutzte Namen in Variablen und Parameter {#unbenutzte-namen-in-variablen-und-parameter}
 
 Es sollen keine unbenutzten Variablen und Parameter im Code vorhanden sein.
 

@@ -295,13 +295,13 @@ class UserService {
 - Der Einsatz von neuen Java-Sprachfeatures gegenüber alten Sprachfeatures soll bevorzugt werden.
 - Alte Sprachfeatures, insbesondere die als veraltet markierten, sollen vermieden und im Zuge von Refaktorisierungen durch neue Sprachfeatures ersetzt werden.
 
-### J5 Problem {#problem}
+### J4 Problem {#problem}
 
 Java wird ständig weiterentwickelt und neue Sprachfeatures werden eingeführt, um die Sprache zu verbessern und die Entwicklung zu erleichtern.
 Der Einsatz von veralteten Sprachfeatures kann zu schlechterer Lesbarkeit, Wartbarkeit und Performance führen.
 Letztendlich kann der Code nicht mehr mit neuen Compiler-Versionen kompiliert werden, wenn veraltete Sprachfeatures entfernt werden.
 
-### J6 Lösung {#loesung}
+### J4 Lösung {#loesung}
 
 Neue Sprachfeatures wie Lambda-Ausdrücke, Streams, Optionals, Records, Pattern Matching, Sealed Classes, Text Blocks, etc. sollen bevorzugt verwendet werden, um den Code zu verbessern und die Entwicklung zu erleichtern.
 
@@ -504,7 +504,7 @@ String result = switch (day) { // [!code ++]
 
 :::
 
-## J7 Benennung von Variablen, Funktionen, Klassen und mehr {#benennung-von-variablen-funktionen-klassen-und-mehr}
+## J5 Benennung von Variablen, Funktionen, Klassen und mehr {#benennung-von-variablen-funktionen-klassen-und-mehr}
 
 - Variablen sind im **camelCase** <img src="/camel.png" width="24" height="24" alt="Ein Kamel mit einem Buckel in der Mitte beschreibt camelCase, in dem der erste Buchstabe klein ist und jeder folgende Wortanfang groß geschrieben wird." style="display: inline;" /> zu benennen: `myVariable`.
 - Funktionen oder Methoden sind im **camelCase** zu benennen `myFunction()` oder `myMethod()`.
@@ -564,11 +564,11 @@ In Java gibt es keine Möglichkeit, den Inhalt eines Objekts oder Arrays zu sper
 Alternativen sind die Software Prinzipien [Tell, don't ask](../../2.principles/principles#tda-ie) und [Informatin Hiding](../../2.principles/principles#ih-e).
 :::
 
-## J8 Reihenfolge der Deklarationen {#reihenfolge-der-deklarationen}
+## J6 Reihenfolge der Deklarationen {#reihenfolge-der-deklarationen}
 
 Die Reihenfolge der Deklarationen soll konsistent sein und die Lesbarkeit des Codes verbessern.
 
-### J8 Reihenfolge in Funktionen und Methoden
+### J6 Reihenfolge in Funktionen und Methoden
 
 Die Deklaration von Variablen und Konstanten innerhalb von Scope-Blöcken soll in folgender Reihenfolge erfolgen:
 
@@ -591,7 +591,7 @@ public void myFunction() {
 }
 ```
 
-### J8 Reihenfolge in Klassen
+### J6 Reihenfolge in Klassen
 
 In Klassen sollen die Deklarationen in folgender Reihenfolge erfolgen:
 
@@ -655,12 +655,12 @@ public class MyClass implements Cloneable {
 
 ```
 
-### J8 Ausnahmen
+### J6 Ausnahmen
 
 - Zwischenberechnungen für Konstanten oder Variablen können vor der Verwendung deklariert werden, wenn es nicht anders geht.
 - In Fällen, in der eine besser Verständlichkeit des Codes durch eine andere Reihenfolge erreicht wird, kann von der oben genannten Reihenfolge abgewichen werden.
 
-## J9 Verwendung von `final` für alle Variablen und Methoden/Funktions-Parameter Kennzeichnung von Nicht-Konstanten {#verwendung-von-final-fuer-alle-variablen-und-methoden-funktions-parameter-kennzeichnung-von-nicht-konstanten}
+## J7 Verwendung von `final` für alle Variablen und Methoden/Funktions-Parameter Kennzeichnung von Nicht-Konstanten {#verwendung-von-final-fuer-alle-variablen-und-methoden-funktions-parameter-kennzeichnung-von-nicht-konstanten}
 
 Variablen enthalten für gewöhnlich Werte, die sich während der Laufzeit des Programms nicht ändern.
 Eine erneute Zuweisung von Werten zu Variablen kann zu unerwartetem Verhalten führen, weil sich der Wert plötzlich ändert oder versehentlich undefiniert wird.
@@ -670,7 +670,7 @@ Eine erneute Zuweisung von Werten zu Variablen kann zu unerwartetem Verhalten f�
 Stattdessen sollen neue Variablen deklariert werden, wenn ein neuer Wert benötigt wird.
 - Ist eine erneute Zuweisung von Werten notwendig, soll ein Kommentar mit dem Inhalt `/*nonfinal*/` hinzugefügt werden, um darauf hinzuweisen und dies auch einem Code-Review zu signalisieren, dass der Entwickler sich der Änderung bewusst ist.
 
-### J9 Problem
+### J7 Problem
 
 Die Verwendung von `final` sorgt dafür, dass Variablen nicht versehentlich geändert werden. Ohne die Verwendung von `final` besteht die Gefahr, dass Variablen unbeabsichtigt überschrieben werden.
 Dies kann dazu führen, dass sich der Wert von Variablen, Attributen oder Parametern unerwartet ändert und dadurch unerwünschte Nebeneffekte auftreten können.
@@ -694,7 +694,7 @@ void myFunction(int count) {
 }
 ```
 
-### J9 Lösung
+### J7 Lösung
 
 Um unbeabsichtigtes Ändern von Variablen zu vermeiden, sollen alle Variablen mit `final` deklariert werden.
 In Fällen, in denen die Verwendung von `final` nicht möglich ist (z. B. bei Variablen, die sich ändern müssen), soll ein Kommentar mit dem Inhalt `/*nonfinal*/` hinzugefügt werden, um darauf hinzuweisen.
@@ -719,19 +719,19 @@ void myFunction(final int count) {
 }
 ```
 
-### J9 Vorteile
+### J7 Vorteile
 
 - Vermeidung unbeabsichtigter Änderungen von Variablen
 - Klarheit in Bezug auf die Veränderlichkeit von Variablen
 - Verbesserte Code-Qualität und Verständlichkeit
 - Entspricht dem Prinzip Least Astonishment
 
-### J9 Nachteile
+### J7 Nachteile
 
 Es gibt Situationen, in denen die Verwendung von `final` nicht möglich oder sinnvoll ist, z. B. bei Variablen, die sich ändern müssen oder in komplexen Legacy-Code.
 In solchen Fällen kann die Kennzeichnung mit einem Kommentar `/nonconst*/` helfen, auf die Ausnahme hinzuweisen.
 
-## J10 Einsatz von Linter und Formatter {#einsatz-von-linter-und-formatter}
+## J8 Einsatz von Linter und Formatter {#einsatz-von-linter-und-formatter}
 
 Tools wie [Checkstyle](https://checkstyle.sourceforge.io/), [PMD](https://pmd.github.io/), [SpotBugs](https://spotbugs.github.io/) und [SonarLint oder SonarQube](https://www.sonarqube.org/) sollen verwendet werden, um sicherzustellen, dass der Code den definierten Richtlinien entspricht und potenzielle Fehler und Probleme im Code identifiziert werden.
 
@@ -744,7 +744,7 @@ Andernfalls kann es zu Konflikten bei der Versionierung des Codes kommen.
 
 :::
 
-## J11 Auf null prüfen {#auf-null-pruefen}
+## J9 Auf null prüfen {#auf-null-pruefen}
 
 Objekt-Variablen, die `null` sein können, sollen auf `null` geprüft werden, um keine Nullpointer-Exceptions zu verursachen.
 
@@ -764,7 +764,7 @@ Soll ein neues Klassen- oder Objektmodell erstellt werden, sollen direkt [spezie
 
 :::
 
-### J11 Problem
+### J9 Problem
 
 Viele Methoden liefern direkt ein Objekt zurück, welches `null` sein kann.
 Jedoch ist es oftmals nicht ersichtlich, ob die Methode `null` zurückgibt oder nicht und ein Blick in den Quellcode ist notwendig.
@@ -785,7 +785,7 @@ public void myFunction() {
 }
 ```
 
-### J11 Lösung
+### J9 Lösung
 
 Um sicherzustellen, dass keine Nullpointer-Exceptions auftreten, soll auf `null` geprüft werden, bevor auf die Methode zugegriffen wird.
 
@@ -799,28 +799,28 @@ public void myFunction() {
 }
 ```
 
-### J11 Vorteile
+### J9 Vorteile
 
 - Vermeidung von Nullpointer-Exceptions
 - Vermeidung von unerwarteten Fehlern durch falsche Erkennung von falsy-Werten
 
-### J11 Nachteile
+### J9 Nachteile
 
 - Werte wie NaN werden nicht erkannt
 - ESLint muss entsprechend konfiguriert werden, um die Verwendung von `==` bei null Vergleich zu erlauben. Dies ist möglich, indem die Regel `eqeqeq` auf [smart](https://eslint.org/docs/latest/rules/eqeqeq#smart) umgestellt wird.
 
-## J12 Verwende CompletableFuture für kurze asynchrone Operationen {#verwende-completablefuture-fuer-kurze-asynchrone-operationen}
+## J10 Verwende CompletableFuture für kurze asynchrone Operationen {#verwende-completablefuture-fuer-kurze-asynchrone-operationen}
 
 CompletableFuture soll für kurze asynchrone Operationen verwendet werden, um die Lesbarkeit und Wartbarkeit des Codes zu verbessern.
 
-### J12 Problem
+### J10 Problem
 
 Der Einsatz von `Thread` oder `ExecutorService` für asynchrone Operationen kann zu komplexem und schwer verständlichem Code führen.
 Die Verwendung von `Thread` oder `ExecutorService` erfordert die explizite Verwaltung von Threads und die Synchronisation von Threads, was zu Fehlern und unerwartetem Verhalten führen kann.
 Diese Thread müssen explizit gestartet und beendet werden, was zu zusätzlichem Code führt.
 Für kurze Operationen kann der Start einen Threads im Betriebssystem teurer sein, als die Operation selbst, was zu Warterzeiten und Problemen mit Performance führen kann.
 
-### J12 Lösung
+### J10 Lösung
 
 CompletableFuture soll für kurze asynchrone Operationen verwendet werden, um die Lesbarkeit und Wartbarkeit des Codes zu verbessern.
 
@@ -958,11 +958,11 @@ final CompletableFuture<Object> any = CompletableFuture.anyOf(future1, future2, 
 
 :::
 
-### J12 Weiterführende Links
+### J10 Weiterführende Links
 
 - [Java CompletableFuture](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html)
 
-## J13 Begrenzte Zeilenanzahl in Methoden/Funktionen {#begrenzte-zeilenanzahl-in-methoden-funktionen}
+## J11 Begrenzte Zeilenanzahl in Methoden/Funktionen {#begrenzte-zeilenanzahl-in-methoden-funktionen}
 
 Codezeilen in Methoden und Funktionen sollen auf eine begrenzte Anzahl beschränkt werden, um die Lesbarkeit und Wartbarkeit des Codes zu verbessern.
 
@@ -993,7 +993,7 @@ Viele Entwicklungsumgebungen bieten eine Möglichkeit, die zyklomatische Komplex
 Beachte jedoch auch hier, dass die zyklomatische Komplexität nur ein Indikator für die Komplexität eines Codes ist und nicht alle Aspekte der Lesbarkeit und Wartbarkeit abdeckt.
 :::
 
-### J13 Problem
+### J11 Problem
 
 Methoden oder Funktionen mit einer großen Anzahl von Codezeilen können schwer zu lesen, zu verstehen und zu warten sein. Lange Methoden können verschiedene Aufgaben vermischen und die Einhaltung des Single Responsibility Principle erschweren.
 
@@ -1043,7 +1043,7 @@ public class UserProcessor {
 
 ```
 
-### J13 Lösung
+### J11 Lösung
 
 Um die Lesbarkeit und Verständlichkeit des Codes zu verbessern, sollen Methoden und Funktionen auf eine begrenzte Anzahl von Zeilen beschränkt sein. Komplexe Aufgaben sollen in kleinere Teilfunktionen ausgelagert werden, um die Verantwortlichkeiten klarer zu trennen.
 
@@ -1101,7 +1101,7 @@ public class UserProcessor {
 }
 ```
 
-### J13 Vorteile
+### J11 Vorteile
 
 - Verbesserte Lesbarkeit und Verständlichkeit des Codes durch kleinere und fokussierte Methoden/Funktionen
 - Einfachere Wartbarkeit und Testbarkeit durch klar abgegrenzte Verantwortlichkeiten
@@ -1140,11 +1140,11 @@ Es ist jedoch wichtig, ein Gleichgewicht zu finden, um eine übermäßige Fragme
 Siehe zu Prinzipien und Vorteilen auch [Prinzipien der Softwareentwicklung](../../2.principles/principles).
 :::
 
-### J13 Nachteile
+### J11 Nachteile
 
 Die strikte Begrenzung der Zeilenanzahl kann zu einer übermäßigen Fragmentierung des Codes führen, wenn kleinere Methoden oder Funktionen unnötig erstellt werden.
 
-### J13 Ausnahmen
+### J11 Ausnahmen
 
 Die Anzahl der Codezeilen in einer Methode oder Funktion kann je nach Kontext und Komplexität des Codes variieren.
 
@@ -1152,7 +1152,7 @@ Die Anzahl der Codezeilen in einer Methode oder Funktion kann je nach Kontext un
 TODO
  -->
 
-## J14 Methoden/Funktionen, die Mengen zurückgeben sollen niemals null oder undefined zurückgeben {#methoden-funktionen-die-mengen-zurueckgeben-sollen-niemals-null-oder-undefined-zurueckgeben}
+## J12 Methoden/Funktionen, die Mengen zurückgeben sollen niemals null oder undefined zurückgeben {#methoden-funktionen-die-mengen-zurueckgeben-sollen-niemals-null-oder-undefined-zurueckgeben}
 
 ::: danger TODO
 
@@ -1162,7 +1162,7 @@ TODO: nach java umschreiben
 
 Methoden oder Funktionen, die Mengen wie Arrays zurückgeben, sollen nie `null` oder `undefined` zurückgeben, sondern leere Mengen oder Objekte.
 
-### J14 Problem
+### J12 Problem
 
 Das Zurückgeben von null als Ergebnis einer Methode/Funktion, die eine Liste, HashMap oder ein Array zurückgibt, kann zu Zugriffsfehlern (undefined) und unerwartetem Verhalten führen.
 Es erfordert zusätzliche Überprüfungen auf null und erhöht die Komplexität des Aufrufercodes.
@@ -1176,7 +1176,7 @@ getNames() {
 }
 ```
 
-### J14 Lösung
+### J12 Lösung
 
 Um Zugriffsfehler und unerwartetes Verhalten zu vermeiden, sollen Methoden/Funktionen stattdessen ein leeres Objekt oder Array zurückgeben.
 
@@ -1189,24 +1189,24 @@ function getNames() {
 }
 ```
 
-### J14 Vorteile
+### J12 Vorteile
 
 - Vermeidung von Zugriffsfehlern und unerwartetem Verhalten
 - Einfachere Handhabung und weniger Überprüfungen auf null im Aufrufercode
 - Verbesserte Robustheit und Stabilität des Codes
 
-### J14 Ausnahmen
+### J12 Ausnahmen
 
 Es kann Situationen geben, in denen die Rückgabe von null sinnvoll ist, z. B. wenn null einen speziellen Zustand oder eine Bedeutung hat.
 In solchen Fällen ist es wichtig, die Dokumentation klar zu kommunizieren und sicherzustellen, dass der Aufrufercode angemessen darauf reagiert.
 
-### J14 Weiterführende Literatur/Links
+### J12 Weiterführende Literatur/Links
 
 - [Effective Java: Item 54 - Return Empty Arrays or Collections, Not Nulls](https://www.amazon.com/dp/0321356683)
 - [Null or Empty Collection in Java](https://www.baeldung.com/java-null-empty-collection) (für Java)
 - [Avoiding Null in JavaScript](https://dmitripavlutin.com/avoid-null-undefined-javascript/) (für JavaScript)
 
-## J15 Verwendung von `Optional` in JavaScript-Funktionen {#verwendung-von-optional-in-javascript-funktionen}
+## J13 Verwendung von `Optional` in JavaScript-Funktionen {#verwendung-von-optional-in-javascript-funktionen}
 
 ::: danger TODO
 
@@ -1228,7 +1228,7 @@ Soll ein neues Klassen- oder Objektmodell erstellt werden, sollen direkt [spezie
 
 :::
 
-### J15 Problem
+### J13 Problem
 
 Das Zurückgeben von `null`, `undefined` oder `NaN` aus einer Funktion kann zu Fehlern führen, insbesondere wenn nicht überprüft wird, ob das Ergebnis vorhanden ist oder nicht.
 
@@ -1241,7 +1241,7 @@ function divide(a, b) {
 }
 ```
 
-### J15 Lösung
+### J13 Lösung
 
 Die Verwendung des `Optional`-Objekts ermöglicht es, den Status des Ergebnisses klar zu kennzeichnen, anstatt `null`, `undefined` oder `NaN` zurückzugeben.
 
@@ -1255,19 +1255,19 @@ function divide(a, b) {
 }
 ```
 
-### J15 Vorteile
+### J13 Vorteile
 
 - Klarere Kennzeichnung des Zustands des Ergebnisses durch Verwendung von `Optional`
 - Bessere Fehlervermeidung durch explizite Behandlung von leeren Ergebnissen
 - Verbesserte Lesbarkeit des Codes durch den Verzicht auf `null` oder `undefined`
 
-### J15 Nachteile
+### J13 Nachteile
 
 - Zusätzlicher Overhead durch die Verwendung von `Optional`
 - Potenziell erhöhter Komplexitätsgrad in der Verwendung des `Optional`-Objekts
 - Abhängigkeit von der Implementierung der `Optional`-Klasse
 
-## J16 If-Bedingungen ohne Else und mit Return {#if-bedingungen-ohne-else-und-mit-return}
+## J14 If-Bedingungen ohne Else und mit Return {#if-bedingungen-ohne-else-und-mit-return}
 
 If-Bedingungen, die ein Return enthalten, sollen kein `else` enthalten, um die Lesbarkeit des Codes zu verbessern und die Verschachtelung von Bedingungen zu reduzieren.
 
@@ -1279,7 +1279,7 @@ Im Folgenden sind sich widersprechende Regeln aufgeführt, die bei der Reihenfol
 - Die Bedingung, welche eine positive Bedingung prüft, sollte zuerst geprüft werden.
 - Die Bedingung, welche am häufigsten zutrifft, sollte zuerst geprüft werden.
 
-### J16 Problem
+### J14 Problem
 
 If-Bedingungen mit einem Return und einem dazugehörigen else-Block können die Lesbarkeit des Codes beeinträchtigen und zu unnötiger Verschachtelung führen.
 
@@ -1299,7 +1299,7 @@ function calculate(x) {
 }
 ```
 
-### J16 Lösung
+### J14 Lösung
 
 Durch Entfernen des else-Blocks und direktes Rückgabestatement wird der Code lesbarer und die Verschachtelung von Bedingungen reduziert.
 
@@ -1313,20 +1313,20 @@ function calculate(x) {
 }
 ```
 
-### J16 Vorteile
+### J14 Vorteile
 
 - Verbesserte Lesbarkeit und Klarheit des Codes
 - Pfade durch die Funktion sind klarer und leichter nachvollziehbar
 - Reduzierung der Verschachtelung von Bedingungen
 - Vereinfachte Struktur und Fluss des Codes
 
-### J16 Weiterführende Literatur/Links
+### J14 Weiterführende Literatur/Links
 
 - [Guard Pattern](.#js12-guard-pattern)
 - [Clean Code: A Handbook of Agile Software Craftsmanship](https://www.amazon.com/dp/0132350882)
 - [JavaScript: The Good Parts](https://www.amazon.com/dp/0596517742)
 
-## J17 Guard Pattern {#guard-pattern}
+## J15 Guard Pattern {#guard-pattern}
 
 Guard-Klauseln sollen verwendet werden, um unerwünschte Ausführungszweige frühzeitig zu beenden und die Lesbarkeit des Codes zu verbessern.
 
@@ -1338,7 +1338,7 @@ Im Folgenden sind sich widersprechende Regeln aufgeführt, die bei der Reihenfol
 - Die Bedingung, welche eine positive Bedingung prüft, sollte zuerst geprüft werden.
 - Die Bedingung, welche am häufigsten zutrifft, sollte zuerst geprüft werden.
 
-### J17 Problem
+### J15 Problem
 
 In JavaScript müssen oft komplexe Bedingungen geprüft werden, um unerwünschte Ausführungszweige zu verhindern oder ungültige Eingaben abzufangen. Dies kann zu verschachteltem Code führen, der schwer zu lesen und zu warten ist.
 
@@ -1356,7 +1356,7 @@ function processInput(input) {
 }
 ```
 
-### J17 Lösung
+### J15 Lösung
 
 Das Guard Pattern ermöglicht es, Bedingungsprüfungen klarer und lesbarer zu gestalten, indem wir unerwünschte Fälle frühzeitig abfangen und beenden.
 
@@ -1370,17 +1370,17 @@ function processInput(input) {
 }
 ```
 
-### J17 Vorteile
+### J15 Vorteile
 
 - Verbesserte Lesbarkeit des Codes durch eine klare und frühzeitige Abhandlung unerwünschter Fälle
 - Reduzierung der Verschachtelung von Bedingungsprüfungen
 - Einfache Erweiterbarkeit und Wartbarkeit des Codes
 
-### J17 Weiterführende Literatur/Links
+### J15 Weiterführende Literatur/Links
 
 - [Guard Clause Pattern - Refactoring.Guru](https://refactoring.guru/smells/guard-clauses)
 
-## J18 Positiv formulierte If-Bedingungen und Auslagerung komplexer Bedingungen {#positiv-formulierte-if-bedingungen-und-auslagerung-komplexer-bedingungen}
+## J16 Positiv formulierte If-Bedingungen und Auslagerung komplexer Bedingungen {#positiv-formulierte-if-bedingungen-und-auslagerung-komplexer-bedingungen}
 
 If-Bedingungen sollen positiv formuliert werden und komplexe Bedingungen sollen in temporäre Variablen ausgelagert werden, um die Lesbarkeit und Wartbarkeit des Codes zu verbessern.
 
@@ -1392,7 +1392,7 @@ Generell ist die KISS-Regel (Keep It Simple, Stupid) zu beachten.
 
 :::
 
-### J18 Problem
+### J16 Problem
 
 Komplexe Bedingungen in If-Anweisungen können den Code schwer verständlich machen, insbesondere wenn sie negativ formuliert sind. Lange und verschachtelte Bedingungen erschweren die Lesbarkeit und können zu Fehlern führen.
 
@@ -1402,7 +1402,7 @@ if (!(name.isEmpty() || age < 18 || !isAuthorized)) {
 }
 ```
 
-### J18 Lösung
+### J16 Lösung
 
 Durch die positive Formulierung der Bedingungen und die Auslagerung komplexer Ausdrücke in temporäre Variablen wird der Code lesbarer und verständlicher.
 
@@ -1416,27 +1416,27 @@ if (!isNameEmpty && !isUnderAge && isNotAuthorized) {
 }
 ```
 
-### J18 Vorteile
+### J16 Vorteile
 
 - Verbesserte Lesbarkeit des Codes durch positiv formulierte Bedingungen
 - Reduzierung der Verschachtelung und Komplexität von If-Anweisungen
 - Bessere Wartbarkeit des Codes durch klare und beschreibende Variablen
 
-### J18 Nachteile
+### J16 Nachteile
 
 - Alternativ kann ein Kommentar die If-Bedingung beschreiben, aber bei einer Änderung muss daran gedacht werden auch den Kommentar anzupassen.
 - Das Auslagern von Bedingungen in temporäre Variablen kann zu einem erhöhten Speicherverbrauch führen, insbesondere bei komplexen Ausdrücken. Dies ist normalerweise vernachlässigbar, kann jedoch in speziellen Situationen berücksichtigt werden.
 
-### J18 Ausnahmen
+### J16 Ausnahmen
 
 Es gibt Fälle, in denen das Auslagern von Bedingungen in temporäre Variablen nicht sinnvoll ist, z. B. wenn die Bedingung nur an einer Stelle verwendet wird und keine weitere Klarheit oder Wartbarkeit gewonnen wird.
 
-### J18 Weiterführende Literatur/Links
+### J16 Weiterführende Literatur/Links
 
 - [The Art of Readable Code - Simple Conditionals](https://www.amazon.com/dp/0596802293)
 - [Clean Code: A Handbook of Agile Software Craftsmanship](https://www.amazon.com/dp/0132350882)
 
-## J19 Exceptions in JavaScript nicht einfach loggen und unverändert wieder werfen {#exceptions-in-javascript-nicht-einfach-loggen-und-unveraendert-wieder-werfen}
+## J17 Exceptions in JavaScript nicht einfach loggen und unverändert wieder werfen {#exceptions-in-javascript-nicht-einfach-loggen-und-unveraendert-wieder-werfen}
 
 ::: danger TODO
 
@@ -1454,7 +1454,7 @@ Stattdessen ist es wichtig, Exceptions sinnvoll zu behandeln und angemessene Ma�
 Aber nicht beides.
 :::
 
-### J19 Problem
+### J17 Problem
 
 Das einfache Loggen und unveränderte Werfen von Exceptions führt oft dazu, dass die eigentliche Ursache des Problems verschleiert wird.
 Es erschwert auch die Fehlerbehandlung und das Debugging des Codes.
@@ -1468,7 +1468,7 @@ try {
 }
 ```
 
-### J19 Lösung
+### J17 Lösung
 
 Es ist wichtig, die Ursache der Exception zu verstehen und entsprechend zu reagieren. Dies kann das Ergreifen von Fehlerbehandlungsmaßnahmen, das Aufzeigen von aussagekräftigen Fehlermeldungen oder das Umwandeln der Exception in eine andere Form sein.
 
@@ -1482,22 +1482,22 @@ try {
 }
 ```
 
-### J19 Vorteile
+### J17 Vorteile
 
 - Klare Behandlung und Reaktion auf Exceptions
 - Verbesserte Fehlerbehandlung und Debugging-Möglichkeiten
 - Besseres Verständnis der Ursachen von Fehlern
 
-### J19 Ausnahmen
+### J17 Ausnahmen
 
 In einigen Fällen kann es sinnvoll sein, Exceptions zu loggen und unverändert wieder zu werfen. Dies ist jedoch eher die Ausnahme und soll gut begründet sein, z.B. wenn der Code in einem bestimmten Kontext läuft, der spezielle Anforderungen hat.
 
-### J19 Weiterführende Literatur/Links
+### J17 Weiterführende Literatur/Links
 
 - [Exception Handling Best Practices in JavaScript](https://www.toptal.com/javascript/exception-handling-javascript-best-practices)
 - [JavaScript Error Handling: Best Practices](https://blog.bitsrc.io/javascript-error-handling-best-practices-329c5f6e5d33)
 
-## JS24 Benennung von Methoden mit verschiedenen Präfixen für Synchronität und Ergebnisverhalten {#benennung-von-methoden-mit-verschiedenen-praefixen-fuer-synchronitaet-und-ergebnisverhalten}
+## J18 Benennung von Methoden mit verschiedenen Präfixen für Synchronität und Ergebnisverhalten {#benennung-von-methoden-mit-verschiedenen-praefixen-fuer-synchronitaet-und-ergebnisverhalten}
 
 Es ist eine bewährte Praxis bei der Benennung von Methoden in JavaScript und Java, unterschiedliche Präfixe zu verwenden, um die Synchronität und das Ergebnisverhalten der Methode zu kennzeichnen. Das Präfix "get" soll für synchronen Zugriff verwendet werden und immer einen Wert zurückgeben, während die Präfixe "fetch" oder "request" für asynchronen Zugriff stehen, der länger dauern und auch fehlschlagen kann.
 
@@ -1508,7 +1508,7 @@ Verwechsle das get-Präfix nicht mit dem get-Präfix in Java, das für Getter-Me
 
 :::
 
-### J19 Problem
+### J18 Problem
 
 Bei der Benennung von Methoden ist es wichtig, klare Hinweise auf die Synchronität und das Ergebnisverhalten der Methode zu geben.
 Unklare oder inkonsistente Benennung kann zu Missverständnissen und unerwartetem Verhalten führen.
@@ -1531,7 +1531,7 @@ async function getAsyncData() {
 }
 ```
 
-### J19 Lösung
+### J18 Lösung
 
 Um die Synchronität und das Ergebnisverhalten einer Methode klarer zu kennzeichnen, sollen unterschiedliche Präfixe verwendet werden. Das Präfix "get" soll für synchronen Zugriff verwendet werden und immer einen Wert zurückgeben. Die Präfixe "fetch" oder "request" sollen für asynchronen Zugriff stehen, der länger dauern und auch fehlschlagen kann.
 
@@ -1549,23 +1549,23 @@ async function fetchResource() {
 }
 ```
 
-### J19 Vorteile
+### J18 Vorteile
 
 - Klare und eindeutige Benennung, die die Synchronität und das Ergebnisverhalten einer Methode widerspiegelt
 - Verbesserte Lesbarkeit und Verständlichkeit des Codes
 - Einfachere Fehlersuche und Debugging-Möglichkeiten
 
-### J19 Ausnahmen
+### J18 Ausnahmen
 
 Es kann Situationen geben, in denen die Verwendung von anderen Präfixen oder Benennungsmustern angemessen ist, abhängig von den spezifischen Anforderungen und Konventionen des Projekts.
 Es ist wichtig, einheitliche Benennungsstandards innerhalb des Projekts festzulegen und zu dokumentieren.
 
-### J19 Weiterführende Literatur/Links
+### J18 Weiterführende Literatur/Links
 
 - [Method Naming Conventions in Java](https://www.baeldung.com/java-method-naming-conventions)
 - [JavaScript Naming Conventions](https://www.robinwieruch.de/javascript-naming-conventions)
 
-## J20 JSDoc Kommentare für JavaScript-Methoden, Funktionen, Variablen, Objekte und Typen {#jsdoc-kommentare-fuer-javascript-methoden-funktionen-variablen-objekte-und-typen}
+## J19 JSDoc Kommentare für JavaScript-Methoden, Funktionen, Variablen, Objekte und Typen {#jsdoc-kommentare-fuer-javascript-methoden-funktionen-variablen-objekte-und-typen}
 
 ::: danger TODO
 
@@ -1575,12 +1575,12 @@ TODO: nach java umschreiben
 
 Methoden, Funktionen, Variablen, Objekte und Typen in JavaScript sollen mit JSDoc-Kommentaren annotiert werden, um eine klare Dokumentation und Typisierung der Parameter und des Rückgabewerts zu ermöglichen.
 
-### J20 Problem
+### J19 Problem
 
 JavaScript ist eine dynamisch typisierte Sprache, was zu einer geringeren Typsicherheit und Dokumentation führen kann.
 Parameter, Variablen und Rückgabewerte von Methoden und Funktionen sind nicht explizit typisiert und dokumentiert, was zu Verwirrung und Fehlern führen kann.
 
-### J20 Lösung
+### J19 Lösung
 
 Die Verwendung von JSDoc-Kommentaren ermöglicht es, Methoden, Funktionen, Variablen, Objekte und Typen in JavaScript klar zu dokumentieren und zu typisieren.
 Auf diese Art können auch Objekte und jede andere Art von Datenstrukturen dokumentiert werden.
@@ -1590,9 +1590,9 @@ Moderne Entwicklungsumgebungen und Tools wie Visual Studio Code, WebStorm und ES
 Diese Tools melden Probleme bei inkompatiblen Typen und fehlenden Parametern oder Rückgabewerten.
 :::
 
-### J20 Beispiele
+### J19 Beispiele
 
-#### J20 Methoden und Funktionen
+#### J19 Methoden und Funktionen
 
 :::warning Beachte!
 JSDoc-Kommentare beginnen mit `/**` und enden mit `*/`.
@@ -1611,7 +1611,7 @@ Jede Zeile innerhalb des Kommentars beginnt mit `*`.
  */
 ```
 
-#### J20 Variablen
+#### J19 Variablen
 
 ```javascript
 /**
@@ -1640,7 +1640,7 @@ let nullableVar = null;
 let NotNullVar = 0;
 ```
 
-#### J20 Objekte deklarieren
+#### J19 Objekte deklarieren
 
 Objekt-Variablen können direkt mit `@type` dokumentiert werden.
 
@@ -1664,11 +1664,11 @@ let user = {
 };
 ```
 
-## J21 Variable Parameter in Funktionen oder Methoden vermeiden {#variable-parameter-in-funktionen-oder-methoden-vermeiden}
+## J20 Variable Parameter in Funktionen oder Methoden vermeiden {#variable-parameter-in-funktionen-oder-methoden-vermeiden}
 
 Variable Parameter in Funktionen oder Methoden sollen vermieden werden, wenn bereits Parameter mit spezifischen Typen oder Strukturen definiert sind.
 
-### J21 Problem
+### J20 Problem
 
 Variable Parameter in Funktionen oder Methoden in Kombination mit weiteren vorangestellten unterschiedlichen Parametern können zu Verwirrung und unerwartetem Verhalten führen.
 
@@ -1684,7 +1684,7 @@ function fetchData(url, headers, options, ...params) {
 }
 ```
 
-### J21 Lösung
+### J20 Lösung
 
 Verwende stattdessen spezifische Parameter oder separate Funktionen/Methoden, um das Verhalten klarer zu kennzeichnen.
 
@@ -1698,7 +1698,7 @@ function fetchDataWithParams(url, ...params) {
 }
 ```
 
-### J21 Ausnahmen
+### J20 Ausnahmen
 
 Wenn die Funktion oder Methode nur ein vorangestellten Parameter besitzt, kann der Restparameter `...params` verwendet werden, um eine variable Anzahl von Argumenten zu akzeptieren.
 Eine Verwechslung mit den vorangestellten Parametern ist in diesem Fall unwahrscheinlich.
@@ -1743,12 +1743,12 @@ Jetzt stell dir vor, dass es mehr als 2 spezifische Parameter gibt und du versuc
 
 :::
 
-## J22 Boolean-Parameter in Funktionen oder Methoden vermeiden {#boolean-parameter-in-funktionen-oder-methoden-vermeiden}
+## J21 Boolean-Parameter in Funktionen oder Methoden vermeiden {#boolean-parameter-in-funktionen-oder-methoden-vermeiden}
 
 Boolean als Parameter in Funktionen oder Methoden sollen nicht verwendet werden.
 Stattdessen sollen eigene Funktionen oder Methoden mit entsprechenden Namen und Parametern erstellt werden, weil damit das Verhalten der Funktion oder Methode klarer wird.
 
-### J22 Problem
+### J21 Problem
 
 Boolean-Parameter in Funktionen oder Methoden können zu Verwirrung und unerwartetem Verhalten führen, da der Aufrufer den Zweck des Parameters erraten muss.
 
@@ -1768,7 +1768,7 @@ function fetchData(url, async) {
 }
 ```
 
-### J22 Lösung
+### J21 Lösung
 
 Verwende stattdessen spezifische Parameter oder separate Funktionen/Methoden, um das Verhalten klarer zu kennzeichnen.
 
@@ -1782,11 +1782,11 @@ function fetchData(url) {
 }
 ```
 
-## J23 Default Parameter in Funktionen oder Methoden {#default-parameter-in-funktionen-oder-methoden}
+## J22 Default Parameter in Funktionen oder Methoden {#default-parameter-in-funktionen-oder-methoden}
 
 Default Parameter in Funktionen oder Methoden sollen nicht verwendet werden.
 
-### J23 Problem
+### J22 Problem
 
 Default Parameter in Funktionen oder Methoden können zu unerwartetem Verhalten führen, wenn der Aufrufer den Standardwert nicht erwartet oder überschreibt.
 
@@ -1798,7 +1798,7 @@ function increment(value, step = 10) {
 }
 ```
 
-### J23 Lösung
+### J22 Lösung
 
 Verwende stattdessen separate Funktionen oder Methoden mit spezifischen Namen, um das Verhalten klarer zu kennzeichnen.
 
@@ -1812,21 +1812,21 @@ function incrementByTen(value) {
 }
 ```
 
-### J23 Vorteile
+### J22 Vorteile
 
 - Klarere und verständlichere Funktionen und Methoden
 - Vermeidung von unerwartetem Verhalten durch Standardwerte
 - Einfachere Wartung und Erweiterung des Codes
 - Nachträgliches Refactoring bzw. Änderungen des Standardwertes sind einfach, weil einfach eine neue Funktion erstellt wird.
 
-### J23 Nachteile
+### J22 Nachteile
 
 - Mehr Code und mehr Tests, da separate Funktionen oder Methoden erstellt werden müssen
 - Möglicherweise mehr Code-Duplizierung, wenn die Funktionen oder Methoden ähnliche Logik enthalten
 - Mehr Aufwand bei der Benennung von Funktionen oder Methoden
 - Mehr Aufwand bei der Dokumentation von Funktionen oder Methoden
 
-## J24 Lambda-Ausdrücke statt Funktionsdeklarationen {#lambda-ausdruecke-statt-funktionsdeklarationen}
+## J23 Lambda-Ausdrücke statt Funktionsdeklarationen {#lambda-ausdruecke-statt-funktionsdeklarationen}
 <!-- hier sollen java lambda verwendet werden, statt ein Functional Interface mit anonymer Klasse -->
 
 ::: danger TODO
@@ -1847,7 +1847,7 @@ list.forEach(e -> System.out.println(e));
 list.forEach(System.out::println);
 ```
 
-## J25 Ternärer Operator {#ternaerer-operator}
+## J24 Ternärer Operator {#ternaerer-operator}
 
 Der ternäre Operator (`condition ? expression1 : expression2`) soll verwendet werden, um einfache Bedingungen in einer einzigen Zeile zu schreiben.
 Er ist einfach zu lesen und zu schreiben.
@@ -1878,7 +1878,7 @@ Der ternäre Operator ist auch bekannt als bedingter Operator oder `Elvis Operat
 - Bei komplexeren Bedingungen oder Ausdrücken kann auch eine separate Funktion verwendet werden.
 :::
 
-## J26 Verwendung von Streams {#verwendung-von-streams}
+## J25 Verwendung von Streams {#verwendung-von-streams}
 
 ::: danger TODO
 
@@ -1890,7 +1890,7 @@ Methode | Erklärung | Beispiel
 --------|-----------|---------
 `filter()` | Filtert Elemente, die einer Bedingung entsprechen | `stream.filter(e -> e > 5)`
 
-## J27 Namespace-Import {#namespace-import}
+## J26 Namespace-Import {#namespace-import}
 
 ::: danger TODO
 
@@ -1899,7 +1899,7 @@ Reihenfolge der imports, mit * als letztes
 
 :::
 
-## J28 Autoboxing und Unboxing {#autoboxing-und-unboxing}
+## J27 Autoboxing und Unboxing {#autoboxing-und-unboxing}
 
 ::: danger TODO
 
@@ -1907,7 +1907,7 @@ TODO: JAVA
 
 :::
 
-## J29 for, Array.forEach, Stream.forEach {#for-array-foreach-stream-foreach}
+## J28 for, Array.forEach, Stream.forEach {#for-array-foreach-stream-foreach}
 
 ::: danger TODO
 
@@ -1915,7 +1915,7 @@ TODO: JAVA
 
 :::
 
-## J30 Methoden-Verkettung {#methoden-verkettung}
+## J29 Methoden-Verkettung {#methoden-verkettung}
 
 Die Methoden-Verkettung soll verwendet werden, um Methodenaufrufe auf einem Objekt in einer einzigen Anweisung zu verkettet.
 
@@ -1924,7 +1924,7 @@ Dies wird beispielsweise bei Array-Methoden wie `map()`, `filter()`, `reduce()` 
 
 Verwende Methoden-Verkettung, um den Code kompakter und lesbarer zu machen.
 
-### J30 Beispiel
+### J29 Beispiel
 
 ::: danger TODO
 
@@ -1941,7 +1941,7 @@ const sum = numbers
     .reduce((acc, x) => acc + x, 0);
 ```
 
-### J30 Regeln
+### J29 Regeln
 
 - Jeder Methodenaufruf wird auf einer neuen Zeile eingerückt (entsprechend den ESLint-Regeln).
 - Jeder Methodenaufruf wird durch einen Punkt (`.`) **vorangehend** zum Methodennamen getrennt.
@@ -1954,20 +1954,20 @@ const sum = numbers
     .reduce(addSum, 0);
 ```
 
-### J30 Vorteile
+### J29 Vorteile
 
 - Kompakter und lesbarer Code
 - Einfache Verkettung von Methodenaufrufen
 - Bessere Performance durch Vermeidung von Zwischenvariablen
 - Einfache Wiederverwendung von Methodenketten
 
-### J30 Ausnahmen
+### J29 Ausnahmen
 
 - Übermäßige Verkettung von Methoden kann die Lesbarkeit beeinträchtigen.
 - Bei komplexen Operationen oder Bedingungen ist es besser, die Methodenaufrufe aufzuteilen.
 - Bei der Verkettung von Methoden ist darauf zu achten, dass die Reihenfolge der Methodenaufrufe korrekt ist.
 
-## J31 Unbenutzte Variablen und Parameter {#unbenutzte-variablen-und-parameter}
+## J30 Unbenutzte Variablen und Parameter {#unbenutzte-variablen-und-parameter}
 
 Es sollen keine unbenutzten Variablen und Parameter im Code vorhanden sein.
 
@@ -2003,7 +2003,7 @@ Von [Stack Overflow](https://stackoverflow.com/questions/64052318/how-to-disable
 
 :::
 
-### J31 Problem
+### J30 Problem
 
 Unbenutzte Variablen und Parameter können zu Verwirrung und unerwartetem Verhalten führen.
 
@@ -2011,7 +2011,7 @@ Das Entfernen von unbenutzten Parametern ist jedoch auch nicht möglich, wenn di
 
 Vererbung und Interfaces können auch unbenutzte Parameter erzeugen.
 
-### J31 Lösung
+### J30 Lösung
 
 ::: danger TODO
 
@@ -2031,19 +2031,19 @@ function sum(a, b, _) {
 
 ```
 
-### J31 Vorteile
+### J30 Vorteile
 
 - Sauberer und wartbarer Code
 - Vermeidung von Verwirrung und unerwartetem Verhalten
 - Bessere Lesbarkeit und Verständlichkeit des Codes
 
-### J31 Nachteile
+### J30 Nachteile
 
 - Der Unterstrich kann zu Verwirrung führen, wenn er nicht als Platzhalter für unbenutzte Variablen oder Parameter verwendet wird.
 - Spätere Erweiterungen der Funktion oder Methode lassen den Namen des originalen Parameters vermissen, wenn der Unterstrich verwendet wird.
 **Bitte beachten**, dass eine Erweiterung einer vorhandenen Methode gegen das [OCP Prinzip](../../2.principles/principles#open-closed-principle) verstößt.
 
-### J31 Ausnahmen
+### J30 Ausnahmen
 
 - Bei bereits vorhandene Funktionen oder Methoden besteht die Gefahr, dass das entfernen eines Parameters und damit einer semantischen Änderung der Reihenfolge der Parameter zu Fehlern beim Aufruf von vorhandenen Code führt.
 
@@ -2061,11 +2061,11 @@ function refactored(parameter2, parameter3) {
 original(1, 2, 3); // Fehler
 ```
 
-## J32 Verwende spezielle Objekte statt spezielle Werte {#verwende-spezielle-objekte-statt-spezielle-werte}
+## J31 Verwende spezielle Objekte statt spezielle Werte {#verwende-spezielle-objekte-statt-spezielle-werte}
 
 Wenn Objekte, wie `User` oder jede andere Art von Entität verwendet werden, und es spezielle Fälle gibt wie *nicht gefunden*, *ungültig*, *leer*, *fehlerhaft*, etc., dann sollen spezielle abgeleitete Objekte verwendet werden, um diese Fälle zu repräsentieren.
 
-### J32 Problem
+### J31 Problem
 
 ::: danger TODO
 
@@ -2091,7 +2091,7 @@ function getUser(id) {
 }
 ```
 
-### J32 Lösung
+### J31 Lösung
 
 Verwende abgeleitete Objekte, um spezielle Fälle zu repräsentieren.
 Es kann beispielsweise ein `NotFoundUser`-Objekt für den Fall eines nicht-gefundenen Benutzers erstellt werden.
@@ -2194,7 +2194,7 @@ function fooStrict() {
 
 ```
 
-### J32 Vorteile
+### J31 Vorteile
 
 - Keine Null-Pointer-Exceptions
 - Spezielle Fälle werden explizit repräsentiert.
@@ -2207,7 +2207,7 @@ function fooStrict() {
   - API wird einfacher, da keine Exceptions geworfen werden müssen und Rückgabewerte immer gültig und prüfbar (`isValid()`) sind
 - Code wird einfacher und lesbarer, da spezielle Fälle keine zusätzlichen `if`-Anweisungen benötigen.
 
-### J32 Nachteile
+### J31 Nachteile
 
 - Architektur der Klassen und Objekte wird komplexer oder vorhandene Architektur muss angepasst werden.
 - Methoden müssen in ihrer Dokumentation nun statt Exceptions spezielle Objekte beschreiben.
