@@ -1152,7 +1152,7 @@ Die Anzahl der Codezeilen in einer Methode oder Funktion kann je nach Kontext un
 TODO
  -->
 
-## J12 Methoden/Funktionen, die Mengen zurückgeben sollen niemals null oder undefined zurückgeben {#methoden-funktionen-die-mengen-zurueckgeben-sollen-niemals-null-oder-undefined-zurueckgeben}
+## J12 Methoden/Funktionen, die Mengen zurückgeben sollen niemals null zurückgeben 
 
 ::: danger TODO
 
@@ -1160,19 +1160,19 @@ TODO: nach java umschreiben
 
 :::
 
-Methoden oder Funktionen, die Mengen wie Arrays zurückgeben, sollen nie `null` oder `undefined` zurückgeben, sondern leere Mengen oder Objekte.
+Methoden oder Funktionen, die Mengen wie Arrays zurückgeben, sollen nie `null` zurückgeben, sondern leere Mengen oder Objekte.
 
 ### J12 Problem
 
 Das Zurückgeben von null als Ergebnis einer Methode/Funktion, die eine Liste, HashMap oder ein Array zurückgibt, kann zu Zugriffsfehlern (undefined) und unerwartetem Verhalten führen.
 Es erfordert zusätzliche Überprüfungen auf null und erhöht die Komplexität des Aufrufercodes.
 
-```javascript
-getNames() {
-    if (condition) {
-        return null;
-    }
-    // ...
+```java
+public ArrayList<String> getNames() {
+  if (condition) {
+    return null;
+  }
+  // ...
 }
 ```
 
@@ -1180,12 +1180,12 @@ getNames() {
 
 Um Zugriffsfehler und unerwartetes Verhalten zu vermeiden, sollen Methoden/Funktionen stattdessen ein leeres Objekt oder Array zurückgeben.
 
-```javascript
-function getNames() {
-    if (condition) {
-        return [];
-    }
-    // ... return xy
+```java
+public ArrayList<String> getNames() {
+  if (condition) {
+    return new ArrayList<>(); 
+  }
+  // ...
 }
 ```
 
@@ -1204,18 +1204,16 @@ In solchen Fällen ist es wichtig, die Dokumentation klar zu kommunizieren und s
 
 - [Effective Java: Item 54 - Return Empty Arrays or Collections, Not Nulls](https://www.amazon.com/dp/0321356683)
 - [Null or Empty Collection in Java](https://www.baeldung.com/java-null-empty-collection) (für Java)
-- [Avoiding Null in JavaScript](https://dmitripavlutin.com/avoid-null-undefined-javascript/) (für JavaScript)
 
-## J13 Verwendung von `Optional` in JavaScript-Funktionen {#verwendung-von-optional-in-javascript-funktionen}
-
-::: danger TODO
-
-TODO: nach java umschreiben
-
-:::
+## J13 Verwendung von `Optional` in bei Rückgabewerte in Funktionen 
 
 Eine Funktion oder Methode, die dennoch `null`, `undefined` oder `NaN` zurückgeben muss, soll stattdessen die `Optional`-Klasse verwenden, um den Status des Ergebnisses zu kennzeichnen.
 
+::: danger TODO
+
+TODO: Siehe auch umschreiben
+
+:::
 :::info Siehe auch
 [Methoden/Funktionen sollen niemals null oder undefined zurückgeben](.#js20-methodenfunktionen-sollen-niemals-null-oder-undefined-zuruckgeben)
 :::
@@ -1230,11 +1228,11 @@ Soll ein neues Klassen- oder Objektmodell erstellt werden, sollen direkt [spezie
 
 ### J13 Problem
 
-Das Zurückgeben von `null`, `undefined` oder `NaN` aus einer Funktion kann zu Fehlern führen, insbesondere wenn nicht überprüft wird, ob das Ergebnis vorhanden ist oder nicht.
+Das Zurückgeben von `null` aus einer Funktion kann zu Fehlern führen, insbesondere wenn nicht überprüft wird, ob das Ergebnis vorhanden ist oder nicht.
 
-```javascript
-function divide(a, b) {
-  if (b !== 0) {
+```java
+public Integer divide() {
+  if (b != 0) {
     return a / b;
   }
   return null;
@@ -1243,14 +1241,13 @@ function divide(a, b) {
 
 ### J13 Lösung
 
-Die Verwendung des `Optional`-Objekts ermöglicht es, den Status des Ergebnisses klar zu kennzeichnen, anstatt `null`, `undefined` oder `NaN` zurückzugeben.
+Die Verwendung des `Optional`-Objekts ermöglicht es, den Status des Ergebnisses klar zu kennzeichnen, anstatt `null` zurückzugeben.
 
-```javascript
-function divide(a, b) {
-  if (b !== 0) {
+```java
+public Optional<Integer> divide() {
+  if (b != 0) {
     return Optional.of(a / b);
   }
-
   return Optional.empty();
 }
 ```
@@ -1259,7 +1256,7 @@ function divide(a, b) {
 
 - Klarere Kennzeichnung des Zustands des Ergebnisses durch Verwendung von `Optional`
 - Bessere Fehlervermeidung durch explizite Behandlung von leeren Ergebnissen
-- Verbesserte Lesbarkeit des Codes durch den Verzicht auf `null` oder `undefined`
+- Verbesserte Lesbarkeit des Codes durch den Verzicht auf `null`
 
 ### J13 Nachteile
 
