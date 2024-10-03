@@ -1886,7 +1886,13 @@ Wenn diese Objekte verwendet werden, wird das spezielle Verhalten automatisch au
 In diesem Fall wird ein leeres Array zurückgegeben.
 Alternativ kann auch ein Fehler geworfen werden, wenn das spezielle Objekt verwendet wird.
 
-::: info Optional
+::: info Kurzgesagt
+
+Wenn spezielle Objekte verwendet werden, um spezielle Fälle zu repräsentieren, kann damit trotzdem gearbeitet werden und das Ergebnis ist immer gültig.
+
+:::
+
+::: details Optional
 
 Das spezielle Objekt [Optional](.#verwendung-von-optional-in-javascript-funktionen) kann auch verwendet werden, um diese spezielle Fälle zu repräsentieren.
 Es ist nützlich, wenn bereits Klassen und Objekte aus einer Legacy-Anwendung verwendet werden, die nicht geändert werden können.
@@ -1906,8 +1912,8 @@ class Entity {
   public boolean isValid() {
     return true;
   }
-  public void doSomething() {
-    //...
+  public List<String> doSomething() {
+    return List.of();
   }
 }
 
@@ -1936,7 +1942,7 @@ public Entity getEntityById(int id) {
 public void foo(int id) {
   var entity = getEntityById(id);
 
-  entity.doSomething(); // wird nur ausgeführt, wenn entity ein gültiges Entity-Objekt ist
+  List<String> result = entity.doSomething(); // liefert leer Array, wenn NotFoundEntity
 }
 ```
 
@@ -1976,3 +1982,7 @@ Diese sind in der Regel besser getestet im Gegensatz zu den weiter oben in der H
 Durch den Einsatz von speziellen Objekten wird es unwahrscheinlicher, dass Fehler wie `null`-Pointer-Exceptions oder `undefined`-Exceptions auftreten.
 
 :::
+
+### Ausnahmen
+
+- Für eine bereits existierende API sollte das Verhalten nicht einfach so geändert werden.

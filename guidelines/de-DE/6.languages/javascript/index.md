@@ -2704,7 +2704,13 @@ Wenn diese Objekte verwendet werden, wird das spezielle Verhalten automatisch au
 In diesem Fall wird ein leeres Array zurückgegeben.
 Alternativ kann auch ein Fehler geworfen werden, wenn das spezielle Objekt verwendet wird.
 
-::: info Optional
+::: info Kurzgesagt
+
+Wenn spezielle Objekte verwendet werden, um spezielle Fälle zu repräsentieren, kann damit trotzdem gearbeitet werden und das Ergebnis ist immer gültig.
+
+:::
+
+::: details Optional
 
 Das spezielle Objekt [Optional](.#verwendung-von-optional-in-javascript-funktionen) kann auch verwendet werden, um diese spezielle Fälle zu repräsentieren.
 Es ist nützlich, wenn bereits Klassen und Objekte aus einer Legacy-Anwendung verwendet werden, die nicht geändert werden können.
