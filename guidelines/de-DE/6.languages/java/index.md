@@ -748,17 +748,11 @@ Andernfalls kann es zu Konflikten bei der Versionierung des Codes kommen.
 
 Objekt-Variablen, die `null` sein können, sollen auf `null` geprüft werden, um keine Nullpointer-Exceptions zu verursachen.
 
-::: danger TODO
-
-Prüfe die Links und die Verweise auf die Regeln.
-
-:::
-
 ::: warning Anwendungseinsatz und Alternativen
 
-Diese Regel gilt nur für bereits bestehenden Methoden und Funktionen, die `null` zurückgeben können.
+Diese Regel gilt nur für bereits bestehenden Methoden und Funktionen, die `null` zurückgeben können. [Optional](.#verwendung-von-optional-in-bei-rueckgabewerte-in-funktionen)
 
-[Optional](.#verwendung-von-optional-in-funktionen) soll für neue Methoden/Funktionen verwendet werden, um diese spezielle Fälle (`null` etc.) zu repräsentieren.
+ soll für neue Methoden/Funktionen verwendet werden, um diese spezielle Fälle (`null` etc.) zu repräsentieren.
 
 Soll ein neues Klassen- oder Objektmodell erstellt werden, sollen direkt [spezielle Objekte](.#verwende-spezielle-objekte-statt-spezielle-werte) verwendet werden.
 
@@ -1148,17 +1142,7 @@ Die strikte Begrenzung der Zeilenanzahl kann zu einer übermäßigen Fragmentier
 
 Die Anzahl der Codezeilen in einer Methode oder Funktion kann je nach Kontext und Komplexität des Codes variieren.
 
-<!-- 
-TODO
- -->
-
-## J12 Methoden/Funktionen, die Mengen zurückgeben sollen niemals null zurückgeben 
-
-::: danger TODO
-
-TODO: nach java umschreiben
-
-:::
+## J12 Methoden/Funktionen, die Mengen zurückgeben sollen niemals null zurückgeben {#methoden-funktionen-die-mengen-zurueckgeben-sollen-niemals-null-zurueckgeben}
 
 Methoden oder Funktionen, die Mengen wie Arrays zurückgeben, sollen nie `null` zurückgeben, sondern leere Mengen oder Objekte.
 
@@ -1198,25 +1182,16 @@ public ArrayList<String> getNames() {
 ### J12 Ausnahmen
 
 Es kann Situationen geben, in denen die Rückgabe von null sinnvoll ist, z. B. wenn null einen speziellen Zustand oder eine Bedeutung hat.
-In solchen Fällen ist es wichtig, die Dokumentation klar zu kommunizieren und sicherzustellen, dass der Aufrufercode angemessen darauf reagiert.
+In solchen Fällen ist es wichtig, die Dokumentation klar zu kommunizieren und sicherzustellen, dass der Aufrufer angemessen darauf reagiert.
 
 ### J12 Weiterführende Literatur/Links
 
 - [Effective Java: Item 54 - Return Empty Arrays or Collections, Not Nulls](https://www.amazon.com/dp/0321356683)
 - [Null or Empty Collection in Java](https://www.baeldung.com/java-null-empty-collection) (für Java)
 
-## J13 Verwendung von `Optional` in bei Rückgabewerte in Funktionen 
+## J13 Verwendung von `Optional` in bei Rückgabewerte in Funktionen {#verwendung-von-optional-in-bei-rueckgabewerte-in-funktionen}
 
-Eine Funktion oder Methode, die dennoch `null`, `undefined` oder `NaN` zurückgeben muss, soll stattdessen die `Optional`-Klasse verwenden, um den Status des Ergebnisses zu kennzeichnen.
-
-::: danger TODO
-
-TODO: Siehe auch umschreiben
-
-:::
-:::info Siehe auch
-[Methoden/Funktionen sollen niemals null oder undefined zurückgeben](.#js20-methodenfunktionen-sollen-niemals-null-oder-undefined-zuruckgeben)
-:::
+Eine Funktion oder Methode, die dennoch `null` zurückgeben muss, soll stattdessen die `Optional`-Klasse verwenden, um den Status des Ergebnisses zu kennzeichnen.
 
 ::: warning Anwendungseinsatz und Alternativen
 
@@ -1280,19 +1255,15 @@ Im Folgenden sind sich widersprechende Regeln aufgeführt, die bei der Reihenfol
 
 If-Bedingungen mit einem Return und einem dazugehörigen else-Block können die Lesbarkeit des Codes beeinträchtigen und zu unnötiger Verschachtelung führen.
 
-::: danger TODO
-
-TODO: nach java umschreiben
-
-:::
-
-```javascript
-function calculate(x) {
-    if (x > 0) {
-        return x * 2;
-    } else {
-        return x;
-    }
+```java
+public int calculate(int x) {
+  if (x > 0) {
+    return x * 2;
+  } else if (x < 0) {
+    return x;
+  } else {
+    return 42;
+  }
 }
 ```
 
@@ -1300,13 +1271,15 @@ function calculate(x) {
 
 Durch Entfernen des else-Blocks und direktes Rückgabestatement wird der Code lesbarer und die Verschachtelung von Bedingungen reduziert.
 
-```javascript
-function calculate(x) {
-    if (x > 0) {
-        // Guard Clause
-        return x * 2;
-    }
+```java
+public int calculate(int x) {
+  if (x > 0) {
+    return x * 2;
+  }
+  if (x < 0) {
     return x;
+  }  
+  return 42;
 }
 ```
 
@@ -1339,17 +1312,11 @@ Im Folgenden sind sich widersprechende Regeln aufgeführt, die bei der Reihenfol
 
 In JavaScript müssen oft komplexe Bedingungen geprüft werden, um unerwünschte Ausführungszweige zu verhindern oder ungültige Eingaben abzufangen. Dies kann zu verschachteltem Code führen, der schwer zu lesen und zu warten ist.
 
-::: danger TODO
-
-TODO: nach java umschreiben
-
-:::
-
-```javascript
-function processInput(input) {
-    if (input !== null && input !== undefined && input !== '') {
-        // Code zur Verarbeitung des Eingabewerts
-    }
+```java
+public void processInput(Integer input) {
+  if (input != null && input > 0) {
+    // Code zur Verarbeitung des Eingabewerts
+  }
 }
 ```
 
@@ -1357,13 +1324,13 @@ function processInput(input) {
 
 Das Guard Pattern ermöglicht es, Bedingungsprüfungen klarer und lesbarer zu gestalten, indem wir unerwünschte Fälle frühzeitig abfangen und beenden.
 
-```javascript
-function processInput(input) {
-    if (input == null || input === '') {
-        return;
-    }
+```java
+public void processInput(Integer input) {
+  if (input == null || input <= 0) {
+    return;
+  }
 
-    // Code zur Verarbeitung des Eingabewerts
+  // Code zur Verarbeitung des Eingabewerts
 }
 ```
 
@@ -1404,9 +1371,9 @@ if (!(name.isEmpty() || age < 18 || !isAuthorized)) {
 Durch die positive Formulierung der Bedingungen und die Auslagerung komplexer Ausdrücke in temporäre Variablen wird der Code lesbarer und verständlicher.
 
 ```java
-boolean isNameEmpty = name.isEmpty();
-boolean isUnderAge = age < 18;
-boolean isNotAuthorized = !isAuthorized;
+final boolean isNameEmpty = name.isEmpty();
+final boolean isUnderAge = age < 18;
+final boolean isNotAuthorized = !isAuthorized;
 
 if (!isNameEmpty && !isUnderAge && isNotAuthorized) {
     // Code ausführen
@@ -1433,13 +1400,7 @@ Es gibt Fälle, in denen das Auslagern von Bedingungen in temporäre Variablen n
 - [The Art of Readable Code - Simple Conditionals](https://www.amazon.com/dp/0596802293)
 - [Clean Code: A Handbook of Agile Software Craftsmanship](https://www.amazon.com/dp/0132350882)
 
-## J17 Exceptions in JavaScript nicht einfach loggen und unverändert wieder werfen {#exceptions-in-javascript-nicht-einfach-loggen-und-unveraendert-wieder-werfen}
-
-::: danger TODO
-
-TODO: nach java umschreiben
-
-:::
+## J17 Exceptions nicht einfach loggen und unverändert wieder werfen {#exceptions-in-javascript-nicht-einfach-loggen-und-unveraendert-wieder-werfen}
 
 Exceptions sollen in JavaScript nicht einfach nur geloggt und unverändert wieder geworfen werden.
 
@@ -1456,11 +1417,11 @@ Aber nicht beides.
 Das einfache Loggen und unveränderte Werfen von Exceptions führt oft dazu, dass die eigentliche Ursache des Problems verschleiert wird.
 Es erschwert auch die Fehlerbehandlung und das Debugging des Codes.
 
-```javascript
+```java
 try {
   // Code, der eine Exception auslöst
 } catch (error) {
-  console.log('Exception aufgetreten:', error);
+  logger.error('Exception aufgetreten:', error);
   throw error;
 }
 ```
@@ -1469,7 +1430,7 @@ try {
 
 Es ist wichtig, die Ursache der Exception zu verstehen und entsprechend zu reagieren. Dies kann das Ergreifen von Fehlerbehandlungsmaßnahmen, das Aufzeigen von aussagekräftigen Fehlermeldungen oder das Umwandeln der Exception in eine andere Form sein.
 
-```javascript
+```java
 try {
   // Code, der eine Exception auslöst
 } catch (error) {
@@ -1491,7 +1452,6 @@ In einigen Fällen kann es sinnvoll sein, Exceptions zu loggen und unverändert 
 
 ### J17 Weiterführende Literatur/Links
 
-- [Exception Handling Best Practices in JavaScript](https://www.toptal.com/javascript/exception-handling-javascript-best-practices)
 - [JavaScript Error Handling: Best Practices](https://blog.bitsrc.io/javascript-error-handling-best-practices-329c5f6e5d33)
 
 ## J18 Benennung von Methoden mit verschiedenen Präfixen für Synchronität und Ergebnisverhalten {#benennung-von-methoden-mit-verschiedenen-praefixen-fuer-synchronitaet-und-ergebnisverhalten}
@@ -1510,20 +1470,14 @@ Verwechsle das get-Präfix nicht mit dem get-Präfix in Java, das für Getter-Me
 Bei der Benennung von Methoden ist es wichtig, klare Hinweise auf die Synchronität und das Ergebnisverhalten der Methode zu geben.
 Unklare oder inkonsistente Benennung kann zu Missverständnissen und unerwartetem Verhalten führen.
 
-::: danger TODO
-
-TODO: nach java umschreiben
-
-:::
-
-```javascript
-// Unklare Benennung ohne klare Angabe zur Synchronität und zum Ergebnisverhalten
-function getData() {
+```java
+// Unklare Benennung ohne klare Angabe zur Synchronität und zum Ergebnisverhalten	
+public DataResult getData() {
   // ...
 }
 
 // Unklare Benennung ohne klare Angabe zur Synchronität und zum Ergebnisverhalten
-async function getAsyncData() {
+public DataResult getAsyncData() {
   // ...
 }
 ```
@@ -1534,14 +1488,15 @@ Um die Synchronität und das Ergebnisverhalten einer Methode klarer zu kennzeich
 
 > get-Präfixe sollen nie async sein, dagegen sollen fetch- oder request- Präfixe immer async sein.
 
-```javascript
+```java
 // Synchroner Zugriff mit Wert-Rückgabe
-function getValue() {
+public CompletableFuture<DataResult> fetchData() {
   // ...
+  return CompletableFuture.completedFuture(data);
 }
 
 // Asynchroner Zugriff mit Möglichkeit eines Fehlschlags
-async function fetchResource() {
+public CompletableFuture<DataResult> fetchAsyncData() {
   // ...
 }
 ```
@@ -1554,37 +1509,33 @@ async function fetchResource() {
 
 ### J18 Ausnahmen
 
-Es kann Situationen geben, in denen die Verwendung von anderen Präfixen oder Benennungsmustern angemessen ist, abhängig von den spezifischen Anforderungen und Konventionen des Projekts.
-Es ist wichtig, einheitliche Benennungsstandards innerhalb des Projekts festzulegen und zu dokumentieren.
+Es kann Situationen geben, in denen die Verwendung von anderen Präfixen angemessen ist, abhängig von den spezifischen Anforderungen und Konventionen des Projekts.
+Es ist wichtig, einheitliche Namen innerhalb des Projekts festzulegen und zu dokumentieren.
 
 ### J18 Weiterführende Literatur/Links
 
 - [Method Naming Conventions in Java](https://www.baeldung.com/java-method-naming-conventions)
 - [JavaScript Naming Conventions](https://www.robinwieruch.de/javascript-naming-conventions)
 
-## J19 JSDoc Kommentare für JavaScript-Methoden, Funktionen, Variablen, Objekte und Typen {#jsdoc-kommentare-fuer-javascript-methoden-funktionen-variablen-objekte-und-typen}
+## J19 Einsatz von JavaDoc {#einsatz-von-javadoc}
 
-::: danger TODO
-
-TODO: nach java umschreiben
-
-:::
-
-Methoden, Funktionen, Variablen, Objekte und Typen in JavaScript sollen mit JSDoc-Kommentaren annotiert werden, um eine klare Dokumentation und Typisierung der Parameter und des Rückgabewerts zu ermöglichen.
+Methoden, Objekte, Typen und Pakete in Java sollen mit JavaDoc annotiert werden, um eine klare Dokumentation der Objekte, Methoden, Parameter, Rückgabewerts und Pakete zu ermöglichen.
 
 ### J19 Problem
 
-JavaScript ist eine dynamisch typisierte Sprache, was zu einer geringeren Typsicherheit und Dokumentation führen kann.
-Parameter, Variablen und Rückgabewerte von Methoden und Funktionen sind nicht explizit typisiert und dokumentiert, was zu Verwirrung und Fehlern führen kann.
+Es ist aufgrund der Benennung und der Signatur einer Methode oder eines Objekts nicht immer klar, wie sie verwendet werden sollen und welche Parameter und Rückgabewerte sie erwarten.
+Auch in welchen Situationen Ausnahmen geworfen werden können und wie sie behandelt werden sollen, ist oft unklar.
+
+Pakete haben oft keine klare Dokumentation, was sie enthalten und wie sie verwendet werden sollen.
 
 ### J19 Lösung
 
-Die Verwendung von JSDoc-Kommentaren ermöglicht es, Methoden, Funktionen, Variablen, Objekte und Typen in JavaScript klar zu dokumentieren und zu typisieren.
-Auf diese Art können auch Objekte und jede andere Art von Datenstrukturen dokumentiert werden.
+Die Verwendung von JavaDoc ermöglicht es, eine klare und konsistente Dokumentation von Methoden, Objekten, Typen und Paketen bereitzustellen.
+
+Weiterhin kann eine Dokumentation automatisch generiert werden, die Entwicklern hilft, den Code besser zu verstehen und zu verwenden.
 
 :::info
-Moderne Entwicklungsumgebungen und Tools wie Visual Studio Code, WebStorm und ESLint unterstützen JSDoc-Kommentare und bieten Funktionen wie Autovervollständigung, Typüberprüfung und Dokumentation.
-Diese Tools melden Probleme bei inkompatiblen Typen und fehlenden Parametern oder Rückgabewerten.
+Moderne Entwicklungsumgebungen und Tools wie Visual Studio Code, WebStorm und ESLint unterstützen JavaDoc und bieten Funktionen wie Autovervollständigung und Anzeige der Dokumentation, wenn mit dem Mauszeiger über den Code gefahren wird.
 :::
 
 ### J19 Beispiele
@@ -1592,76 +1543,60 @@ Diese Tools melden Probleme bei inkompatiblen Typen und fehlenden Parametern ode
 #### J19 Methoden und Funktionen
 
 :::warning Beachte!
-JSDoc-Kommentare beginnen mit `/**` und enden mit `*/`.
+JavaDoc-Kommentare beginnen mit `/**` und enden mit `*/`.
 Jede Zeile innerhalb des Kommentars beginnt mit `*`.
+Der Kommentar muss direkt vor der Deklaration der Entität stehen.
 :::
 
-```javascript
+::: code-group
+
+```java [Methoden]
 /**
  * Berechnet die Summe von zwei Zahlen.
- * @param {number} x - Die erste Zahl.
- * @param [number] y - Die zweite Zahl ist optional. //Alternative Google Closure Compiler Syntax: {number=}
- * @param [string|number] text - Ein Text als String oder Zahl.
- * @param {*} data - Ein beliebiger Typ.
- * @param {number} [offsetDefault=1] - Der Standardwert, falls der Parameter fehlt.
- * @returns {number} Die Summe der beiden Zahlen. 
+ * Es kann auch ein Link mit {@link com.example.user.User} eingefügt werden.
+ * @param x Die erste Zahl.
+ * @param y Die zweite Zahl.
+ * @param <T> Der Typ der Zahlen. Generischer Typ.
+ * @return Die Summe der beiden Zahlen.
+ * @throws IllegalArgumentException Wenn einer der Parameter null ist.
  */
 ```
 
-#### J19 Variablen
-
-```javascript
+```java [Pakete]
+// Erstelle eine Datei package-info.java im Paket mit folgendem Inhalt
 /**
- * Die maximale Anzahl von Elementen.
- * @type {number}
+ * Enthält Klassen zur Verarbeitung von Benutzerdaten.
+ * @since 1.0
+ * @see com.example.user.User
  */
-const MAX_ELEMENTS = 100;
-
-/** @type {(symbol|boolean|{}|string|Array.<string>|number|null|NaN)} */
-let myVariable;
-myVariable = Symbol('mySymbol');
-myVariable = true;
-myVariable = {};
-myVariable = 'Hello';
-// oder, entspricht string[]
-myVariable = ['Hello', 'World'];
-myVariable = 42;
-myVariable = null;
-myVariable = NaN;
-
-
-/** @type {?number} */
-let nullableVar = null;
-
-/** @type {!number} */
-let NotNullVar = 0;
+package com.example.user;
 ```
 
-#### J19 Objekte deklarieren
+```java [Code-Beispiel]
 
-Objekt-Variablen können direkt mit `@type` dokumentiert werden.
+/**
+ * Dokumentation mit einem Code-Beispiel.
+ * Damit werden &lt; und &gt; in der Dokumentation korrekt dargestellt.
+ * Im Text selbst kann z.B. für &lt; auch {@code <} verwendet werden.
+ * 
+ * <code>{@code
+ * if (x == null || y == null) {
+ * }</code>
+ * <pre>{@code
+ * if (x == null || y == null) {
+ * }</pre>
+ */ 
 
-```javascript
- /**
- * Ein Benutzerobjekt.
- * @type {Object}
- * @property {string} name - Der Name des Benutzers.
- * @property {number} age - Das Alter des Benutzers.
- * @property {{street: string, city: string}} address - Die Adresse des Benutzers.
- * @property {string[]} roles - Die Rollen des Benutzers.
- */
-let user = {
-  name: 'Alice',
-  age: 30,
-  address: {
-    street: '123 Main St',
-    city: 'Anytown'
-  },
-  roles: ['admin', 'user']
-};
 ```
 
-## J20 Variable Parameter in Funktionen oder Methoden vermeiden {#variable-parameter-in-funktionen-oder-methoden-vermeiden}
+:::
+
+### J19 Weiterführende Literatur/Links
+
+- [JavaDoc - Offical Documentation](https://docs.oracle.com/javase/8/docs/technotes/tools/windows/javadoc.html)
+- [Javadoc Tags](https://docs.oracle.com/javase/8/docs/technotes/tools/windows/javadoc.html#CHDJGIJB)
+
+## J20 Variable Parameter in Methoden vermeiden {#variable-parameter-in-methoden-vermeiden}
 
 Variable Parameter in Funktionen oder Methoden sollen vermieden werden, wenn bereits Parameter mit spezifischen Typen oder Strukturen definiert sind.
 
@@ -1669,14 +1604,8 @@ Variable Parameter in Funktionen oder Methoden sollen vermieden werden, wenn ber
 
 Variable Parameter in Funktionen oder Methoden in Kombination mit weiteren vorangestellten unterschiedlichen Parametern können zu Verwirrung und unerwartetem Verhalten führen.
 
-::: danger TODO
-
-TODO: nach java umschreiben
-
-:::
-
-```javascript
-function fetchData(url, headers, options, ...params) {
+```java
+public void fetchData(String url, Headers headers, Options options, Object... params) {
   // ...
 }
 ```
@@ -1685,12 +1614,12 @@ function fetchData(url, headers, options, ...params) {
 
 Verwende stattdessen spezifische Parameter oder separate Funktionen/Methoden, um das Verhalten klarer zu kennzeichnen.
 
-```javascript
-function fetchData(url, headers, options) {
+```java
+public void fetchData(String url, Headers headers, Options options) {
   // ...
 }
 
-function fetchDataWithParams(url, ...params) {
+public void fetchDataWithParams(String url, Object... params) {
   // ...
 }
 ```
@@ -1700,63 +1629,28 @@ function fetchDataWithParams(url, ...params) {
 Wenn die Funktion oder Methode nur ein vorangestellten Parameter besitzt, kann der Restparameter `...params` verwendet werden, um eine variable Anzahl von Argumenten zu akzeptieren.
 Eine Verwechslung mit den vorangestellten Parametern ist in diesem Fall unwahrscheinlich.
 
-```javascript
-function formatString(template, ...params) {
+```java
+public void formatString(String template, Object... params) {
   // ...
 }
 ```
 
-:::danger Variable Parameter kombiniert mit spezifischen Parametern
-Betrachte folgendes Beispiel:
-
-```javascript
-function useOneOrMultiple(first, ...rest) {
-  console.log(first);
-  console.log(rest); // rest ist ein Array, d.h ...rest sind die Inhalte
-}
-
-const args = [1, 2, 3];
-useOneOrMultiple(args[0], ...args.slice(1));
-useOneOrMultiple(args[0], args.slice(1));
-useOneOrMultiple(...args);
-useOneOrMultiple(args);
-```
-
-Die Ausgabe ist:
-
-- 1 und [2, 3]
-- 1 und [[2, 3]]
-- 1 und [2, 3]
-- [1, 2, 3] und []
-
-Erklärung:
-
-- `useOneOrMultiple(args[0], ...args.slice(1));` entspricht `useOneOrMultiple(1, 2, 3);`, da `...args.slice(1)` in `(2, 3)` aufgelöst wird.
-- `useOneOrMultiple(args[0], args.slice(1));` entspricht `useOneOrMultiple(1, [2, 3]);`
-- `useOneOrMultiple(...args);` entspricht `useOneOrMultiple(1, 2, 3);` , da `(...args)` in `(1, 2, 3)` über alle Parameter aufgelöst wird wie beim ersten Beispiel
-- `useOneOrMultiple(args);` entspricht `useOneOrMultiple([1, 2, 3], []);`
-
-Jetzt stell dir vor, dass es mehr als 2 spezifische Parameter gibt und du versuchst, die Argumente zu übergeben...
-
+:::danger Viele spezifische Parameter mit variablem Parameter
+Variable Parameter kombiniert mit vielen spezifischen Parametern kann zu Verwirrung führen, ab welchem Parameter die variablen Parameter beginnen.
+Es ist daher besser wenige Parameter zu verwenden und in mehrere Methoden aufzuteilen, die jeweils einen spezifischen Zweck erfüllen.
 :::
 
-## J21 Boolean-Parameter in Funktionen oder Methoden vermeiden {#boolean-parameter-in-funktionen-oder-methoden-vermeiden}
+## J21 Boolean-Parameter in Methoden vermeiden {#boolean-parameter-in-methoden-vermeiden}
 
-Boolean als Parameter in Funktionen oder Methoden sollen nicht verwendet werden.
-Stattdessen sollen eigene Funktionen oder Methoden mit entsprechenden Namen und Parametern erstellt werden, weil damit das Verhalten der Funktion oder Methode klarer wird.
+Boolean als Parameter in Methoden sollen nicht verwendet werden.
+Stattdessen sollen eigene Methoden mit entsprechenden Namen und Parametern erstellt werden, weil damit das Verhalten der Funktion oder Methode klarer wird.
 
 ### J21 Problem
 
-Boolean-Parameter in Funktionen oder Methoden können zu Verwirrung und unerwartetem Verhalten führen, da der Aufrufer den Zweck des Parameters erraten muss.
+Boolean-Parameter in Methoden können zu Verwirrung und unerwartetem Verhalten führen, da der Aufrufer den Zweck des Parameters erraten muss.
 
-::: danger TODO
-
-TODO: nach java umschreiben
-
-:::
-
-```javascript
-function fetchData(url, async) {
+```java
+public void fetchData(String url, boolean async) {
   if (async) {
     // Asynchroner Aufruf
   } else {
@@ -1769,67 +1663,19 @@ function fetchData(url, async) {
 
 Verwende stattdessen spezifische Parameter oder separate Funktionen/Methoden, um das Verhalten klarer zu kennzeichnen.
 
-```javascript
-function fetchAsyncData(url) {
+```java
+public void fetchAsyncData(String url) {
   // Asynchroner Aufruf
 }
 
-function fetchData(url) {
+public void fetchData(String url) {
   // Synchroner Aufruf
 }
 ```
 
-## J22 Default Parameter in Funktionen oder Methoden {#default-parameter-in-funktionen-oder-methoden}
+## J22 Lambda-Ausdrücke statt Funktionsdeklarationen {#lambda-ausdruecke-statt-funktionsdeklarationen}
 
-Default Parameter in Funktionen oder Methoden sollen nicht verwendet werden.
-
-### J22 Problem
-
-Default Parameter in Funktionen oder Methoden können zu unerwartetem Verhalten führen, wenn der Aufrufer den Standardwert nicht erwartet oder überschreibt.
-
-Sollte der default Parameter sich später ändern, kann dies zu unerwartetem Verhalten führen bei Code, der bereits existiert und den Standardwert verwendet.
-
-```javascript
-function increment(value, step = 10) {
-  return value + step;
-}
-```
-
-### J22 Lösung
-
-Verwende stattdessen separate Funktionen oder Methoden mit spezifischen Namen, um das Verhalten klarer zu kennzeichnen.
-
-```javascript
-function incrementValueBy(value, step) {
-  return value + step;
-}
-
-function incrementByTen(value) {
-  return increment(value, 10);
-}
-```
-
-### J22 Vorteile
-
-- Klarere und verständlichere Funktionen und Methoden
-- Vermeidung von unerwartetem Verhalten durch Standardwerte
-- Einfachere Wartung und Erweiterung des Codes
-- Nachträgliches Refactoring bzw. Änderungen des Standardwertes sind einfach, weil einfach eine neue Funktion erstellt wird.
-
-### J22 Nachteile
-
-- Mehr Code und mehr Tests, da separate Funktionen oder Methoden erstellt werden müssen
-- Möglicherweise mehr Code-Duplizierung, wenn die Funktionen oder Methoden ähnliche Logik enthalten
-- Mehr Aufwand bei der Benennung von Funktionen oder Methoden
-- Mehr Aufwand bei der Dokumentation von Funktionen oder Methoden
-
-## J23 Lambda-Ausdrücke statt Funktionsdeklarationen {#lambda-ausdruecke-statt-funktionsdeklarationen}
-<!-- hier sollen java lambda verwendet werden, statt ein Functional Interface mit anonymer Klasse -->
-
-::: danger TODO
-
-TODO
-:::
+Lambda-Ausdrücke sollen verwendet werden, um Methoden in JavaScript und Java zu deklarieren, wenn sie kurz und prägnant sind.
 
 ::: info Methodenreferenzen
 
@@ -1844,21 +1690,17 @@ list.forEach(e -> System.out.println(e));
 list.forEach(System.out::println);
 ```
 
-## J24 Ternärer Operator {#ternaerer-operator}
+:::
+
+## J23 Ternärer Operator {#ternaerer-operator}
 
 Der ternäre Operator (`condition ? expression1 : expression2`) soll verwendet werden, um einfache Bedingungen in einer einzigen Zeile zu schreiben.
 Er ist einfach zu lesen und zu schreiben.
 Er soll jedoch nicht geschachtelt werden, um die Lesbarkeit zu erhalten.
 Verwende dann lieber `if...else`.
 
-::: danger TODO
-
-TODO: nach java umschreiben
-
-:::
-
-```javascript
-const result = condition ? expression1 : expression2;
+```java
+final var result = condition ? expression1 : expression2;
 ```
 
 :::info Hinweis
@@ -1875,7 +1717,7 @@ Der ternäre Operator ist auch bekannt als bedingter Operator oder `Elvis Operat
 - Bei komplexeren Bedingungen oder Ausdrücken kann auch eine separate Funktion verwendet werden.
 :::
 
-## J25 Verwendung von Streams {#verwendung-von-streams}
+## J24 Verwendung von Streams {#verwendung-von-streams}
 
 ::: danger TODO
 
@@ -1887,7 +1729,7 @@ Methode | Erklärung | Beispiel
 --------|-----------|---------
 `filter()` | Filtert Elemente, die einer Bedingung entsprechen | `stream.filter(e -> e > 5)`
 
-## J26 Namespace-Import {#namespace-import}
+## J25 Namespace-Import {#namespace-import}
 
 ::: danger TODO
 
@@ -1896,7 +1738,7 @@ Reihenfolge der imports, mit * als letztes
 
 :::
 
-## J27 Autoboxing und Unboxing {#autoboxing-und-unboxing}
+## J26 Autoboxing und Unboxing {#autoboxing-und-unboxing}
 
 ::: danger TODO
 
@@ -1904,7 +1746,7 @@ TODO: JAVA
 
 :::
 
-## J28 for, Array.forEach, Stream.forEach {#for-array-foreach-stream-foreach}
+## J27 for, Array.forEach, Stream.forEach {#for-array-foreach-stream-foreach}
 
 ::: danger TODO
 
@@ -1912,7 +1754,7 @@ TODO: JAVA
 
 :::
 
-## J29 Methoden-Verkettung {#methoden-verkettung}
+## J28 Methoden-Verkettung {#methoden-verkettung}
 
 Die Methoden-Verkettung soll verwendet werden, um Methodenaufrufe auf einem Objekt in einer einzigen Anweisung zu verkettet.
 
@@ -1921,174 +1763,112 @@ Dies wird beispielsweise bei Array-Methoden wie `map()`, `filter()`, `reduce()` 
 
 Verwende Methoden-Verkettung, um den Code kompakter und lesbarer zu machen.
 
-### J29 Beispiel
+### J28 Beispiel
 
-::: danger TODO
+```java
+final var numbers = List.of(1, 2, 3, 4, 5);
 
-TODO: nach java umschreiben
-
-:::
-
-```javascript
-const numbers = [1, 2, 3, 4, 5];
-
-const sum = numbers
-    .filter(x => x % 2 === 1)
-    .map(x => x * 2)
-    .reduce((acc, x) => acc + x, 0);
+final var sum = numbers.stream()
+    .filter(x -> x % 2 == 1)
+    .map(x -> x * 2)
+    .reduce(0, Integer::sum);
 ```
 
-### J29 Regeln
+### J28 Regeln
 
 - Jeder Methodenaufruf wird auf einer neuen Zeile eingerückt (entsprechend den ESLint-Regeln).
 - Jeder Methodenaufruf wird durch einen Punkt (`.`) **vorangehend** zum Methodennamen getrennt.
 - Verschachtelung werden vermieden, um die Lesbarkeit zu erhalten, ggf. durch Methoden-Referenzen.
 
-```javascript
-const sum = numbers
-    .filter(divisibleByTwo)
-    .map(double)
-    .reduce(addSum, 0);
+```java
+final var sum = numbers.stream()
+    .filter(this::divisibleByTwo)
+    .map(this::doubleIt)
+    .reduce(this::addSum)
+    .orElse(0);
 ```
 
-### J29 Vorteile
+### J28 Vorteile
 
 - Kompakter und lesbarer Code
 - Einfache Verkettung von Methodenaufrufen
 - Bessere Performance durch Vermeidung von Zwischenvariablen
 - Einfache Wiederverwendung von Methodenketten
 
-### J29 Ausnahmen
+### J28 Ausnahmen
 
 - Übermäßige Verkettung von Methoden kann die Lesbarkeit beeinträchtigen.
 - Bei komplexen Operationen oder Bedingungen ist es besser, die Methodenaufrufe aufzuteilen.
 - Bei der Verkettung von Methoden ist darauf zu achten, dass die Reihenfolge der Methodenaufrufe korrekt ist.
 
-## J30 Unbenutzte Variablen und Parameter {#unbenutzte-variablen-und-parameter}
+## J29 Unbenutzte Variablen und Parameter {#unbenutzte-variablen-und-parameter}
+
+:::danger Java-Version
+Das Feature ist erst ab Java 22 verfügbar (März 2024)
+:::
 
 Es sollen keine unbenutzten Variablen und Parameter im Code vorhanden sein.
 
 - Wenn die Funktionsdeklaration die Parameter vorschreibt, kann `_` als Platzhalter für unbenutzte Parameter verwendet werden.
-- Mehrere unbenutzte Parameter können durch `(_, __, ___)` etc. gekennzeichnet werden.
 
-:::details Linter bei Verwendung des Unterstrichs
+### J29 Problem
 
-Gegebenenfalls wird ein Linter bei der Verwendung des Unterstrichs als Platzhalter für unbenutzte Variablen oder Parameter eine Warnung ausgeben.
-Dies kann in der Konfiguration des Linters deaktiviert werden.
+Unbenutzte Variablen und Parameter sind oft als Deklaration notwendig, um den Code zu kompilieren, jedoch sieht es so aus, als würden sie im Code verwendet werden, obwohl das nicht der Fall ist.
 
-Von [Stack Overflow](https://stackoverflow.com/questions/64052318/how-to-disable-warn-about-some-unused-params-but-keep-typescript-eslint-no-un)
+### J29 Lösung
 
-```JSON
-// .eslintrc.json
-{
-  // ...
-  "rules": {
-    // note you must disable the base rule
-    // as it can report incorrect errors
-    "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": [
-      "warn", // or "error"
-      {
-        "argsIgnorePattern": "^_",
-        "varsIgnorePattern": "^_",
-        "caughtErrorsIgnorePattern": "^_"
-      }
-    ]
-  }
-}
+Verwende `_` als Platzhalter, um den Code sauber zu halten.
+
+Underline `_` als Platzhalter kann für Parameter, Pattern-Matching (switch), Schleifenvariablen, Exceptionvariablen in `try-catch` und `try-with-resources` verwendet werden.
+
+```java
+
+public void sum(a, b) //[--]
+public void sum(_, _) //[++]
 ```
 
-:::
-
-### J30 Problem
-
-Unbenutzte Variablen und Parameter können zu Verwirrung und unerwartetem Verhalten führen.
-
-Das Entfernen von unbenutzten Parametern ist jedoch auch nicht möglich, wenn die Parameter vorne deklariert sind, da dies zu einem Fehler führen würde.
-
-Vererbung und Interfaces können auch unbenutzte Parameter erzeugen.
-
-### J30 Lösung
-
-::: danger TODO
-
-TODO: geht hier nicht?
-
-:::
-
-- Entferne alle Parameter, wenn keiner davon benutzt wird.
-- Entferne den Parameter, wenn er eindeutig unbenutzt ist.
-- Verwende `_` als Platzhalter für unbenutzte Variablen und Parameter, um den Code sauber zu halten.
-
-```javascript
-
-function sum(a, b, _) {
-    return a + b;
-}
-
-```
-
-### J30 Vorteile
+### J29 Vorteile
 
 - Sauberer und wartbarer Code
 - Vermeidung von Verwirrung und unerwartetem Verhalten
 - Bessere Lesbarkeit und Verständlichkeit des Codes
 
-### J30 Nachteile
+### J29 Nachteile
 
 - Der Unterstrich kann zu Verwirrung führen, wenn er nicht als Platzhalter für unbenutzte Variablen oder Parameter verwendet wird.
 - Spätere Erweiterungen der Funktion oder Methode lassen den Namen des originalen Parameters vermissen, wenn der Unterstrich verwendet wird.
 **Bitte beachten**, dass eine Erweiterung einer vorhandenen Methode gegen das [OCP Prinzip](../../2.principles/principles#open-closed-principle) verstößt.
 
-### J30 Ausnahmen
+### J29 Weiterführende Literatur/Links
 
-- Bei bereits vorhandene Funktionen oder Methoden besteht die Gefahr, dass das entfernen eines Parameters und damit einer semantischen Änderung der Reihenfolge der Parameter zu Fehlern beim Aufruf von vorhandenen Code führt.
+- [Drop the Baggage: Use `_` for Unnamed Local Variables and Patterns in Java 22](https://blog.jetbrains.com/idea/2024/03/drop-the-baggage-use-_-for-unnamed-local-variables-and-patterns-in-java-22/)
 
-```javascript
-function original(unusedParameter1, parameter2, parameter3) {
-    // ...
-}
-
-function refactored(parameter2, parameter3) {
-    // ...
-}
-
-// Aufruf irgendwo
-
-original(1, 2, 3); // Fehler
-```
-
-## J31 Verwende spezielle Objekte statt spezielle Werte {#verwende-spezielle-objekte-statt-spezielle-werte}
+## J30 Verwende spezielle Objekte statt spezielle Werte {#verwende-spezielle-objekte-statt-spezielle-werte}
 
 Wenn Objekte, wie `User` oder jede andere Art von Entität verwendet werden, und es spezielle Fälle gibt wie *nicht gefunden*, *ungültig*, *leer*, *fehlerhaft*, etc., dann sollen spezielle abgeleitete Objekte verwendet werden, um diese Fälle zu repräsentieren.
 
-### J31 Problem
+### J30 Problem
 
-::: danger TODO
-
-TODO: nach java umschreiben
-
-:::
-
-Spezielle Fälle wie *nicht gefunden*, *ungültig*, *leer*, *fehlerhaft*, etc. werden oft durch spezielle Werte wie `null`, `undefined`, `-1`, `0`, `''`, `false`, etc. repräsentiert.
+Spezielle Fälle wie *nicht gefunden*, *ungültig*, *leer*, *fehlerhaft*, etc. werden oft durch spezielle Werte wie `null`, `-1`, `0`, `''`, `false`, etc. repräsentiert.
 Dies führt dazu, dass im Code ständig überprüft werden muss, ob der Wert speziell ist und entsprechend behandelt werden muss.
 
-Wird diese Prüfung nicht gemacht und vergessen, kommt es zu Fehlern wie `Null-Pointer-Exceptions`, `undefined is not a function`, `TypeError: Cannot read property '...' of null`, etc.
+Wird diese Prüfung nicht gemacht und vergessen, kommt es zu Fehlern wie `Null-Pointer-Exceptions`.
 Diese Fehler sind schwer zu finden und zu beheben, da sie oft an einer anderen Stelle im Code auftreten, als wo der Fehler tatsächlich liegt.
 
-```javascript
-function getUser(id) {
-    const user = getUserFromDatabase(id);
+```java
 
-    if (user == null) {
-        return null;
-    }
+public User getUser(int id) {
+  User user = getUserFromDatabase(id);
 
-    return user;
+  if (user == null) {
+    return null;
+  }
+
+  return user;
 }
 ```
 
-### J31 Lösung
+### J30 Lösung
 
 Verwende abgeleitete Objekte, um spezielle Fälle zu repräsentieren.
 Es kann beispielsweise ein `NotFoundUser`-Objekt für den Fall eines nicht-gefundenen Benutzers erstellt werden.
@@ -2113,90 +1893,59 @@ Es ist nützlich, wenn bereits Klassen und Objekte aus einer Legacy-Anwendung ve
 
 :::
 
-::: danger TODO
-
-TODO: nach java umschreiben
-
-:::
-
-```javascript
-
-class NotFoundEntity extends Entity {
-  static create() {
-    // schützt vor Veränderung des Objekts
-    return Object.freeze(new NotFoundEntity())
-  }
-  constructor() {
-    super(-1, 'Unknown');
-  }
-  isValid() {
-    return false;
-  }
-}
-
+```java
 class Entity {
-  static NOT_FOUND = NotFoundEntity.create();
-  
-  isValid() {
+  private int id;
+  private String name;
+
+  public Entity(int id, String name) {
+    this.id = id;
+    this.name = name;
+  }
+
+  public boolean isValid() {
     return true;
   }
-  // ...
-}
-
-// Methode braucht kein Exceptionhandling
-function getEntityById(id) {
-  if (id === 1) {
-    return new Entity(1, 'Alice'); //oder Erstellung über Factory
+  public void doSomething() {
+    //...
   }
-  // statt Exception
-  return Entity.NOT_FOUND; // oder return Optional.empty();
 }
 
-function linesOfEntity(entity) {
-  if (!entity.isValid()) {
-    return new EmptyFoo();
+class NotFoundEntity extends Entity {
+  public NotFoundEntity() {
+    super(-1, 'Unknown');
   }
-  return new Foo(entity);
-}
-
-function dataOfEntity(lines) {
-  return new Data(lines.data);
-}
-
-function dataToArray(data) {
-  return data.map(d => d.value);
-}
-
-function foo() {
-  const entity = getEntityById(1);
-  const linesOfEntity = linesOfEntity(entity);
-  const data = dataOfEntity(linesOfEntity);
-
-  return dataToArray(data);
-}
-
-// Alternativ mit Exception
-function fooStrict() {
-  const entity = getEntityById(1);
-
-  if (!entity.isValid()) {
-    throw new Error('Entity not found');
+  @Override
+  public boolean isValid() {
+    return false;
   }
-
-  const linesOfEntity = linesOfEntity(entity);
-  const data = dataOfEntity(linesOfEntity);
-
-  return dataToArray(data);
+  @Override
+  public void doSomething() {
+    //do nothing
+  }
 }
 
+//...
+public Entity getEntityById(int id) {
+  if (id <= 0) {
+    return new NotFoundEntity();
+  }
+  // liefert immer ein gültiges Entity-Objekt
+}
+
+public void foo(int id) {
+  var entity = getEntityById(id);
+
+  entity.doSomething(); // wird nur ausgeführt, wenn entity ein gültiges Entity-Objekt ist
+}
 ```
 
-### J31 Vorteile
+### J30 Vorteile
 
 - Keine Null-Pointer-Exceptions
 - Spezielle Fälle werden explizit repräsentiert.
 - Unterscheidung zwischen verschiedenen Fällen durch unterschiedliches Verhalten und Objekte (statt `null`)
-- Keine ständige Überprüfung auf spezielle Werte notwendig (wie `null`, `undefined`, `-1`, `0`, `''`, `false`, etc.)
+- Keine ständige Überprüfung auf spezielle Werte notwendig (wie `null`, `-1`, `0`, `''`, `false`, etc.)
 - Code kann nicht fehlschlagen, weil keine spezielle Werte verwendet werden.
 - Kein Exceptionhandling
   - Vermeidet verschachtelte try-catch-Blöcke
@@ -2204,7 +1953,7 @@ function fooStrict() {
   - API wird einfacher, da keine Exceptions geworfen werden müssen und Rückgabewerte immer gültig und prüfbar (`isValid()`) sind
 - Code wird einfacher und lesbarer, da spezielle Fälle keine zusätzlichen `if`-Anweisungen benötigen.
 
-### J31 Nachteile
+### J30 Nachteile
 
 - Architektur der Klassen und Objekte wird komplexer oder vorhandene Architektur muss angepasst werden.
 - Methoden müssen in ihrer Dokumentation nun statt Exceptions spezielle Objekte beschreiben.
@@ -2216,7 +1965,7 @@ function fooStrict() {
 
 ::: warning Anderes Vorgehen gleiche Wirkung
 
-Der Einsatz von speziellen Werten wie `null` und `undefined` unterscheidet sich im Endergebnis nicht von speziellen Objekten.
+Der Einsatz von speziellen Werten wie `null` unterscheidet sich im Endergebnis nicht von speziellen Objekten.
 Eine Prüfung muss früher oder später erfolgen, ob es sich um einen speziellen Fall handelt (`null` oder `isValid()`).
 
 Jedoch ist in der Entwicklung oft die Situation gegeben, dass Entwickler einen Eingabewert **nicht** prüfen und es dadurch zu Fehlern kommt.

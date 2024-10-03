@@ -1116,7 +1116,7 @@ Methoden oder Funktionen, die Mengen wie Arrays zurückgeben, sollen nie `null` 
 ### JS17 Problem
 
 Das Zurückgeben von null als Ergebnis einer Methode/Funktion, die eine Liste, HashMap oder ein Array zurückgibt, kann zu Zugriffsfehlern (undefined) und unerwartetem Verhalten führen.
-Es erfordert zusätzliche Überprüfungen auf null und erhöht die Komplexität des Aufrufercodes.
+Es erfordert zusätzliche Überprüfungen auf null und erhöht die Komplexität des Aufrufers.
 
 ```javascript
 getNames() {
@@ -1149,7 +1149,7 @@ function getNames() {
 ### JS17 Ausnahmen
 
 Es kann Situationen geben, in denen die Rückgabe von null sinnvoll ist, z. B. wenn null einen speziellen Zustand oder eine Bedeutung hat.
-In solchen Fällen ist es wichtig, die Dokumentation klar zu kommunizieren und sicherzustellen, dass der Aufrufercode angemessen darauf reagiert.
+In solchen Fällen ist es wichtig, die Dokumentation klar zu kommunizieren und sicherzustellen, dass der Aufrufer angemessen darauf reagiert.
 
 ### JS17 Weiterführende Literatur/Links
 
@@ -1160,10 +1160,6 @@ In solchen Fällen ist es wichtig, die Dokumentation klar zu kommunizieren und s
 ## JS18 Verwendung von `Optional` in JavaScript-Funktionen {#verwendung-von-optional-in-javascript-funktionen}
 
 Eine Funktion oder Methode, die dennoch `null`, `undefined` oder `NaN` zurückgeben muss, soll stattdessen die `Optional`-Klasse verwenden, um den Status des Ergebnisses zu kennzeichnen.
-
-:::info Siehe auch
-[Methoden/Funktionen sollen niemals null oder undefined zurückgeben](.#js20-methodenfunktionen-sollen-niemals-null-oder-undefined-zuruckgeben)
-:::
 
 ::: warning Anwendungseinsatz und Alternativen
 
@@ -1393,11 +1389,13 @@ If-Bedingungen mit einem Return und einem dazugehörigen else-Block können die 
 
 ```javascript
 function calculate(x) {
-    if (x > 0) {
-        return x * 2;
-    } else {
-        return x;
-    }
+  if (x > 0) {
+    return x * 2;
+  } else if (x < 0) {
+    return x;
+  } else {
+    return 42;
+  }
 }
 ```
 
@@ -1407,11 +1405,15 @@ Durch Entfernen des else-Blocks und direktes Rückgabestatement wird der Code le
 
 ```javascript
 function calculate(x) {
-    if (x > 0) {
-        // Guard Clause
-        return x * 2;
-    }
+  if (x > 0) {
+    // Guard Clause
+    return x * 2;
+  }
+  // Guard Clause #2
+  if (x < 0) {
     return x;
+  }  
+  return 42;
 }
 ```
 
@@ -1446,7 +1448,7 @@ In JavaScript müssen oft komplexe Bedingungen geprüft werden, um unerwünschte
 
 ```javascript
 function processInput(input) {
-    if (input !== null && input !== undefined && input !== '') {
+    if (input && input > 0) {
         // Code zur Verarbeitung des Eingabewerts
     }
 }
@@ -1458,7 +1460,7 @@ Das Guard Pattern ermöglicht es, Bedingungsprüfungen klarer und lesbarer zu ge
 
 ```javascript
 function processInput(input) {
-    if (input == null || input === '') {
+    if (!input || input <= 0) {
         return;
     }
 
@@ -1657,17 +1659,17 @@ async function fetchResource() {
 
 ### JS24 Ausnahmen
 
-Es kann Situationen geben, in denen die Verwendung von anderen Präfixen oder Benennungsmustern angemessen ist, abhängig von den spezifischen Anforderungen und Konventionen des Projekts.
-Es ist wichtig, einheitliche Benennungsstandards innerhalb des Projekts festzulegen und zu dokumentieren.
+Es kann Situationen geben, in denen die Verwendung von anderen Präfixen angemessen ist, abhängig von den spezifischen Anforderungen und Konventionen des Projekts.
+Es ist wichtig, einheitliche Namen innerhalb des Projekts festzulegen und zu dokumentieren.
 
 ### JS24 Weiterführende Literatur/Links
 
 - [Method Naming Conventions in Java](https://www.baeldung.com/java-method-naming-conventions)
 - [JavaScript Naming Conventions](https://www.robinwieruch.de/javascript-naming-conventions)
 
-## JS25 JSDoc Kommentare für JavaScript-Methoden, Funktionen, Variablen, Objekte und Typen {#jsdoc-kommentare-fuer-javascript-methoden-funktionen-variablen-objekte-und-typen}
+## JS25 JSDoc Kommentare für Methoden, Funktionen, Variablen, Objekte und Typen {#jsdoc-kommentare-fuer-methoden-funktionen-variablen-objekte-und-typen}
 
-Methoden, Funktionen, Variablen, Objekte und Typen in JavaScript sollen mit JSDoc-Kommentaren annotiert werden, um eine klare Dokumentation und Typisierung der Parameter und des Rückgabewerts zu ermöglichen.
+Methoden, Funktionen, Variablen, Objekte und Typen in JavaScript sollen mit JSDoc annotiert werden, um eine klare Dokumentation und Typisierung der Parameter und des Rückgabewerts zu ermöglichen.
 
 ### JS25 Problem
 
@@ -1676,7 +1678,7 @@ Parameter, Variablen und Rückgabewerte von Methoden und Funktionen sind nicht e
 
 ### JS25 Lösung
 
-Die Verwendung von JSDoc-Kommentaren ermöglicht es, Methoden, Funktionen, Variablen, Objekte und Typen in JavaScript klar zu dokumentieren und zu typisieren.
+Die Verwendung von JSDoc ermöglicht es, Methoden, Funktionen, Variablen, Objekte und Typen in JavaScript klar zu dokumentieren und zu typisieren.
 Auf diese Art können auch Objekte und jede andere Art von Datenstrukturen dokumentiert werden.
 
 :::info
@@ -1702,6 +1704,7 @@ Jede Zeile innerhalb des Kommentars beginnt mit `*`.
  * @param {*} data - Ein beliebiger Typ.
  * @param {number} [offsetDefault=1] - Der Standardwert, falls der Parameter fehlt.
  * @returns {number} Die Summe der beiden Zahlen. 
+ * @throws {Error} Wenn die Eingabe ungültig ist.
  */
 ```
 
@@ -1762,7 +1765,7 @@ let user = {
 
 Wenn ein Objekt mehrmals verwendet wird, kann der Typ mit `@typedef` definiert werden.
 
-`@typedef` definiert einen benutzerdefinierten Typ, der in anderen JSDoc-Kommentaren verwendet werden kann.
+`@typedef` definiert einen benutzerdefinierten Typ, der in anderen JSDoc verwendet werden kann.
 Im Gegensatz zu `@type`, welches den Typ einer Variablen oder eines Objekts angibt, definiert `@typedef` einen benutzerdefinierten Typ, der wiederverwendet werden kann.
 
 ```javascript
@@ -2643,7 +2646,7 @@ function sum(a, b, _) {
 
 ### JS39 Ausnahmen
 
-- Bei bereits vorhandene Funktionen oder Methoden besteht die Gefahr, dass das entfernen eines Parameters und damit einer semantischen Änderung der Reihenfolge der Parameter zu Fehlern beim Aufruf von vorhandenen Code führt.
+- Bei bereits vorhandene Funktionen oder Methoden besteht die Gefahr, dass das Entfernen eines Parameters und damit einer semantischen Änderung der Reihenfolge der Parameter zu Fehlern beim Aufruf von vorhandenen Code führt.
 
 ```javascript
 function original(unusedParameter1, parameter2, parameter3) {
@@ -2673,13 +2676,13 @@ Diese Fehler sind schwer zu finden und zu beheben, da sie oft an einer anderen S
 
 ```javascript
 function getUser(id) {
-    const user = getUserFromDatabase(id);
+  const user = getUserFromDatabase(id);
 
-    if (user == null) {
-        return null;
-    }
+  if (user == null) {
+    return null;
+  }
 
-    return user;
+  return user;
 }
 ```
 
