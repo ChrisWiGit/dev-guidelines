@@ -10,7 +10,7 @@ customIgnoreTitlesForRules: [Einleitung]
 
 ## Einleitung {#einleitung}
 
-> Das zweit-schwierigste Problem in der IT ist die Kunden zu verstehen, was sie wollen.
+> Das zweit-schwierigste Problem in der IT ist die Kunden zu verstehen, was sie haben wollen.
 > Das schwierigste Problem ist, gute Namen zu finden.
 
 Allen Kapiteln wurde eine eindeutige Nummerierung, der Richtliniennummer, hinzugefügt, um eine eindeutige Identifikation zu ermöglichen.
