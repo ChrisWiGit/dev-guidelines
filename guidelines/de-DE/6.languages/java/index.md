@@ -2849,12 +2849,14 @@ Statt tiefe Kopien zu erstellen soll das Prinzip [Tell, Don't Ask](../../2.princ
 
 ::: details Mutable vs. Immutable vs. Unmodifiable
 
-- Mutable: Die Datenstruktur kann verändert werden, d.h. es können Elemente hinzugefügt, entfernt oder geändert werden.
-- Immutable: Die Datenstruktur kann nicht verändert werden, d.h. es können keine Elemente hinzugefügt, entfernt oder geändert werden.
-Beispiele für unveränderliche Datenstrukturen sind `String`, `Integer`, `LocalDate`, etc.
+- Mutable: Ein Objekt oder Datenstruktur kann verändert werden, d.h. es Werte veränder oder Elemente hinzugefügt, entfernt oder geändert werden.
+- Immutable: Ein Objekt oder Datenstruktur kann nicht verändert werden, d.h. seine internen Felder ist konstanz oder für eine Menge können keine Elemente hinzugefügt, entfernt oder geändert werden.
+Beispiele für unveränderliche Objekte sind `String`, `Integer`, `LocalDate`, etc.
 Methoden wie `Map.of()`, `List.of()`, `Set.of()`, `Map.copyOf()`, `List.copyOf()`, `Set.copyOf()` erstellen unveränderliche Mengen, Listen und Maps, d.h. die Datenstruktur können weder verändert noch erweitert werden.
-- Unmodifiable: Die Datenstruktur kann nicht verändert werden, d.h. es können keine Elemente hinzugefügt oder entfernt werden, aber die Elemente können geändert werden.
+Nur eine Kopie der immutablen Datenstruktur kann verändert werden.
+- Unmodifiable: Eine nicht-modifizierbare Datenstruktur, die eine Ansicht auf eine veränderliche Datenstruktur darstellt, d.h. alle Änderungen an der unveränderlichen Datenstruktur werden blockiert, aber die ursprüngliche Datenstruktur kann verändert werden.
 Beispiele für Methoden, die unveränderliche Datenstrukturen `Collections.unmodifiableList()`, `Collections.unmodifiableSet()`, `Collections.unmodifiableMap()` erzeugen.
 Dies wird durch eine Wrapper-Klasse erreicht, die die Methoden zum Hinzufügen und Entfernen von Elementen blockiert, bzw. eine Ausnahame `UnsupportedOperationException` wirft.
-
+Der Vorteil besteht darin, dass die ursprüngliche Datenstruktur nicht kopiert werden muss, sondern nur eine Ansicht auf die Datenstruktur erstellt wird.
+Wenn komplexe Objekte in einer unveränderlichen Datenstruktur gespeichert werden, können die Objekte jedoch selbst verändert werden.
 :::
