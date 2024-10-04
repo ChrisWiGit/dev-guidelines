@@ -1,5 +1,7 @@
 ---
 layout: doc
+outline: [2, 2]
+
 customRulePrefix: GN # General Naming
 customIgnoreTitlesForRules: [Einleitung]
 ---
@@ -30,7 +32,8 @@ Es soll von den hier vorgegebenen Regeln abgewichen werden, wenn die Sprache spe
   - Verwende Namen, die auch für das Geschäftsmodell oder die Domäne verständlich sind.
   - Vermeide das ersetzen von Domänenspezifischen Namen durch technische Namen (`Item` statt `Article` oder sogar `Invoice`).
 Andernfalls müssen Entwickler ständig zwischen der Domäne und der technischen Sprache wechseln.
-- Prüfe, ob der Name korrekt geschrieben ist (z.B. `Asterisk` statt `Asterix`).
+- Je globaler eine Variable ist (Funktion, Klasse, statische Klasse, global), desto besser sollte der Name gewählt sein.
+- Prüfe, ob der Name korrekt geschrieben ist (z.B. `Asterisk` statt `Asterix`, `Exception` statt `Exeption`, `Initialize` statt `Initialise`).
 - Verwende so kurze und präzise Namen wie möglich, aber so lang wie nötig.
 - Verwende die gleichen Wörter für die gleichen Konzepte in der gesamten Codebasis (Konsistenz, z.B. `Account` statt `User`).
 - Vermeide Abkürzungen, die nicht allgemein bekannt sind (z.B. `load` statt `ld`).
@@ -51,7 +54,7 @@ Beispiele:
 
 ## GN3 Unspezifische Namen {#unspezifische-namen}
 
-Vermeide unspezifische Namen, die so generisch sind, dass sie keine Information über den Typ oder den Wert enthalten.
+Unspezifische Namen sind zu vermeiden, die so generisch sind, dass sie keine Information über den Typ oder den Wert enthalten.
 
 Beispiele sind: `temp`, `value`, `values`, `items`, `data`, `object`, `stuff`, `things`, `element`, `entity`, `item`, `object`, `instance` oder das berüchtigte `foo`, `foobar`, `baz`.
 
@@ -165,7 +168,11 @@ Verwende `Optional` in Java, `Nullable` in C#, oder [Custom-Optional in JS/TS](j
 
 :::
 
-## GN8 Schleifenvariablen {#schleifenvariablen}
+## GN8 Namen für die Anzahl von Elementen {#namen-fuer-die-anzahl-von-elementen}
+
+Variablen sollten einen Prä- oder Suffix haben, wie `numberOf<Thing>` oder `<Thing>Count`, wie in `numberOfCars` oder `carCount`.
+
+## GN9 Schleifenvariablen {#schleifenvariablen}
 
 - Variablen von Schleifenvariablen können mit `i`, `j`, `k`, `l`, `m` benannt werden, wenn sie als reiner Index ohne Bedeutung verwendet werden.
   - `i` oder `j` darf nicht zusammen mit `l` verwendet werden, da es leicht zu Verwechslungen führen kann.
@@ -173,7 +180,7 @@ Verwende `Optional` in Java, `Nullable` in C#, oder [Custom-Optional in JS/TS](j
 - Koordinaten in Schleifen sollen mit `x`, `y`, `z` benannt werden und mit einer Zahl, falls mehrere Koordinaten verwendet werden `x1`, `y1`, `z1` (die Berechnung von Matrizen oder Vektoren macht dies oft notwendig).
 - Schleifenvariablen sollen mit einem Nomen benannt werden, das den Wert beschreibt, wenn sie eine Bedeutung haben `index`, `counter`, `position`.
 
-## GN9 Ganzzahlen {#ganzzahlen}
+## GN10 Ganzzahlen {#ganzzahlen}
 
 - Variablen von Ganzzahlen sollen mit einem Nomen benannt werden, das den Wert beschreibt `ageInYears`, `weightInKg`, `heightInCm`.
   - andere Variablen sollen mit einem Nomen benannt werden, das den Wert beschreibt `indexOfUser`, `counterOfUsers`.
@@ -191,37 +198,98 @@ Die Folge ist, dass beispielsweise eine Verzögerung von 1000 Millisekunden (1 S
 
 :::
 
-## GN10 Fließkommazahlen {#fliesskommazahlen}
+## GN11 Fließkommazahlen {#fliesskommazahlen}
 
 - Variablen von Fließkommazahlen sollen mit einem Nomen benannt werden, das den Wert beschreibt `weightInKg`, `energyInJoules`, `speedInKmPerHour`.
 - Währungen dürfen nicht in Fließkommazahlen gespeichert werden, da dies zu Rundungsfehlern führen kann (0.1 + 0.2 = 0.3000000000000000**4**).
 
-## GN11 Boolean {#boolean}
+::: details Beispiele
 
-- Variablen von Booleans sollen mit einem Präfix `is`, `has`, `can`, `should` oder `will` gefolgt von einem Adjektiv benannt werden.
+### GN11 Positiv
+
+- rainFallAmount
+- rainFallAmountInMillimeters
+- widthInCentimeters
+- angleInDegrees
+- energyConsumptionInKilowattHours
+- waterUsageAmountInLiters
+- oxygenLevelAmountInPercent
+- stressLevelAmountInCortisolUnits
+- pollutionAmountInPartsPerMillion
+- verticalSpeedAmountInMetersPerSecond
+- accelerationAmountInMetersPerSecondSquared
+
+### GN11 Negativ
+
+- rainFall
+- width
+- angle
+- money
+- degree
+- energy
+- waterUsage
+- oxygenLevel
+- stressLevel
+- pollution
+- verticalSpeed
+
+:::
+
+## GN12 Boolean {#boolean}
+
+- Werte für Boolean sollen mit einem Präfix `is`, `has`, `can`, `should` oder `will` gefolgt von einem Adjektiv benannt werden.
+Die Vergangenheitsformen der Präfixe können auch verwendet werden, wenn der Kontext dies erfordert `was`, `did`, `had`.
 - `does` soll vermieden werden, da es durch die anderen Präfixe besser ersetzt werden kann.
+Wörter wie `exists` können jedoch verwendet, da `isExists` grammatikalisch falsch ist.
 - `empty` soll vermieden werden, da es auch ein Verb handeln kann für eine Methode `empty()`.
+- weitere Präfixe wie `allows`, `contains`, `supports`, `enables`, `disables`, `blocks`, `accepts`, `rejects`, `requires`, `forbids`, `denies`, `grants`, `revokes`, `permits`, `prohibits` können verwendet werden, wenn sie besser zum Kontext passen.
+- Es gibt Sprachen, die Eigenschaften zum Lesen und Setzen als einzelnen Aufruf zulassen (z.B. `x = enabled()` und `enabled(true)`).
+In diesem Fall kann der Präfix wegfallen, es sonst zu einer Verwirrung mit der set-Methode führen würde (`isEnabled(true)`).
 
-## GN12 Strings {#strings}
+::: details Beispiele
+
+### GN12 Positiv
+
+- isEnabled
+- hasChildren
+- canPlay
+- shouldClose
+- containsText
+- wasFound
+- willBeShown
+- doesExist
+- didSucceed
+- allowsMultiple
+
+### GN12 Negativ
+
+- enabled
+- children
+- played
+- closed
+- found
+:::
+
+## GN13 Strings {#strings}
 
 - Variablen von Strings sollen mit einem Nomen benannt werden, das den Wert beschreibt `name`, `surname`, `firstName`, `fullName`
 - Der Inhalt kann auch mit `as` beschrieben werden, wenn der Kontext nicht klar ist `yearAsString`, `statusAsString`.
 - Wenn der Kontext nicht klar ist, soll das Nomen genauer beschrieben werden `textOfArticle`, `messageOfStatus`.
 
-## GN13 Listen, Sets {#listen-sets}
+## GN14 Listen, Sets {#listen-sets}
 
 - Variablen von Listen sollen mit einem Nomen im Plural benannt werden, das den Inhalt beschreibt `users`, `shoppingItems`, `articles`.
 - Alternativ können Präfixe wie `list`, `array`, `collection` oder `set` verwendet werden, wenn der Kontext nicht klar ist `listOfUsers`, `arrayOfArticles`, `collectionOfItems`, `setOfItems`.
 
-## GN14 Maps, Dictionary {#maps-dictionary}
+## GN15 Maps, Dictionary {#maps-dictionary}
 
 Variablen von Maps und Dictionaries sollen mit dem Muster `keyToValue` benannt werden, das den Inhalt beschreibt `userIdToUser`, `articleIdToArticle` für `Map<Integer, User>`, `Map<Integer, Article>`.
 
-## GN15 Tuple {#tuple}
+## GN16 Tuple {#tuple}
 
 Eine Variable für ein Tuple soll mit dem Muster `firstValueAndSecondValue` benannt werden, das den Inhalt beschreibt `xAndY`, `latitudeAndLongitude`, `startAndEnd` oder `beginAndEnd`.
 
-## GN16 Optional {#optional}
+## GN17 Optional {#optional}
 
 Eine Variablen von `Optional` oder `Nullable` kann mit dem Muster `maybeValue` oder `valueOrNull` benannt werden, das den Inhalt beschreibt `maybeUser`, `valueOrNull`, `userOrNull`.
 
@@ -233,7 +301,7 @@ Compiler und Linter prüfen in der Regel, ob ein Zugriff vor einer Prüfung stat
 
 :::
 
-## GN17 Namensräume und Packages {#namespaces-packages}
+## GN18 Namensräume und Packages {#namespaces-packages}
 
 - Namensräume beginnen immer mit `com.company` für Enterprise-Anwendungen oder `org.project` für Open-Source-Projekte.
 - Namensräume und Packages sollen mit einem Nomen benannt werden, das den Inhalt beschreibt `com.company`, `com.company.project`, `com.company.project.module`.
@@ -242,7 +310,7 @@ Compiler und Linter prüfen in der Regel, ob ein Zugriff vor einer Prüfung stat
 Ausnahmen sind Situationen, in denen ein semantisches Problem oder Unverständnis entsteht, wenn der Name durch Punkt getrennt wird. In diesem Fall kann ein Bindstrich oder Unterstrich verwendet werden `com.company.project-module`.
 - Die einzelne Tile eines Namensraums werden mit tieferliegenden Teilen immer konkreter. `com.company.project.entities`, `com.company.project.entities.user`, `com.company.project.entities.user.impl`.
 
-## GN18 Klassen {#klassen}
+## GN19 Klassen {#klassen}
 
 - Klassen präsentieren Dinge oder Akteure.
 Sie sollen daher konsistent benannt werden und mit einem Nomen enden (z.B. `Person`, `Article`, `User`).
@@ -255,7 +323,7 @@ Von dieser Regel kann abgewichen werden, wenn die Klassen durch Namensräume ode
 
 - Abstrakte Klassen sollen mit `Abstract` enden (z.B. `PersonAbstract`, `ArticleAbstract`, `UserAbstract`).
 
-## GN19 Interfaces {#interfaces}
+## GN20 Interfaces {#interfaces}
 
 Interfaces präsentieren Dinge, Akteure oder Fähigkeiten und sollen ähnlich wie Klassen benannt werden, jedoch mit einem abstrakten Nomen enden (z.B. `Serializer`, `Comparator`, `Validator`).
 Interfaces, die eine Fähigkeit präsentieren, sollen mit einem Adjektiv enden (z.B. `Serializable`, `Comparable`, `Validatable`).
@@ -263,7 +331,7 @@ Interfaces, die eine Fähigkeit präsentieren, sollen mit einem Adjektiv enden (
 Interfaces sollen nicht mit `I` beginnen, da dies redundant ist und die Sprache bereits durch die Syntax klarstellt, dass es sich um ein Interface handelt.
 Ausnahmen sind Sprachen, die Interfaces mit Präfix als Konvention verwenden (z.B. `I` in C#).
 
-## GN20 Funktionen und Methoden {#funktionen-und-methoden}
+## GN21 Funktionen und Methoden {#funktionen-und-methoden}
 
 - Funktionen und Methoden sollen mit einem Verb beginnen, das die Aktion beschreibt, die sie ausführen (`printDocument`, `calculateTotalAmountOfItems`).
 - Der Name beginnt mit einem Verb und bezieht dabei auch die Parameter mit ein, sodass der Name die Funktionalität der Methode beschreibt.
@@ -293,11 +361,11 @@ compareTextCaseInsensitive(a, b) oder compareCaseInsensitive(a: String, b: Strin
 writeOnFlush() statt write(), wenn die Methode erst beim Flush schreibt
 ```
 
-## GN21 Funktionen- und Methodenparameter {#funktionen-und-methodenparameter}
+## GN22 Funktionen- und Methodenparameter {#funktionen-und-methodenparameter}
 
 Die Namen von Funktionen- und Methodenparametern sollen mit denen von Variablen übereinstimmen.
 
-## GN22 Methodenpaare {#methodenpaare}
+## GN23 Methodenpaare {#methodenpaare}
 
 Methoden, die ein Paar bilden, sollen mit den gleichen Wörtern beginnen. Zum Beispiel:
 
@@ -345,7 +413,7 @@ Beispiele:
 - serialize/deserialize
 - subscribe/unsubscribe
 
-## GN23 Methoden mit Boolean-Rückgabewerten {#methoden-mit-boolean-rueckgabewerten}
+## GN24 Methoden mit Boolean-Rückgabewerten {#methoden-mit-boolean-rueckgabewerten}
 
 Methoden, die einen Boolean-Wert zurückgeben, sollen mit einem Präfix `is`, `has`, `can`, `should` oder `will` gefolgt von einem Adjektiv beginnen.
 
@@ -365,7 +433,7 @@ willDestroy()
 Spezifischere Präfixe wie `contains` oder `supports` sollen verwendet werden, wenn sie besser in den Kontext passen (z.B. in Listen oder Collections).
 :::
 
-## GN24 Getter und Setter {#getter-und-setter}
+## GN25 Getter und Setter {#getter-und-setter}
 
 Getter sollen **kein** Präfix haben, Setter sollen durch Methoden ersetzt werden, die eine Aktion mit der Eigenschaft durchführen (Prinzip [Tell, Don't Ask](../2.principles/principles#tda)).
 
@@ -385,7 +453,7 @@ Beispiele:
 Wenn Klassen nur aus Getter und Setter bestehen, soll die Klasse neu bewertet werden, da sie gegen das Prinzip [Information Hiding](../2.principles/principles#ih) verstößt.
 :::
 
-## GN25 Build-Pattern Methoden {#build-pattern-methoden}
+## GN26 Build-Pattern Methoden {#build-pattern-methoden}
 
 Methoden für das [Build-Pattern](../4.designpatterns/builder) sollen mit `with` beginnen.
 Das `Endstück` soll den Namen `build` haben, denn der Kontext soll mit dem Namen der Klasse oder der Builder-Methode klar sein.
@@ -404,13 +472,13 @@ PersonBuilder
 Das Prefix `add` soll vermieden werden, da es zu Verwirrung führen kann, ob es sich um eine Methode zur Hinzufügung oder zum Setzen handelt.
 :::
 
-## GN26 Factory-Methode {#factory-method}
+## GN27 Factory-Methode {#factory-method}
 
 Methoden für das [Factory-Pattern](../4.designpatterns/factory-method) sollen mit `create` beginnen gefolgt von einem Nomen, das den Typ beschreibt.
 Z.B. `createUser`, `createArticle`, `createProduct`.
 Präpositionen wie `with`, `for`, `from`, `of` können verwendet werden, die Art der Factory-Methode zu beschreiben `createUserWithRole`, `createArticleForUser`, `createProductFromJson`.
 
-## GN27 Verwechslung von Verben und Adjektive {#verwechslung-von-verben-und-adjektive}
+## GN28 Verwechslung von Verben und Adjektive {#verwechslung-von-verben-und-adjektive}
 
 Verben UND Adjektive ohne die hier vorgestellten Präfixe können zu Verwechslungen führen.
 Einige dieser Worte im Englischen können durch ihre Schreibweise nicht unterschieden werden, ob sie ein Verb oder Adjektiv sind.
@@ -419,14 +487,14 @@ Einige dieser Worte im Englischen können durch ihre Schreibweise nicht untersch
 - `free` kann ein Adjektiv (im Sinne `isFree`) oder ein Verb (`to free`) sein.
 - `open` kann ein Adjektiv (im Sinne `isOpen`) oder ein Verb (`to open`) sein.
 
-## GN28 Asynchrone Methoden {#asynchrone-methoden}
+## GN29 Asynchrone Methoden {#asynchrone-methoden}
 
 Methoden sollen anhand ihrer Funktionalität benannt werden, nicht anhand ihrer Implementierung.
 
 - `loadUserDataAsync`, `requestUserData` lädt die Benutzerdaten asynchron
 - `loadUserData`, `sendUserData` lädt die Benutzerdaten synchron
 
-## GN29 Unbenutzte Namen in Variablen und Parameter {#unbenutzte-namen-in-variablen-und-parameter}
+## GN30 Unbenutzte Namen in Variablen und Parameter {#unbenutzte-namen-in-variablen-und-parameter}
 
 Es sollen keine unbenutzten Variablen und Parameter im Code vorhanden sein.
 
