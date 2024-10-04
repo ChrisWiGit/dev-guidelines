@@ -19,6 +19,13 @@ features:
       src: /naming.png
       width: 36
       height: 36
+  - title: Polymorphie
+    details: Polymorphie in der Programmierung
+    link: ./polymorphism
+    icon: 
+      src: /polymorphism.png
+      width: 36
+      height: 36      
   - title: Java
     details: Java-Programmierung
     link: ./java/

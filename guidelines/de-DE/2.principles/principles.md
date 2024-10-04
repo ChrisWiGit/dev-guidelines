@@ -267,15 +267,24 @@ Die Verwendung von Lizenzen, die nicht mit den Unternehmensrichtlinien übereins
 
 ## P25 Behandle Warnungen als Fehler {#behandle-warnungen-als-fehler}
 
-Warnungen im Code sollten immer als Fehler behandelt werden und entsprechend behoben werden.
+Warnungen im Code soll immer als Fehler behandelt werden und entsprechend behoben werden.
 
 Werden Warnungen ignoriert, können sie in bestimmten Fällen zu Fehlern führen, die nicht leicht zu finden sind.
 Ausnahmen können gemacht werden, wenn die Warnung definitiv nicht zutrifft oder wenn sie zum aktuellen Zeitpunkt nicht behoben werden kann.
 
-Warnungen sollten im Zuge eines Refactorings Stück für Stück behoben werden.
+Warnungen sollen im Zuge eines Refactorings Stück für Stück behoben werden.
 
 ## P26 Prinzip der konzeptuellen Integrität {#prinzip-der-konzeptuellen-integritaet}
 
 Das Prinzip der konzeptuellen Integrität besagt, dass wiederkehrende Probleme mit wiederkehrenden Lösungen beantwortet werden sollen (`least surprise`).
 Damit wird die Komplexität reduziert, weil Entwickler bereits angewandte Lösungen wiedererkennen und dadurch das Verständnis und die Wartbarkeit erhöht wird.
 Ohne das Prinzip besteht die Gefahr, dass umfangreiche Lösungen entstehen, die schwer nachvollziehbar sind.
+
+## P27 Komposition über Vererbung {#komposition-ueber-vererbung}
+
+Das Prinzip der Komposition über Vererbung besagt, dass die Vererbung von Klassen vermieden werden sollte, da sie zu einer hohen Kopplung zwischen den Klassen führt.
+Wenn Komposition verwendet wird, werden Klassen als Komponenten verwendet, die unabhängig voneinander sind und nur über Schnittstellen miteinander kommunizieren.
+
+Komposition soll vor Vererbung verwendet werden, wenn Daten statt Verhalten hinzugefügt werden sollen.
+
+Siehe [Was ist Polymorphismus?](../6.languages/polymorphism#was-ist-polymorphismus) für mehr Informationen

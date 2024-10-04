@@ -1,13 +1,40 @@
 ---
 
-layout: doc
+layout: home
 outline: [2, 2]
 
 customRulePrefix: DPB
 customIgnoreTitlesForRules: [Einleitung]
 
+hero:
+  name: "Design Patterns"
+  text: "Strukturmuster"
+  tagline: Struktur ist alles
+  actions:
+    - theme: alt
+      text: Allgemein
+      link: ./general
+    - theme: alt
+      text: Erschaffungsmuster
+      link: ./creational
+    - theme: alt
+      text: Strukturmuster
+      link: ./structural
+    - theme: brand
+      text: Verhaltensmuster
+      link: #
+    - theme: alt
+      text: Architekturmuster
+      link: ./architectural
+    - theme: alt
+      text: Übersicht
+      link: ./index
 ---
+
 <img src="/behaviour_light_128.png" alt="Creational Pattern" width="36" height="36"><br>
+
+[[toc]]
+<br>
 
 # Entwurfsmuster - Verhaltensmuster
 

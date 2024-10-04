@@ -1,9 +1,39 @@
 ---
-layout: doc
+
+layout: home
 outline: [2, 2]
+
 customRulePrefix: DPA
 customIgnoreTitlesForRules: [Einleitung]
+
+hero:
+  name: "Design Patterns"
+  text: "Architekturmuster"
+  tagline: Architektur ist die Basis
+  actions:
+    - theme: alt
+      text: Allgemein
+      link: ./general
+    - theme: alt
+      text: Erschaffungsmuster
+      link: ./creational
+    - theme: alt
+      text: Strukturmuster
+      link: ./structural
+    - theme: alt
+      text: Verhaltensmuster
+      link: ./behavioral
+    - theme: brand
+      text: Architekturmuster
+      link: #
+    - theme: alt
+      text: Übersicht
+      link: ./index
 ---
+
+[[toc]]
+<br>
+
 # Architekturmuster
 
 ## Einleitung {#einleitung}
@@ -12,9 +42,6 @@ Architekturmuster sind Entwurfsmuster, die sich mit der Strukturierung von Anwen
 
 Allen Kapiteln wurde eine eindeutige Nummerierung, der Richtliniennummer, hinzugefügt, um eine eindeutige Identifikation zu ermöglichen.
 Jede Richtliniennummer besteht aus dem Buchstaben **DPA**(Design Pattern Architectural) gefolgt von einer Nummer, die den Abschnitt identifiziert. Damit kann eine Regel eindeutig identifiziert werden, z.B. für ein Code-Review.
-
-<!-- Broker, MVC, MVVM, MVP, PAC, Layers, Microservices, SOA, EDA, CQRS, Event Sourcing, Space-based, Pipes and Filters, Blackboard, Interpreter, Reflective, Client-Server, Peer-to-Peer, Publish-Subscribe, Master-Slave, MapReduce, Model-View-Controller, Model-View-ViewModel, Model-View-Presenter, Presentation-Abstraction-Control, Layers, Microservices, Service-Oriented Architecture, Event-Driven Architecture, Command Query Responsibility Segregation, Event Sourcing, Space-based Architecture, Pipes and Filters, Blackboard, Interpreter, Reflective Architecture, Client-Server, Peer-to-Peer, Publish-Subscribe, Master-Slave, MapReduce
- -->
 
 ## DPA1 Bekannte Architekturmuster {#bekannte-architekturmuster}
 

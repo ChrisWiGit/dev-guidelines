@@ -73,5 +73,14 @@ features:
 - title: DTG
   details: "Don't trust google"
   link: ./principles#don-t-trust-google
-
+- title: Behandle Warnungen als Fehler
+  details: "Behandle Warnungen als Fehler"
+  link: ./principles#behandle-warnungen-als-fehler
+- title: Prinzip der konzeptuellen Integrität
+  details: Wiederkehrende Probleme durch gleiche Lösungen lösen
+  link: ./principles#prinzip-der-konzeptuellen-integritaet
+- title: Komposition über Vererbung
+  details: Daten mit Komposition statt Vererbung modellieren 
+  link: ./principles#komposition-ueber-vererbung
 ---
+

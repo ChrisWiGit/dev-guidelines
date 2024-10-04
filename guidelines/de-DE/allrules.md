@@ -33,6 +33,7 @@ layout: doc
 - [P24 Don&#x27;t trust google](2.principles/principles.md#don-t-trust-google)
 - [P25 Behandle Warnungen als Fehler](2.principles/principles.md#behandle-warnungen-als-fehler)
 - [P26 Prinzip der konzeptuellen Integrität](2.principles/principles.md#prinzip-der-konzeptuellen-integritaet)
+- [P27 Komposition über Vererbung](2.principles/principles.md#komposition-ueber-vererbung)
 
 ## Allgemeine Regeln für alle Sprachen (GL)
 
@@ -163,11 +164,19 @@ layout: doc
 - [J23 Ternärer Operator](6.languages/java/index.md#ternaerer-operator)
 - [J24 Verwendung von Streams](6.languages/java/index.md#verwendung-von-streams)
 - [J25 Namespace-Import](6.languages/java/index.md#namespace-import)
-- [J26 Autoboxing und Unboxing](6.languages/java/index.md#autoboxing-und-unboxing)
+- [J26 Vermeide automatisches Boxing und Unboxing](6.languages/java/index.md#autoboxing-und-unboxing)
 - [J27 for, Array.forEach, Stream.forEach](6.languages/java/index.md#for-array-foreach-stream-foreach)
-- [J28 Methoden-Verkettung](6.languages/java/index.md#methoden-verkettung)
-- [J29 Unbenutzte Variablen und Parameter](6.languages/java/index.md#unbenutzte-variablen-und-parameter)
-- [J30 Verwende spezielle Objekte statt spezielle Werte](6.languages/java/index.md#verwende-spezielle-objekte-statt-spezielle-werte)
+- [J28 Generics einsetzen](6.languages/java/index.md#generics-einsetzen)
+- [J29 Type Erasure bei Generics](6.languages/java/index.md#type-erasure-bei-generics)
+- [J30 Methoden-Verkettung](6.languages/java/index.md#methoden-verkettung)
+- [J31 Unbenutzte Variablen und Parameter](6.languages/java/index.md#unbenutzte-variablen-und-parameter)
+- [J32 Verwende spezielle Objekte statt spezielle Werte](6.languages/java/index.md#verwende-spezielle-objekte-statt-spezielle-werte)
+- [J33 JetBrains Annotations](6.languages/java/index.md#jetbrains-annotations)
+- [J34 Eingabeprüfungen in REST-API mit Annotation](6.languages/java/index.md#eingabepruefungen-in-rest-api-mit-annotation)
+- [J35 Verwendung von &#x60;com.machinezoo.noexception&#x60; in Callbacks wie z.B. &#x60;forEach&#x60; in Java](6.languages/java/index.md#verwendung-von-com-machinezoo-noexception-in-callbacks-wie-z-b-foreach-in-java)
+- [J36 Kapselung von API-Methoden zur Vereinfachung und besseren Testbarkeit](6.languages/java/index.md#kapselung-von-api-methoden-zur-vereinfachung-und-besseren-testbarkeit)
+- [J37 String-Formatierung in Java](6.languages/java/index.md#string-formatierung-in-java)
+- [J38 Rückgabe von Collections sollen immer unveränderlich sein](6.languages/java/index.md#rueckgabe-von-collections-sollen-immer-unveraenderlich-sein)
 
 ## Allgemeine Regeln für das Refactoring
 

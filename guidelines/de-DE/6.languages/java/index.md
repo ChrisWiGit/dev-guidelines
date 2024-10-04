@@ -1471,7 +1471,7 @@ Bei der Benennung von Methoden ist es wichtig, klare Hinweise auf die Synchronit
 Unklare oder inkonsistente Benennung kann zu Missverständnissen und unerwartetem Verhalten führen.
 
 ```java
-// Unklare Benennung ohne klare Angabe zur Synchronität und zum Ergebnisverhalten	
+// Unklare Benennung ohne klare Angabe zur Synchronität und zum Ergebnisverhalten 
 public DataResult getData() {
   // ...
 }
@@ -1719,15 +1719,202 @@ Der ternäre Operator ist auch bekannt als bedingter Operator oder `Elvis Operat
 
 ## J24 Verwendung von Streams {#verwendung-von-streams}
 
-::: danger TODO
+Java unterstützt Streams, die eine Reihe von Elementen in einer sequenziellen oder parallelen Weise verarbeiten können.
+Streams sind eine leistungsstarke Möglichkeit, Daten zu filtern, zu transformieren und zu aggregieren, ohne Schleifen oder Iteratoren verwenden zu müssen.
 
-Streams hier beschreiben
+Streams sollen verwendet werden, um Code klarer, lesbarer und kompatkter zu machen.
 
-:::
+### J24 Problem
+
+Die Verwendung von Schleifen und Iteratoren kann zu unleserlichem und unübersichtlichem Code führen, insbesondere wenn komplexe Filter- oder Transformationsoperationen durchgeführt werden müssen.
+Darüber hinaus kann es zu Fehlern kommen, wenn Schleifen und Iteratoren nicht korrekt implementiert oder angewendet werden.
+
+```java
+final List<Integer> myList = Arrays.asList(1, 2, 3, 4, 5);
+
+int sum = 0;
+for (Integer num : myList) {
+  if (num % 2 == 0) {
+    sum += num;
+  }
+}
+
+System.out.println(sum); // Output: 6
+```
+
+### J24 Lösung
+
+Streams ersetzt die for-Schleife.
+
+```java
+List<Integer> myList = Arrays.asList(1, 2, 3, 4, 5);
+
+int sum = myList.stream()
+               .filter(num -> num % 2 == 0)
+               .mapToInt(Integer::intValue)
+               .sum();
+
+System.out.println(sum); // Output: 6
+```
+
+### J24 Operationen für Streams
 
 Methode | Erklärung | Beispiel
 --------|-----------|---------
 `filter()` | Filtert Elemente, die einer Bedingung entsprechen | `stream.filter(e -> e > 5)`
+`map()` | Transformiert Elemente in andere Elemente | `stream.map(e -> e * 2)`
+`mapToInt()` | Transformiert Elemente in Integer | `stream.mapToInt(e -> e.intValue())`
+`mapToDouble()` | Transformiert Elemente in Double | `stream.mapToDouble(e -> e.doubleValue())`
+`mapToLong()` | Transformiert Elemente in Long | `stream.mapToLong(e -> e.longValue())`
+`flatMap()` | Transformiert und flacht verschachtelte Listen | `stream.flatMap(e -> e.stream())`
+`distinct()` | Entfernt Duplikate | `stream.distinct()`
+`sorted()` | Sortiert Elemente | `stream.sorted()`
+`limit()` | Begrenzt die Anzahl der Elemente | `stream.limit(5)`
+`skip()` | Überspringt die ersten n Elemente | `stream.skip(5)`
+`reduce()` | Reduziert Elemente zu einem einzigen Wert | `stream.reduce(0, (a, b) -> a + b)`
+`collect()` | Sammelt Elemente in eine Sammlung | `stream.collect(Collectors.toList())`
+`toList()` | Sammelt Elemente in eine Liste, ersetzt `collect(Collectors.toList())` | `stream.toList()`
+`toSet()` | Sammelt Elemente in ein Set | `stream.toSet()`
+`toMap()` | Sammelt Elemente in eine Map | `stream.toMap(e -> e, e -> e * 2)`
+`groupingBy()` | Gruppiert Elemente nach einem Schlüssel | `stream.collect(Collectors.groupingBy(e -> e % 2))`
+`forEach()` | Führt eine Aktion für jedes Element aus | `stream.forEach(e -> System.out.println(e))`
+`anyMatch()` | Überprüft, ob ein Element einer Bedingung entspricht | `stream.anyMatch(e -> e > 5)`
+`allMatch()` | Überprüft, ob alle Elemente einer Bedingung entsprechen | `stream.allMatch(e -> e > 5)`
+`noneMatch()` | Überprüft, ob kein Element einer Bedingung entspricht | `stream.noneMatch(e -> e > 5)`
+`count()` | Zählt die Anzahl der Elemente | `stream.count()`
+`min()` | Findet das kleinste Element | `stream.min(Comparator.naturalOrder())`
+`max()` | Findet das größte Element | `stream.max(Comparator.naturalOrder())`
+`findFirst()` | Findet das erste Element | `stream.findFirst()`
+`findAny()` | Findet ein beliebiges Element | `stream.findAny()`
+`parallel()` | Führt die Operationen parallel aus | `stream.parallel()`
+`peek()` | Führt eine Aktion für jedes Element aus, ohne den Stream zu verändern | `stream.peek(System.out::println)`
+
+### J24 Oft verwendete Operationen
+
+::: code-group
+
+```java [Liste in Array]
+List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
+Integer[] arr = list.stream().toArray(Integer[]::new);
+```
+
+```java [Array in Liste]
+Integer[] arr = {1, 2, 3, 4, 5};
+List<Integer> list = Arrays.stream(arr).collect(Collectors.toList());
+```
+
+```java [Liste in Map]
+// Einfaches Mapping
+List<String> list = Arrays.asList("Java", "Kotlin", "Scala");
+Map<Integer, String> map = list.stream().collect(Collectors.toMap(String::length, e -> e));
+
+// Gruppiert nach Genre
+Map<String, List<Book>> groupedByGenre = items.stream().collect(Collectors.groupingBy(Book::genre));
+
+// Neue Objekte erstellen
+Map<Integer, PersonInfo> personInfoMap = personList.stream()
+    .collect(Collectors.toMap(
+        Person::getId, 
+        person -> new PersonInfo(person.getName(), person.getName().length())
+    ));
+
+// Map für Transformation
+List<PersonInfo> personInfoList = personList.stream()
+    .map(person -> new PersonInfo(person.getName(), person.getName().length())) 
+    .toLisT();    
+```
+
+```java [Map in Liste]
+Map<Integer, String> map = new HashMap<>();
+
+List<String> list = map.entrySet().stream()
+    .map(e -> e.getKey() + ": " + e.getValue())
+    .toLisT();
+// Ausgabe: ["1: Java", "2: Kotlin", "3: Scala"]
+```
+
+```java [Filtern und Sammeln]
+List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
+
+List<Integer> evenNumbers = list.stream()
+    .filter(e -> e % 2 == 0)
+    .toLisT();
+// Ausgabe: [2, 4]  
+```
+
+```java [Reduzieren]
+List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
+
+int sum = list.stream()
+  .reduce(0, (a, b) -> a + b);
+
+```
+
+```java [Flatten]
+List<List<Integer>> list = Arrays.asList(
+  Arrays.asList(1, 2, 3),
+  Arrays.asList(4, 5, 6),
+  Arrays.asList(7, 8, 9)
+);
+
+
+list.stream()
+  .flatMap(Collection::stream)
+  .forEach(System.out::println);
+// Ausgabe: 1, 2, 3, 4, 5, 6, 7, 8, 9
+```
+
+:::
+
+::: warning Fallstricke
+
+- Die Quelldaten darf während den Stream-Operationen nicht verändert werden (durch Hinzufügen, Entfernen oder Ändern von Elementen).
+- Eine Stream Operation wird erst ausgeführt, wenn ein Terminal-Operation (z.B. `collect`, `sum`, `forEach`) aufgerufen wird.
+D.h. Log-Ausgaben innerhalb von Stream-Operationen werden nicht ausgeführt, wenn keine Terminal-Operation aufgerufen wird.
+- **`toList()` und `toSet()` sind nicht die gleichen wie `collect(Collectors.toList())` und `collect(Collectors.toSet())`.
+`toList` und `toSet` liefern eine *immutable* Liste bzw. ein *immutable* Set zurück, das nicht verändert werden kann.
+Der Zugriff darauf führt zu einer `UnsupportedOperationException`.**
+- `toMap()` kann eine `IllegalStateException` werfen, wenn Schlüssel dupliziert werden.
+D.h. die Schlüssel müssen eindeutig sein.
+- `groupingBy()` kann eine `NullPointerException` werfen, wenn der Schlüssel `null` ist.
+- `collect()` kann eine `NullPointerException` werfen, wenn das Sammeln in eine Liste oder ein Set erfolgt und ein Element `null` ist.
+- `collect()` kann eine `IllegalStateException` werfen, wenn das Sammeln in eine Map erfolgt und Schlüssel dupliziert werden.
+- Boxing und Unboxing kann ein Performance-Problem sein, wenn primitive Datentypen in Wrapper-Klassen umgewandelt werden.
+Siehe [Autoboxing und Unboxing](.#autoboxing-und-unboxing) für weitere Informationen.
+:::
+
+::: info Methodenreferenzen
+
+Für Stream-Operationen mit nur einem Parameter soll ein Methodenreferenz verwendet werden, um den Code zu vereinfachen und zu verkürzen.
+
+Siehe [Methodenreferenzen Info](#lambda-ausdruecke-statt-funktionsdeklarationen) für weitere Informationen.
+
+:::
+
+### J24 Vorteile
+
+- Die Verwendung der Stream-API kann zu einem einfacheren, übersichtlicheren und fehlersichereren Code führen.
+- Durch die Verwendung von Stream-Operationen wie `filter`, `map`, `reduce`, `distinct` usw.
+können komplexe Filter- und Transformationsoperationen auf eine klare und konsistente Weise durchgeführt werden.
+- Darüber hinaus kann die Stream-API auch Parallelverarbeitung unterstützen, um die Leistung von Multi-Core-Systemen voll auszuschöpfen.
+
+### J24 Nachteile
+
+- Potentielle Performance-Probleme
+- Komplizierte Verkettung von Befehlen
+- Keine Zwischenergebnisse
+- Schwierige Fehlerbehandlung (kann durch Stream*Debugger in IntelliJ entgegengewirkt werden)
+- Komplexität
+
+### J24 Ausnahmen
+
+Es kann jedoch Fälle geben, in denen die Verwendung von Schleifen und Iteratoren sinnvoller ist,
+z.B. wenn es sich um eine einfache Iteration ohne komplexe Filter- oder Transformationsoperationen handelt oder wenn es notwendig ist, auf Elemente in einer bestimmten Reihenfolge zuzugreifen.
+Es ist daher wichtig, die Verwendung von Stream-Operationen sorgfältig zu prüfen und nur dann zu verwenden, wenn es notwendig und sinnvoll ist.
+
+### J24 Weiterführende Literatur
+
+- [Oracle Java 21 Streams](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/stream/package-summary.html)
 
 ## J25 Namespace-Import {#namespace-import}
 
@@ -1738,13 +1925,167 @@ Reihenfolge der imports, mit * als letztes
 
 :::
 
-## J26 Autoboxing und Unboxing {#autoboxing-und-unboxing}
+## J26 Vermeide automatisches Boxing und Unboxing {#autoboxing-und-unboxing}
 
-::: danger TODO
+Das automatische Boxing oder Unboxing von primitive Datentypen soll vermieden werden, um keine ungewollte Performance-Einbußen zu verursachen.
 
-TODO: JAVA
+::: details Boxing vs. Unboxing
+
+- **Boxing**: Konvertiert einen primitiven Datentyp in ein entsprechendes Wrapper-Objekt.
+Aus `int` wird `Integer`, aus `double` wird `Double`, usw.
+- **Unboxing**: Konvertiert ein Wrapper-Objekt in einen primitiven Datentyp.
+Aus `Integer` wird `int`, aus `Double` wird `double`, usw.
+
+```java
+Integer myFoo(Integer input) {
+  int i = input 5; // Unboxing
+
+  return i; // Boxing
+}
+```
 
 :::
+
+### J26 Problem
+
+Das automatische Boxing und Unboxing von primitiven Datentypen kann zu unerwünschten Performance-Einbußen führen, insbesondere in Schleifen oder bei häufigen Operationen.
+
+Wo möglich soll auf primitive Datentypen zurückgegriffen werden, um das Boxing und Unboxing zu vermeiden.
+
+```java
+List<Integer> list = new ArrayList<>();
+
+for (int i = 0; i < 1000000000; i++) {
+  list.add(i); // Boxing von int zu Integer
+}
+```
+
+Ein weiteres Beispiel ist die Stream-API, die häufig verwendet wird, um Daten zu filtern, zu transformieren und zu aggregieren.
+
+```java
+List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
+
+int sum = list.stream()
+  .filter(num -> num % 2 == 0) // Boxing von int zu Integer
+  .mapToInt(Integer::intValue) // Unboxing von Integer zu int
+  .sum();
+```
+
+Aber auch Optional kann zu Boxing führen.
+
+```java
+Optional<Integer> optional = Optional.of(1); // Boxing von int zu Integer
+```
+
+### J26 Lösung
+
+#### J26 Primitive Datentypen
+
+Für bekannte große Datenmengen oder Schleifen sollen primitive Datentypen verwendet werden, um das Boxing und Unboxing zu vermeiden.
+
+```java
+int[] array = new int[1000000000];
+
+for (Integer i = 0; i < array.length; i++) {
+  array[i] = i;
+}
+```
+
+::: info Generics und primitive Datentypen
+
+Generics unterstützen keine primitiven Datentypen, daher müssen Wrapper-Klassen wie `Integer`, `Double`, `Long` usw. verwendet werden.
+
+:::
+
+#### J26 Stream-API
+
+Für die Stream-API sollen spezielle Methoden wie `mapToInt`, `mapToDouble`, `mapToLong`, `flatMapToInt`, `flatMapToDouble`, `flatMapToLong` verwendet werden, um das Boxing und Unboxing zu vermeiden.
+
+::: code-group
+
+```java [Stream mit primitiven Datentypen]
+List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
+
+int sum = list.stream()
+  .filter(num -> num % 2 == 0)
+  .mapToInt(Integer::intValue)
+  .sum();
+
+// oder
+IntStream intStream = list.stream()
+  .mapToInt(Integer::intValue); // Unboxing von Integer zu int
+```
+
+```java [IntSummaryStatistics]
+// liefert Statistiken wie Summe, Durchschnitt, Minimum, Maximum, Anzahl
+IntSummaryStatistics summaryStatistics = IntStream.of(1, 2, 3, 4, 5).summaryStatistics();
+summaryStatistics.getAverage() // 3.0
+summaryStatistics.getCount() // 5
+summaryStatistics.getMax() // 5
+summaryStatistics.getMin() // 1
+summaryStatistics.getSum() // 15
+```
+
+:::
+
+#### J26 Optional
+
+Für `Optional` sollen die folgenden Klassen für primitive Datentypen verwendet werden, um das Boxing und Unboxing zu vermeiden.
+
+```java
+OptionalInt optionalInt = OptionalInt.of(1);
+OptionalDouble optionalDouble = OptionalDouble.of(1.0);
+OptionalLong optionalLong = OptionalLong.of(1L);
+```
+
+#### J26 Functional Interfaces
+
+Für primitive Datentypen gibt es neben den generischen Functional Interfaces auch spezielle Functional Interfaces, die primitiven Datentypen entsprechen.
+Diese sollen verwendet werden, um das Boxing und Unboxing zu vermeiden.
+
+- `IntBinaryOperator` statt `BinaryOperator<Integer>`
+- `LongBinaryOperator` statt `BinaryOperator<Long>`
+- `DoubleBinaryOperator` statt `BinaryOperator<Double>`
+- `IntConsumer` statt `Consumer<Integer>`
+- `LongConsumer` statt `Consumer<Long>`
+- `DoubleConsumer` statt `Consumer<Double>`
+- `ObjIntConsumer` statt `BiConsumer<T, Integer>`
+- `ObjLongConsumer` statt `BiConsumer<T, Long>`
+- `ObjDoubleConsumer` statt `BiConsumer<T, Double>`
+- `IntFunction` statt `Function<Integer, R>`
+- `LongFunction` statt `Function<Long, R>`
+- `DoubleFunction` statt `Function<Double, R>`
+- `IntUnaryOperator` statt `Function<Integer, Integer>`
+- `LongUnaryOperator` statt `Function<Long, Long>`
+- `DoubleUnaryOperator` statt `Function<Double, Double>`
+- `IntToDoubleFunction` statt `Function<Integer, Double>`
+- `IntToLongFunction` statt `Function<Integer, Long>`
+- `LongToIntFunction` statt `Function<Long, Integer>`
+- `LongToDoubleFunction` statt `Function<Long, Double>`
+- `DoubleToIntFunction` statt `Function<Double, Integer>`
+- `DoubleToLongFunction` statt `Function<Double, Long>`
+- `ToIntFunction` statt `Function<T, Integer>`
+- `ToLongFunction` statt `Function<T, Long>`
+- `ToDoubleFunction` statt `Function<T, Double>`
+- `ToIntBiFunction<T, U>` statt `BiFunction<T, U, Integer>`
+- `ToLongBiFunction<T, U>` statt `BiFunction<T, U, Long>`
+- `ToDoubleBiFunction<T, U>` statt `BiFunction<T, U, Double>`
+- `IntPredicate` statt `Predicate<Integer>`
+- `LongPredicate` statt `Predicate<Long>`
+- `DoublePredicate` statt `Predicate<Double>`
+- `IntSupplier` statt `Supplier<Integer>`
+- `LongSupplier` statt `Supplier<Long>`
+- `DoubleSupplier` statt `Supplier<Double>`
+
+### J26 Vorteile
+
+- Die Verwendung von primitiven Datentypen kann zu einer besseren Leistung und Effizienz führen, insbesondere bei großen Datenmengen oder Schleifen.
+- Das Erstellen von Wrapper-Objekten benötigt zusätzlichen Speicherplatz.
+
+### J26 Weiterführende Literatur
+
+- [java.util.function](https://docs.oracle.com/javase/8/docs/api/java/util/function/package-frame.html)
+- [Optionals](https://docs.oracle.com/javase/8/docs/api/java/util/package-summary.html)
 
 ## J27 for, Array.forEach, Stream.forEach {#for-array-foreach-stream-foreach}
 
@@ -1754,7 +2095,74 @@ TODO: JAVA
 
 :::
 
-## J28 Methoden-Verkettung {#methoden-verkettung}
+## J28 Generics einsetzen {#generics-einsetzen}
+
+Generics sollen verwendet werden, um die Typsicherheit in Java zu erhöhen und die Wiederverwendbarkeit von Klassen und Methoden zu verbessern.
+
+### J28 Problem
+
+Oftmals müssen Objekte eines Typs in einer Liste oder Map gespeichert werden, ohne dass der Typ zur Laufzeit bekannt ist.
+
+Der Compiler kann jedoch bei diesen allgemeinen Listen nicht überprüfen, ob die Typen korrekt sind, was zu Laufzeitfehlern führen kann.
+
+```java
+List list = new ArrayList();
+list.add("Java");
+Integer value = (Integer) list.get(0); // ClassCastException
+```
+
+### J28 Lösung
+
+Generics ermöglichen es, den Typ eines Objekts zur Compile-Zeit zu überprüfen und sicherzustellen, dass der Typ zur Laufzeit korrekt ist.
+
+```java
+final List<String> list = new ArrayList<>();
+
+list.add("Java");
+final Integer value = list.get(0); // Compiler-Fehler
+```
+
+::: warning Erstellen von generischen Instanzen
+
+Beim Erzeugen einer Instanz sollte der Typ nicht explizit angegeben werden, um die Typsicherheit zu gewährleisten.
+Der Diamond-Operator `<>` soll verwendet werden, um den Typ automatisch zu inferieren.
+
+```java
+// Falsch (zwei Typen String angegeben)
+List<String> list = new ArrayList<String>(); // [!code --]
+
+// Richtig
+List<String> list = new ArrayList<>(); // [!code ++]
+```
+
+:::
+
+## J29 Type Erasure bei Generics {#type-erasure-bei-generics}
+
+Generics in Java sind zur Compile-Zeit und nicht zur Laufzeit verfügbar.
+Das bedeutet, dass der Compiler die Typen zur Compile-Zeit überprüft und dann die Typen entfernt.
+
+### J29 Problem
+
+Zur Laufzeit kann nicht auf den Typ eines generischen Typs wie z.B. einer Liste mit einem bestimmten Typ überprüfen.
+
+```java
+if (someList instanceof List<String>) { // Compiler-Fehler
+  // ...
+}
+```
+
+### J29 Vorteile
+
+- Da keine Typprüfung zur Laufzeit durchgeführt wird, wird die Leistung nicht beeinträchtigt.
+- Kompatibel zu älteren Binärcode-Versionen von Java.
+
+### J29 Nachteile
+
+- Einschränkungen bei der Verwendung von Reflexion und Typprüfung zur Laufzeit.
+- Zur Laufzeit kann nicht auf den Typ eines generischen Typs überprüft werden.
+
+## J30 Methoden-Verkettung {#methoden-verkettung}
 
 Die Methoden-Verkettung soll verwendet werden, um Methodenaufrufe auf einem Objekt in einer einzigen Anweisung zu verkettet.
 
@@ -1763,7 +2171,7 @@ Dies wird beispielsweise bei Array-Methoden wie `map()`, `filter()`, `reduce()` 
 
 Verwende Methoden-Verkettung, um den Code kompakter und lesbarer zu machen.
 
-### J28 Beispiel
+### J30 Beispiel
 
 ```java
 final var numbers = List.of(1, 2, 3, 4, 5);
@@ -1774,7 +2182,7 @@ final var sum = numbers.stream()
     .reduce(0, Integer::sum);
 ```
 
-### J28 Regeln
+### J30 Regeln
 
 - Jeder Methodenaufruf wird auf einer neuen Zeile eingerückt (entsprechend den ESLint-Regeln).
 - Jeder Methodenaufruf wird durch einen Punkt (`.`) **vorangehend** zum Methodennamen getrennt.
@@ -1788,20 +2196,20 @@ final var sum = numbers.stream()
     .orElse(0);
 ```
 
-### J28 Vorteile
+### J30 Vorteile
 
 - Kompakter und lesbarer Code
 - Einfache Verkettung von Methodenaufrufen
 - Bessere Performance durch Vermeidung von Zwischenvariablen
 - Einfache Wiederverwendung von Methodenketten
 
-### J28 Ausnahmen
+### J30 Ausnahmen
 
 - Übermäßige Verkettung von Methoden kann die Lesbarkeit beeinträchtigen.
 - Bei komplexen Operationen oder Bedingungen ist es besser, die Methodenaufrufe aufzuteilen.
 - Bei der Verkettung von Methoden ist darauf zu achten, dass die Reihenfolge der Methodenaufrufe korrekt ist.
 
-## J29 Unbenutzte Variablen und Parameter {#unbenutzte-variablen-und-parameter}
+## J31 Unbenutzte Variablen und Parameter {#unbenutzte-variablen-und-parameter}
 
 :::danger Java-Version
 Das Feature ist erst ab Java 22 verfügbar (März 2024)
@@ -1811,11 +2219,11 @@ Es sollen keine unbenutzten Variablen und Parameter im Code vorhanden sein.
 
 - Wenn die Funktionsdeklaration die Parameter vorschreibt, kann `_` als Platzhalter für unbenutzte Parameter verwendet werden.
 
-### J29 Problem
+### J31 Problem
 
 Unbenutzte Variablen und Parameter sind oft als Deklaration notwendig, um den Code zu kompilieren, jedoch sieht es so aus, als würden sie im Code verwendet werden, obwohl das nicht der Fall ist.
 
-### J29 Lösung
+### J31 Lösung
 
 Verwende `_` als Platzhalter, um den Code sauber zu halten.
 
@@ -1823,31 +2231,31 @@ Underline `_` als Platzhalter kann für Parameter, Pattern-Matching (switch), Sc
 
 ```java
 
-public void sum(a, b) //[--]
-public void sum(_, _) //[++]
+public void sum(a, b) // [!code --]
+public void sum(_, _) // [!code ++]
 ```
 
-### J29 Vorteile
+### J31 Vorteile
 
 - Sauberer und wartbarer Code
 - Vermeidung von Verwirrung und unerwartetem Verhalten
 - Bessere Lesbarkeit und Verständlichkeit des Codes
 
-### J29 Nachteile
+### J31 Nachteile
 
 - Der Unterstrich kann zu Verwirrung führen, wenn er nicht als Platzhalter für unbenutzte Variablen oder Parameter verwendet wird.
 - Spätere Erweiterungen der Funktion oder Methode lassen den Namen des originalen Parameters vermissen, wenn der Unterstrich verwendet wird.
 **Bitte beachten**, dass eine Erweiterung einer vorhandenen Methode gegen das [OCP Prinzip](../../2.principles/principles#open-closed-principle) verstößt.
 
-### J29 Weiterführende Literatur/Links
+### J31 Weiterführende Literatur/Links
 
 - [Drop the Baggage: Use `_` for Unnamed Local Variables and Patterns in Java 22](https://blog.jetbrains.com/idea/2024/03/drop-the-baggage-use-_-for-unnamed-local-variables-and-patterns-in-java-22/)
 
-## J30 Verwende spezielle Objekte statt spezielle Werte {#verwende-spezielle-objekte-statt-spezielle-werte}
+## J32 Verwende spezielle Objekte statt spezielle Werte {#verwende-spezielle-objekte-statt-spezielle-werte}
 
 Wenn Objekte, wie `User` oder jede andere Art von Entität verwendet werden, und es spezielle Fälle gibt wie *nicht gefunden*, *ungültig*, *leer*, *fehlerhaft*, etc., dann sollen spezielle abgeleitete Objekte verwendet werden, um diese Fälle zu repräsentieren.
 
-### J30 Problem
+### J32 Problem
 
 Spezielle Fälle wie *nicht gefunden*, *ungültig*, *leer*, *fehlerhaft*, etc. werden oft durch spezielle Werte wie `null`, `-1`, `0`, `''`, `false`, etc. repräsentiert.
 Dies führt dazu, dass im Code ständig überprüft werden muss, ob der Wert speziell ist und entsprechend behandelt werden muss.
@@ -1868,7 +2276,7 @@ public User getUser(int id) {
 }
 ```
 
-### J30 Lösung
+### J32 Lösung
 
 Verwende abgeleitete Objekte, um spezielle Fälle zu repräsentieren.
 Es kann beispielsweise ein `NotFoundUser`-Objekt für den Fall eines nicht-gefundenen Benutzers erstellt werden.
@@ -1946,7 +2354,7 @@ public void foo(int id) {
 }
 ```
 
-### J30 Vorteile
+### J32 Vorteile
 
 - Keine Null-Pointer-Exceptions
 - Spezielle Fälle werden explizit repräsentiert.
@@ -1959,7 +2367,7 @@ public void foo(int id) {
   - API wird einfacher, da keine Exceptions geworfen werden müssen und Rückgabewerte immer gültig und prüfbar (`isValid()`) sind
 - Code wird einfacher und lesbarer, da spezielle Fälle keine zusätzlichen `if`-Anweisungen benötigen.
 
-### J30 Nachteile
+### J32 Nachteile
 
 - Architektur der Klassen und Objekte wird komplexer oder vorhandene Architektur muss angepasst werden.
 - Methoden müssen in ihrer Dokumentation nun statt Exceptions spezielle Objekte beschreiben.
@@ -1983,7 +2391,470 @@ Durch den Einsatz von speziellen Objekten wird es unwahrscheinlicher, dass Fehle
 
 :::
 
-### J30 Ausnahmen
+### J32 Ausnahmen
 
 - Für eine bereits existierende API sollte das Verhalten nicht einfach so geändert werden,
 da dies gegen [Lisko-Substitutionsprinzip](../../2.principles/principles.md#liskov-substitution-principle) und das Prinzip [Prinzip der konzeptuellen Integrität](../../2.principles/principles.md#prinzip-der-konzeptuellen-integritaet) verstößt.
+
+## J33 JetBrains Annotations {#jetbrains-annotations}
+
+JetBrains Annotations sind eine Reihe von Annotationen, die in Java-Code verwendet werden können, um zusätzliche Informationen über den Code zu geben.
+Die Annotationen werden von JetBrains entwickelt und in ihren IDEs wie IntelliJ IDEA verwendet, um den Code zu analysieren und zu überprüfen.
+
+JetBrains Annotationen sollen verwendet werden, um den Code zu dokumentieren und auf Null-Referenzen und andere Probleme hinzuweisen.
+
+### J33 Problem
+
+Es kann schwierig sein, den Code auf Null-Referenzen und andere Probleme zu überprüfen, die während der Laufzeit auftreten können.
+Außerdem können schlecht dokumentierte Methoden und Klassen zu Verwirrung und Fehlern führen.
+
+```java
+public void foo(String s) {
+  if (s == null) {
+    throw new NullPointerException();
+  }
+  // ...
+}
+```
+
+### J33 Refactoring
+
+Mit den Annotations von JetBrains können Entwickler Methoden und Klassen genau dokumentieren und auf Null-Referenzen und andere Probleme hinweisen.
+Zum Beispiel kann die `@NotNull`-Annotation verwendet werden, um anzuzeigen, dass eine Variable, ein Parameter oder ein Rückgabewert einer Methode nicht null sein darf.
+Die `@Nullable`-Annotation kann verwendet werden, um anzuzeigen, dass ein Parameter oder Rückgabewert einer Methode null sein kann.
+
+Andere mögliche [Annotations-Typen von Jetbrains](https://javadoc.io/doc/org.jetbrains/annotations/latest/index.html) sind:
+
+- `org.intellij.lang.annotations.Flow`: Verwendet zur Angabe von Flussbedingungen, die von einem Code-Analyse-Tool verwendet werden können, um mögliche Fehler im Code zu identifizieren.
+- `org.intellij.lang.annotations.JdkConstants`: Verwendet zur Verwendung von Konstanten aus der JDK-Codebasis, um Compilerwarnungen und -fehler zu vermeiden.
+- `org.intellij.lang.annotations.Language`: Verwendet zur Angabe der Sprache, die in einem String-Literal verwendet wird, um Tools wie Code-Analyse-Tools und IDEs zu unterstützen.
+- `org.jetbrains.annotations.ApiStatus`: Verwendet zur Kennzeichnung von API-Elementen (Methoden, Klassen usw.) mit ihrem aktuellen Stabilitätsstatus (experimentell, stabil, veraltet usw.).
+- `org.jetbrains.annotations.Contract`: Verwendet zur Angabe von Vertragsbedingungen, die eine Methode erfüllen muss, wie z.B. dass sie keine `null`-Rückgabewerte liefern darf oder dass sie einen bestimmten Wertebereich zurückgeben muss.
+- `org.jetbrains.annotations.Debug`: Verwendet zur Markierung von Code-Elementen (Klassen, Methoden usw.), die nur für Debugging-Zwecke verwendet werden sollten und nicht in einer Produktionsumgebung aufgerufen werden sollten.
+- `org.jetbrains.annotations.DependsOn`: Verwendet zur Angabe von Abhängigkeiten zwischen Code-Elementen (Klassen, Methoden usw.), um Tools wie IDEs und Build-Tools bei der Erstellung von Abhängigkeitsdiagrammen zu unterstützen.
+- `org.jetbrains.annotations.ExpectedFailure`: Verwendet zur Markierung von Tests, die auf fehlgeschlagene Tests warten oder darauf, dass bestimmte Ausnahmen ausgelöst werden.
+- `org.jetbrains.annotations.FileCharset`: Verwendet zur Angabe des Zeichensatzes, der für eine bestimmte Datei verwendet werden soll.
+- `org.jetbrains.annotations.MagicConstant`: Verwendet zur Verwendung von Enum-ähnlichen Konstanten mit einem bestimmten Wertebereich und einem vordefinierten Satz von Konstantenwerten.
+- `org.jetbrains.annotations.Nls`: Verwendet zur Angabe von lokalisierten Strings, um Tools wie IDEs und Code-Analyse-Tools bei der Lokalisierung von Code zu unterstützen.
+- `org.jetbrains.annotations.NotNull`: Verwendet zur Angabe von Argumenten, die nicht `null` sein dürfen.
+- `org.jetbrains.annotations.Nullable`: Verwendet zur Angabe von Argumenten, die `null` sein dürfen.
+- `org.jetbrains.annotations.Pattern`: Verwendet zur Überprüfung von Strings mit einem regulären Ausdruck.
+- `org.jetbrains.annotations.PropertyKey`: Verwendet zur Angabe von Schlüsseln für lokalisierte Strings.
+- `org.jetbrains.annotations.Range`: Verwendet zur Überprüfung von Argumenten auf einen bestimmten Wertebereich.
+- `org.jetbrains.annotations.RegExp`: Verwendet zur Überprüfung von Strings mit einem regulären Ausdruck.
+- `org.jetbrains.annotations.Subst`: Verwendet zur Ersetzung von Platzhaltern in Strings durch bestimmte Werte.
+- `org.jetbrains.annotations.TestOnly`: Verwendet zur Markierung von Code-Elementen (Klassen, Methoden usw.), die nur für Tests verwendet werden sollten und nicht in einer Produktionsumgebung aufgerufen werden sollten
+
+::: code-group
+
+```java [@NotNull]
+public static String formatName(@NotNull String firstName, @NotNull String lastName) {
+  return lastName + ", " + firstName;
+}
+```
+
+```java [@Contract]
+public static void divide(@Contract("_,0 -> fail") int a, int b) {
+  if (b == 0) {
+    throw new IllegalArgumentException("Divisor cannot be zero");
+  }
+  int result = a / b;
+  System.out.println(result);
+}
+```
+
+```java [@MagicConstant]
+  public class PaymentMethod {
+    public static final String CREDIT_CARD = "credit_card";
+    public static final String PAYPAL = "paypal";
+    public static final String GOOGLE_PAY = "google_pay";
+
+    private String method;
+
+    public PaymentMethod(@MagicConstant(stringValues = {CREDIT_CARD, PAYPAL, GOOGLE_PAY}) String method) {
+      this.method = method;
+    }
+
+    // ...
+  }
+```
+
+```java [@Range]
+public static void validateAge(@Range(from = 18, to = 99) int age) {
+  if (age < 18 || age > 99) {
+      throw new IllegalArgumentException("Age must be between 18 and 99");
+  }
+  System.out.println("Valid age: " + age);
+}
+```
+
+```java [@Pattern]
+public static void validateEmail(@Pattern(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$") String email) {
+  if (!email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+      throw new IllegalArgumentException("Invalid email format");
+  }
+  System.out.println("Valid email: " + email);
+}
+```
+
+:::
+
+### J33 Vorteile
+
+- Reduziert die Anzahl von Null-Referenz-Exceptions
+- Verbessert die Dokumentation von Code
+- Unterstützt statische Analysewerkzeuge und IDEs bei der Fehlererkennung. IntelliJ IDEA zeigt z.B. eine Warnung an, wenn eine Methode mit `@NotNull`-Annotation einen `null`-Wert zurückgibt.
+- Verbessert die Lesbarkeit von Code für andere Entwickler
+
+### J33 Nachteile
+
+- Erfordert zusätzliche Zeit und Arbeit, um Annotations in den Code zu integrieren
+- Kann dazu führen, dass der Code unübersichtlich wird, wenn zu viele Annotations verwendet werden
+
+### J33 Ausnahmen
+
+- Für kleine und einfache Projekte können Annotations möglicherweise nicht erforderlich sein
+- Es kann Fälle geben, in denen der Aufwand, Annotations zu verwenden, den Nutzen überwiegt.
+
+### J33 weiterführende Literatur/Links
+
+- JetBrains Annotations Dokumentation: <https://www.jetbrains.com/help/idea/nullable-and-notnull-annotations.html>
+- "Effective Java" von Joshua Bloch: Ein Buch, das die Verwendung von Annotations in Java detailliert beschreibt.
+
+## J34 Eingabeprüfungen in REST-API mit Annotation {#eingabepruefungen-in-rest-api-mit-annotation}
+
+Eingabeprüfungen in RESTful Web Services sollen verwendet werden, um unerwartete Fehler zu vermeiden und die Sicherheit zu erhöhen.
+
+### J34 Problem
+
+RESTful Web Services erlauben den Austausch von Daten zwischen verschiedenen Systemen über HTTP-Anfrage.
+Diese Daten können jedoch in unerwarteter Weise falsch formatiert oder ungültig sei.
+Eine fehlgeschlagene Eingabeprüfung kann zu unerwarteten Ergebnissen oder sogar zu Sicherheitsproblemen führen.
+
+```java
+@Path("/products/{category}/{productId}")
+public class ProductResource {
+  @GET
+  @Produces(MediaType.APPLICATION_JSON)
+  public Response getProduct(
+      @PathParam("category") String category,
+      @PathParam("productId") int productId) {
+      // ...
+  }
+}
+```
+
+In diesem Beispiel gibt es zwei Pfadparameter: `category` und `productId`. Der `category`-Parameter kann einen beliebigen String enthalten und `productId` muss eine ganze Zahl sei.
+Es gibt keine Eingabeprüfung auf die Werte der Parameter.
+
+### J34 Lösung
+
+Eine Möglichkeit, die Eingabeprüfung in RESTful Web Services zu verbessern, besteht darin, Annotationen zu verwenden, um die zulässigen Werte und Formate von Parametern zu definiere.
+JAX-RS bietet eine Vielzahl von Annotationen an, die dazu verwendet werden können, Eingabeprüfungen durchzuführen.
+
+Einige der wichtigsten Annotationen, die in REST-Methoden verwendet werden können, um Eingabeprüfungen durchzuführen:
+
+- `@PathParam` - Ermöglicht den Zugriff auf den Wert eines Pfadparameters in einer REST-Anfrage.
+- `@QueryParam` - Ermöglicht den Zugriff auf den Wert eines Abfrageparameters in einer REST-Anfrage.
+- `@HeaderParam` - Ermöglicht den Zugriff auf den Wert eines Header-Parameters in einer REST-Anfrage.
+- `@CookieParam` - Ermöglicht den Zugriff auf den Wert eines Cookie-Parameters in einer REST-Anfrage.
+- `@FormParam` - Ermöglicht den Zugriff auf den Wert eines Formular-Parameters in einer REST-Anfrage.
+- `@BeanParam` - Ermöglicht die Verwendung eines POJOs, das mit `@PathParam`, `@QueryParam`, `@HeaderParam`, `@CookieParam` und `@FormParam` annotiert ist, um eine Gruppe von Parametern zu erfassen.
+- `@DefaultValue` - Legt einen Standardwert für einen Parameter fest, falls er in der REST-Anfrage nicht vorhanden ist.
+- `@Min` - Legt den minimalen Wert für eine numerische Eingabe fest.
+- `@Max` - Legt den maximalen Wert für eine numerische Eingabe fest.
+- `@NotNull` - Legt fest, dass ein Parameter in der REST-Anfrage nicht null sein darf.
+- `@Size` - Legt die Größe eines Parameters in der REST-Anfrage fest.
+- `@UUID` - Legt fest, dass ein Parameter in der REST-Anfrage eine gültige UUID sein muss.
+- `@Pattern` - Legt ein reguläres Ausdrucksmuster fest, das ein Parameter in der REST-Anfrage erfüllen muss.
+
+Diese Annotationen können verwendet werden, um sicherzustellen, dass die Eingaben in einer REST-Anfrage korrekt sind und um unerwartete Fehler bei der Verarbeitung zu vermeiden.
+
+::: code-group
+
+```java [@PathParam]
+@Path("/products/{category}/{productId : \\d+}")
+public class ProductResource {
+  @GET
+  @Produces(MediaType.APPLICATION_JSON)
+  public Response getProduct(
+          @PathParam("category") @Pattern(regexp = "^(books|electronics|clothing)$") String category,
+          @PathParam("productId") int productId) {
+      // ...
+  }
+  // liefert 400-Fehler, wenn category nicht "books", "electronics" oder "clothing" ist
+}
+```
+
+```java [@UUID]
+@GET
+@Path("/{id}")
+public Response getResource(@PathParam("id") @UUID String id) {
+    // code here
+}
+// liefert 400-Fehler, wenn id keine gültige UUID ist
+// UUID-Format: 123e4567-e89b-12d3-a456-426614174000
+```
+
+```java [@Min, @Max]
+@GET
+@Path("/{number}")
+public Response getNumber(@PathParam("number") @Min(1) @Max(10) int number) {
+    // code here
+}
+// liefert 400-Fehler, wenn number < 1 oder number > 10
+```
+
+```java [@Email]
+@POST
+@Path("/example/{name}/{age}/{email}/{username}")
+@Consumes(MediaType.APPLICATION_JSON)
+public Response exampleMethod(
+        @PathParam("name") final String name,
+        @PathParam("age") @Min(value = 18, message = "Age must be at least 18") @Max(value = 120, message = "Age must not exceed 120") final int age,
+        @PathParam("email") @Email(message = "Invalid email address") final String email,
+        @PathParam("username") @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$", message = "Username must be at least 8 characters long and contain at least one letter and one number") final String username
+) {
+    // Methodenlogik hier...
+
+    return Response.ok().build();
+}
+
+```
+
+:::
+
+### J34 Vorteile
+
+- Bessere Eingabeprüfung: Annotationen ermöglichen eine präzisere Definition der zulässigen Werte und Formate von Parametern, was zu einer besseren Eingabeprüfung führt.
+- Sicherheit: Eine effektive Eingabeprüfung kann dazu beitragen, Sicherheitsprobleme zu verhindern, die durch unerwartete oder ungültige Eingaben verursacht werden können.
+- In der Regel wird der HTTP-Statuscode "400 Bad Request" zurückgegeben, wenn eine Eingabeprüfung in einer REST-API fehlschlägt.
+- Bessere Lesbarkeit und Nachvollziehbarkeit: Annotationen können verwendet werden, um die Bedeutung von Parametern in REST-Methoden zu dokumentieren.
+
+### J34 Nachteile
+
+- Nicht alle Eingabeprüfungen können mit Annotationen durchgeführt werden. Eine manuelle Prüfung im Code ist in einigen Fällen erforderlich.
+
+### J34 Weiterführende Literatur/Links
+
+- [Java EE 7 Tutorial: Using Path Parameters](https://docs.oracle.com/javaee/7/tutorial/jaxrs-advanced004.htm)
+- [Java EE 7 Tutorial: Using Query Parameters](https://docs.oracle.com/javaee/7/tutorial/jax)
+
+## J35 Verwendung von `com.machinezoo.noexception` in Callbacks wie z.B. `forEach` in Java {#verwendung-von-com-machinezoo-noexception-in-callbacks-wie-z-b-foreach-in-java}
+
+Es ist eine bewährte Praxis in Java, die Bibliothek `com.machinezoo.noexception` zu verwenden, um die Verwendung von `try-catch`-Blöcken in Callback-Funktionen wie `forEach` zu reduzieren. Durch die Verwendung dieser Bibliothek wird der Code sauberer und lesbarer, da die Ausnahmebehandlung von Callbacks elegant behandelt wird.
+
+### J35 Problem
+
+Bei der Verwendung von Callback-Funktionen wie `forEach` in Java besteht die Notwendigkeit, Ausnahmen innerhalb des Callbacks zu behandeln. Dies führt zu zusätzlichem Code und erhöht die Komplexität, insbesondere wenn mehrere Ausnahmen behandelt werden müssen.
+
+```java
+List<String> list = Arrays.asList("apple", "banana", "cherry");
+
+try {
+    list.forEach(item -> {
+        try {
+            // Operationen, die eine Ausnahme werfen können
+            // ...
+        } catch (Exception e) {
+            // Ausnahmebehandlung
+            // ...
+        }
+    });
+} catch (Exception e) {
+    // Ausnahmebehandlung
+    // ...
+}
+```
+
+### J35 Refactoring
+
+Durch die Verwendung von `com.machinezoo.noexception` kann die Ausnahmebehandlung in Callback-Funktionen eleganter gehandhabt werden.
+Die Bibliothek bietet verschiedene Hilfsmethoden an, um Ausnahmen in Callbacks zu behandeln, ohne dass zusätzliche `try-catch`-Blöcke erforderlich sind.
+
+```java
+import com.machinezoo.noexception.Exceptions;
+
+List<String> list = Arrays.asList("apple", "banana", "cherry");
+
+list.forEach(Exceptions.sneak().consumer(item -> {
+  // Operationen, die eine Ausnahme werfen können
+  // ...
+}));
+```
+
+### J35 Vorteile
+
+- Reduzierung des Boilerplate-Codes durch die Verwendung von `com.machinezoo.noexception`
+- Sauberer und lesbarer Code ohne zusätzliche `try-catch`-Blöcke in Callback-Funktionen
+- Bessere Trennung von Geschäftslogik und Ausnahmebehandlung
+
+### J35 Nachteile
+
+- Einführung einer zusätzlichen Abhängigkeit durch die Verwendung von `com.machinezoo.noexception`
+- Erhöhte Komplexität des Codes durch die Verwendung von Hilfsmethoden
+
+### J35 Ausnahmen
+
+Es kann Situationen geben, in denen die Verwendung von `com.machinezoo.noexception` nicht angemessen ist, z. B. wenn das Projekt bereits eine andere Lösung für die Behandlung von Ausnahmen verwendet oder wenn die Einführung einer zusätzlichen Abhängigkeit vermieden werden soll.
+
+### J35 Weiterführende Literatur/Links
+
+- [com.machinezoo.noexception - GitHub](https://github.com/robertvazan/com.machinezoo.noexception)
+- [Avoiding Exceptions in Callbacks](https://dzone.com/articles/avoiding-exceptions-in-callbacks)
+
+## J36 Kapselung von API-Methoden zur Vereinfachung und besseren Testbarkeit {#kapselung-von-api-methoden-zur-vereinfachung-und-besseren-testbarkeit}
+
+### J36 Problem
+
+API-Methoden können oft komplexe Logik benötigen, um beispielsweise Datenumwandlungen oder Filterungen für die Eingabeparameter und Resultate durchzuführen. Wenn diese Komplexität für die API-Methode notwendig ist und direkt in der eigenen Methode angwendet wird, kann dies zu unübersichtlichem Code und Schwierigkeiten bei der Testbarkeit führen. Darüber hinaus kann es erforderlich sein, die API-Methode in Tests zu mocken, was zu erhöhtem Aufwand führt.
+
+```java
+// Beispiel-API-Methode
+public String[] getActiveUsers(int[] userIds) {
+   // Komplexe Logik zur Umwandlung und Filterung
+   // ...
+   
+   // Rückgabe der Benutzernamen
+   return usernames;
+}
+```
+
+### J36 Lösung
+
+Um die Komplexität der API-Methode zu reduzieren und die Testbarkeit zu verbessern, sollte die Logik in eine eigene Methode ausgelagert werden, die die API-Methode aufruft und dabei die erforderlichen Umwandlungen und Filterungen durchführt.
+
+```java
+
+// Eigentliche Arbeitsmethode
+private void foo() {
+  List<String> = getActiveUsers(userIds);
+  // ...   
+}
+
+// Kapselungsmethode für die Komplexität der API
+public List<String> getActiveUsers(List<Integer> userIds) {
+  List<User> activeUsernames = api.getUsers(userIds.toArray(new String[0])));
+  
+  // Rückgabe der Benutzernamen als Array
+  return activeUsernames.stream()
+  .filter(User::isActive)
+  .collect(Collectors.toList());
+}
+```
+
+### J36 Vorteile
+
+- Bessere Lesbarkeit und Wartbarkeit des Codes durch Auslagerung der Komplexität des API-Aufrufs in eine eigene Methode.
+- Verbesserte Testbarkeit, da die kapselnde Methode leichter zu testen ist und die API-Methode nur über die kapselnde Methode getestet werden muss.
+- Erhöhte Flexibilität, da die kapselnde Methode bei Bedarf weitere Anpassungen oder Erweiterungen der Funktionalität ermöglicht, ohne die API-Methode direkt zu verändern.
+
+### J36 Ausnahmen
+
+In bestimmten Fällen kann es aus Performance-Gründen oder aufgrund von spezifischen Anforderungen notwendig sein, die Komplexität direkt in der API-Methode zu belassen. In solchen Fällen sollte jedoch sorgfältig abgewogen werden, ob die Vorteile der Kapselung überwiegen.
+
+### J36 Weiterführende Literatur/Links
+
+- [Clean Code: A Handbook of Agile Software Craftsmanship by Robert C. Martin](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882)
+
+## J37 String-Formatierung in Java {#string-formatierung-in-java}
+
+Beim Logging mit SLF4J ist es wichtig, die Platzhalter-Zeichen korrekt zu verwenden und nicht mit den Platzhaltern von String.Format zu verwechseln.
+Leider ist in Java ein Verwechseln von Platzhaltern möglich, wenn man nicht aufpasst.
+
+### J37 Problem
+
+SLF4J bietet Platzhalter für das Einfügen von Werten in Log-Nachrichten.
+Die Platzhalter werden jedoch manchmal mit den Platzhaltern von String.Format verwechselt, was zu unerwartetem Verhalten oder sogar Fehlern führen kann.
+
+::: details  SLF4J vs. String.format vs. MessageFormat
+
+- SLF4J: verwendet geschweifte Klammern `{}` als Platzhalter und erwartet die Variablen in der Reihenfolge der Platzhalter.
+- String.format: verwendet Prozentzeichen `%` als Platzhalter und erwartet die Variablen in der Reihenfolge der Platzhalter und mit dem entsprechenden Typ (`%s` für String, `%d` für Integer, etc.).
+- MessageFormat: verwendet geschweifte Klammern `{}` als Platzhalter und erwartet die Variablen mit dem entsprechenden Index (`{0}` für die erste Variable, `{1}` für die zweite Variable, etc.).
+
+:::
+
+```java
+String name = "John";
+int age = 30;
+// falsch
+log.info("Name: %s, Age: %d", name, age);
+String.format("Name: {}, Age: {}", name, age);
+MessageFormat.format("Name: %s, Age: %d", name, age)
+```
+
+### J37 Refactoring
+
+Platzhalter für das Logging mit SLF4J werden mit geschweiften Klammern verwendet.
+Platzhalter für String.format werden mit Prozentzeichen verwendet.
+Zu beachten ist, dass Platzhalter die geschweiften Klammer sind und die Reihenfolge der Platzhalter mit der Reihenfolge der Variablen übereinstimmt.
+Das Logging für Exceptions erfordert keinen Platzhalter, wenn das Objekt der Exception als letzter Parameter für das Logging übergeben wird.
+
+```java
+String name = "John";
+int age = 30;
+log.info("Name: {}, Age: {}", name, age);
+String.format("Name: %s, Age: %d", name, age);
+MessageFormat.format("Name: {0}, Age: {1}", name, age)
+```
+
+### J37 Weiterführende Literatur/Links
+
+- [SLF4J Documentation](http://www.slf4j.org/manual.html)
+- [Best Practices for Logging in Java](https://stackify.com/best-practices-logging-java/)
+
+## J38 Rückgabe von Collections sollen immer unveränderlich sein {#rueckgabe-von-collections-sollen-immer-unveraenderlich-sein}
+
+Wenn interne Datenstrukturen wie Collections (List, Set, Map) zurückgegeben werden müssen, sollen diese immer immutable sein, d.h. unveränderlich, sein, damit die internen Datenstrukturen nicht von außen verändert werden können.
+
+### J38 Problem
+
+Wenn interne Datenstrukturen wie Collections (List, Set, Map) zurückgegeben werden, können diese von außen verändert werden, was dazu führen kann, dass die interne Datenstruktur inkonsistent wird oder unerwartete Ergebnisse auftreten.
+
+```java
+public List<String> getNames() {
+  return names;
+}
+
+List<String> names = getNames();
+names.add("Alice");
+```
+
+### J38 Lösung
+
+Um zu verhindern, dass interne Datenstrukturen von außen verändert werden, sollten immer Kopien der internen Datenstrukturen zurückgegeben werden, die unveränderlich sind.
+
+Für einfache Listen wie Strings oder primitive Datentypen können `List.copyOf()` oder `Collections.unmodifiableList()` verwendet werden, um unveränderliche Listen zu erstellen.
+
+```java
+public List<String> getNames() {
+  return List.copyOf(names);
+}
+// oder
+public List<String> getNames() {
+  return Collections.unmodifiableList(names);
+}
+```
+
+::: warning Tiefe Kopie vs. Flache Kopie
+
+`List.copyOf()` und `Collections.unmodifiableList()` erstellen nur eine flache Kopie der Liste, d.h. die Elemente der Liste sind nicht kopiert, sondern nur die Referenzen zu den Elementen.
+
+Wenn die Elemente der Liste ebenfalls verändert werden können, sollten tiefe Kopien der Elemente erstellt werden, um sicherzustellen, dass die Element nicht verändert werden können.
+
+Statt tiefe Kopien zu erstellen soll das Prinzip [Tell, Don't Ask](../../2.principles/principles#tda-ie) angewendet werden, um die Verantwortung für die Veränderung der Elemente an die Klasse zu übergeben, die die Elemente besitzt.
+
+:::
+
+::: details Mutable vs. Immutable vs. Unmodifiable
+
+- Mutable: Die Datenstruktur kann verändert werden, d.h. es können Elemente hinzugefügt, entfernt oder geändert werden.
+- Immutable: Die Datenstruktur kann nicht verändert werden, d.h. es können keine Elemente hinzugefügt, entfernt oder geändert werden.
+Beispiele für unveränderliche Datenstrukturen sind `String`, `Integer`, `LocalDate`, etc.
+Methoden wie `Map.of()`, `List.of()`, `Set.of()`, `Map.copyOf()`, `List.copyOf()`, `Set.copyOf()` erstellen unveränderliche Mengen, Listen und Maps, d.h. die Datenstruktur können weder verändert noch erweitert werden.
+- Unmodifiable: Die Datenstruktur kann nicht verändert werden, d.h. es können keine Elemente hinzugefügt oder entfernt werden, aber die Elemente können geändert werden.
+Beispiele für Methoden, die unveränderliche Datenstrukturen `Collections.unmodifiableList()`, `Collections.unmodifiableSet()`, `Collections.unmodifiableMap()` erzeugen.
+Dies wird durch eine Wrapper-Klasse erreicht, die die Methoden zum Hinzufügen und Entfernen von Elementen blockiert, bzw. eine Ausnahame `UnsupportedOperationException` wirft.
+
+:::

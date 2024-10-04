@@ -1,13 +1,40 @@
 ---
 
-layout: doc
+layout: home
 outline: [2, 2]
 
 customRulePrefix: DPC
 customIgnoreTitlesForRules: [Einleitung]
 
+hero:
+  name: Design Patterns
+  text: Erschaffungsmuster
+  tagline: Erzeugung von etwas Neuem
+  actions:
+    - theme: alt
+      text: Allgemein
+      link: ./general
+    - theme: brand
+      text: Erschaffungsmuster
+      link: #
+    - theme: alt
+      text: Strukturmuster
+      link: ./structural
+    - theme: alt
+      text: Verhaltensmuster
+      link: ./behavioral
+    - theme: alt
+      text: Architekturmuster
+      link: ./architectural
+    - theme: alt
+      text: Übersicht
+      link: ./index
 ---
+
 <img src="/brickwall_light_128.png" alt="Creational Pattern" width="36" height="36"><br>
+
+[[toc]]
+<br>
 
 # Entwurfsmuster - Creational Patterns
 
