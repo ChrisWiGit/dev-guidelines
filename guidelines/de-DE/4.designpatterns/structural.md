@@ -22,6 +22,12 @@ Jede Richtliniennummer besteht aus dem Buchstaben **DPS**(Design Pattern Structu
 
 Das Adapter Pattern ermöglicht es, zwei Objekte mit inkompatiblen Schnittstellen miteinander zu verbinden.
 
+### DPS1 Einsatzzweck
+
+- Der Adapter kommt zum Einsatz, wenn eine bereits vorhandene Klasse zum Einsatz kommen soll, die jedoch nicht die benötigte Schnittstelle implementiert.
+Der Adapter wird als Zwischenschicht verwendet, um als Überbrückung zwischen den beiden Klassen zu dienen.
+- Der Adapter kommt zum Einsatz, wenn mehrere Unterklassen verwendet werden sollen, die eine gemeinsame Funktionalität bereitstellen sollen, die Oberklasse jedoch nicht erweitert werden kann.
+
 ### DPS1 Externe Beschreibung auf refactoring.guru
 
 [Adapter Pattern](https://refactoring.guru/design-patterns/adapter)
@@ -70,6 +76,14 @@ Das Flyweight Pattern wird verwendet, um die Anzahl der Objekte zu reduzieren un
 
 Das Proxy Pattern wird verwendet, um den Zugriff auf ein Objekt zu kontrollieren, indem ein Proxyobjekt erstellt wird, das als Stellvertreter für das eigentliche Objekt fungiert.
 Alle Aufrufe an das Proxyobjekt werden an das eigentliche Objekt weitergeleitet, wobei der Proxy zusätzliche Funktionalität vor oder nach dem Aufruf des originalen Objekts bereitstellen kann.
+
+### DPS7 Einsatzzweck
+
+- Das Proxy Pattern wird für eine Verzögerte Initialisierung (lazy initialization) (virtueller Proxy) eingesetzt, wenn eine schwergewichtige Klasse nicht von Anfang an initialisiert werden soll, sondern erst dann, wenn sie tatsächlich benötigt wird.
+- Das Proxy Pattern wird für den Zugriffsschutz (Schutzproxy) eingesetzt, wenn nur bestimmte Clients auf das Objekt zugreifen dürfen.
+- Das Proxy Pattern wird für die lokale Ausführung eines Remote-Dienstes (Remote-Proxy) eingesetzt, wenn das echte Objekt auf einem Remote-Server liegt (DCOM, CORBA, RMI).
+- Das Proxy Pattern wird für das Protokollieren von Anfragen (Protokoll-Proxy) eingesetzt, wenn das Ändern der eigentlichen Klasse nicht möglich ist.
+- Das Proxy Pattern wird für die intelligente Referenz (Smart Reference) eingesetzt, wenn das Objekt freigegeben werden soll, sobald es nicht mehr benötigt wird.
 
 ### DPS7 Externe Beschreibung auf refactoring.guru
 

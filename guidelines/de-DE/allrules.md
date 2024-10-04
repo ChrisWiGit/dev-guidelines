@@ -32,6 +32,7 @@ layout: doc
 - [P23 RoE](2.principles/principles.md#roe)
 - [P24 Don&#x27;t trust google](2.principles/principles.md#don-t-trust-google)
 - [P25 Behandle Warnungen als Fehler](2.principles/principles.md#behandle-warnungen-als-fehler)
+- [P26 Prinzip der konzeptuellen Integrität](2.principles/principles.md#prinzip-der-konzeptuellen-integritaet)
 
 ## Allgemeine Regeln für alle Sprachen (GL)
 

@@ -1983,6 +1983,7 @@ Durch den Einsatz von speziellen Objekten wird es unwahrscheinlicher, dass Fehle
 
 :::
 
-### Ausnahmen
+### J30 Ausnahmen
 
-- Für eine bereits existierende API sollte das Verhalten nicht einfach so geändert werden.
+- Für eine bereits existierende API sollte das Verhalten nicht einfach so geändert werden,
+da dies gegen [Lisko-Substitutionsprinzip](../../2.principles/principles.md#liskov-substitution-principle) und das Prinzip [Prinzip der konzeptuellen Integrität](../../2.principles/principles.md#prinzip-der-konzeptuellen-integritaet) verstößt.
