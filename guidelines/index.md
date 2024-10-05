@@ -15,7 +15,12 @@ hero:
       link: ./en-US/
 ---
 
-# License
+# Software Guidelines
+
+Welcome to the Software Guidelines project.
+Please choose your language to get started.
+
+## License
 
 The content of this website is licensed under the [Creative Commons Attribution-ShareAlike 4.0 International Public License](https://creativecommons.org/licenses/by-sa/4.0/deed.en).
 
