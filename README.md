@@ -6,6 +6,8 @@ Coding guidelines for software development projects
 
 This project uses vitepress to generate a static site with markdown files.
 
+You'll find a browsable version of the site at [https://chriswigit.github.io/dev-guidelines/](https://chriswigit.github.io/dev-guidelines/).
+
 ## Installation
 
 ```bash

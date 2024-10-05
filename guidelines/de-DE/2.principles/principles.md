@@ -288,3 +288,8 @@ Wenn Komposition verwendet wird, werden Klassen als Komponenten verwendet, die u
 Komposition soll vor Vererbung verwendet werden, wenn Daten statt Verhalten hinzugefügt werden sollen.
 
 Siehe [Was ist Polymorphismus?](../6.languages/polymorphism#was-ist-polymorphismus) für mehr Informationen
+
+## Kenne deine Werkzeuge {#kenne-deine-werkzeuge}
+
+Das Prinzip `Kenne deine Werkzeuge` besagt, dass Entwickler die Werkzeuge, die sie verwenden, gut kennen sollen.
+Nur wenn Entwickler die Werkzeuge, die sie verwenden, gut kennen, können sie effektiv und effizient arbeiten.
