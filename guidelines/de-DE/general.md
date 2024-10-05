@@ -94,3 +94,9 @@ Nur so kann in einem Team effizient gearbeitet werden.
 
 - In diesem Dokument werden alle Regeln die mit `soll`/`sollen` beginnen als verbindlich angesehen.
 - Regeln mit `kann`/`können` sind optional und können je nach Bedarf angewendet werden.
+
+## Feedback
+
+Wenn du Fehler findest oder Verbesserungsvorschläge hast, kannst du diese gerne mitteilen.
+Du kannst auch per github pull request Verbesserungen vorschlagen.
+Bitte beachte, dass es manchmal etwas dauern kann, bis Änderungen übernommen werden.
