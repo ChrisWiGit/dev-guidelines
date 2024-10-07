@@ -34,6 +34,7 @@ layout: doc
 - [P25 Behandle Warnungen als Fehler](2.principles/principles.md#behandle-warnungen-als-fehler)
 - [P26 Prinzip der konzeptuellen Integrität](2.principles/principles.md#prinzip-der-konzeptuellen-integritaet)
 - [P27 Komposition über Vererbung](2.principles/principles.md#komposition-ueber-vererbung)
+- [P28 Kenne deine Werkzeuge](2.principles/principles.md#kenne-deine-werkzeuge)
 
 ## Allgemeine Regeln für alle Sprachen (GL)
 
@@ -167,20 +168,21 @@ layout: doc
 - [J25 Lambda-Ausdrücke statt Funktionsdeklarationen](6.languages/java/index.md#lambda-ausdruecke-statt-funktionsdeklarationen)
 - [J26 Ternärer Operator](6.languages/java/index.md#ternaerer-operator)
 - [J27 Verwendung von Streams](6.languages/java/index.md#verwendung-von-streams)
-- [J28 Namespace-Import](6.languages/java/index.md#namespace-import)
-- [J29 Vermeide automatisches Boxing und Unboxing](6.languages/java/index.md#autoboxing-und-unboxing)
-- [J30 for, Array.forEach, Stream.forEach](6.languages/java/index.md#for-array-foreach-stream-foreach)
-- [J31 Generics einsetzen](6.languages/java/index.md#generics-einsetzen)
-- [J32 Type Erasure bei Generics](6.languages/java/index.md#type-erasure-bei-generics)
-- [J33 Methoden-Verkettung](6.languages/java/index.md#methoden-verkettung)
-- [J34 Unbenutzte Variablen und Parameter](6.languages/java/index.md#unbenutzte-variablen-und-parameter)
-- [J35 Verwende spezielle Objekte statt spezielle Werte](6.languages/java/index.md#verwende-spezielle-objekte-statt-spezielle-werte)
-- [J36 JetBrains Annotations](6.languages/java/index.md#jetbrains-annotations)
-- [J37 Eingabeprüfungen in REST-API mit Annotation](6.languages/java/index.md#eingabepruefungen-in-rest-api-mit-annotation)
-- [J38 Verwendung von &#x60;com.machinezoo.noexception&#x60; in Callbacks wie z.B. &#x60;forEach&#x60; in Java](6.languages/java/index.md#verwendung-von-com-machinezoo-noexception-in-callbacks-wie-z-b-foreach-in-java)
-- [J39 Kapselung von API-Methoden zur Vereinfachung und besseren Testbarkeit](6.languages/java/index.md#kapselung-von-api-methoden-zur-vereinfachung-und-besseren-testbarkeit)
-- [J40 String-Formatierung in Java](6.languages/java/index.md#string-formatierung-in-java)
-- [J41 Rückgabe von Collections sollen immer unveränderlich sein](6.languages/java/index.md#rueckgabe-von-collections-sollen-immer-unveraenderlich-sein)
+- [J28 Namen von Paketen](6.languages/java/index.md#namen-von-paketen)
+- [J29 Paket-Importe](6.languages/java/index.md#paket-importe)
+- [J30 Vermeide automatisches Boxing und Unboxing](6.languages/java/index.md#autoboxing-und-unboxing)
+- [J31 for, Array.forEach, Stream.forEach](6.languages/java/index.md#for-array-foreach-stream-foreach)
+- [J32 Generics einsetzen](6.languages/java/index.md#generics-einsetzen)
+- [J33 Type Erasure bei Generics](6.languages/java/index.md#type-erasure-bei-generics)
+- [J34 Methoden-Verkettung](6.languages/java/index.md#methoden-verkettung)
+- [J35 Unbenutzte Variablen und Parameter](6.languages/java/index.md#unbenutzte-variablen-und-parameter)
+- [J36 Verwende spezielle Objekte statt spezielle Werte](6.languages/java/index.md#verwende-spezielle-objekte-statt-spezielle-werte)
+- [J37 JetBrains Annotations](6.languages/java/index.md#jetbrains-annotations)
+- [J38 Eingabeprüfungen in REST-API mit Annotation](6.languages/java/index.md#eingabepruefungen-in-rest-api-mit-annotation)
+- [J39 Verwendung von &#x60;com.machinezoo.noexception&#x60; in Callbacks wie z.B. &#x60;forEach&#x60; in Java](6.languages/java/index.md#verwendung-von-com-machinezoo-noexception-in-callbacks-wie-z-b-foreach-in-java)
+- [J40 Kapselung von API-Methoden zur Vereinfachung und besseren Testbarkeit](6.languages/java/index.md#kapselung-von-api-methoden-zur-vereinfachung-und-besseren-testbarkeit)
+- [J41 String-Formatierung in Java](6.languages/java/index.md#string-formatierung-in-java)
+- [J42 Rückgabe von Collections sollen immer unveränderlich sein](6.languages/java/index.md#rueckgabe-von-collections-sollen-immer-unveraenderlich-sein)
 
 ## Allgemeine Regeln für das Refactoring
 
@@ -232,11 +234,13 @@ layout: doc
 
 ### Strukturmuster
 
-- [DPC1 Singleton](4.designpatterns/creational.md#singleton)
-- [DPC2 Factory Method](4.designpatterns/creational.md#factory-method)
-- [DPC3 Abstract Factory](4.designpatterns/creational.md#abstract-factory)
-- [DPC4 Builder](4.designpatterns/creational.md#builder)
-- [DPC5 Prototype](4.designpatterns/creational.md#prototype)
+- [DPS1 Adapter](4.designpatterns/structural.md#adapter)
+- [DPS2 Bridge](4.designpatterns/structural.md#bridge)
+- [DPS3 Composite](4.designpatterns/structural.md#composite)
+- [DPS4 Decorator](4.designpatterns/structural.md#decorator)
+- [DPS5 Facade](4.designpatterns/structural.md#facade)
+- [DPS6 Flyweight](4.designpatterns/structural.md#flyweight)
+- [DPS7 Proxy](4.designpatterns/structural.md#proxy)
 
 ### Erschaffungsmuster
 

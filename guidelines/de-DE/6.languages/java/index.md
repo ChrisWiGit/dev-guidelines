@@ -1230,7 +1230,6 @@ Stattdessen sollten notwendige Methoden über das Parent-Objekt bereitgestellt w
 Es kann jedoch Fälle geben, in denen die Verwendung von Getter- und Setter-Methoden sinnvoll ist, z.B. wenn das Attribut nicht referenzierbare Objekte enthält oder wenn das Attribut geändert werden kann, ohne dass Inkonsistenzen entstehen.
 Es ist daher wichtig, die Verwendung von Getter- und Setter-Methoden sorgfältig zu prüfen und nur dann zu verwenden, wenn es notwendig und sinnvoll ist.
 
-
 ## J13 Methoden/Funktionen, die Mengen zurückgeben sollen niemals null zurückgeben {#methoden-funktionen-die-mengen-zurueckgeben-sollen-niemals-null-zurueckgeben}
 
 Methoden oder Funktionen, die Mengen wie Arrays zurückgeben, sollen nie `null` zurückgeben, sondern leere Mengen oder Objekte.
@@ -1760,10 +1759,6 @@ public void readFromFile(String filePath) throws IOException {
 
 In einigen Fällen kann es sinnvoll sein, Exceptions zu loggen und unverändert wieder zu werfen. Dies ist jedoch eher die Ausnahme und soll gut begründet sein, z.B. wenn der Code in einem bestimmten Kontext läuft, der spezielle Anforderungen hat.
 
-### J20 Weiterführende Literatur/Links
-
-- [JavaScript Error Handling: Best Practices](https://blog.bitsrc.io/javascript-error-handling-best-practices-329c5f6e5d33)
-
 ## J21 Benennung von Methoden mit verschiedenen Präfixen für Synchronität und Ergebnisverhalten {#benennung-von-methoden-mit-verschiedenen-praefixen-fuer-synchronitaet-und-ergebnisverhalten}
 
 Es ist eine bewährte Praxis bei der Benennung von Methoden in JavaScript und Java, unterschiedliche Präfixe zu verwenden, um die Synchronität und das Ergebnisverhalten der Methode zu kennzeichnen. Das Präfix "get" soll für synchronen Zugriff verwendet werden und immer einen Wert zurückgeben, während die Präfixe "fetch" oder "request" für asynchronen Zugriff stehen, der länger dauern und auch fehlschlagen kann.
@@ -2226,16 +2221,32 @@ Es ist daher wichtig, die Verwendung von Stream-Operationen sorgfältig zu prüf
 
 - [Oracle Java 21 Streams](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/stream/package-summary.html)
 
-## J28 Namespace-Import {#namespace-import}
+## J28 Namen von Paketen {#namen-von-paketen}
 
-::: danger TODO
+- Paketen beginnen immer mit `com.company` für Enterprise-Anwendungen oder `org.project` für Open-Source-Projekte.
+- Paketen und Packages sollen mit einem Nomen benannt werden, das den Inhalt beschreibt `com.company`, `com.company.project`, `com.company.project.module`.
+- Implementierungen sollen `impl` als Teil des Namens enthalten `com.company.project.impl`, `com.company.project.user.impl`.
+- Zusammengesetzte Nomen innerhalb eines Teils des Namensraums sollen mit Punkten getrennt werden. Statt `com.company.projectmodule` soll `com.company.project.module` verwendet werden.
+Ausnahmen sind Situationen, in denen ein semantisches Problem oder Unverständnis entsteht, wenn der Name durch Punkt getrennt wird. In diesem Fall kann ein Bindstrich oder Unterstrich verwendet werden `com.company.project-module`.
+- Die einzelne Tile eines Namensraums werden mit tieferliegenden Teilen immer konkreter. `com.company.project.entities`, `com.company.project.entities.user`, `com.company.project.entities.user.impl`.
 
-TODO: JAVA
-Reihenfolge der imports, mit * als letztes
+## J29 Paket-Importe {#paket-importe}
 
+Paket-Importe sollen in einer bestimmten Reihenfolge durch ein Formatierungs-Tool automatisch angeordnet werden, denn der Entwickler soll sich nicht um die Reihenfolge kümmern müssen.
+Die Reihenfolge kann wie folgt sein, sie soll jedoch immer über ein Projekt konsistent sein.
+
+1. **Java-Standardbibliotheken**: `java.*`, `javax.*`
+2. **Drittanbieter-Bibliotheken**: `org.*`, `com.*`
+3. **Eigene Pakete**: `com.example.myproject`
+4. **Statische Importe**: `import static com.example.myproject.MyClass.MyStaticMethod`
+5. **Wildcard-Importe**: `import com.example.myproject.*`
+6. **Wildcard-Static-Importe**: `import static com.example.myproject.MyClass.*`
+
+::: warning Wildcard-Importe
+Wildcard-Importe können zu Namenskonflikten führen, wenn mehrere Klassen mit dem gleichen Namen in verschiedenen Paketen vorhanden sind.
 :::
 
-## J29 Vermeide automatisches Boxing und Unboxing {#autoboxing-und-unboxing}
+## J30 Vermeide automatisches Boxing und Unboxing {#autoboxing-und-unboxing}
 
 Das automatische Boxing oder Unboxing von primitive Datentypen soll vermieden werden, um keine ungewollte Performance-Einbußen zu verursachen.
 
@@ -2256,7 +2267,7 @@ Integer myFoo(Integer input) {
 
 :::
 
-### J29 Problem
+### J30 Problem
 
 Das automatische Boxing und Unboxing von primitiven Datentypen kann zu unerwünschten Performance-Einbußen führen, insbesondere in Schleifen oder bei häufigen Operationen.
 
@@ -2287,9 +2298,9 @@ Aber auch Optional kann zu Boxing führen.
 Optional<Integer> optional = Optional.of(1); // Boxing von int zu Integer
 ```
 
-### J29 Lösung
+### J30 Lösung
 
-#### J29 Primitive Datentypen
+#### J30 Primitive Datentypen
 
 Für bekannte große Datenmengen oder Schleifen sollen primitive Datentypen verwendet werden, um das Boxing und Unboxing zu vermeiden.
 
@@ -2307,7 +2318,7 @@ Generics unterstützen keine primitiven Datentypen, daher müssen Wrapper-Klasse
 
 :::
 
-#### J29 Stream-API
+#### J30 Stream-API
 
 Für die Stream-API sollen spezielle Methoden wie `mapToInt`, `mapToDouble`, `mapToLong`, `flatMapToInt`, `flatMapToDouble`, `flatMapToLong` verwendet werden, um das Boxing und Unboxing zu vermeiden.
 
@@ -2338,7 +2349,7 @@ summaryStatistics.getSum() // 15
 
 :::
 
-#### J29 Optional
+#### J30 Optional
 
 Für `Optional` sollen die folgenden Klassen für primitive Datentypen verwendet werden, um das Boxing und Unboxing zu vermeiden.
 
@@ -2348,7 +2359,7 @@ OptionalDouble optionalDouble = OptionalDouble.of(1.0);
 OptionalLong optionalLong = OptionalLong.of(1L);
 ```
 
-#### J29 Functional Interfaces
+#### J30 Functional Interfaces
 
 Für primitive Datentypen gibt es neben den generischen Functional Interfaces auch spezielle Functional Interfaces, die primitiven Datentypen entsprechen.
 Diese sollen verwendet werden, um das Boxing und Unboxing zu vermeiden.
@@ -2387,17 +2398,17 @@ Diese sollen verwendet werden, um das Boxing und Unboxing zu vermeiden.
 - `LongSupplier` statt `Supplier<Long>`
 - `DoubleSupplier` statt `Supplier<Double>`
 
-### J29 Vorteile
+### J30 Vorteile
 
 - Die Verwendung von primitiven Datentypen kann zu einer besseren Leistung und Effizienz führen, insbesondere bei großen Datenmengen oder Schleifen.
 - Das Erstellen von Wrapper-Objekten benötigt zusätzlichen Speicherplatz.
 
-### J29 Weiterführende Literatur
+### J30 Weiterführende Literatur
 
 - [java.util.function](https://docs.oracle.com/javase/8/docs/api/java/util/function/package-frame.html)
 - [Optionals](https://docs.oracle.com/javase/8/docs/api/java/util/package-summary.html)
 
-## J30 for, Array.forEach, Stream.forEach {#for-array-foreach-stream-foreach}
+## J31 for, Array.forEach, Stream.forEach {#for-array-foreach-stream-foreach}
 
 ::: danger TODO
 
@@ -2405,11 +2416,11 @@ TODO: JAVA
 
 :::
 
-## J31 Generics einsetzen {#generics-einsetzen}
+## J32 Generics einsetzen {#generics-einsetzen}
 
 Generics sollen verwendet werden, um die Typsicherheit in Java zu erhöhen und die Wiederverwendbarkeit von Klassen und Methoden zu verbessern.
 
-### J31 Problem
+### J32 Problem
 
 Oftmals müssen Objekte eines Typs in einer Liste oder Map gespeichert werden, ohne dass der Typ zur Laufzeit bekannt ist.
 
@@ -2421,7 +2432,7 @@ list.add("Java");
 Integer value = (Integer) list.get(0); // ClassCastException
 ```
 
-### J31 Lösung
+### J32 Lösung
 
 Generics ermöglichen es, den Typ eines Objekts zur Compile-Zeit zu überprüfen und sicherzustellen, dass der Typ zur Laufzeit korrekt ist.
 
@@ -2447,12 +2458,12 @@ List<String> list = new ArrayList<>(); // [!code ++]
 
 :::
 
-## J32 Type Erasure bei Generics {#type-erasure-bei-generics}
+## J33 Type Erasure bei Generics {#type-erasure-bei-generics}
 
 Generics in Java sind zur Compile-Zeit und nicht zur Laufzeit verfügbar.
 Das bedeutet, dass der Compiler die Typen zur Compile-Zeit überprüft und dann die Typen entfernt.
 
-### J32 Problem
+### J33 Problem
 
 Zur Laufzeit kann nicht auf den Typ eines generischen Typs wie z.B. einer Liste mit einem bestimmten Typ überprüfen.
 
@@ -2462,17 +2473,17 @@ if (someList instanceof List<String>) { // Compiler-Fehler
 }
 ```
 
-### J32 Vorteile
+### J33 Vorteile
 
 - Da keine Typprüfung zur Laufzeit durchgeführt wird, wird die Leistung nicht beeinträchtigt.
 - Kompatibel zu älteren Binärcode-Versionen von Java.
 
-### J32 Nachteile
+### J33 Nachteile
 
 - Einschränkungen bei der Verwendung von Reflexion und Typprüfung zur Laufzeit.
 - Zur Laufzeit kann nicht auf den Typ eines generischen Typs überprüft werden.
 
-## J33 Methoden-Verkettung {#methoden-verkettung}
+## J34 Methoden-Verkettung {#methoden-verkettung}
 
 Die Methoden-Verkettung soll verwendet werden, um Methodenaufrufe auf einem Objekt in einer einzigen Anweisung zu verkettet.
 
@@ -2481,7 +2492,7 @@ Dies wird beispielsweise bei Array-Methoden wie `map()`, `filter()`, `reduce()` 
 
 Verwende Methoden-Verkettung, um den Code kompakter und lesbarer zu machen.
 
-### J33 Beispiel
+### J34 Beispiel
 
 ```java
 final var numbers = List.of(1, 2, 3, 4, 5);
@@ -2492,7 +2503,7 @@ final var sum = numbers.stream()
     .reduce(0, Integer::sum);
 ```
 
-### J33 Regeln
+### J34 Regeln
 
 - Jeder Methodenaufruf wird auf einer neuen Zeile eingerückt (entsprechend den ESLint-Regeln).
 - Jeder Methodenaufruf wird durch einen Punkt (`.`) **vorangehend** zum Methodennamen getrennt.
@@ -2506,20 +2517,20 @@ final var sum = numbers.stream()
     .orElse(0);
 ```
 
-### J33 Vorteile
+### J34 Vorteile
 
 - Kompakter und lesbarer Code
 - Einfache Verkettung von Methodenaufrufen
 - Bessere Performance durch Vermeidung von Zwischenvariablen
 - Einfache Wiederverwendung von Methodenketten
 
-### J33 Ausnahmen
+### J34 Ausnahmen
 
 - Übermäßige Verkettung von Methoden kann die Lesbarkeit beeinträchtigen.
 - Bei komplexen Operationen oder Bedingungen ist es besser, die Methodenaufrufe aufzuteilen.
 - Bei der Verkettung von Methoden ist darauf zu achten, dass die Reihenfolge der Methodenaufrufe korrekt ist.
 
-## J34 Unbenutzte Variablen und Parameter {#unbenutzte-variablen-und-parameter}
+## J35 Unbenutzte Variablen und Parameter {#unbenutzte-variablen-und-parameter}
 
 :::danger Java-Version
 Das Feature ist erst ab Java 22 verfügbar (März 2024)
@@ -2529,11 +2540,11 @@ Es sollen keine unbenutzten Variablen und Parameter im Code vorhanden sein.
 
 - Wenn die Funktionsdeklaration die Parameter vorschreibt, kann `_` als Platzhalter für unbenutzte Parameter verwendet werden.
 
-### J34 Problem
+### J35 Problem
 
 Unbenutzte Variablen und Parameter sind oft als Deklaration notwendig, um den Code zu kompilieren, jedoch sieht es so aus, als würden sie im Code verwendet werden, obwohl das nicht der Fall ist.
 
-### J34 Lösung
+### J35 Lösung
 
 Verwende `_` als Platzhalter, um den Code sauber zu halten.
 
@@ -2545,27 +2556,27 @@ public void sum(a, b) // [!code --]
 public void sum(_, _) // [!code ++]
 ```
 
-### J34 Vorteile
+### J35 Vorteile
 
 - Sauberer und wartbarer Code
 - Vermeidung von Verwirrung und unerwartetem Verhalten
 - Bessere Lesbarkeit und Verständlichkeit des Codes
 
-### J34 Nachteile
+### J35 Nachteile
 
 - Der Unterstrich kann zu Verwirrung führen, wenn er nicht als Platzhalter für unbenutzte Variablen oder Parameter verwendet wird.
 - Spätere Erweiterungen der Funktion oder Methode lassen den Namen des originalen Parameters vermissen, wenn der Unterstrich verwendet wird.
 **Bitte beachten**, dass eine Erweiterung einer vorhandenen Methode gegen das [OCP Prinzip](../../2.principles/principles#open-closed-principle) verstößt.
 
-### J34 Weiterführende Literatur/Links
+### J35 Weiterführende Literatur/Links
 
 - [Drop the Baggage: Use `_` for Unnamed Local Variables and Patterns in Java 22](https://blog.jetbrains.com/idea/2024/03/drop-the-baggage-use-_-for-unnamed-local-variables-and-patterns-in-java-22/)
 
-## J35 Verwende spezielle Objekte statt spezielle Werte {#verwende-spezielle-objekte-statt-spezielle-werte}
+## J36 Verwende spezielle Objekte statt spezielle Werte {#verwende-spezielle-objekte-statt-spezielle-werte}
 
 Wenn Objekte, wie `User` oder jede andere Art von Entität verwendet werden, und es spezielle Fälle gibt wie *nicht gefunden*, *ungültig*, *leer*, *fehlerhaft*, etc., dann sollen spezielle abgeleitete Objekte verwendet werden, um diese Fälle zu repräsentieren.
 
-### J35 Problem
+### J36 Problem
 
 Spezielle Fälle wie *nicht gefunden*, *ungültig*, *leer*, *fehlerhaft*, etc. werden oft durch spezielle Werte wie `null`, `-1`, `0`, `''`, `false`, etc. repräsentiert.
 Dies führt dazu, dass im Code ständig überprüft werden muss, ob der Wert speziell ist und entsprechend behandelt werden muss.
@@ -2586,7 +2597,7 @@ public User getUser(int id) {
 }
 ```
 
-### J35 Lösung
+### J36 Lösung
 
 Verwende abgeleitete Objekte, um spezielle Fälle zu repräsentieren.
 Es kann beispielsweise ein `NotFoundUser`-Objekt für den Fall eines nicht-gefundenen Benutzers erstellt werden.
@@ -2664,7 +2675,7 @@ public void foo(int id) {
 }
 ```
 
-### J35 Vorteile
+### J36 Vorteile
 
 - Keine Null-Pointer-Exceptions
 - Spezielle Fälle werden explizit repräsentiert.
@@ -2677,7 +2688,7 @@ public void foo(int id) {
   - API wird einfacher, da keine Exceptions geworfen werden müssen und Rückgabewerte immer gültig und prüfbar (`isValid()`) sind
 - Code wird einfacher und lesbarer, da spezielle Fälle keine zusätzlichen `if`-Anweisungen benötigen.
 
-### J35 Nachteile
+### J36 Nachteile
 
 - Architektur der Klassen und Objekte wird komplexer oder vorhandene Architektur muss angepasst werden.
 - Methoden müssen in ihrer Dokumentation nun statt Exceptions spezielle Objekte beschreiben.
@@ -2701,19 +2712,19 @@ Durch den Einsatz von speziellen Objekten wird es unwahrscheinlicher, dass Fehle
 
 :::
 
-### J35 Ausnahmen
+### J36 Ausnahmen
 
 - Für eine bereits existierende API sollte das Verhalten nicht einfach so geändert werden,
 da dies gegen [Lisko-Substitutionsprinzip](../../2.principles/principles.md#liskov-substitution-principle) und das Prinzip [Prinzip der konzeptuellen Integrität](../../2.principles/principles.md#prinzip-der-konzeptuellen-integritaet) verstößt.
 
-## J36 JetBrains Annotations {#jetbrains-annotations}
+## J37 JetBrains Annotations {#jetbrains-annotations}
 
 JetBrains Annotations sind eine Reihe von Annotationen, die in Java-Code verwendet werden können, um zusätzliche Informationen über den Code zu geben.
 Die Annotationen werden von JetBrains entwickelt und in ihren IDEs wie IntelliJ IDEA verwendet, um den Code zu analysieren und zu überprüfen.
 
 JetBrains Annotationen sollen verwendet werden, um den Code zu dokumentieren und auf Null-Referenzen und andere Probleme hinzuweisen.
 
-### J36 Problem
+### J37 Problem
 
 Es kann schwierig sein, den Code auf Null-Referenzen und andere Probleme zu überprüfen, die während der Laufzeit auftreten können.
 Außerdem können schlecht dokumentierte Methoden und Klassen zu Verwirrung und Fehlern führen.
@@ -2727,7 +2738,7 @@ public void foo(String s) {
 }
 ```
 
-### J36 Refactoring
+### J37 Refactoring
 
 Mit den Annotations von JetBrains können Entwickler Methoden und Klassen genau dokumentieren und auf Null-Referenzen und andere Probleme hinweisen.
 Zum Beispiel kann die `@NotNull`-Annotation verwendet werden, um anzuzeigen, dass eine Variable, ein Parameter oder ein Rückgabewert einer Methode nicht null sein darf.
@@ -2809,33 +2820,33 @@ public static void validateEmail(@Pattern(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\
 
 :::
 
-### J36 Vorteile
+### J37 Vorteile
 
 - Reduziert die Anzahl von Null-Referenz-Exceptions
 - Verbessert die Dokumentation von Code
 - Unterstützt statische Analysewerkzeuge und IDEs bei der Fehlererkennung. IntelliJ IDEA zeigt z.B. eine Warnung an, wenn eine Methode mit `@NotNull`-Annotation einen `null`-Wert zurückgibt.
 - Verbessert die Lesbarkeit von Code für andere Entwickler
 
-### J36 Nachteile
+### J37 Nachteile
 
 - Erfordert zusätzliche Zeit und Arbeit, um Annotations in den Code zu integrieren
 - Kann dazu führen, dass der Code unübersichtlich wird, wenn zu viele Annotations verwendet werden
 
-### J36 Ausnahmen
+### J37 Ausnahmen
 
 - Für kleine und einfache Projekte können Annotations möglicherweise nicht erforderlich sein
 - Es kann Fälle geben, in denen der Aufwand, Annotations zu verwenden, den Nutzen überwiegt.
 
-### J36 weiterführende Literatur/Links
+### J37 weiterführende Literatur/Links
 
 - JetBrains Annotations Dokumentation: <https://www.jetbrains.com/help/idea/nullable-and-notnull-annotations.html>
 - "Effective Java" von Joshua Bloch: Ein Buch, das die Verwendung von Annotations in Java detailliert beschreibt.
 
-## J37 Eingabeprüfungen in REST-API mit Annotation {#eingabepruefungen-in-rest-api-mit-annotation}
+## J38 Eingabeprüfungen in REST-API mit Annotation {#eingabepruefungen-in-rest-api-mit-annotation}
 
 Eingabeprüfungen in RESTful Web Services sollen verwendet werden, um unerwartete Fehler zu vermeiden und die Sicherheit zu erhöhen.
 
-### J37 Problem
+### J38 Problem
 
 RESTful Web Services erlauben den Austausch von Daten zwischen verschiedenen Systemen über HTTP-Anfrage.
 Diese Daten können jedoch in unerwarteter Weise falsch formatiert oder ungültig sei.
@@ -2857,7 +2868,7 @@ public class ProductResource {
 In diesem Beispiel gibt es zwei Pfadparameter: `category` und `productId`. Der `category`-Parameter kann einen beliebigen String enthalten und `productId` muss eine ganze Zahl sei.
 Es gibt keine Eingabeprüfung auf die Werte der Parameter.
 
-### J37 Lösung
+### J38 Lösung
 
 Eine Möglichkeit, die Eingabeprüfung in RESTful Web Services zu verbessern, besteht darin, Annotationen zu verwenden, um die zulässigen Werte und Formate von Parametern zu definiere.
 JAX-RS bietet eine Vielzahl von Annotationen an, die dazu verwendet werden können, Eingabeprüfungen durchzuführen.
@@ -2934,27 +2945,27 @@ public Response exampleMethod(
 
 :::
 
-### J37 Vorteile
+### J38 Vorteile
 
 - Bessere Eingabeprüfung: Annotationen ermöglichen eine präzisere Definition der zulässigen Werte und Formate von Parametern, was zu einer besseren Eingabeprüfung führt.
 - Sicherheit: Eine effektive Eingabeprüfung kann dazu beitragen, Sicherheitsprobleme zu verhindern, die durch unerwartete oder ungültige Eingaben verursacht werden können.
 - In der Regel wird der HTTP-Statuscode "400 Bad Request" zurückgegeben, wenn eine Eingabeprüfung in einer REST-API fehlschlägt.
 - Bessere Lesbarkeit und Nachvollziehbarkeit: Annotationen können verwendet werden, um die Bedeutung von Parametern in REST-Methoden zu dokumentieren.
 
-### J37 Nachteile
+### J38 Nachteile
 
 - Nicht alle Eingabeprüfungen können mit Annotationen durchgeführt werden. Eine manuelle Prüfung im Code ist in einigen Fällen erforderlich.
 
-### J37 Weiterführende Literatur/Links
+### J38 Weiterführende Literatur/Links
 
 - [Java EE 7 Tutorial: Using Path Parameters](https://docs.oracle.com/javaee/7/tutorial/jaxrs-advanced004.htm)
 - [Java EE 7 Tutorial: Using Query Parameters](https://docs.oracle.com/javaee/7/tutorial/jax)
 
-## J38 Verwendung von `com.machinezoo.noexception` in Callbacks wie z.B. `forEach` in Java {#verwendung-von-com-machinezoo-noexception-in-callbacks-wie-z-b-foreach-in-java}
+## J39 Verwendung von `com.machinezoo.noexception` in Callbacks wie z.B. `forEach` in Java {#verwendung-von-com-machinezoo-noexception-in-callbacks-wie-z-b-foreach-in-java}
 
 Es ist eine bewährte Praxis in Java, die Bibliothek `com.machinezoo.noexception` zu verwenden, um die Verwendung von `try-catch`-Blöcken in Callback-Funktionen wie `forEach` zu reduzieren. Durch die Verwendung dieser Bibliothek wird der Code sauberer und lesbarer, da die Ausnahmebehandlung von Callbacks elegant behandelt wird.
 
-### J38 Problem
+### J39 Problem
 
 Bei der Verwendung von Callback-Funktionen wie `forEach` in Java besteht die Notwendigkeit, Ausnahmen innerhalb des Callbacks zu behandeln. Dies führt zu zusätzlichem Code und erhöht die Komplexität, insbesondere wenn mehrere Ausnahmen behandelt werden müssen.
 
@@ -2977,7 +2988,7 @@ try {
 }
 ```
 
-### J38 Refactoring
+### J39 Refactoring
 
 Durch die Verwendung von `com.machinezoo.noexception` kann die Ausnahmebehandlung in Callback-Funktionen eleganter gehandhabt werden.
 Die Bibliothek bietet verschiedene Hilfsmethoden an, um Ausnahmen in Callbacks zu behandeln, ohne dass zusätzliche `try-catch`-Blöcke erforderlich sind.
@@ -2993,29 +3004,29 @@ list.forEach(Exceptions.sneak().consumer(item -> {
 }));
 ```
 
-### J38 Vorteile
+### J39 Vorteile
 
 - Reduzierung des Boilerplate-Codes durch die Verwendung von `com.machinezoo.noexception`
 - Sauberer und lesbarer Code ohne zusätzliche `try-catch`-Blöcke in Callback-Funktionen
 - Bessere Trennung von Geschäftslogik und Ausnahmebehandlung
 
-### J38 Nachteile
+### J39 Nachteile
 
 - Einführung einer zusätzlichen Abhängigkeit durch die Verwendung von `com.machinezoo.noexception`
 - Erhöhte Komplexität des Codes durch die Verwendung von Hilfsmethoden
 
-### J38 Ausnahmen
+### J39 Ausnahmen
 
 Es kann Situationen geben, in denen die Verwendung von `com.machinezoo.noexception` nicht angemessen ist, z. B. wenn das Projekt bereits eine andere Lösung für die Behandlung von Ausnahmen verwendet oder wenn die Einführung einer zusätzlichen Abhängigkeit vermieden werden soll.
 
-### J38 Weiterführende Literatur/Links
+### J39 Weiterführende Literatur/Links
 
 - [com.machinezoo.noexception - GitHub](https://github.com/robertvazan/com.machinezoo.noexception)
 - [Avoiding Exceptions in Callbacks](https://dzone.com/articles/avoiding-exceptions-in-callbacks)
 
-## J39 Kapselung von API-Methoden zur Vereinfachung und besseren Testbarkeit {#kapselung-von-api-methoden-zur-vereinfachung-und-besseren-testbarkeit}
+## J40 Kapselung von API-Methoden zur Vereinfachung und besseren Testbarkeit {#kapselung-von-api-methoden-zur-vereinfachung-und-besseren-testbarkeit}
 
-### J39 Problem
+### J40 Problem
 
 API-Methoden können oft komplexe Logik benötigen, um beispielsweise Datenumwandlungen oder Filterungen für die Eingabeparameter und Resultate durchzuführen. Wenn diese Komplexität für die API-Methode notwendig ist und direkt in der eigenen Methode angwendet wird, kann dies zu unübersichtlichem Code und Schwierigkeiten bei der Testbarkeit führen. Darüber hinaus kann es erforderlich sein, die API-Methode in Tests zu mocken, was zu erhöhtem Aufwand führt.
 
@@ -3030,7 +3041,7 @@ public String[] getActiveUsers(int[] userIds) {
 }
 ```
 
-### J39 Lösung
+### J40 Lösung
 
 Um die Komplexität der API-Methode zu reduzieren und die Testbarkeit zu verbessern, sollte die Logik in eine eigene Methode ausgelagert werden, die die API-Methode aufruft und dabei die erforderlichen Umwandlungen und Filterungen durchführt.
 
@@ -3053,26 +3064,26 @@ public List<String> getActiveUsers(List<Integer> userIds) {
 }
 ```
 
-### J39 Vorteile
+### J40 Vorteile
 
 - Bessere Lesbarkeit und Wartbarkeit des Codes durch Auslagerung der Komplexität des API-Aufrufs in eine eigene Methode.
 - Verbesserte Testbarkeit, da die kapselnde Methode leichter zu testen ist und die API-Methode nur über die kapselnde Methode getestet werden muss.
 - Erhöhte Flexibilität, da die kapselnde Methode bei Bedarf weitere Anpassungen oder Erweiterungen der Funktionalität ermöglicht, ohne die API-Methode direkt zu verändern.
 
-### J39 Ausnahmen
+### J40 Ausnahmen
 
 In bestimmten Fällen kann es aus Performance-Gründen oder aufgrund von spezifischen Anforderungen notwendig sein, die Komplexität direkt in der API-Methode zu belassen. In solchen Fällen sollte jedoch sorgfältig abgewogen werden, ob die Vorteile der Kapselung überwiegen.
 
-### J39 Weiterführende Literatur/Links
+### J40 Weiterführende Literatur/Links
 
 - [Clean Code: A Handbook of Agile Software Craftsmanship by Robert C. Martin](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882)
 
-## J40 String-Formatierung in Java {#string-formatierung-in-java}
+## J41 String-Formatierung in Java {#string-formatierung-in-java}
 
 Beim Logging mit SLF4J ist es wichtig, die Platzhalter-Zeichen korrekt zu verwenden und nicht mit den Platzhaltern von String.Format zu verwechseln.
 Leider ist in Java ein Verwechseln von Platzhaltern möglich, wenn man nicht aufpasst.
 
-### J40 Problem
+### J41 Problem
 
 SLF4J bietet Platzhalter für das Einfügen von Werten in Log-Nachrichten.
 Die Platzhalter werden jedoch manchmal mit den Platzhaltern von String.Format verwechselt, was zu unerwartetem Verhalten oder sogar Fehlern führen kann.
@@ -3094,7 +3105,7 @@ String.format("Name: {}, Age: {}", name, age);
 MessageFormat.format("Name: %s, Age: %d", name, age)
 ```
 
-### J40 Refactoring
+### J41 Refactoring
 
 Platzhalter für das Logging mit SLF4J werden mit geschweiften Klammern verwendet.
 Platzhalter für String.format werden mit Prozentzeichen verwendet.
@@ -3109,16 +3120,16 @@ String.format("Name: %s, Age: %d", name, age);
 MessageFormat.format("Name: {0}, Age: {1}", name, age)
 ```
 
-### J40 Weiterführende Literatur/Links
+### J41 Weiterführende Literatur/Links
 
 - [SLF4J Documentation](http://www.slf4j.org/manual.html)
 - [Best Practices for Logging in Java](https://stackify.com/best-practices-logging-java/)
 
-## J41 Rückgabe von Collections sollen immer unveränderlich sein {#rueckgabe-von-collections-sollen-immer-unveraenderlich-sein}
+## J42 Rückgabe von Collections sollen immer unveränderlich sein {#rueckgabe-von-collections-sollen-immer-unveraenderlich-sein}
 
 Wenn interne Datenstrukturen wie Collections (List, Set, Map) zurückgegeben werden müssen, sollen diese immer immutable sein, d.h. unveränderlich, sein, damit die internen Datenstrukturen nicht von außen verändert werden können.
 
-### J41 Problem
+### J42 Problem
 
 Wenn interne Datenstrukturen wie Collections (List, Set, Map) zurückgegeben werden, können diese von außen verändert werden, was dazu führen kann, dass die interne Datenstruktur inkonsistent wird oder unerwartete Ergebnisse auftreten.
 
@@ -3131,7 +3142,7 @@ List<String> names = getNames();
 names.add("Alice");
 ```
 
-### J41 Lösung
+### J42 Lösung
 
 Um zu verhindern, dass interne Datenstrukturen von außen verändert werden, sollten immer Kopien der internen Datenstrukturen zurückgegeben werden, die unveränderlich sind.
 

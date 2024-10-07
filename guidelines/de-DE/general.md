@@ -69,12 +69,11 @@ Die Richtlinien sind nicht in Stein gemeißelt. Sie sind ein Leitfaden, der dir 
 
 ## Richtlinien und Regeln
 
-Alle Richtlinien in diesem Dokument sind kodiert. Jede Regel beginnt mit einem Buchstaben, gefolgt von einer Nummer, die den Abschnitt identifiziert.
-Damit kann eine Regel eindeutig identifiziert werden, z.B. für ein Code-Review.
+Alle Richtlinien in diesem Dokument sind kodiert. 
+Jede Regel beginnt mit einem Buchstaben, gefolgt von einer Nummer, die den Abschnitt identifiziert, z.B. H1 für Erste Regel im Abschnitt **Health**/**Gesundheit**.
+Damit kann eine Regel eindeutig identifiziert werden, z.B. für einen Kommentar im Code-Review.
 
-Es gibt folgende Abschnitte:
-
-- **G** für Gesundheit. Siehe [Gesundheit](./1.health/)
+Die Regeln sind alle [hier](./allrules) aufgelistet und können nach Bedarf aufgerufen werden.
 
 ## Nutzen
 
@@ -93,7 +92,7 @@ Nur so kann in einem Team effizient gearbeitet werden.
 ## Können vs. Sollen
 
 - In diesem Dokument werden alle Regeln die mit `soll`/`sollen` beginnen als verbindlich angesehen.
-- Regeln mit `kann`/`können` sind optional und können je nach Bedarf angewendet werden.
+- Regeln mit `kann`/`können`/`könnte` sind optional und können je nach Bedarf angewendet werden.
 
 ## Feedback
 

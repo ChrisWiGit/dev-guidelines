@@ -303,12 +303,7 @@ Compiler und Linter prüfen in der Regel, ob ein Zugriff vor einer Prüfung stat
 
 ## GN18 Namensräume und Packages {#namespaces-packages}
 
-- Namensräume beginnen immer mit `com.company` für Enterprise-Anwendungen oder `org.project` für Open-Source-Projekte.
-- Namensräume und Packages sollen mit einem Nomen benannt werden, das den Inhalt beschreibt `com.company`, `com.company.project`, `com.company.project.module`.
-- Implementierungen sollen `impl` als Teil des Namens enthalten `com.company.project.impl`, `com.company.project.user.impl`.
-- Zusammengesetzte Nomen innerhalb eines Teils des Namensraums sollen mit Punkten getrennt werden. Statt `com.company.projectmodule` soll `com.company.project.module` verwendet werden.
-Ausnahmen sind Situationen, in denen ein semantisches Problem oder Unverständnis entsteht, wenn der Name durch Punkt getrennt wird. In diesem Fall kann ein Bindstrich oder Unterstrich verwendet werden `com.company.project-module`.
-- Die einzelne Tile eines Namensraums werden mit tieferliegenden Teilen immer konkreter. `com.company.project.entities`, `com.company.project.entities.user`, `com.company.project.entities.user.impl`.
+Die Namen von Namensräumen und Packages sollen entsprechend der eingesetzten Sprache und den Konventionen benannt werden.
 
 ## GN19 Klassen {#klassen}
 
@@ -378,22 +373,24 @@ Methoden, die ein Paar bilden, sollen mit den gleichen Wörtern beginnen. Zum Be
 - get/put
 - increase/decrease
 - increment/decrement
-- initialize/finalize (oder terminate)
+- initialize/finalize, terminate
 - insert/delete
 - join/detach
 - launch/terminate
 - load/save
 - login/logout
-- obtain/forfeit (relinquish)
-- open/dose
+- logon/logoff
+- obtain/release
+- open/close
 - pause/resume
-- publish/subscribe
+- publish/unpublish
+- subscribe/unsubscribe
 - read/write
 - reserve/release
 - start/finish
-- start/stop
+- start/stop/restart
 - startup/shutdown
-- store/retrieve
+- store/retrieve, restore
 - use/release
 
 Namen können auch mit Präfixen versehen werden, um die Bedeutung zu verdeutlichen. Zum Beispiel:
@@ -412,6 +409,13 @@ Beispiele:
 - install/uninstall
 - serialize/deserialize
 - subscribe/unsubscribe
+
+::: warning Achtung
+
+In den Beispielen sind einige Namen von Methodenpaare doppelt vorhanden.
+Es sollte im Quellcode nur eine Variante verwendet werden.
+
+:::
 
 ## GN24 Methoden mit Boolean-Rückgabewerten {#methoden-mit-boolean-rueckgabewerten}
 
