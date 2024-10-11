@@ -1,0 +1,3 @@
+{
+  "Schein-Konstanten": "Objekte oder Array-Inhalte sind immer veränderbar, auch wenn sie mit `final` deklariert werden.\nNur die Zuweisung der Variable ist konstant, nicht der Wert.\nIn Java gibt es keine Möglichkeit, den Inhalt eines Objekts oder Arrays zu sperren.\nAlternativen sind die Software Prinzipien [Tell, don't ask](./2.principles/principles#tda-ie) und [Informatin Hiding](./2.principles/principles#ih-e)."
+}
