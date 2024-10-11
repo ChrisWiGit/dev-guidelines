@@ -751,11 +751,11 @@ Objekt-Variablen, die `null` sein können, sollen auf `null` geprüft werden, um
 
 ::: warning Anwendungseinsatz und Alternativen
 
-Diese Regel gilt nur für bereits bestehenden Methoden und Funktionen, die `null` zurückgeben können. [Optional](.#verwendung-von-optional-in-bei-rueckgabewerte-in-funktionen)
+Diese Regel gilt nur für bereits bestehenden Methoden und Funktionen, die `null` zurückgeben können. [Optional](index#verwendung-von-optional-in-bei-rueckgabewerte-in-funktionen)
 
  soll für neue Methoden/Funktionen verwendet werden, um diese spezielle Fälle (`null` etc.) zu repräsentieren.
 
-Soll ein neues Klassen- oder Objektmodell erstellt werden, sollen direkt [spezielle Objekte](.#verwende-spezielle-objekte-statt-spezielle-werte) verwendet werden.
+Soll ein neues Klassen- oder Objektmodell erstellt werden, sollen direkt [spezielle Objekte](index#verwende-spezielle-objekte-statt-spezielle-werte) verwendet werden.
 
 :::
 
@@ -1285,7 +1285,7 @@ Eine Funktion oder Methode, die dennoch `null` zurückgeben muss, soll stattdess
 
 Diese Regel gilt nur für bereits bestehenden Klassenstrukturen, die nicht veränderbar oder erweiterbar sind.
 
-Soll ein neues Klassen- oder Objektmodell erstellt werden, sollen direkt [spezielle Objekte](.#verwende-spezielle-objekte-statt-spezielle-werte) verwendet werden.
+Soll ein neues Klassen- oder Objektmodell erstellt werden, sollen direkt [spezielle Objekte](index#verwende-spezielle-objekte-statt-spezielle-werte) verwendet werden.
 
 :::
 
@@ -1380,7 +1380,7 @@ public int calculate(int x) {
 
 ### J15 Weiterführende Literatur/Links
 
-- [Guard Pattern](.#js12-guard-pattern)
+- [Guard Pattern](index#js12-guard-pattern)
 - [Clean Code: A Handbook of Agile Software Craftsmanship](https://www.amazon.com/dp/0132350882)
 - [JavaScript: The Good Parts](https://www.amazon.com/dp/0596517742)
 
@@ -2185,7 +2185,7 @@ D.h. die Schlüssel müssen eindeutig sein.
 - `collect()` kann eine `NullPointerException` werfen, wenn das Sammeln in eine Liste oder ein Set erfolgt und ein Element `null` ist.
 - `collect()` kann eine `IllegalStateException` werfen, wenn das Sammeln in eine Map erfolgt und Schlüssel dupliziert werden.
 - Boxing und Unboxing kann ein Performance-Problem sein, wenn primitive Datentypen in Wrapper-Klassen umgewandelt werden.
-Siehe [Autoboxing und Unboxing](.#autoboxing-und-unboxing) für weitere Informationen.
+Siehe [Autoboxing und Unboxing](index#autoboxing-und-unboxing) für weitere Informationen.
 :::
 
 ::: info Methodenreferenzen
@@ -2607,7 +2607,7 @@ So können damit keine Operationen durchgeführt werden, die nur für korrekte B
 
 Die Prüfung auf einen *nicht-gefundenen* Benutzer kann durch Methoden des Objekts selbst erfolgen.
 Sollte dieses Objekt doch einmal verwendet werden, so gibt nur dann eine Exception, wenn die Operation am Objekt nicht erlaubt ist.
-Die Gültigkeit wird in operativen Methoden geprüft (siehe [Trennung von operationalem und integrativem Code](.#trennung-von-operationalem-und-integrativem-code)), so können Integrationsmethoden diese Werte einfach weitergeben.
+Die Gültigkeit wird in operativen Methoden geprüft (siehe [Trennung von operationalem und integrativem Code](index#trennung-von-operationalem-und-integrativem-code)), so können Integrationsmethoden diese Werte einfach weitergeben.
 
 Das folgende Beispiel zeigt die Verwendung eines speziellen Objekts `NotFoundEntity` für den Fall, dass eine Entität (ein generisches Beispiel-Daten-Objekt) nicht gefunden wurde.
 Es werden keine Exceptions geworfen, sondern spezielle Objekte zurückgegeben, die spezielles Verhalten haben (`Polymorphismus`).
@@ -2623,7 +2623,7 @@ Wenn spezielle Objekte verwendet werden, um spezielle Fälle zu repräsentieren,
 
 ::: details Optional
 
-Das spezielle Objekt [Optional](.#verwendung-von-optional-in-javascript-funktionen) kann auch verwendet werden, um diese spezielle Fälle zu repräsentieren.
+Das spezielle Objekt [Optional](index#verwendung-von-optional-in-javascript-funktionen) kann auch verwendet werden, um diese spezielle Fälle zu repräsentieren.
 Es ist nützlich, wenn bereits Klassen und Objekte aus einer Legacy-Anwendung verwendet werden, die nicht geändert werden können.
 
 :::

@@ -20,6 +20,17 @@ hero:
 Welcome to the Software Guidelines project.
 Please choose your language to get started.
 
+## Source
+
+You'll find the source of these documents on [GitHub](https://github.com/ChrisWiGit/dev-guidelines).
+
+## Contributions
+
+**Contributions are welcome.**
+
+Please read the [contribution guidelines](./CONTRIBUTING.md) before contributing.
+You may also create a [new issue](https://github.com/ChrisWiGit/dev-guidelines/issues) if you have any questions or suggestions.
+
 ## License
 
 The content of this website is licensed under the [Creative Commons Attribution-ShareAlike 4.0 International Public License](https://creativecommons.org/licenses/by-sa/4.0/deed.en).

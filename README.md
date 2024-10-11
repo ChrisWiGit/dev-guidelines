@@ -33,3 +33,10 @@ npm run docs:build
 ```bash
 npm run docs:preview
 ```
+
+## Deployment
+
+1. All markdown files are also processed by a nodejs custom script that creates the `allrules.md` file.
+2. All markdown files are processed to extract terms and definitions for the glossary.
+
+See `.op` folder for the scripts.

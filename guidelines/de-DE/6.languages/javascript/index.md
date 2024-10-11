@@ -555,7 +555,7 @@ In solchen Fällen kann die Kennzeichnung mit einem Kommentar "//nonconst" helfe
 
 Tools wie ESLint und Prettier sollen verwendet werden, um sicherzustellen, dass der Code konsistent und weniger fehleranfällig ist.
 
-Mit dem Einsatz von [JSDoc](.#jsdoc-kommentare-fuer-javascript-methoden-funktionen-variablen-objekte-und-typen) können auch Typen geprüft werden.
+Mit dem Einsatz von [JSDoc](index#jsdoc-kommentare-fuer-javascript-methoden-funktionen-variablen-objekte-und-typen) können auch Typen geprüft werden.
 
 ## JS10 Optionaler Operator ?. / Optional Chaining verwenden {#optionaler-operator-optional-chaining-verwenden}
 
@@ -563,7 +563,7 @@ Der optionale Operator `?.` oder Optional Chaining soll für den Zugriff auf Unt
 
 :::info Alternative
 
-Alternativ kann auch das [JS15 Verwendung von `Optional` in JavaScript-Funktionen](.#js15-verwendung-von-optional-in-javascript-funktionen). verwendet werden.
+Alternativ kann auch das [JS15 Verwendung von `Optional` in JavaScript-Funktionen](index#js15-verwendung-von-optional-in-javascript-funktionen). verwendet werden.
 
 :::
 
@@ -659,9 +659,9 @@ Bei der Prüfung auf `null` oder `undefined` soll immer `value == null` verwende
 
 Diese Regel gilt nur für bereits bestehenden Methoden und Funktionen, die `null` oder `undefined` zurückgeben können.
 
-[Optional](.#verwendung-von-optional-in-javascript-funktionen) soll für neue Methoden/Funktionen verwendet werden, um diese spezielle Fälle (`null` etc.) zu repräsentieren.
+[Optional](index#verwendung-von-optional-in-javascript-funktionen) soll für neue Methoden/Funktionen verwendet werden, um diese spezielle Fälle (`null` etc.) zu repräsentieren.
 
-Soll ein neues Klassen- oder Objektmodell erstellt werden, sollen direkt [spezielle Objekte](.#verwende-spezielle-objekte-statt-spezielle-werte) verwendet werden.
+Soll ein neues Klassen- oder Objektmodell erstellt werden, sollen direkt [spezielle Objekte](index#verwende-spezielle-objekte-statt-spezielle-werte) verwendet werden.
 
 :::
 
@@ -743,7 +743,7 @@ const { speed, color } = car;
 
 ## JS13 Verwendung von async und await {#verwendung-von-async-und-await}
 
-Die Verwendung von `async` und `await` soll verwendet werden, um asynchrone Funktionen in JavaScript zu vereinfachen und lesbarer zu machen.
+Die Kombination von `async` und `await` soll verwendet werden, um asynchrone Funktionen in JavaScript zu vereinfachen, lesbarer zu machen und insbesondere Verschachtlungen von Callbacks zu vermeiden.
 
 ### JS13 Problem
 
@@ -806,6 +806,7 @@ Es ist wichtig, dass Fehlerbehandlung in asynchronen Operationen nicht vergessen
 - Einfachere Fehlerbehandlung durch Verwendung von `try-catch`-Blöcken
 - Bessere Kontrolle über asynchrone Abläufe und Reihenfolge der Operationen
 - Einfachere Fehlerbehandlung
+- Fehler werden wie bei Promise nicht verschluckt, sondern müssen explizit behandelt werden.
 
 ### JS13 Nachteile
 
@@ -1064,7 +1065,7 @@ function getUserById(id) {
 - Eine Funktion soll nie `undefined` oder `null` zurückgeben, sondern immer einen Wert oder ein Objekt, das den Status des Ergebnisses darstellt.
 - Jeder Ablaufpfad in einer Funktion muss ein return-Statement haben, um sicherzustellen, dass immer ein Wert zurückgegeben wird.
 - Statt `undefined` kann auch Optional verwendet werden, um den Status des Ergebnisses zu kennzeichnen.
-Siehe dazu auch [JS15 Verwendung von `Optional` in JavaScript-Funktionen](.#js15-verwendung-von-optional-in-javascript-funktionen).
+Siehe dazu auch [JS15 Verwendung von `Optional` in JavaScript-Funktionen](index#js15-verwendung-von-optional-in-javascript-funktionen).
 - Es kann auch ein spezieller Wert als Objekt zurückgegeben werden, um den Status des Ergebnisses zu kennzeichnen (siehe Beispiel unten).
 
 ```javascript
@@ -1165,7 +1166,7 @@ Eine Funktion oder Methode, die dennoch `null`, `undefined` oder `NaN` zurückge
 
 Diese Regel gilt nur für bereits bestehenden Klassenstrukturen, die nicht veränderbar oder erweiterbar sind.
 
-Soll ein neues Klassen- oder Objektmodell erstellt werden, sollen direkt [spezielle Objekte](.#verwende-spezielle-objekte-statt-spezielle-werte) verwendet werden.
+Soll ein neues Klassen- oder Objektmodell erstellt werden, sollen direkt [spezielle Objekte](index#verwende-spezielle-objekte-statt-spezielle-werte) verwendet werden.
 
 :::
 
@@ -1426,7 +1427,7 @@ function calculate(x) {
 
 ### JS20 Weiterführende Literatur/Links
 
-- [Guard Pattern](.#js12-guard-pattern)
+- [Guard Pattern](index#js12-guard-pattern)
 - [Clean Code: A Handbook of Agile Software Craftsmanship](https://www.amazon.com/dp/0132350882)
 - [JavaScript: The Good Parts](https://www.amazon.com/dp/0596517742)
 
@@ -2696,7 +2697,7 @@ So können damit keine Operationen durchgeführt werden, die nur für korrekte B
 
 Die Prüfung auf einen *nicht-gefundenen* Benutzer kann durch Methoden des Objekts selbst erfolgen.
 Sollte dieses Objekt doch einmal verwendet werden, so gibt nur dann eine Exception, wenn die Operation am Objekt nicht erlaubt ist.
-Die Gültigkeit wird in operativen Methoden geprüft (siehe [Trennung von operationalem und integrativem Code](.#trennung-von-operationalem-und-integrativem-code)), so können Integrationsmethoden diese Werte einfach weitergeben.
+Die Gültigkeit wird in operativen Methoden geprüft (siehe [Trennung von operationalem und integrativem Code](index#trennung-von-operationalem-und-integrativem-code)), so können Integrationsmethoden diese Werte einfach weitergeben.
 
 Das folgende Beispiel zeigt die Verwendung eines speziellen Objekts `NotFoundEntity` für den Fall, dass eine Entität (ein generisches Beispiel-Daten-Objekt) nicht gefunden wurde.
 Es werden keine Exceptions geworfen, sondern spezielle Objekte zurückgegeben, die spezielles Verhalten haben (`Polymorphismus`).
@@ -2712,7 +2713,7 @@ Wenn spezielle Objekte verwendet werden, um spezielle Fälle zu repräsentieren,
 
 ::: details Optional
 
-Das spezielle Objekt [Optional](.#verwendung-von-optional-in-javascript-funktionen) kann auch verwendet werden, um diese spezielle Fälle zu repräsentieren.
+Das spezielle Objekt [Optional](index#verwendung-von-optional-in-javascript-funktionen) kann auch verwendet werden, um diese spezielle Fälle zu repräsentieren.
 Es ist nützlich, wenn bereits Klassen und Objekte aus einer Legacy-Anwendung verwendet werden, die nicht geändert werden können.
 
 :::
