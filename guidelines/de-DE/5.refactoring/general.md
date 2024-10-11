@@ -1,5 +1,7 @@
 ---
 layout: doc
+outline: [2, 2]
+
 customRulePrefix: RFG
 customIgnoreTitlesForRules: [Einleitung,Begriffsdefinition,Warum Refactoring?]
 ---
