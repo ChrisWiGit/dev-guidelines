@@ -103,12 +103,6 @@ function fixPathsInLinks(definition) {
   return definition
 }
 
-function getRelativePathToCwd(filePath) {
-  const cwd = process.cwd()
-  return path.relative(cwd, path.dirname(filePath))
-}
-
-
 function sortByKeys(wordToDefinition) {
   const sorted = Object.keys(wordToDefinition).sort().reduce((acc, key) => {
     acc[key] = wordToDefinition[key]

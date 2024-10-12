@@ -12,6 +12,11 @@ Es ist eine Referenz für Entwickler, um die Bedeutung von Begriffen zu verstehe
 `Authentifizierung` ist der Prozess, bei dem die Identität eines Benutzers überprüft wird.
 `Autorisierung` ist der Prozess, bei dem überprüft wird, ob ein Benutzer auf bestimmte Ressourcen zugreifen darf.
 
+## Code Smells
+
+Code Smells sind Anzeichen in deinem Code, die auf tiefer liegende Probleme hinweisen können.
+Beispiele hierfür sind überlange Funktionen, verschachtelte Schleifen, globale Variablen und duplizierter Code. Durch das Identifizieren dieser "Code Smells" kannst du gezielt Verbesserungen vornehmen.
+
 ## Guard Clause
 
 Strenggenommen ist die Guard Clause eine Operations-Logik, welche die Methode nach IOSP auch zu einer Operations-Logik, statt einer Integration-Logik macht.
@@ -52,6 +57,11 @@ Das ist jedoch nicht der Sinn von Polymorphismus.
 Polymorphismus handelt von Verhalten, nicht von Daten.
 Kurz: Polymorphismus bedeutet, das abgeleitete Klassen sich nur in ihrem Verhalten unterscheiden, nicht in ihren Daten.
 Wenn Daten hinzu gefügt werden sollen, ist es besser das [Pattern Komposition](./4.designpatterns/structural#composite) zu verwenden.
+
+## Refactoring vs. Refaktorisierung
+
+- **Refactoring** ist der Prozess, bei dem der Code verbessert wird, ohne das Verhalten zu ändern.
+- **Refaktorisierung** ist die Tätigkeit, die während des Refactorings durchgeführt wird.
 
 ## Schein-Konstanten
 

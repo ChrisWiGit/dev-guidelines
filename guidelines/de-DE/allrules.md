@@ -186,12 +186,6 @@ layout: doc
 
 ## Allgemeine Regeln für das Refactoring
 
-- [RFG1 Wann soll refaktoriert werden?](5.refactoring/general.md#wann-soll-refaktoriert-werden)
-- [RFG2 Prüfung auf Code Smells](5.refactoring/general.md#pruefung-auf-code-smells)
-- [RFG3 Umbenennen](5.refactoring/general.md#umbenennen)
-- [RFG4 Vereinfachungen](5.refactoring/general.md#vereinfachungen)
-- [RFG5 Verantwortlichkeiten trennen](5.refactoring/general.md#verantwortlichkeiten-trennen)
-- [RFG6 Methoden extrahieren](5.refactoring/general.md#methoden-extrahieren)
 
 ## Regeln für das Refactoring in JavaScript
 

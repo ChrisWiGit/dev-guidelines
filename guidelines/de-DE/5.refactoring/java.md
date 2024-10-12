@@ -18,3 +18,4 @@ Damit kann eine Regel eindeutig identifiziert werden, z.B. für ein Code-Review.
 
 In diesem Dokument werden Java ab Version 17 betrachtet.
 Zugehörige Bibliotheken und Frameworks werden ihre eigenen Kapitel erhalten.
+

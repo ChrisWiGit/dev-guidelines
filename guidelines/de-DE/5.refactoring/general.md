@@ -2,11 +2,11 @@
 layout: doc
 outline: [2, 2]
 
-customRulePrefix: RFG
+customRulePrefix: RFP
 customIgnoreTitlesForRules: [Einleitung,Begriffsdefinition,Warum Refactoring?]
 ---
 
-# Allgemeine Vorgehensweise beim Refactoring
+# Prinzipien des Refactoring
 
 ## Einleitung {#einleitung}
 
@@ -38,10 +38,10 @@ Viele Entwickler haben jedoch Angst vor Refactoring, da sie befürchten, dass es
 Trotzdem merken sie irgendwann, dass der Code so unübersichtlich und komplex geworden ist, dass er Schmerzen verursacht, ihn zu ändern.
 :::
 
-::: details Refactoring vs. Refaktorisierung vs. Refaktorierung
+<!-- !glossary-->
+::: details Refactoring vs. Refaktorisierung
 
 - **Refactoring** ist der Prozess, bei dem der Code verbessert wird, ohne das Verhalten zu ändern.
-- **Refaktorierung** ist der Prozess, bei dem der Code verbessert wird, ohne das Verhalten zu ändern.
 - **Refaktorisierung** ist die Tätigkeit, die während des Refactorings durchgeführt wird.
 
 :::
@@ -61,66 +61,115 @@ Der Code wird dadurch immer komplexer und unübersichtlicher, und lässt sich ir
 Der Abbau dieser technischen Schulden ist ein wichtiger Bestandteil der Softwareentwicklung, um die Wartbarkeit und Erweiterbarkeit des Codes zu gewährleisten.
 Nur durch den Abbau dieser technischen Schulden können neue Features effizient hinzu gefügt werden.
 
-## RFG1 Wann soll refaktoriert werden? {#wann-soll-refaktoriert-werden}
+::: info Kurz gesagt
 
-1. Refactoring wird vor dem Beginn einer neuen Aufgabe durchgeführt, wenn notwendig.
-Das Refactoring ermöglicht es auch sich in den Code einzuarbeiten und die Anforderungen besser zu verstehen.
+- Refactoring verbessert das Design des Codes, ohne das Verhalten zu ändern.
+- Refactoring macht den Code lesbarer, verständlicher und leichter wartbar.
+- Refactoring baut technische Schulden ab und verbessert die Code-Qualität.
+- Refactoring hilft den Code zu verstehen.
+- Refactoring hilft beim Finden und Beheben von Fehlern.
+- Refactoring hilft schneller neue Features hinzuzufügen.
 
-2. Refactoring wird nach dem Programmieren durchgeführt, um den Code zu verbessern und die Qualität zu erhöhen.
+:::
 
-3. Refactoring solle immer dann durchgeführt werden, wenn der Code schwer zu verstehen ist, schwer zu warten ist oder wenn neue Funktionen hinzugefügt werden sollen.
+## RFP1 Wann kann refaktorisiert werden? {#wann-kann-refaktorisiert-werden}
 
-4. Ein Refactoring soll zu einem Bug- oder Story-Ticket durchgeführt werden, und in der Regel nicht als eigenständige Aufgabe.
+Refaktorisierung kann nur dann richtig durchgeführt werden, wenn Tests vorhanden sind, die das Verhalten des Codes sicherstellen.
+Ohne Tests ist es schwierig, sicherzustellen, dass das Verhalten des Codes nach dem Refactoring unverändert bleibt.
+
+## RFP2 Wann sollte nicht refaktorisiert werden? {#wann-sollte-nicht-refaktorisiert-werden}
+
+Refactoring sollte nicht durchgeführt werden:
+
+- Wenn es keine Tests gibt, kann das korrekte Verhalten des Codes nicht sichergestellt werden.
+- Wenn es keine klare Vorstellung davon gibt, wie der Code verbessert werden kann.
+- Wenn die eigentliche Änderung sehr klein ist und das Refactoring mehr Zeit in Anspruch nimmt.
+
+Siehe [Die 2-3-5](../2.principles/principles#the-2-3-5) Regel.
+
+## RFP3 Wann soll refaktorisiert werden? {#wann-soll-refaktorisiert-werden}
+
+1. Refaktorisierung wird vor dem Beginn einer neuen Aufgabe durchgeführt, wenn notwendig.
+Die Refaktorisierung ermöglicht es auch sich in den Code einzuarbeiten und den Code dadurch besser zu verstehen.
+
+2. Refaktorisierung wird nach dem Programmieren durchgeführt, um den Code zu verbessern und die Qualität zu erhöhen.
+
+3. Refaktorisierung soll immer dann durchgeführt werden, wenn der Code schwer zu verstehen ist, schwer zu warten ist oder wenn neue Funktionen hinzugefügt werden sollen.
+
+4. Eine Refaktorisierung soll zu einem Bug- oder Story-Ticket durchgeführt werden, und in der Regel nicht als eigenständige Aufgabe.
 Ausnahmen können größere Refactorings sein.
 
-5. Refactoring soll in kleinen Schritten durchgeführt werden, um die Wahrscheinlichkeit von Fehlern zu minimieren.
+5. Die Refaktorisierung soll in kleinen Schritten durchgeführt werden, um die Wahrscheinlichkeit von Fehlern zu minimieren.
 Dies erleichtert das Finden und Beheben von Fehlern und hilft, den Überblick zu behalten.
 Damit ist es auch möglich große Teile des Codes zu erneuern, ohne dass ein ganzes Team daran arbeiten muss.
 
-6. Zu einem Refaktoring gehört zudem das Schreiben von Tests, um die Funktionalität sicherzustellen.
+6. Zu einer Refaktorisierung gehört zudem das Schreiben von Tests, um die Funktionalität sicherzustellen.
 
-## RFG2 Prüfung auf Code Smells {#pruefung-auf-code-smells}
+## RFP4 Prüfung auf Code Smells {#pruefung-auf-code-smells}
 
 `Code Smells` sollen identifiziert und behoben werden, um die Codequalität zu verbessern.
 
+<!-- !glossary-->
 ::: info Code Smells
 Code Smells sind Anzeichen in deinem Code, die auf tiefer liegende Probleme hinweisen können.
 Beispiele hierfür sind überlange Funktionen, verschachtelte Schleifen, globale Variablen und duplizierter Code. Durch das Identifizieren dieser "Code Smells" kannst du gezielt Verbesserungen vornehmen.
 :::
 
-## RFG3 Umbenennen {#umbenennen}
+Siehe Beispiele [Code-Smells](./codesmells).
 
-Namen sollen manuell oder automatisiert umbenannt werden, um die Bedeutung des Codes zu verdeutlichen.
+### RFP4 Bezeichner
+<!-- TODO -->
 
-Namen sollen aussagekräftig und verständlich sein, damit der Inhalt der Variablen, Methoden, Klassen und Module klar ist.
+### RFP4 Doppelter Code
 
-Siehe dazu auch die Richtlinie [Benamung](../6.languages/naming.md).
+## RFP5 Lange Funktionen/Methoden {#lange-funktionen-methoden}
 
-## RFG4 Vereinfachungen {#vereinfachungen}
+## RFP6 Lange Parameterlisten {#lange-parameterlisten}
 
-Code soll vereinfacht werden, um die Lesbarkeit zu verbessern.
+## RFP7 Globale Variablen/Daten {#globale-variablen-daten}
+
+## RFP8 Feature-Neid {#feature-neid}
+
+## RFP9 elementare Datentypen {#elementare-datentypen}
+
+## RFP10 Schleifen {#schleifen}
+
+## RFP11 Switch-Statements {#switch-statements}
+
+## RFP12 If-Statements {#if-statements}
+
+- Negationen
+- Große If-Blöcke
+- Viele If-Statements
+- Tief oder mehrfach verschachtelte If-Statements
+- Lange If-Statements
+- Komplexe Bedingungen
+
+Siehe Beispiele [Code-Smells](./codesmells#if-statements).
+
+
+## RFP13 Umfangreiche Klassen {#umfangreiche-klassen}
+
+## RFP14 Datenklassen {#datenklassen}
+
+## RFP15 Kommentare {#kommentare}
+
+
+
+
+## RFP16 Vereinfachungen {#vereinfachungen}
+
+Code soll vereinfacht durch Refactoring vereinfacht werden, um die Lesbarkeit und Wartbarkeit zu verbessern.
 
 Die Prinzipien [DRY](../2.principles/principles#dry), [SOC](../2.principles/principles#soc) und [KISS](../2.principles/principles#kiss) sind hierbei zu beachten.
 
-## RFG5 Verantwortlichkeiten trennen {#verantwortlichkeiten-trennen}
+## RFP17 Bewusstsein für Seiteneffekte beim Refactoring {#bewusstsein-fuer-seiteneffekte-beim-refactoring}
 
-Alle Verantwortlichkeiten sollen klar getrennt werden, um die Wartbarkeit zu verbessern.
-
-Die Prinzipien [SRP](../2.principles/principles#single-responsibility-principle) und [ISP](../2.principles/principles#interface-segregation-principle) sind hierbei zu beachten.
-
-## RFG6 Methoden extrahieren {#methoden-extrahieren}
-
-Um Methoden einfacher zu verstehen, sollen sie in kleinere Methoden extrahiert werden.
-
-Die Prinzipien [DRY](../2.principles/principles#dry) und [KISS](../2.principles/principles#kiss) sind hierbei zu beachten.
-
-### RFG6 Bewusstsein für Seiteneffekte beim Refactoring
-
-Während des Refactorings ist es wichtig, sicherzustellen, dass der Code noch immer das tut, was er soll.
+Während der Refaktorisierung ist es wichtig, sicherzustellen, dass der Code noch immer das tut, was er soll.
 Änderungen, die unerwartete Seiteneffekte verursachen könnten, sollen mit Vorsicht behandelt werden.
-Teste den Code gründlich, um sicherzustellen, dass er immer noch korrekt funktioniert.
+Es ist daher ratsam, Änderungen in kleinen Schritten durchzuführen und regelmäßig zu testen, um sicherzustellen, dass das Verhalten des Codes unverändert bleibt.
 
-### RFG6 Dokumentation von Legacy-Code
+## RFP18 Kein nachträgliches Kommentieren von Code {#kein-nachtraegliches-kommentieren-von-code}
 
 Bestehender Code, der bisher nicht kommentiert wurde, soll im Nachhinein auch nicht kommentiert werden.
 
@@ -128,10 +177,10 @@ Dokumentation von Legacy-Code ist auch im Nachhinein kaum eine Hilfe, den Code z
 Beim Lesen von alten Code besteht die Gefahr, dass er falsch verstanden wird und die Dokumentation dadurch nutzlos und verwirrend wird.
 Vielmehr soll alter Code selbst im Zuge eines Refactorings verbessert werden, damit er selbsterklärend ist und nur neue Dokumentation braucht.
 
-### RFG6 Kontinuierliche und sorgfältige Dokumentation für API-Benutzer
+## RFP19 Code entfernen {#code-entfernen}
 
-Die Dokumentation des öffentlichen Schnittstellen soll während des gesamten Programmierprozesses stattfinden, anstatt sie bis zum Ende zu verschieben, wo sie möglicherweise überhastet und unvollständig umgesetzt wird.
-Insbesondere beim öffentlich zugänglichen Teil des Codes, der API, soll besonderer Wert auf Vollständigkeit und Verständlichkeit gelegt werden.
-Eine umfassende und klar strukturierte Dokumentation würdigt die Zeit der API-Benutzer und erleichtert ihnen die Arbeit erheblich.
-Beispiele können einen wertvollen Beitrag leisten, indem sie das Verständnis vertiefen und die Anwendung der API in verschiedenen Kontexten veranschaulichen.
-Es ist von entscheidender Bedeutung, dass die Dokumentation stets den aktuellen Entwicklungsstand widerspiegelt und keine veralteten oder falschen Informationen enthält.
+Refaktorisierung kann auch das Entfernen von Code bedeuten, der nicht mehr benötigt wird.
+
+## RFP20 Methodisches Vorgehen {#methodisches-vorgehen}
+
+Ein Refactoring muss methodisch durchgeführt werden, um sicherzustellen, dass das Verhalten des Codes unverändert bleibt.
