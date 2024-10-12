@@ -36,6 +36,17 @@
       "program": "${workspaceFolder}\\.ops\\hbscli2\\index.js",
       "args": ["headlines.json", "allrules.md.hbs", "output.md"],
       "cwd": "${workspaceFolder}/.ops/hbscli2"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Glossary",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}\\.ops\\glossar\\index.js",
+      "args": ["test.md"],
+      "cwd": "${workspaceFolder}/.ops/glossar"
     }
   ]
 }
