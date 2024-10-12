@@ -105,6 +105,7 @@ Der Prototyp muss jedoch nachträglich dahingehend refaktorisiert werden, dass d
 
 Nach dem **Integration Operation Segregation Principle** soll Code entweder Operations-Logik oder Integration-Logik enthalten, aber nicht beides.
 
+<!-- !glossary-->
 :::info Operation vs. Integration
 
 Eine **Operations-Logik** enthält Bedingungen, Schleifen, etc., die die Geschäftsregeln implementieren.
@@ -155,6 +156,7 @@ function onClick(input) {
 
 Die Trennung kann durch die Verwendung von mehreren Zwischenmethoden erreicht werden, die die Operations- und Integrationslogik trennen.
 
+<!-- !glossary-->
 :::info Guard Clause
 
 Strenggenommen ist die Guard Clause eine Operations-Logik, welche die Methode nach IOSP auch zu einer Operations-Logik, statt einer Integration-Logik macht.

@@ -12,8 +12,12 @@ set -e
 
 currentDir=$(pwd)
 
-cd ./.ops/hbscli
-npm install
+# cd ./.ops/hbscli
+# npm install
+# cd ./.ops/glossary
+# npm install
+# cd ./.ops/headliner
+# npm install
 cd $currentDir
 
 function buildLang {
@@ -23,11 +27,16 @@ function buildLang {
   echo "Processing ${langDir}/headlines.json"
   node ../../.ops/headliner/index.js .
 
-  echo "Processing ${langDir}/allrules.md.hbs"
-  
+  echo "Processing ${langDir}/allrules.md.hbs"  
   hbs="../../.ops/hbscli/index.js"
 
   node $hbs headlines.json allrules.md.hbs allrules.md
+
+  echo "Processing ${langDir}/glossary.json"
+  node ../../.ops/glossary/index.js .
+
+  node $hbs glossary.json glossary.md.hbs glossary.md
+
   cd $currentDir
 }
 

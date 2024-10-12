@@ -41,6 +41,7 @@ void main() {
 
 ```
 
+<!-- !glossary-->
 ::: danger Polymorphismus: Verhalten vs. Daten
 
 Oftmals wird Polymporphismus verwendet, um einer abgeleiteten Klasse zusätzliche Daten hinzuzufügen.

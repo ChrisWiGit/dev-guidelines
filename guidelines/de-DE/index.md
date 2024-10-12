@@ -14,8 +14,11 @@ hero:
       text: Qualitäten
       link: ./quality-terms
     - theme: brand
-      text: Glossar
+      text: Alle Regeln
       link: ./allrules
+    - theme: brand
+      text: Begriffe
+      link: ./glossary
     - theme: brand
       text: Literatur/Quellen
       link: ./sources

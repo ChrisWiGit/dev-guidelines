@@ -21,6 +21,7 @@ Jede Richtliniennummer besteht aus dem Buchstaben **GL**(General Languages) gefo
 Schreibe Code und Dokumentation so, als würdest du für andere Entwickler schreiben, die deinen Code lesen werden.
 Frage andere Entwickler, ob sie deinen Code verstehen und ob sie dir Feedback oder Verbesserungsvorschläge geben können.
 
+<!-- !glossary-->
 ::: details Senior-Entwickler vs. Junior-Entwickler
 
 Beim Verständnis von Code sollte es keine Rolle spielen, ob der Entwickler ein Senior- oder Junior-Entwickler ist.
@@ -182,16 +183,16 @@ Das Modell kann dann, teilweise automatisiert, in Code umgewandelt werden.
 
 Durch den Einsatz von Modellen soll außerdem eine Trennung von Datenobjekten und Geschäftslogik erreicht werden, um die Wartbarkeit und Erweiterbarkeit der Software zu verbessern.
 
+<!-- !glossary-->
 ::: details Model Driven Development vs. Domain Driven Design
 
-**Model Driven Development (MDE)** konzentriert sich auf die Modellierung von Software.
+- **Model Driven Development (MDE)** konzentriert sich auf die Modellierung von Software.
 Es versucht, durch den Einsatz von Modellen auf höheren Abstraktionsebenen den Softwareentwicklungsprozess zu verbessern und zu automatisieren. 
 Diese Modelle werden oft direkt in Code übersetzt (Code-Generierung).
 In MDE beschreibt man die Objekte (Entitäten) und ihre Beziehungen oft in Form von Modellen, z.B. UML-Diagrammen (Unified Modeling Language). 
 Die Idee ist, dass man von diesen Modellen ausgeht und sie schrittweise verfeinert, bis sie entweder automatisch in lauffähigen Code umgewandelt werden oder als Grundlage für die Implementierung dienen.
 Die Interaktionen zwischen den Objekten können in den Modellen beschrieben werden und dann in eine Implementierung überführt werden, in der die verschiedenen Objekten über APIs, Methodenaufrufe oder Events miteinander interagieren.
-
-**Domain Driven Design (DDE)** hingegen konzentriert sich auf die Modellierung von Domänenwissen und die Implementierung von Software, die dieses Domänenwissen umsetzt.
+- **Domain Driven Design (DDE)** hingegen konzentriert sich auf die Modellierung von Domänenwissen und die Implementierung von Software, die dieses Domänenwissen umsetzt.
 Dabei wird eine starke Trennung zwischen der Domäne und der technischen Implementierung vorgenommen.
 Das Domänenmodell steht dabei im Mittelpunkt und wird durch die Implementierung umgesetzt.
 Die Domänenobjekte spielen eine zentrale Rolle und werden durch die Geschäftslogik und nicht durch technische Aspekte bestimmt.
@@ -269,7 +270,8 @@ Allgemein gilt:
 - Aktualisierung der verwendeten Bibliotheken
 - Einsatz von Tools zur statischen Codeanalyse und Prüfung der Abhängigkeiten
 
-::: info
+<!-- !glossary-->
+::: info Authentifizierung vs. Autorisierung
 `Authentifizierung` ist der Prozess, bei dem die Identität eines Benutzers überprüft wird.
 
 `Autorisierung` ist der Prozess, bei dem überprüft wird, ob ein Benutzer auf bestimmte Ressourcen zugreifen darf.

@@ -23,11 +23,11 @@ Damit kann eine Regel eindeutig identifiziert werden, z.B. für ein Code-Review.
 SOLID ist das grundlegendste Prinzip der Softwareentwicklung.
 Es steht für die fünf Prinzipien der Softwareentwicklung:
 
-* Single Responsibility Principle,
-* Open/Closed Principle,
-* Liskov Substitution Principle,
-* Interface Segregation Principle und
-* Dependency Inversion Principle.
+- Single Responsibility Principle,
+- Open/Closed Principle,
+- Liskov Substitution Principle,
+- Interface Segregation Principle und
+- Dependency Inversion Principle.
 
 ## P2 Single Responsibility Principle {#single-responsibility-principle}
 
@@ -105,9 +105,9 @@ Das `Don't Repeat Yourself` Prinzip besagt, dass Code so geschrieben werden soll
 
 ### P7 Die 2-3-5 Regel
 
-Die *2-3-5* Regel besagt, dass Code, der sich mehr als **zweimal** wiederholt, in eine Funktion oder Methode ausgelagert werden sollte.
-Code, der sich mehr als **dreimal** wiederholt, sollte in eine Klasse oder ein Modul ausgelagert werden.
-Code, der sich mehr als **fünfmal** wiederholt, sollte in eine eigene Bibliothek oder ein eigenes Framework ausgelagert werden.
+Die *2-3-5- Regel besagt, dass Code, der sich mehr als **zweimal*- wiederholt, in eine Funktion oder Methode ausgelagert werden sollte.
+Code, der sich mehr als **dreimal*- wiederholt, sollte in eine Klasse oder ein Modul ausgelagert werden.
+Code, der sich mehr als **fünfmal*- wiederholt, sollte in eine eigene Bibliothek oder ein eigenes Framework ausgelagert werden.
 
 ::: warning Vorsicht
 Oftmals ist doppelter Code nicht sofort ein Problem, sondern erst später, wenn er ein drittes Mal angefasst wird.
@@ -139,17 +139,17 @@ Zudem ist sie dann leichter verständlich und testbar, weil Abstraktionen helfen
 
 Verschiedene Aspekte können sein:
 
-* UI
-* Datenbankzugriff
-* Datenverwaltung
-* generell Geschäftslogik
-* Fehlerbehandlung (try/catch)
-* Logging
-* Security
-* Klassen
+- UI
+- Datenbankzugriff
+- Datenverwaltung
+- generell Geschäftslogik
+- Fehlerbehandlung (try/catch)
+- Logging
+- Security
+- Klassen
 
 ::: info Kurz gesagt
-Die Nicht-Einhaltung von SoC lässt sich leicht an *schnell-geschriebenen* Code sehen, der `alles` in einer Methode abhandelt.
+Die Nicht-Einhaltung von SoC lässt sich leicht an *schnell-geschriebenen- Code sehen, der `alles` in einer Methode abhandelt.
 :::
 
 ## P11 LC {#lc}
@@ -160,34 +160,37 @@ Module, Klassen und Komponenten sollten immer eine niedrige Kopplung und eine ho
 Durch eine niedrige Kopplung können Module, Klassen und Komponenten wieder verwendet und leichter getestet werden.
 Durch eine hohe Kohäsion sind Module, Klassen und Komponenten nur einer Aufgabe verpflichtet und haben eine klare Verantwortlichkeit ([Single Responsibility Principle](.#single-responsibility-principle)).
 
+<!-- !glossary-->
 ::: info Kopplung und Kohäsion
-`Kopplung` ist die Abhängigkeit zwischen zwei oder mehr Modulen oder Komponenten.
+
+- `Kopplung` ist die Abhängigkeit zwischen zwei oder mehr Modulen oder Komponenten.
 Sie beschreibt, wie stark zwei oder mehr Module oder Komponenten voneinander abhängig sind.
-`Kohäsion` ist die Zusammengehörigkeit von Funktionalitäten innerhalb eines Moduls, Klasse oder einer Komponente.
+
+- `Kohäsion` ist die Zusammengehörigkeit von Funktionalitäten innerhalb eines Moduls, Klasse oder einer Komponente.
 Sie beschreibt, wie stark die Funktionalität innerhalb eines Moduls, Klasse oder einer Komponente zusammenhängt.
 :::
 
 Es gibt verschiedene Arten von Kopplung:
 
-* Datenkoppelung besteht darin, dass Module auf die Daten eines anderen Moduls zugreifen.
-* Globale Datenkoppelung besteht darin, dass Module auf gemeinsame globale Daten zugreifen.
-* Steuerungskoppelung besteht darin, dass ein Modul die Kontrolle über ein anderes Modul übernimmt.
-* Koppelung durch gemeinsame Ressourcen besteht darin, dass Module auf gemeinsame Ressourcen zugreifen.
-* Externe Koppelung besteht darin, dass Module von gleichen externen Software oder Hardware abhängig sind.
-* Koppelung durch Kommunikation besteht darin, dass Module durch Kommunikation miteinander verbunden sind wie z.B. durch Nachrichten oder Signale oder Datenbanken.
-* Funktionale Koppelung besteht darin, dass Module auf die Funktionalität des jeweiligen Moduls zugreifen.
-* Temporale Koppelung besteht darin, dass Module abhängig einer zeitlichen Abfolge oder Reihenfolge von Ereignissen anderer Module sind.
-* Sequenzielle Koppelung besteht darin, dass Module in einer bestimmten Reihenfolge ausgeführt werden müssen, da ihre Datenverarbeitung voneinander abhängig ist.
-* Interaktionskoppelung besteht darin, dass Methoden oder Funktionen eines Moduls auf die Methoden oder Funktionen eines anderen Moduls zugreifen.
-* Komponentenkoppelung besteht darin, dass Komponenten auf Variable oder Funktionen einer anderen Komponente direkt zugreifen.
+- Datenkoppelung besteht darin, dass Module auf die Daten eines anderen Moduls zugreifen.
+- Globale Datenkoppelung besteht darin, dass Module auf gemeinsame globale Daten zugreifen.
+- Steuerungskoppelung besteht darin, dass ein Modul die Kontrolle über ein anderes Modul übernimmt.
+- Koppelung durch gemeinsame Ressourcen besteht darin, dass Module auf gemeinsame Ressourcen zugreifen.
+- Externe Koppelung besteht darin, dass Module von gleichen externen Software oder Hardware abhängig sind.
+- Koppelung durch Kommunikation besteht darin, dass Module durch Kommunikation miteinander verbunden sind wie z.B. durch Nachrichten oder Signale oder Datenbanken.
+- Funktionale Koppelung besteht darin, dass Module auf die Funktionalität des jeweiligen Moduls zugreifen.
+- Temporale Koppelung besteht darin, dass Module abhängig einer zeitlichen Abfolge oder Reihenfolge von Ereignissen anderer Module sind.
+- Sequenzielle Koppelung besteht darin, dass Module in einer bestimmten Reihenfolge ausgeführt werden müssen, da ihre Datenverarbeitung voneinander abhängig ist.
+- Interaktionskoppelung besteht darin, dass Methoden oder Funktionen eines Moduls auf die Methoden oder Funktionen eines anderen Moduls zugreifen.
+- Komponentenkoppelung besteht darin, dass Komponenten auf Variable oder Funktionen einer anderen Komponente direkt zugreifen.
 
 ## P12 IOSP {#iosp}
 
 Das `Integration Operation Segregation Principle` besagt, dass Code entweder Operations-Logik oder Integration-Logik enthalten sollte, aber nicht beides.
 Solch getrennte Logiken ermöglichen leichteres Testen und erhöht die Verständlichkeit des Codes durch kleinere und einfachere Methoden/Funktionen.
 
-* Eine Methode/Funktion sollte Operations-Logik (Bedingungen, Schleifen, etc.) enthalten, die die Geschäftsregeln implementiert und/oder API-Aufrufe (oder derart) durchführt.
-* Eine Methode/Funktion sollte Integration-Logik enthalten, die anderen Code verwendet, um die Operations-Logik zu implementieren.
+- Eine Methode/Funktion sollte Operations-Logik (Bedingungen, Schleifen, etc.) enthalten, die die Geschäftsregeln implementiert und/oder API-Aufrufe (oder derart) durchführt.
+- Eine Methode/Funktion sollte Integration-Logik enthalten, die anderen Code verwendet, um die Operations-Logik zu implementieren.
 
 ## P13 NFR {#nfr}
 
@@ -247,7 +250,7 @@ Das `Use familiar tools` Prinzip besagt, dass Software so entwickelt werden soll
 
 ## P22 FF {#ff}
 
-Programmieren mit dem `Fail Fast` Prinzip bedeutet, dass Software defensive programmiert werden soll, damit Fehler zum frühstmöglichsten Zeitpunkt **durch** Code erkannt und behandelt werden können.
+Programmieren mit dem `Fail Fast` Prinzip bedeutet, dass Software defensive programmiert werden soll, damit Fehler zum frühstmöglichsten Zeitpunkt **durch*- Code erkannt und behandelt werden können.
 Eingabedaten sollten immer validiert und geprüft werden, damit die Fehlerfälle einfach und schnell erkannt und behandelt werden können.
 
 ## P23 RoE {#roe}
@@ -260,10 +263,10 @@ Implizite Lösungen erfordert, dass ein Entwickler zwischen den Zeilen lesen mus
 Quellen und Quellcode, die aus einer Suchmaschine stammen, müssen immer überprüft und validiert werden.
 Die Qualität von Quellcode, der aus einer Suchmaschine stammt, ist oft fragwürdig und kann zu Sicherheitslücken und Fehlern führen.
 
-* Prüfe, ob es bereits eine Inhouse-Lösung gibt.
-* Die Lizenz muss überprüft werden.
+- Prüfe, ob es bereits eine Inhouse-Lösung gibt.
+- Die Lizenz muss überprüft werden.
 Die Verwendung von Lizenzen, die nicht mit den Unternehmensrichtlinien übereinstimmen ist nicht erlaubt.
-* Wenn Quelltext übernommen wird, muss ein Test dafür geschrieben werden.
+- Wenn Quelltext übernommen wird, muss ein Test dafür geschrieben werden.
 
 ## P25 Behandle Warnungen als Fehler {#behandle-warnungen-als-fehler}
 

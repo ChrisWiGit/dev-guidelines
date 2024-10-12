@@ -32,7 +32,7 @@ function parseRelativePaths(args) {
     const data = JSON.parse(dataFile);
     const templateFile = await fs.readFile(templateFilePath, "utf8");
 
-    const template = hbs.compile(templateFile);
+    const template = hbs.compile(templateFile, {noEscape: true});
     const output = template(data);
 
     await fs.writeFile(outputFilePath, output);

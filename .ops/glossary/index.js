@@ -6,13 +6,9 @@ CLI Tool, um ein Glossar/Begriffsverzeichnis aus Markdown-Dateien zu erstellen.
 3. Wenn darin Pfade ../ oder ../../ etc. gefunden werden, dann wird der Pfad durch ./ ersetzt.
 4. Alle Begriffe werden in ein JSON-Objekt geschrieben und in einer Datei 'glossary.json' gespeichert.
 
-::: details Schein-Konstanten
-
-Objekte oder Array-Inhalte sind immer veränderbar, auch wenn sie mit `final` deklariert werden.
-Nur die Zuweisung der Variable ist konstant, nicht der Wert.
-
-In Java gibt es keine Möglichkeit, den Inhalt eines Objekts oder Arrays zu sperren.
-Alternativen sind die Software Prinzipien [Tell, don't ask](../../2.principles/principles#tda-ie) und [Informatin Hiding](../../2.principles/principles#ih-e).
+<!-- !glossary [optionaler ErsatzName]-->
+::: details Begriff
+Erklärung
 :::
 
 */
@@ -37,14 +33,16 @@ function getGlossaryWordAsString(str) {
 }
 
 function getGlossaryWordsFromBox(str) {
-  //::: details Schein-Konstanten -> Schein-Konstanten
-  return str.split(/\s+/).slice(2).join(" ").trim()
+  //:::details Schein-Konstanten -> Schein-Konstanten
+  return str.replace(/:::\s*\w+/, "").trim()
 }
 
 async function processSingleFile(filePath, globalState) {
   const content = await fs.readFile(filePath, "utf-8")
-  
   const lines = content.split(/\r?\n/)
+
+  let infoBlocksCount = 0;
+  let glossaryBlocksCount = 0;
 
   let isGlossary = false
   let words = ''
@@ -52,15 +50,15 @@ async function processSingleFile(filePath, globalState) {
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i]
 
+    if (line.includes(":::")) {
+      infoBlocksCount++
+    }
+
     if (isGlossary) {
       if (line.includes(":::")) {
 
         if (!words) {
           words = getGlossaryWordsFromBox(line)
-        }
-
-        if (!words) {
-          console.warn("No words found in glossary box at line", i)
         }
 
         isGlossary = false
@@ -73,29 +71,49 @@ async function processSingleFile(filePath, globalState) {
         }     
 
         if (words) {
-          globalState.wordToDefinition[words] = definitions.filter((line) => line.trim() !== "").join("\n")
+          const definition = definitions.filter((line) => line.trim() !== "").join("\n")
+
+          globalState.wordToDefinition[words] = fixPathsInLinks(definition, filePath)
+        } else {
+          console.warn("No words found in glossary box at line", i)
+          glossaryBlocksCount--
         }
       }
     }
 
     if (isGlossaryComment(line)) {
+      glossaryBlocksCount++
       isGlossary = true
       words = getGlossaryWordAsString(line)
     }
   }
+
+  console.info("Info blocks to glossary blocks ratio", infoBlocksCount, glossaryBlocksCount)
 }
   
-function fixPathsInLinks(wordToDefinition) {
+function fixPathsInLinks(definition, filePath) {
   // (./../ -> (./
   // (../../ -> (./
   // (../../../ -> (./
-  for (const [word, definition] of Object.entries(wordToDefinition)) {
-    const matches = definition.match(/\((\.+\/)+/g)
-    if (matches) {
-      wordToDefinition[word] = definition.replace(/\((\.+\/)+/g, "(./")
-    }
+  const matches = definition.match(/\((\.+\/)+/g)
+  if (matches) {
+    definition = definition.replace(/\((\.+\/)+/g, "(./")
   }
+
+  const path = getRelativePathToCwd(filePath)
+
+  // ./ -> ./path/to/file
+
+  definition = definition.replace(/\(.\//g, `(${path}/`)
+
+  return definition
 }
+
+function getRelativePathToCwd(filePath) {
+  const cwd = process.cwd()
+  return path.relative(cwd, path.dirname(filePath))
+}
+
 
 function sortByKeys(wordToDefinition) {
   const sorted = Object.keys(wordToDefinition).sort().reduce((acc, key) => {
@@ -114,6 +132,7 @@ async function processFilesInDirectory(directoryPath, globalState) {
   })
 
   for (const file of files) {
+    console.info("Processing file", file)
     await processSingleFile(file, globalState)
   }
 }
@@ -142,14 +161,11 @@ async function writeGlossaryFile(filePath, globalState) {
       await processSingleFile(filePath, globalState)
     }
 
-    fixPathsInLinks(globalState.wordToDefinition)
     globalState.wordToDefinition = sortByKeys(globalState.wordToDefinition)
 
     await writeGlossaryFile(filePath, globalState)
 
-    
-
-    
+    console.info("Glossary created successfully", filePath)
   } catch (err) {
     console.error(err)
     process.exit(5)
