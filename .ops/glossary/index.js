@@ -59,6 +59,10 @@ async function processSingleFile(filePath, globalState) {
           words = getGlossaryWordsFromBox(line)
         }
 
+        if (!words) {
+          console.warn("No words found in glossary box at line", i)
+        }
+
         isGlossary = false
 
         const definitions = []
@@ -68,7 +72,9 @@ async function processSingleFile(filePath, globalState) {
           j++
         }     
 
-        globalState.wordToDefinition[words] = definitions.filter((line) => line.trim() !== "").join("\n")
+        if (words) {
+          globalState.wordToDefinition[words] = definitions.filter((line) => line.trim() !== "").join("\n")
+        }
       }
     }
 
@@ -89,6 +95,15 @@ function fixPathsInLinks(wordToDefinition) {
       wordToDefinition[word] = definition.replace(/\((\.+\/)+/g, "(./")
     }
   }
+}
+
+function sortByKeys(wordToDefinition) {
+  const sorted = Object.keys(wordToDefinition).sort().reduce((acc, key) => {
+    acc[key] = wordToDefinition[key]
+    return acc
+  }, {})
+
+  return sorted
 }
 
 
@@ -128,6 +143,7 @@ async function writeGlossaryFile(filePath, globalState) {
     }
 
     fixPathsInLinks(globalState.wordToDefinition)
+    globalState.wordToDefinition = sortByKeys(globalState.wordToDefinition)
 
     await writeGlossaryFile(filePath, globalState)
 
