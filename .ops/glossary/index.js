@@ -21,6 +21,7 @@ const fs = require("fs").promises
 const path = require("path")
 const Glob = require("glob")
 
+const IGNORE_MD_FILES = ["**/node_modules/**", "**/dist/**", "**/build/**", "README.md", "CHANGELOG.md", "CONTRIBUTING.md", "CODE_OF_CONDUCT.md", "LICENSE.md", "todos.md"]
 
 const globalState = {
   wordToDefinition: new Map(),
@@ -102,7 +103,7 @@ async function processFilesInDirectory(directoryPath, globalState) {
   }
 }
 
-async function writeGlossaryFile(global) {
+async function writeGlossaryFile(filePath, globalState) {
   await fs.writeFile(
     path.join(path.dirname(filePath), "glossary.json"),
     JSON.stringify(globalState.wordToDefinition, null, 2),
@@ -128,7 +129,7 @@ async function writeGlossaryFile(global) {
 
     fixPathsInLinks(globalState.wordToDefinition)
 
-    await writeGlossaryFile(globalState)
+    await writeGlossaryFile(filePath, globalState)
 
     
 
