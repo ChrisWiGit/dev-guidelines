@@ -4,7 +4,7 @@ layout: doc
 
 # Glossar
 
-Glossar ist eine Sammlung von Begriffen, die in der Softwareentwicklung verwendet werden.
+Glossar ist eine Sammlung von Begriffen, die in der Softwareentwicklung verwendet werden. 
 Es ist eine Referenz für Entwickler, um die Bedeutung von Begriffen zu verstehen, die in der Softwareentwicklung verwendet werden.
 
 ## Authentifizierung vs. Autorisierung
@@ -26,9 +26,9 @@ Sie beschreibt, wie stark die Funktionalität innerhalb eines Moduls, Klasse ode
 ## Model Driven Development vs. Domain Driven Design
 
 - **Model Driven Development (MDE)** konzentriert sich auf die Modellierung von Software.
-Es versucht, durch den Einsatz von Modellen auf höheren Abstraktionsebenen den Softwareentwicklungsprozess zu verbessern und zu automatisieren.
+Es versucht, durch den Einsatz von Modellen auf höheren Abstraktionsebenen den Softwareentwicklungsprozess zu verbessern und zu automatisieren. 
 Diese Modelle werden oft direkt in Code übersetzt (Code-Generierung).
-In MDE beschreibt man die Objekte (Entitäten) und ihre Beziehungen oft in Form von Modellen, z.B. UML-Diagrammen (Unified Modeling Language).
+In MDE beschreibt man die Objekte (Entitäten) und ihre Beziehungen oft in Form von Modellen, z.B. UML-Diagrammen (Unified Modeling Language). 
 Die Idee ist, dass man von diesen Modellen ausgeht und sie schrittweise verfeinert, bis sie entweder automatisch in lauffähigen Code umgewandelt werden oder als Grundlage für die Implementierung dienen.
 Die Interaktionen zwischen den Objekten können in den Modellen beschrieben werden und dann in eine Implementierung überführt werden, in der die verschiedenen Objekten über APIs, Methodenaufrufe oder Events miteinander interagieren.
 - **Domain Driven Design (DDE)** hingegen konzentriert sich auf die Modellierung von Domänenwissen und die Implementierung von Software, die dieses Domänenwissen umsetzt.
@@ -51,7 +51,7 @@ Oftmals wird Polymporphismus verwendet, um einer abgeleiteten Klasse zusätzlich
 Das ist jedoch nicht der Sinn von Polymorphismus.
 Polymorphismus handelt von Verhalten, nicht von Daten.
 Kurz: Polymorphismus bedeutet, das abgeleitete Klassen sich nur in ihrem Verhalten unterscheiden, nicht in ihren Daten.
-Wenn Daten hinzu gefügt werden sollen, ist es besser das [Pattern Komposition](./structural#composite) zu verwenden.
+Wenn Daten hinzu gefügt werden sollen, ist es besser das [Pattern Komposition](./4.designpatterns/structural#composite) zu verwenden.
 
 ## Schein-Konstanten
 

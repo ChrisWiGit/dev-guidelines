@@ -91,7 +91,7 @@ async function processSingleFile(filePath, globalState) {
   console.info("Info blocks to glossary blocks ratio", infoBlocksCount, glossaryBlocksCount)
 }
   
-function fixPathsInLinks(definition, filePath) {
+function fixPathsInLinks(definition) {
   // (./../ -> (./
   // (../../ -> (./
   // (../../../ -> (./
@@ -99,12 +99,6 @@ function fixPathsInLinks(definition, filePath) {
   if (matches) {
     definition = definition.replace(/\((\.+\/)+/g, "(./")
   }
-
-  const path = getRelativePathToCwd(filePath)
-
-  // ./ -> ./path/to/file
-
-  definition = definition.replace(/\(.\//g, `(${path}/`)
 
   return definition
 }

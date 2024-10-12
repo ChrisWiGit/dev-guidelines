@@ -50,7 +50,7 @@ Polymorphismus handelt von Verhalten, nicht von Daten.
 
 Kurz: Polymorphismus bedeutet, das abgeleitete Klassen sich nur in ihrem Verhalten unterscheiden, nicht in ihren Daten.
 
-Wenn Daten hinzu gefügt werden sollen, ist es besser das [Pattern Komposition](./structural#composite) zu verwenden.
+Wenn Daten hinzu gefügt werden sollen, ist es besser das [Pattern Komposition](../4.designpatterns/structural#composite) zu verwenden.
 
 :::
 
