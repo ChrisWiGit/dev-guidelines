@@ -15,6 +15,8 @@ Hier werden daher Beispiel für Code-Smells aufgeführt, die auf Probleme im Cod
 
 ### Negationen
 
+::: code-group
+
 ```java [Negationen]
 if (!data.isBlank()) {
   // do something
@@ -22,6 +24,24 @@ if (!data.isBlank()) {
   // do something
 }
 ```
+
+```java [doppelte Negationen]
+if (!data.isNotBlank()) {
+  // do something
+} else {
+  // do something
+}
+```
+
+```java [Unnötiger Vergleich]
+if (data.isBlank() == false) {
+  // do something
+} else {
+  // do something
+}
+```
+
+:::
 
 ### Große If-Blöcke
 
@@ -108,15 +128,40 @@ if ((a == 1 && anotherValue.data.equals("123")) || (a == 2 && anotherValue === 1
 
 ## Bezeichner
 
-```java
-int a = 1; 
+- Bezeichner ist zu kurz.
+- Bezeichner ist unverständlich.
+- Bezeichner ist mehrdeutig (z.B. `data`).
+- Bezeichner ist in der falschen Sprache (Deutsch statt englisch).
+- Bezeichner sagt nichts über den Inhalt oder Funktion aus (z.B. `temp`).
+- Bezeichner einer Methode sagt nichts über die Ausführung aus (z.B. `doSomething`).
+- Bezeichner lügt über den Inhalt (z.B. `isFinished` statt `isRunning`).
+- Bezeichner lügt über den Datentyp (z.B. `numberOfSeconds` statt `numberOfMilliseconds`).
+- Bezeichner entspricht nicht der Domänensprache.
+- Bezeichner enthält Informationen wie Datentyp oder Klassenname (z.B. `intNumberOfDays`).
+- Bezeichner hat einen Präfix oder Suffix (z.B. `m_` oder `_value`).
+- Bezeichner enthält Schreibfehler (z.B. `nummberOfDays`, doppeltes `m`).
+- Bezeichner verwendet Abkürzungen (z.B. `cnt` statt `count`).
+- Bezeichner ist an der falschen Stelle deklariert (nicht in der Nähe der Verwendung).
+- Bezeichner ist nicht im korrekten Format (z.B. camelCase, PascalCase, etc.)
+- Bezeichner ist nicht konsistent (z.B. `get` und `set` Methoden).
+- Bezeichner kann `null` sein, ohne dass dies im Namen erkennbar ist.
 
-class Testclassname {
-  int testVariable = 1;
+```java
+int a = 1; // mehrdeutig, mehr Informationen
+int intValue = 123;  // statt int numberOfDays = 123;
+int containsMoney = 123;  // moneyAmountInCents
+boolean length = true;  // statt isLength
+boolean asterix = false; // statt isAsterix
+
+class Testclassname { // statt TestClass
+  static int maximumAmount = 100; // statt MAXIMUM_AMOUNT
+  int testVariable = 1; // statt numberOfTests
 }
 ```
 
 ## Feature-Neid
+
+Eine Klasse verwendet viele Methoden oder Variablen einer anderen Klasse, um eine Aufgabe zu erledigen.
 
 ```java
 
@@ -136,6 +181,39 @@ void doSomething() {
 ```
 
 ## elementare Datentypen
+
+Oftmals werden elementare Datentypen verwendet, obwohl andere Datentypen oder Klassen passender wären.
+Insbesondere String wird oft als Datentyp verwendet, was ein Code-Smell ist.
+
+Beispiele sind:
+
+- Datumswerte und Fest-/Fließkommazahlen sollen nicht als String, sondern als einen spracheigener Datentypen gespeichert werden.
+- Geldbeträge sollen immer in Cent als ganze Zahl gespeichert werden, um Rundungsfehler zu vermeiden.
+- Koordinaten sollen als eigener Datentyp gespeichert werden, und nicht durch die Verwendung von Arrays, Tupeln, Listen oder gar durch die Verknüpfung mit Bit-Operationen.
+- Längen und Größen sollen einheitlich in einer grundlegenden Einheit gespeichert werden, um Rundungsfehler zu vermeiden.
+- Viele elementare Werte sollen in eigenen Klassen gespeichert werden.
+
+::: code-group
+
+```java [Strings]
+String date = "2021-01-01";
+String amount = "42.42";
+String coordinates = "42,42";
+```
+
+```java [Geldbeträge]
+float amount = 42.3;
+```
+
+```java [Koordinaten]
+int[] coordinates = {42, 42};
+```
+
+```java [Längen]
+double lengthInMeters = 42.3;
+```
+
+:::
 
 ## Schleifen
 
@@ -267,8 +345,20 @@ class MyClass {
 
 :::
 
+## Prüfung auf `null`
+
+- Fehlende Prüfung auf `null`
+- Rückgabe von `null` statt eines leeren Objekts
+- Bezeichner enthält keine Information über die Möglichkeit von `null` (`data` statt `dataOrNull`)
+
+```java
+
+
+
+
 ## Datenklassen
 
 ## Kommentare
 
 Kommentare, die den Code erklären beschreiben, sind in der Regel überflüssig, da der Code selbst sprechen sollte.
+
