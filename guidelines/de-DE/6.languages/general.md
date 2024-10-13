@@ -327,7 +327,7 @@ Log-Texte enthalten die folgenden Informationen:
   - Was ist das Problem? (SQL Fehler, Datei nicht gefunden, Benutzer gesperrt, etc.)
   - Lösungsvorschlag, wenn möglich
 
-## Vertikaler Abstand {#vertikaler-abstand}
+## GL22 Vertikaler Abstand {#vertikaler-abstand}
 
 - Code soll vertikal unterteilt werden, um die Lesbarkeit zu verbessern.
 - Code, der zusammengehört, soll zusammenstehen.
