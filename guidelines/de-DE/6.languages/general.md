@@ -326,3 +326,35 @@ Log-Texte enthalten die folgenden Informationen:
   - Was ist der Kontext? (Methode, Datenbank, Datei, Benutzer, etc.)
   - Was ist das Problem? (SQL Fehler, Datei nicht gefunden, Benutzer gesperrt, etc.)
   - Lösungsvorschlag, wenn möglich
+
+## GL22 Vertikaler Abstand {#vertikaler-abstand}
+
+- Code soll vertikal unterteilt werden, um die Lesbarkeit zu verbessern.
+- Code, der zusammengehört, soll zusammenstehen.
+- Variablen, die zusammengehören, sollen zusammenstehen.
+- Variablen sollen so nah wie möglich an ihrer Verwendung deklariert werden.
+- Konstante Variablen sollen getrennt von anderen Variablen deklariert werden.
+- Funktionen/Methoden gleichen Typs (statisch, Instanz) sollen oberhalb ihrer Verwendung deklariert werden.
+
+```java
+void exampleMethode() {
+  final int MAX_COUNT = 10;
+
+  // Trennung von Konstanten und Variablen
+  // Variable steht zusammen mit ihrer Verwendung
+  int exampleCounter = 0;
+  for (int i = 0; i < 10; i++) {
+    exampleCounter += i;
+  }
+  // Leerzeile
+  int nextCounter = 0;
+  for (int i = 0; i < 10; i++) {
+    nextCounter += i;
+  }
+}
+// Leerzeile
+// hier weitere Methoden, die exampleMethode verwenden
+
+exampleMethode();
+
+```

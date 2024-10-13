@@ -59,6 +59,7 @@ layout: doc
 - [GL19 Sicherheit](6.languages/general.md#sicherheit)
 - [GL20 Behebung der Wurzel des Problems](6.languages/general.md#behebung-die-wurzel-des-problems)
 - [GL21 Logging](6.languages/general.md#logging)
+- [GL22 Vertikaler Abstand](6.languages/general.md#vertikaler-abstand)
 
 ## Allgemein Regeln für Namen
 
