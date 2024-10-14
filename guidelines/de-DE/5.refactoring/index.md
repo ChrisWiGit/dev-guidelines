@@ -10,9 +10,13 @@ hero:
     - theme: brand
       text: Übersicht und allgemeine Regeln
       link: ./general
+    - theme: alt
+      text: Code Smells
+      link: ./codesmells
     - theme: brand
       text: Literatur
       link: ../sources
+    
 features:
   - title: Java
     details: Refactoring für Java

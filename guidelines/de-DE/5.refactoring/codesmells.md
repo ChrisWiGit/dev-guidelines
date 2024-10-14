@@ -2,12 +2,13 @@
 layout: doc
 outline: [2, 2]
 ---
-
+<!-- MD024 = Multiple headers with the same content -->
+<!-- markdownlint-disable MD024 -->
 # Code-Smells
 
 ## Einleitung {#einleitung}
 
-Code-Smells sind Hinweise darauf, dass der Code refaktorisiert werden sollte.
+Code-Smells sind Hinweise darauf, dass der Code [refaktorisiert](../5.refactoring/general.md) werden sollte.
 Anhand von wiederkehrende Muster und Anzeichen können Code-Smells identifiziert werden.
 Hier werden daher Beispiel für Code-Smells aufgeführt, die auf Probleme im Code hinweisen können.
 
@@ -43,6 +44,12 @@ if (data.isBlank() == false) {
 
 :::
 
+#### Refactoring
+
+- Bedingungen tauschen.
+- Bedingungen in sprechende Konstanten oder Methoden auslagern.
+- Bedingungslogik vereinfachen.
+
 ### Große If-Blöcke
 
 ```java [Große If-Blöcke]
@@ -67,6 +74,11 @@ if (...) {
 }
 ```
 
+#### Refactoring
+
+- Inhalte in Methoden auslagern.
+- Verantwortlichkeiten trennen.
+
 ### Viele If-Statement
 
 ```java [Viele If-Statements]
@@ -90,6 +102,10 @@ if (...) {
 }
 ```
 
+#### Refactoring
+
+- Bedingungen in sprechende Konstanten oder Methoden auslagern.
+
 ### Tief oder mehrfach verschachtelte If-Statements
 
 ```java [Tief oder mehrfach verschachtelte If-Statements]
@@ -110,6 +126,11 @@ if (a == 1) {
 }
 ```
 
+#### Refactoring
+
+- Bedingungen in sprechende Konstanten oder Methoden auslagern.
+- Bedingungen in Methoden auslagern.
+
 ### Lange If-Statements
 
 ```java [Lange If-Statements]
@@ -118,6 +139,10 @@ if (a == 1 && b == 2 && c == 3 && d == 4 && e == 5 && f == 6) {
 }
 ```
 
+#### Refactoring
+
+- Bedingungen in sprechende Konstanten oder Methoden auslagern.
+
 ### Komplexe Bedingungen
 
 ```java [Komplexe Bedingungen]
@@ -125,6 +150,10 @@ if ((a == 1 && anotherValue.data.equals("123")) || (a == 2 && anotherValue === 1
   // do something
 }
 ```
+
+#### Refactoring
+
+- Bedingungen in sprechende Konstanten oder Methoden auslagern.
 
 ## Bezeichner
 
@@ -159,6 +188,10 @@ class Testclassname { // statt TestClass
 }
 ```
 
+### Refactoring
+
+- Bezeichner umbenennen.
+
 ## Feature-Neid
 
 Eine Klasse verwendet viele Methoden oder Variablen einer anderen Klasse, um eine Aufgabe zu erledigen.
@@ -179,6 +212,11 @@ void doSomething() {
 }
 
 ```
+
+### Refactoring
+
+- Code in Klasse auslagern, die die Methoden und Variablen enthält.
+- Methoden in eigene Klassen auslagern.
 
 ## elementare Datentypen
 
@@ -215,6 +253,12 @@ double lengthInMeters = 42.3;
 
 :::
 
+### Refactoring
+
+- Eigene Klassen für Datentypen erstellen.
+- Korrekte Datentypen verwenden.
+- Einheitliche Datentypen verwenden.
+
 ## Schleifen
 
 ### Schleifen mit viel Inhalt
@@ -235,6 +279,11 @@ for (int i = 0; i < 10; i++) {
 }
 ```
 
+#### Refactoring
+
+- Schleifenkörper in Methoden auslagern.
+- Verantwortlichkeiten trennen.
+
 ### verschachtelte Schleifen
 
 ```java
@@ -253,10 +302,26 @@ for (int i = 0; i < 10; i++) {
 }
 ```
 
+#### Refactoring
+
+- Schleifenkörper in Methoden auslagern.
+- Algorithmus überdenken und vereinfachen.
+
 ### Schleifen mit Seiteneffekten
 
 ```java
+for (int i = 0; i < 10; i++) {
+  if (i == 5) {
+    globalValue = 42;
+  }
+  i++;
+}
 ```
+
+#### Refactoring
+
+- Seitennebeneffekt entfernen
+- Schleifen in Klasse auslagern, die die Variable verwaltet.
 
 ### Falsche eingesetzte Schleifen
 
@@ -267,7 +332,7 @@ while (i < 10) {
 }
 ```
 
-statt
+stattdessen:
 
 ```java
 for (int i = 0; i < 10; i++) {
@@ -276,6 +341,33 @@ for (int i = 0; i < 10; i++) {
 
 IntStream.range(0, 10).forEach(i -> val[i] = value);
 ```
+
+#### Refactoring
+
+- Andere Schleifen verwenden.
+
+### Schleifen mit zu vielen exit-Punkten
+
+```java
+for (int i = 0; i < 10; i++) {
+  if (i == 5) {
+    break;
+  }
+  // do something
+  if (i == 3) {
+    break;
+  }
+
+  if (i == 7) {
+    return;
+  }
+}
+```
+
+#### Refactoring
+
+- Schleifenkörper in Methoden auslagern.
+- Schleifen umstellen.
 
 ## Switch-Statements
 
@@ -291,12 +383,30 @@ switch (type) {
 }
 ```
 
-statt
-
 ```java
+switch (type) {
+  ENUMTYPE1 -> new ClassType1();
+  ENUMTYPE2 -> new ClassType2();
+}
+// ... ClassType1
 classType1.doSomething();
-classType2.doSomething();
+// ... ClassType2
+classType1.doSomething();
 ```
+
+### Refactoring
+
+- Switch-Verhalten in eine Klassenhierarchie auslagern mit Vererbung (Polymporphismus).
+- Verhalten in Methoden von unterschiedlichen Klassen auslagern.
+
+## Doppelter Code
+
+Doppelter Code ist Code, der mehrmals im Projekt vorkommt und nicht in einer Methode oder Klasse zusammengefasst wurde.
+
+### Refactoring
+
+- Doppelter Code zusammenführen.
+- Methode oder Klasse für doppelten Code erstellen.
 
 ## Umfangreiche Klassen
 
@@ -345,6 +455,12 @@ class MyClass {
 
 :::
 
+### Refactoring
+
+- Klasse in kleinere Klassen aufteilen.
+- Methoden in eigene Klassen auslagern.
+- Verantwortlichkeiten trennen.
+
 ## Prüfung auf `null`
 
 - Fehlende Prüfung auf `null`
@@ -352,13 +468,145 @@ class MyClass {
 - Bezeichner enthält keine Information über die Möglichkeit von `null` (`data` statt `dataOrNull`)
 
 ```java
+var data = getData();
+data.doSomething(); // NullPointerException
+```
 
+### Refactoring
 
-
+- Prüfung auf `null` hinzufügen.
+- Rückgabe von `null` durch *leeres Objekt* (Array, List, etc) ersetzen.
+- Optional verwenden.
+- Spezielle Klassen für `null`-Werte verwenden. 
 
 ## Datenklassen
+
+Reine Datenklassen enthalten nur getter und setter Methoden und keine Logik.
+Diese Datenklassen können von überall willkürlich verändert werden, was zu unerwartetem Verhalten führen kann.
+
+### Refactoring
+
+- Datenklassen in Klassen mit Logik umwandeln.
+- Daten kapseln und Methoden hinzufügen, um die Daten zu verändern.
 
 ## Kommentare
 
 Kommentare, die den Code erklären beschreiben, sind in der Regel überflüssig, da der Code selbst sprechen sollte.
 
+```java
+// lädt die Daten
+loadData();
+
+// lädt alle Daten aus der Datenbank
+for (int i = 0; i < 10; i++) {
+  loadData(i);
+}
+
+```
+
+### Refactoring
+
+- Kommentare entfernen.
+- Code refaktorisieren, um verständlicher zu sein.
+- Kommentare in Methoden- oder Klassennamen umwandeln.
+- Kommentare in Tests umwandeln.
+
+## Globale Variablen
+
+Globale Variablen können von überall verändert werden und führen zu unerwartetem Verhalten.
+
+### Refactoring
+
+- Globale Variablen in lokale Variablen umwandeln.
+- Variablen in Klassen kapseln.
+
+## Klassen mit ähnlicher oder doppelter Funktionalität
+
+Klassen, die ähnliche oder doppelter Funktionalität haben, sollen zusammengeführt werden.
+
+```java
+class DataLoader {
+  void loadData() {
+    // do something
+  }
+}
+
+class DataHelper {
+  static void loadData() {
+    // do something
+  }
+}
+```
+
+### Refactoring
+
+- Methoden in eine Klasse verschieben.
+- Klassen zusammenführen.
+- Interface vereinheitlichen.
+
+## Vererbung ohne Verhalten
+
+- Klassen, die von einer anderen Klasse erben, aber ihr Verhalten nicht ändern, sollen nicht vererben.
+- Klassen, die ihr Verhalten komplett ändern, sollen nicht vererben, sondern die Klasse wrappen.
+
+```java
+class BaseClass {
+  Integer doSomething() {
+    // do something
+  }
+}
+
+class SubClass extends BaseClass {
+  // keine Änderung
+}
+
+class SubClass {
+  Integer doSomething() {
+    throw new UnsupportedOperationException();
+  }
+}
+
+```
+
+### Refactoring
+
+- Vererbung entfernen.
+- Delegate Pattern verwenden.
+- Interface verwenden.
+
+## Mittelsmänner
+
+Ketten von Methodenaufrufen, die nur einen Aufruf weiterleiten, sollen vermieden werden.
+
+```java
+instance.getAnotherInstance().getAnotherInstance().doSomething();
+```
+
+### Refactoring
+
+- Methode in Klasse verschieben.
+
+## Lange Funktionen/Methoden
+
+Lange Funktionen sind schwer zu lesen und zu testen.
+
+### Refactoring
+
+- Funktion in mehrere Funktionen aufteilen.
+- Funktionalität in eigene Klasse auslagern.
+- Abstraktionsebenen einfügen.
+
+## Viele Parameter
+
+Methoden mit vielen Parametern sollen vermieden werden, da sie schwer zu lesen und zu testen sind.
+
+```java
+void doSomething(int a, int b, int c, int d, int e, int f, int g, int h, int i, int j) {
+  // do something
+}
+```
+
+### Refactoring
+
+- Parameter in ein Objekt zusammenfassen.
+- Mehrere Methoden aus einer Methode extrahieren.

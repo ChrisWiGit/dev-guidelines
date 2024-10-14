@@ -10,6 +10,9 @@ hero:
     - theme: brand
       text: Allgemeine Richtlinien für alle Sprachen
       link: ./general
+    - theme: alt
+      text: Code Smells
+      link: ../5.refactoring/codesmells
 
 features:
   - title: Allgemeine Regeln für Namen
