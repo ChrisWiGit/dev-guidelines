@@ -47,6 +47,17 @@
       "program": "${workspaceFolder}\\.ops\\glossary\\index.js",
       "args": ["."],
       "cwd": "${workspaceFolder}/.ops/glossary"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Statistics",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}\\.ops\\statistics\\index.js",
+      "args": ["../../guidelines/de-DE/"],
+      "cwd": "${workspaceFolder}/.ops/statistics"
     }
   ]
 }

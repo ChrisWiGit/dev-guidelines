@@ -37,6 +37,9 @@ function buildLang {
 
   node $hbs glossary.json glossary.md.hbs glossary.md
 
+  echo "Processing ${langDir}/stats.md"
+  node ../../.ops/statistics/index.js .
+
   cd $currentDir
 }
 
