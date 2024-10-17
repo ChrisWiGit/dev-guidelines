@@ -67,10 +67,51 @@ async function processFilesInDirectory(directoryPath, globalState) {
   }
 }
 
+// from https://stackoverflow.com/questions/2901102/how-to-format-a-number-with-commas-as-thousands-separators
+function numberWithSpace(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+}
+
+function binaryWithSpace(x) {
+  return x.toString().replace(/\B(?=(\d{4})+(?!\d))/g, " ");
+}
+
 async function writeStatsFile(filePath, globalState) {
   const statsFilePath = path.join(filePath, "stats.json")
 
-  globalState.wordToCount = Object.fromEntries(globalState.wordToCount)
+  // [ { word: "foo", count: 1 }, { word: "bar", count: 2 } ]
+  globalState.wordToCount = 
+    Array.from(globalState.wordToCount.entries())
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 100)
+      .map(([word, count]) => ({ word, 
+        count: numberWithSpace(count), 
+        countAsHex: binaryWithSpace(count.toString(16)),
+        countAsOctal: numberWithSpace(count.toString(8)),
+        countAsBinary: binaryWithSpace(count.toString(2))
+      }))
+
+  // Zahl mit tausenderTrennzeichen versehen
+  globalState.sentencesFormatted = numberWithSpace(globalState.sentences)
+  globalState.wordsFormatted = numberWithSpace(globalState.words)
+  globalState.syllablesFormatted = numberWithSpace(globalState.syllables)
+  globalState.charactersFormatted = numberWithSpace(globalState.characters)
+
+  globalState.sentencesAsHex = binaryWithSpace(globalState.sentences.toString(16))
+  globalState.wordsAsHex = binaryWithSpace(globalState.words.toString(16))
+  globalState.syllablesAsHex = binaryWithSpace(globalState.syllables.toString(16))
+  globalState.charactersAsHex =binaryWithSpace(globalState.characters.toString(16))
+
+  globalState.sentencesAsOctal = numberWithSpace(globalState.sentences.toString(8))
+  globalState.wordsAsOctal = numberWithSpace(globalState.words.toString(8))
+  globalState.syllablesAsOctal = numberWithSpace(globalState.syllables.toString(8))
+  globalState.charactersAsOctal = numberWithSpace(globalState.characters.toString(8))
+  
+  globalState.sentencesAsBinary = binaryWithSpace(globalState.sentences.toString(2))
+  globalState.wordsAsBinary = binaryWithSpace(globalState.words.toString(2))
+  globalState.syllablesAsBinary = binaryWithSpace(globalState.syllables.toString(2))
+  globalState.charactersAsBinary = binaryWithSpace(globalState.characters.toString(2))
+
 
   await fs.writeFile(statsFilePath, JSON.stringify(globalState, null, 2))
 }

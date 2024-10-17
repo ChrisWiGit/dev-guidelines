@@ -17,13 +17,13 @@ export default defineConfig({
     ...sidebar,
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
+      { icon: 'github', link: 'https://github.com/ChrisWiGit/dev-guidelines' }
     ],
     search: {
       provider: 'local'
     },
     footer: {
-      message: '<a href="https://github.com/ChrisWiGit/dev-guidelines">Dev Guidelines GitHub Source</a>  Credits: Icons used from <a href="https://www.freepik.com">FreePik.com</a>',
+      message: '<a href="https://github.com/ChrisWiGit/dev-guidelines">Dev Guidelines GitHub Source</a>  Credits: Icons used from <a href="https://www.freepik.com">FreePik.com</a>,  Page made with <a href="https://github.com/vuejs/vitepress">VitePress</a>',
       copyright: '<a href="https://github.com/ChrisWiGit/dev-guidelines?tab=CC-BY-SA-4.0-1-ov-file#readme">CC Attribution-ShareAlike 4.0 International</a>'
     }
   },

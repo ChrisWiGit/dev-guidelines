@@ -19,6 +19,9 @@ hero:
     - theme: brand
       text: Begriffe
       link: ./glossary
+    - theme: alt
+      text: Für Nerds
+      link: ./wordcount
     - theme: brand
       text: Literatur/Quellen
       link: ./sources

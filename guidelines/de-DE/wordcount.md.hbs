@@ -1,0 +1,25 @@
+---
+# Handlebars Template - md-Datei wird automatisch generiert!
+# Lädt die Datei stats.json und wertet per HBS die Daten aus.
+layout: doc
+
+---
+
+# Für Nerds
+
+## Wort-Statistik
+
+| Anzahl | ∑ Dezimal | ∑ Hexadezimal | ∑ Octal | ∑ Binär |
+|:------:|------:|------:|------:|------:|
+| Sätze | `{{sentencesFormatted}}` | `{{sentencesAsHex}}` | `{{sentencesAsOctal}}` | `{{sentencesAsBinary}}` |
+| Wörter | `{{wordsFormatted}}` | `{{wordsAsHex}}` | `{{wordsAsOctal}}` | `{{wordsAsBinary}}` |
+| Silben | `{{syllablesFormatted}}` | `{{syllablesAsHex}}` | `{{syllablesAsOctal}}` | `{{syllablesAsBinary}}` |
+| Zeichen | `{{charactersFormatted}}` | `{{charactersAsHex}}` | `{{charactersAsOctal}}` | `{{charactersAsBinary}}` |
+
+## Die meisten Wörter
+
+| Wort | ∑ Dezimal | ∑ Hexadezimal | ∑ Octal | ∑ Binär |
+|:----:|--------:|---------------:|---------:|---------:|
+{{#each wordToCount}}
+| {{word}} | `{{count}}` | `{{countAsHex}}` | `{{countAsOctal}}` | `{{countAsBinary}}` |
+{{/each}}

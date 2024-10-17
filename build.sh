@@ -40,6 +40,8 @@ function buildLang {
   echo "Processing ${langDir}/stats.md"
   node ../../.ops/statistics/index.js .
 
+  node $hbs stats.json wordcount.md.hbs wordcount.md
+
   cd $currentDir
 }
 
