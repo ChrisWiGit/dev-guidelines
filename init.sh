@@ -23,3 +23,5 @@ npm install
 cd ../statistics
 rm package-lock.json
 npm install
+
+cd ../..
