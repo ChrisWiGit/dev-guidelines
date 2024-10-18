@@ -38,7 +38,7 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: source init.sh && source build.sh          
+        run: . init.sh && . build.sh          
 
       - name: Build VitePress site
         run: "npm run docs:build"
