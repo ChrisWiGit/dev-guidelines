@@ -36,16 +36,11 @@ jobs:
         uses: actions/setup-node@v3
 
       - name: Install dependencies
-        run: npm install  # Installiert die Abhängigkeiten, die in package-lock.json festgelegt sind
+        run: source init.sh && source build.sh
+          
 
       - name: Build VitePress site
-        run: "npm run docs:build"  # Das setzt voraus, dass du ein entsprechendes build-Skript in deiner package.json hast
-
-      #- name: Deploy to GitHub Pages
-      #  uses: peaceiris/actions-gh-pages@v3
-      #  with:
-      #    github_token: ${{ secrets.PAGES_TOKEN }}
-      #    publish_dir: ./guidelines/.vitepress/dist  # Der Ordner, in dem die gebauten Dateien liegen
+        run: "npm run docs:build"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # This script builds the headlines and rules for all languages
 # It is intended to be run from the root of the repository
 # It requires node.js to be installed
