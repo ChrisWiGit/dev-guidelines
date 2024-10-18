@@ -371,6 +371,9 @@ for (int i = 0; i < 10; i++) {
 
 ## Switch-Statements
 
+- Switch-Statements mit Verhalten, das über Polymorphismus gelöst werden kann.
+- Mehrere Switch-Statements and verschiedenen Stellen im Code für den gleichen ENUM-Typ.
+
 ```java
 switch (type) {
   ENUMTYPE1:
@@ -384,14 +387,14 @@ switch (type) {
 ```
 
 ```java
-switch (type) {
+instance = switch (type) {
   ENUMTYPE1 -> new ClassType1();
   ENUMTYPE2 -> new ClassType2();
 }
 // ... ClassType1
-classType1.doSomething();
+instance.doSomething();
 // ... ClassType2
-classType1.doSomething();
+instance.doSomething();
 ```
 
 ### Refactoring
@@ -477,7 +480,7 @@ data.doSomething(); // NullPointerException
 - Prüfung auf `null` hinzufügen.
 - Rückgabe von `null` durch *leeres Objekt* (Array, List, etc) ersetzen.
 - Optional verwenden.
-- Spezielle Klassen für `null`-Werte verwenden. 
+- Spezielle Klassen für `null`-Werte verwenden.
 
 ## Datenklassen
 
@@ -509,7 +512,7 @@ for (int i = 0; i < 10; i++) {
 - Kommentare entfernen.
 - Code refaktorisieren, um verständlicher zu sein.
 - Kommentare in Methoden- oder Klassennamen umwandeln.
-- Kommentare in Tests umwandeln.
+- Statt Kommentare sollen Tests geschrieben werden, die das Verhalten und den Einsatz für den Entwickler des Codes beschreiben.
 
 ## Globale Variablen
 
@@ -610,3 +613,24 @@ void doSomething(int a, int b, int c, int d, int e, int f, int g, int h, int i, 
 
 - Parameter in ein Objekt zusammenfassen.
 - Mehrere Methoden aus einer Methode extrahieren.
+
+## Verwechslung von booleschem und bitweisem Operator
+
+Boolesche Ausdrücke sollen nicht mit bitweisen Operatoren verwechselt werden.
+In Sprachen wie Java wird der boolesche Operator `&&` verwendet, um zwei boolesche Werte zu verknüpfen.
+Der bitweise Operator `&` wird verwendet, um zwei Zahlen zu verknüpfen.
+
+```java
+if (a && b) {
+  // boolescher Operator
+}
+
+if (a & b) {
+  // bitweiser Operator
+}
+```
+
+### Refactoring
+
+- Kapseln von bitweisen Operatoren in Methoden und Konstanten.
+- Verwendung von Klammern, um die Reihenfolge der Ausführung zu verdeutlichen.
