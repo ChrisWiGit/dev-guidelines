@@ -358,3 +358,28 @@ void exampleMethode() {
 exampleMethode();
 
 ```
+
+## Parameter prüfen
+
+Parameter von öffentlichen Methoden/Funktionen müssen geprüft werden, um unerwartete Werte zu verhindern.
+
+Dies kann auf unterschiedliche Weise erfolgen:
+
+- Sprachen wie Java unterstützen Annotationen, um Parameter zu prüfen.
+- Linter können verwendet werden, um Parameter und Eingaben zu prüfen, ob sie gültig sind.
+- Manuelle Prüfungen können durchgeführt werden, um sicherzustellen, dass die Parameter gültig sind.
+
+Hauptsächliche Probleme bei Parameter sind:
+
+- Null-Prüfung: Parameter dürfen nicht null sein, wenn sie nicht null sein dürfen.
+- Bereichsprüfung: Parameter müssen innerhalb eines bestimmten Bereichs liegen.
+- Typprüfung: Parameter müssen den erwarteten Typ haben.
+- Längenprüfung: Parameter müssen eine bestimmte Länge haben.
+- Formatprüfung: Parameter müssen einem bestimmten Format entsprechen.
+- Gültigkeitsprüfung: Parameter müssen bestimmten willkürlichen Regeln entsprechen.
+
+::: warning NullPointer-Exception ist keine Parameterprüfung
+
+NullPointer-Exceptions sind keine Parameterprüfungen, sondern Fehlerbehandlungen, die durch die Sprache zur Laufzeit durchgeführt werden.
+Oftmals beinhalten diese Meldungen keine Informationen, welcher Parameter null war und sollen daher durch eine separate Parameterprüfung mit Erklärung ersetzt werden.
+
