@@ -46,7 +46,7 @@ function onClick() {
 
       document.getElementById('myDiv').innerHTML = data;
     } catch (e) {
-      console.error(e);      
+      console.error(e);
     }
 }
 ```
@@ -65,7 +65,7 @@ Nur behandelbare Fehler sollen selbst behandelt werden.
 
 function onClick() {
   const data = this.dbDi.getBusinessData();
-  
+
   this.apiDi.sendDataToFoo(data);
 
   this.uiDi.updateBusinessData(data);
@@ -137,7 +137,7 @@ function onClick(input) {
   if (!input) {
     return;
   }
-  
+
   const connection = this.db.connect();
   let data = connection.query('SELECT * FROM Business');
 
@@ -1013,7 +1013,7 @@ Im folgenden Beispiel wird ein Benutzer-Objekt geprüft, jedoch ein String zurü
 function validate(user) {
     if (user !== null && user !== undefined) {
         return "valid";
-    } 
+    }
 
     return "invalid";
 }
@@ -1057,7 +1057,7 @@ function getUserById(id) {
     if (id === 1) {
         return { id: 1, name: 'Alice' };
     }
-    // Kein explizites return-Statement. 
+    // Kein explizites return-Statement.
     // Es wird implizit `undefined` zurückgegeben.
 }
 ```
@@ -1085,7 +1085,7 @@ class EmptyUser extends User {
 
 class User {
     static EMPTY = EmptyUser.create();
-    
+
     isValid() {
         return true;
     }
@@ -1415,7 +1415,7 @@ function calculate(x) {
   // Guard Clause #2
   if (x < 0) {
     return x;
-  }  
+  }
   return 42;
 }
 ```
@@ -1706,7 +1706,7 @@ Jede Zeile innerhalb des Kommentars beginnt mit `*`.
  * @param [string|number] text - Ein Text als String oder Zahl.
  * @param {*} data - Ein beliebiger Typ.
  * @param {number} [offsetDefault=1] - Der Standardwert, falls der Parameter fehlt.
- * @returns {number} Die Summe der beiden Zahlen. 
+ * @returns {number} Die Summe der beiden Zahlen.
  * @throws {Error} Wenn die Eingabe ungültig ist.
  */
 ```
@@ -1782,7 +1782,7 @@ Im Gegensatz zu `@type`, welches den Typ einer Variablen oder eines Objekts angi
  */
 
 // definiert den Typ der Variable user als User-Objekt
-/** 
+/**
  * @type {User}
  */
 let user;
@@ -2186,21 +2186,21 @@ Dies ist jedoch umständlich und unübersichtlich.
 
 Array-Methoden wie `map()`, `filter()`, `reduce()`, `find()`, `every()`, `some()` und andere bieten eine elegante und effiziente Möglichkeit, Arrays zu durchlaufen und Operationen auf den Elementen durchzuführen.
 
-Methode | Erklärung | Beispiel
---------|-----------|---------
-`map()` | Erstellt ein neues Array, indem eine Funktion auf jedes Element angewendet wird. | `const doubled = [1, 2, 3].map(x => x * 2); // [2, 4, 6]`
-`filter()` | Erstellt ein neues Array, das nur die Elemente enthält, für die die Funktion `true` zurückgibt. | `const evens = [1, 2, 3, 4].filter(x => x % 2 === 0); // [2, 4]`
-`reduce()` | Wendet eine Funktion auf jedes Element des Arrays an, um ein einzelnes Ergebnis zu erzeugen. | `const sum = [1, 2, 3].reduce((acc, x) => acc + x, 0);// 6`
-`find()` | Gibt das erste Element im Array zurück, für das die Funktion `true` zurückgibt. | `const even = [1, 2, 3].find(x => x % 2 === 0); // 2`
-`every()` | Gibt `true` zurück, wenn die Funktion für jedes Element `true` zurückgibt. | `const allEven = [2, 4, 6].every(x => x % 2 === 0); // true`
-`some()` | Gibt `true` zurück, wenn die Funktion für mindestens ein Element `true` zurückgibt. | `const hasEven = [1, 2, 3].some(x => x % 2 === 0); // true`
-`findIndex()` | Gibt den Index des ersten Elements zurück, für das die Funktion `true` zurückgibt. | `const index = [1, 2, 3].findIndex(x => x % 2 === 0); // 1`
-`indexOf()` | Gibt den Index des ersten Vorkommens eines Elements im Array zurück. | `const index = [1, 2, 3].indexOf(2); // 1`
-`slice()` | Gibt eine flache Kopie eines Teils des Arrays zurück. | `const copy = [1, 2, 3].slice(1, 2); // [2]`
-`splice()` | Ändert den Inhalt eines Arrays durch das Entfernen oder Ersetzen vorhandener Elemente und/oder das Hinzufügen neuer Elemente. | `const removed = [1, 2, 3].splice(1, 1); // [2]`
-`entries()` | Gibt ein Array-Iterator-Objekt zurück, das Schlüssel/Wert-Paare für jedes Index/Element im Array enthält. | `for (const [index, value] of ['a', 'b'].entries()) { console.log(index, value); }`
-`keys()` | Gibt ein Array-Iterator-Objekt zurück, das die Schlüssel für jeden Index im Array enthält. | `for (const index of ['a', 'b'].keys()) { console.log(index); }`
-`values()` | Gibt ein Array-Iterator-Objekt zurück, das die Werte für jeden Index im Array enthält. | `for (const value of ['a', 'b'].values()) { console.log(value); }`
+| Methode       | Erklärung                                                                                                                     | Beispiel                                                                            |
+| ------------- | ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `map()`       | Erstellt ein neues Array, indem eine Funktion auf jedes Element angewendet wird.                                              | `const doubled = [1, 2, 3].map(x => x * 2); // [2, 4, 6]`                           |
+| `filter()`    | Erstellt ein neues Array, das nur die Elemente enthält, für die die Funktion `true` zurückgibt.                               | `const evens = [1, 2, 3, 4].filter(x => x % 2 === 0); // [2, 4]`                    |
+| `reduce()`    | Wendet eine Funktion auf jedes Element des Arrays an, um ein einzelnes Ergebnis zu erzeugen.                                  | `const sum = [1, 2, 3].reduce((acc, x) => acc + x, 0);// 6`                         |
+| `find()`      | Gibt das erste Element im Array zurück, für das die Funktion `true` zurückgibt.                                               | `const even = [1, 2, 3].find(x => x % 2 === 0); // 2`                               |
+| `every()`     | Gibt `true` zurück, wenn die Funktion für jedes Element `true` zurückgibt.                                                    | `const allEven = [2, 4, 6].every(x => x % 2 === 0); // true`                        |
+| `some()`      | Gibt `true` zurück, wenn die Funktion für mindestens ein Element `true` zurückgibt.                                           | `const hasEven = [1, 2, 3].some(x => x % 2 === 0); // true`                         |
+| `findIndex()` | Gibt den Index des ersten Elements zurück, für das die Funktion `true` zurückgibt.                                            | `const index = [1, 2, 3].findIndex(x => x % 2 === 0); // 1`                         |
+| `indexOf()`   | Gibt den Index des ersten Vorkommens eines Elements im Array zurück.                                                          | `const index = [1, 2, 3].indexOf(2); // 1`                                          |
+| `slice()`     | Gibt eine flache Kopie eines Teils des Arrays zurück.                                                                         | `const copy = [1, 2, 3].slice(1, 2); // [2]`                                        |
+| `splice()`    | Ändert den Inhalt eines Arrays durch das Entfernen oder Ersetzen vorhandener Elemente und/oder das Hinzufügen neuer Elemente. | `const removed = [1, 2, 3].splice(1, 1); // [2]`                                    |
+| `entries()`   | Gibt ein Array-Iterator-Objekt zurück, das Schlüssel/Wert-Paare für jedes Index/Element im Array enthält.                     | `for (const [index, value] of ['a', 'b'].entries()) { console.log(index, value); }` |
+| `keys()`      | Gibt ein Array-Iterator-Objekt zurück, das die Schlüssel für jeden Index im Array enthält.                                    | `for (const index of ['a', 'b'].keys()) { console.log(index); }`                    |
+| `values()`    | Gibt ein Array-Iterator-Objekt zurück, das die Werte für jeden Index im Array enthält.                                        | `for (const value of ['a', 'b'].values()) { console.log(value); }`                  |
 
 :::info Verkettung von Methoden
 
@@ -2737,7 +2737,7 @@ class NotFoundEntity extends Entity {
 
 class Entity {
   static NOT_FOUND = NotFoundEntity.create();
-  
+
   isValid() {
     return true;
   }
@@ -2828,3 +2828,77 @@ Diese sind in der Regel besser getestet im Gegensatz zu den weiter oben in der H
 Durch den Einsatz von speziellen Objekten wird es unwahrscheinlicher, dass Fehler wie `null`-Pointer-Exceptions oder `undefined`-Exceptions auftreten.
 
 :::
+
+## Lokale Funktionen verwenden
+
+Lokale Funktionen innerhalb einer Funktion sollen verwendet werden, um Code zu strukturieren, Code-Blöcke zu extrahieren und in der Nähe ihrer Verwendeung (Gesetz von Demeter) zu halten.
+
+### Problem
+
+Funktionen werden oft in einer Datei oder einem Modul definiert und dann an verschiedenen Stellen im Code verwendet.
+Dies führt dazu, dass der Code unübersichtlich wird und die Funktionen nicht in der Nähe ihrer Verwendung sind.
+
+Weiterhin können solche Funktionen/Methoden in Klassen nicht als privat gekennzeichnet werden bzw. müssen dann im Konstruktor definiert werden, was den Konstruktor aufbläht.
+
+```javascript
+
+class MyClass {
+  constructor() {
+    this.myFunction = () => {
+      // ...
+    };
+    this.weitereFunktion = () => {
+      // ...
+    };
+  }
+
+
+  anotherFunction() {
+    this.myFunction();
+  }
+}
+
+```
+
+### Lösung
+
+Stattdessen sollen Funktionen innerhalb einer Funktion als Konstante definiert werden.
+
+- Innere Funktionen sollen an den Anfang der Funktion definiert werden.
+- Innere Funktionen sollen als Konstanten definiert werden.
+- Innere Funktionen sollen als Arrow-Funktionen definiert werden, um den Kontext der äußeren Funktion zu erhalten.
+- Innerhe Funktionen sollen nicht als Callbacks verwendet werden.
+
+```javascript
+class MyClass {
+    anotherFunction() {
+      const myFunction = () => {
+        // ...
+      };
+      const weitereFunktion = () => {
+        // ...
+      };
+
+      myFunction();
+    }
+  }
+}
+```
+
+::: warning Achtung
+
+Wenn die übergreifende Funktion zu groß wird, sollte sie in kleinere Funktionen aufgeteilt werden, auch wenn damit in JavaScript die Methoden sichtbar werden und das Gesetz von Demeter verletzt wird.
+
+:::
+
+### Vorteile
+
+- Code wird strukturiert und lesbarer
+- Funktionen sind in der Nähe ihrer Verwendung
+- Funktionen sind nur innerhalb der Funktion sichtbar
+
+### Nachteile
+
+- Funktionen können nicht von außen getestet werden
+- Funktionen können nicht von anderen Funktionen verwendet werden
+- Die übergeordnete Funktion wird größer, wenn viele lokale Funktionen verwendet werden.
