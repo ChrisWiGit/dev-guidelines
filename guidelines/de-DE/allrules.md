@@ -60,6 +60,7 @@ layout: doc
 - [GL20 Behebung der Wurzel des Problems](6.languages/general.md#behebung-die-wurzel-des-problems)
 - [GL21 Logging](6.languages/general.md#logging)
 - [GL22 Vertikaler Abstand](6.languages/general.md#vertikaler-abstand)
+- [GL23 Parameter prüfen](6.languages/general.md#parameter-pruefen)
 
 ## Allgemein Regeln für Namen
 
@@ -136,6 +137,7 @@ layout: doc
 - [JS38 Methoden-Verkettung](6.languages/javascript/index.md#methoden-verkettung)
 - [JS39 Unbenutzte Variablen und Parameter](6.languages/javascript/index.md#unbenutzte-variablen-und-parameter)
 - [JS40 Verwende spezielle Objekte statt spezielle Werte](6.languages/javascript/index.md#verwende-spezielle-objekte-statt-spezielle-werte)
+- [JS41 Lokale Funktionen verwenden](6.languages/javascript/index.md#lokale-funktionen-verwenden)
 
 ## Regeln für Vue
 

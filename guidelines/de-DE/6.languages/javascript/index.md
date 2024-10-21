@@ -2829,11 +2829,11 @@ Durch den Einsatz von speziellen Objekten wird es unwahrscheinlicher, dass Fehle
 
 :::
 
-## Lokale Funktionen verwenden
+## JS41 Lokale Funktionen verwenden {#lokale-funktionen-verwenden}
 
 Lokale Funktionen innerhalb einer Funktion sollen verwendet werden, um Code zu strukturieren, Code-Blöcke zu extrahieren und in der Nähe ihrer Verwendeung (Gesetz von Demeter) zu halten.
 
-### Problem
+### JS41 Problem
 
 Funktionen werden oft in einer Datei oder einem Modul definiert und dann an verschiedenen Stellen im Code verwendet.
 Dies führt dazu, dass der Code unübersichtlich wird und die Funktionen nicht in der Nähe ihrer Verwendung sind.
@@ -2860,7 +2860,7 @@ class MyClass {
 
 ```
 
-### Lösung
+### JS41 Lösung
 
 Stattdessen sollen Funktionen innerhalb einer Funktion als Konstante definiert werden.
 
@@ -2891,13 +2891,13 @@ Wenn die übergreifende Funktion zu groß wird, sollte sie in kleinere Funktione
 
 :::
 
-### Vorteile
+### JS41 Vorteile
 
 - Code wird strukturiert und lesbarer
 - Funktionen sind in der Nähe ihrer Verwendung
 - Funktionen sind nur innerhalb der Funktion sichtbar
 
-### Nachteile
+### JS41 Nachteile
 
 - Funktionen können nicht von außen getestet werden
 - Funktionen können nicht von anderen Funktionen verwendet werden

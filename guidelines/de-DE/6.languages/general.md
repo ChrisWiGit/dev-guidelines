@@ -359,7 +359,7 @@ exampleMethode();
 
 ```
 
-## Parameter prüfen
+## GL23 Parameter prüfen {#parameter-pruefen}
 
 Parameter von öffentlichen Methoden/Funktionen müssen geprüft werden, um unerwartete Werte zu verhindern.
 
