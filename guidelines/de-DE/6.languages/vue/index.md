@@ -161,7 +161,7 @@ Vue und darauf aufbauende UI-Frameworks wie Vuetify bieten viele Möglichkeiten,
 
 Vue unterstützt das Setzen von Klassen mit `v-bind:class` oder `:class`.
 
-::: clode-group
+::: code-group
 
 ```html [v-bind:class]
 <template>
