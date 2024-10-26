@@ -59,6 +59,44 @@ Der Adapter wird als Zwischenschicht verwendet, um als Überbrückung zwischen d
 
 [Adapter Pattern](https://refactoring.guru/design-patterns/adapter)
 
+### DPS1 Beispiel
+
+::: code-group
+
+```typescript
+interface Adapter {
+  request(): string;
+}
+
+class ConcreteAdapter implements Adapter {
+  private adaptee: Adaptee;
+  constructor(adaptee: Adaptee) {
+    this.adaptee = adaptee;
+  }
+
+  request(): string {
+    return adaptee.specificRequest();
+  }
+}
+
+// Client kommuniziert mit Adaptee
+
+class Adaptee {
+  specificRequest(): string {
+    return 'Specific request.';
+  }
+}
+
+class Client {
+  public request(adapter: Adapter): string {
+    return adapter.request();
+  }
+}
+
+```
+
+:::
+
 ## DPS2 Bridge {#bridge}
 
 Das Bridge Pattern trennt die Abstraktion von der Implementierung, so dass beide unabhängig voneinander geändert werden können.
@@ -66,6 +104,60 @@ Das Bridge Pattern trennt die Abstraktion von der Implementierung, so dass beide
 ### DPS2 Externe Beschreibung auf refactoring.guru
 
 [Bridge Pattern](https://refactoring.guru/design-patterns/bridge)
+
+### DPS2 Beispiel
+
+::: code-group
+
+```typescript
+interface DeviceImplementor {
+  operationImp(): string;
+}
+
+class DeviceOne implements DeviceImplementor {
+  operationImp(): string {
+    return 'DeviceOne operation.';
+  }
+}
+
+class DeviceTwo implements DeviceImplementor {
+  operationImp(): string {
+    return 'DeviceTwo operation.';
+  }
+}
+
+abstract class Abstraction {
+  protected implementor: DeviceImplementor;
+  constructor(implementor: DeviceImplementor) {
+    this.implementor = implementor;
+  }
+
+  operation(): string {
+    return this.implementor.operationImp();
+  }
+}
+
+class RefinedAbstraction extends Abstraction {
+  operation(): string {
+    return `RefinedAbstraction: ${this.implementor.operationImp()}`;
+  }
+}
+
+const deviceOne = new DeviceOne();
+const deviceTwo = new DeviceTwo();
+
+const abstractionOne = new Abstraction(deviceOne);
+
+const abstractionTwo = new RefinedAbstraction(deviceTwo);
+
+abstractionOne.operation(); // DeviceOne operation.
+
+abstractionTwo.operation(); // RefinedAbstraction: DeviceTwo operation.
+
+
+```
+
+:::
 
 ## DPS3 Composite {#composite}
 
