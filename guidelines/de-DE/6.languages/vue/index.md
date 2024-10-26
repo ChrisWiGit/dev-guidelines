@@ -34,18 +34,20 @@ Vue-Komponenten sollen einige Regeln folgen:
 
 ### V3 Einfachheit
 
-Vue-Komponenten sollen so einfach wie möglich gehalten werden ([KISS-Prinzip](../../2.principles/principles.md#kiss)).
+Vue-Komponenten sollen so einfach wie möglich gehalten werden ([KISS-Prinzip](../../2.principles/principles#kiss)).
 Auf diese Weise wird die Wartbarkeit, Lesbarkeit und Testbarkeit verbessert.
 
 ### V3 Aufgabenorientierung
 
-Eine Vue-Komponente soll nur eine Aufgabe erfüllen ([Seperation of Concern](../../2.principles/principles.md#p1-solid-solid)).
-Damit wird die Testbarkeit, Wartbarkeit und Wiederverwendbarkeit verbessert.
+Eine Vue-Komponente soll nur eine Aufgabe erfüllen ([Seperation of Concern](../../2.principles/principles#p1-solid-solid)).
+Damit wird
+die Testbarkeit, Wartbarkeit und Wiederverwendbarkeit verbessert.
 
 ### V3 Wiederverwendbarkeit
 
-Vue-Komponenten können erweitert werden, indem das Kompositions-Entwurfsmuster ([Composite](../../4.designpatterns/structural.md#composite)) verwendet wird.
-Alternativ werden Vue-Komponenten durch Verschachtelung von Sub-Komponenten, von Slots, Prop-Drilling, durch das Verwenden von Mixins oder mit [Dependency Injection](../../4.designpatterns/creational.md#dependency-injection) erweitert.
+Vue-Komponenten können erweitert werden, indem das Kompositions-Entwurfsmuster ([Composite](../../4.designpatterns/structural#composite)) verwendet wird.
+Alternativ
+werden Vue-Komponenten durch Verschachtelung von Sub-Komponenten, von Slots, Prop-Drilling, durch das Verwenden von Mixins oder mit [Dependency Injection](../../4.designpatterns/creational#dependency-injection) erweitert.
 
 ### V3 Komplexe und Geschäfts-Logik auslagern
 
@@ -251,7 +253,7 @@ Es soll eine bestimmte Reihenfolge der Direktiven in Vue-Elementen eingehalten w
 
 ## V7 Kommentare im HTML-Template {#kommentare-im-html-template}
 
-Kommentare im HTML-Template sollen vermieden werden, insbesondere große Kommentarblöcke.
+Kommentare im HTML-Template sollen vermieden werden, insbesondere große Kommentarblöcke ([Guter Code statt Kommentare](../general#selbsterklaerender-code-und-keine-kommentare))
 
 ### V7 Problem
 
