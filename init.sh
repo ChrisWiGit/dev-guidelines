@@ -24,4 +24,8 @@ cd ../statistics
 rm package-lock.json
 npm install
 
+cd ../todos
+rm package-lock.json
+npm install
+
 cd ../..
