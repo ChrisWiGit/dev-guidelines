@@ -161,6 +161,11 @@ abstractionTwo.operation(); // RefinedAbstraction: DeviceTwo operation.
 
 ## DPS3 Composite {#composite}
 
+::: danger TODO:
+Beispiel
+:::
+
+
 Das Composite Pattern ermöglicht es, Objekte in einer Baumstruktur zu behandeln, so dass einzelne Objekte und zusammengesetzte Objekte einheitlich und unabhängig voneinander behandelt werden können.
 
 ### DPS3 Externe Beschreibung auf refactoring.guru
@@ -177,6 +182,11 @@ Das Decorator Pattern ermöglicht es, Objekte dynamisch um zusätzliche Funktion
 
 ## DPS5 Facade {#facade}
 
+::: danger TODO:
+Beispiel
+:::
+
+
 Das Facade Pattern bietet eine vereinfachte Schnittstelle zu einem komplexen Subsystem (Library, Framework, etc.).
 
 ### DPS5 Externe Beschreibung auf refactoring.guru
@@ -184,6 +194,11 @@ Das Facade Pattern bietet eine vereinfachte Schnittstelle zu einem komplexen Sub
 [Facade Pattern](https://refactoring.guru/design-patterns/facade)
 
 ## DPS6 Flyweight {#flyweight}
+
+::: danger TODO:
+Beispiel
+:::
+
 
 Das Flyweight Pattern wird verwendet, um die Anzahl der Objekte zu reduzieren und den Speicherbedarf zu verringern, indem gemeinsam genutzte Daten zwischen mehreren Objekten geteilt werden.
 

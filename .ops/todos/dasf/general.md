@@ -16,6 +16,12 @@ Teile diese Dokumentation sind noch in Arbeit und können unvollständig sein.
 
 ## Einleitung {#einleitung}
 
+::: danger TODO:
+
+bdfgsdfg
+
+:::
+
 Refactoring ist ein Prozess, bei dem der Code verbessert wird, ohne das Verhalten zu ändern. Es ist ein wichtiger Bestandteil der Softwareentwicklung, um die Wartbarkeit und Lesbarkeit des Codes zu verbessern.
 Durch Refactoring wird die sogenannte **technische Schuld** abgebaut, die durch schnelle Lösungen und Kompromisse entsteht.
 
@@ -154,20 +160,19 @@ Siehe Beispiele [Code-Smells](./codesmells#if-statements).
 
 ## RFP13 Umfangreiche Klassen {#umfangreiche-klassen}
 
-::: danger TODO:
+::: danger TODO
 Umfangreiche Klassen
 :::
 
 ## RFP14 Datenklassen {#datenklassen}
 
-::: danger TODO:
+::: danger TODO
+Datenklassen
 :::
 
 
 ## RFP15 Kommentare {#kommentare}
 
-::: danger TODO:
-:::
 
 
 

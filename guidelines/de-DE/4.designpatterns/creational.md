@@ -49,25 +49,40 @@ Jede Richtliniennummer besteht aus dem Buchstaben **DPC**(Design Pattern Creatio
 
 ## DPC1 Singleton {#singleton}
 
+::: danger TODO:
+Beispiel
+:::
+
+
 Das Singleton Pattern sorgt dafür, dass von einer Klasse nur ein einziges Objekt existiert.
 
-### DPC1 Externe Beschreigung auf refactoring.guru
+### DPC1 Externe Beschreibung auf refactoring.guru
 
 [Singleton Pattern](https://refactoring.guru/design-patterns/singleton)
 
 ## DPC2 Factory Method {#factory-method}
 
+::: danger TODO:
+Beispiel
+:::
+
+
 Das Factory Method Pattern definiert eine Schnittstelle zur Erzeugung von Objekten, lässt aber die Unterklassen entscheiden, welche Klasse instanziiert wird.
 
-### DPC2 Externe Beschreigung auf refactoring.guru
+### DPC2 Externe Beschreibung auf refactoring.guru
 
 [Factory Method Pattern](https://refactoring.guru/design-patterns/factory-method)
 
 ## DPC3 Abstract Factory {#abstract-factory}
 
+::: danger TODO:
+Beispiel
+:::
+
+
 Das Abstract Factory Pattern definiert eine Schnittstelle zur Erzeugung von Familien von Objekten, ohne die konkreten Klassen zu spezifizieren.
 
-### DPC3 Externe Beschreigung auf refactoring.guru
+### DPC3 Externe Beschreibung auf refactoring.guru
 
 [Abstract Factory Pattern](https://refactoring.guru/design-patterns/abstract-factory)
 
@@ -75,14 +90,19 @@ Das Abstract Factory Pattern definiert eine Schnittstelle zur Erzeugung von Fami
 
 Das Builder Pattern trennt die Konstruktion eines komplexen Objekts von seiner Repräsentation, so dass der gleiche Konstruktionsprozess unterschiedliche Repräsentationen erzeugen kann.
 
-### DPC4 Externe Beschreigung auf refactoring.guru
+### DPC4 Externe Beschreibung auf refactoring.guru
 
 [Builder Pattern](https://refactoring.guru/design-patterns/builder)
 
 ## DPC5 Prototype {#prototype}
 
+::: danger TODO:
+Beispiel
+:::
+
+
 Das Prototype Pattern ermöglicht es, neue Objekte zu erstellen, indem ein Prototypobjekt kopiert wird.
 
-### DPC5 Externe Beschreigung auf refactoring.guru
+### DPC5 Externe Beschreibung auf refactoring.guru
 
 [Prototype Pattern](https://refactoring.guru/design-patterns/prototype)

@@ -25,6 +25,9 @@ hero:
     - theme: brand
       text: Literatur/Quellen
       link: ./sources
+    - theme: brand
+      text: Todos
+      link: ./todos
 
 features:
   - title: Allgemeines (100%)

@@ -8,6 +8,11 @@ customIgnoreTitlesForRules: [Einleitung]
 
 # Refactoring von Java
 
+::: danger TODO:
+Beispiel
+:::
+
+
 ## Einleitung {#einleitung}
 
 Allen Kapiteln wurde eine eindeutige Nummerierung, der Richtliniennummer, hinzugefügt, um eine eindeutige Identifikation zu ermöglichen.

@@ -1,0 +1,30 @@
+---
+layout: doc
+---
+
+# Todos
+
+Dieses Dokument enthält eine Liste von Aufgaben, die noch erledigt werden müssen.
+
+{{#each .}}
+## {{filePath}}
+
+{{#each todos}}
+- [{{title}}]({{link}})
+{{/each}}
+
+{{/each}}
+
+{{!-- 
+
+    {
+      filePath: "path/to/file.md",
+      filename: "file.md",
+      todos: [
+        {
+          title: "Titel des Todos",
+          link: "path/to/file.md#header"
+        }
+      ]
+    }
+ --}}

@@ -13,6 +13,9 @@ hero:
     - theme: alt
       text: Code Smells
       link: ../5.refactoring/codesmells
+    - theme: alt
+      text: Checkliste für ein neues Projekt
+      link: ../6.languages/newcodechecklist
 
 features:
   - title: Allgemeine Regeln für Namen
@@ -51,4 +54,11 @@ features:
       width: 36
       height: 36
 
+
 ---
+
+# Entwicklungsrichtlinien
+
+::: danger TODO:
+Icon fehlt
+:::

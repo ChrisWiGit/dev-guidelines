@@ -1,8 +1,8 @@
 {
-  "sentences": 4241,
-  "words": 51680,
-  "syllables": 100101,
-  "characters": 311497,
+  "sentences": 4246,
+  "words": 51756,
+  "syllables": 100259,
+  "characters": 311966,
   "wordToCount": [
     {
       "word": "oder",
@@ -27,10 +27,10 @@
     },
     {
       "word": "Code",
-      "count": "266",
-      "countAsHex": "10a",
-      "countAsOctal": "412",
-      "countAsBinary": "1 0000 1010"
+      "count": "268",
+      "countAsHex": "10c",
+      "countAsOctal": "414",
+      "countAsBinary": "1 0000 1100"
     },
     {
       "word": "werden",
@@ -111,10 +111,10 @@
     },
     {
       "word": "sind",
-      "count": "142",
-      "countAsHex": "8e",
-      "countAsOctal": "216",
-      "countAsBinary": "1000 1110"
+      "count": "143",
+      "countAsHex": "8f",
+      "countAsOctal": "217",
+      "countAsBinary": "1000 1111"
     },
     {
       "word": "public",
@@ -223,17 +223,17 @@
     },
     {
       "word": "Klassen",
-      "count": "80",
-      "countAsHex": "50",
-      "countAsOctal": "120",
-      "countAsBinary": "101 0000"
+      "count": "81",
+      "countAsHex": "51",
+      "countAsOctal": "121",
+      "countAsBinary": "101 0001"
     },
     {
       "word": "Refactoring",
-      "count": "78",
-      "countAsHex": "4e",
-      "countAsOctal": "116",
-      "countAsBinary": "100 1110"
+      "count": "79",
+      "countAsHex": "4f",
+      "countAsOctal": "117",
+      "countAsBinary": "100 1111"
     },
     {
       "word": "Problem",
@@ -447,10 +447,10 @@
     },
     {
       "word": "Regeln",
-      "count": "47",
-      "countAsHex": "2f",
-      "countAsOctal": "57",
-      "countAsBinary": "10 1111"
+      "count": "48",
+      "countAsHex": "30",
+      "countAsOctal": "60",
+      "countAsBinary": "11 0000"
     },
     {
       "word": "anderen",
@@ -530,14 +530,14 @@
       "countAsBinary": "10 1100"
     },
     {
-      "word": "andere",
-      "count": "43",
-      "countAsHex": "2b",
-      "countAsOctal": "53",
-      "countAsBinary": "10 1011"
+      "word": "diese",
+      "count": "44",
+      "countAsHex": "2c",
+      "countAsOctal": "54",
+      "countAsBinary": "10 1100"
     },
     {
-      "word": "diese",
+      "word": "andere",
       "count": "43",
       "countAsHex": "2b",
       "countAsOctal": "53",
@@ -635,6 +635,13 @@
       "countAsBinary": "10 0101"
     },
     {
+      "word": "Beispiel",
+      "count": "37",
+      "countAsHex": "25",
+      "countAsOctal": "45",
+      "countAsBinary": "10 0101"
+    },
+    {
       "word": "Einsatz",
       "count": "36",
       "countAsHex": "24",
@@ -696,29 +703,22 @@
       "countAsHex": "21",
       "countAsOctal": "41",
       "countAsBinary": "10 0001"
-    },
-    {
-      "word": "dann",
-      "count": "33",
-      "countAsHex": "21",
-      "countAsOctal": "41",
-      "countAsBinary": "10 0001"
     }
   ],
-  "sentencesFormatted": "4 241",
-  "wordsFormatted": "51 680",
-  "syllablesFormatted": "100 101",
-  "charactersFormatted": "311 497",
-  "sentencesAsHex": "1091",
-  "wordsAsHex": "c9e0",
-  "syllablesAsHex": "1 8705",
-  "charactersAsHex": "4c0c9",
-  "sentencesAsOctal": "10 221",
-  "wordsAsOctal": "144 740",
-  "syllablesAsOctal": "303 405",
-  "charactersAsOctal": "1 140 311",
-  "sentencesAsBinary": "1 0000 1001 0001",
-  "wordsAsBinary": "1100 1001 1110 0000",
-  "syllablesAsBinary": "1 1000 0111 0000 0101",
-  "charactersAsBinary": "100 1100 0000 1100 1001"
+  "sentencesFormatted": "4 246",
+  "wordsFormatted": "51 756",
+  "syllablesFormatted": "100 259",
+  "charactersFormatted": "311 966",
+  "sentencesAsHex": "1096",
+  "wordsAsHex": "ca2c",
+  "syllablesAsHex": "187a3",
+  "charactersAsHex": "4c29e",
+  "sentencesAsOctal": "10 226",
+  "wordsAsOctal": "145 054",
+  "syllablesAsOctal": "303 643",
+  "charactersAsOctal": "1 141 236",
+  "sentencesAsBinary": "1 0000 1001 0110",
+  "wordsAsBinary": "1100 1010 0010 1100",
+  "syllablesAsBinary": "1 1000 0111 1010 0011",
+  "charactersAsBinary": "100 1100 0010 1001 1110"
 }

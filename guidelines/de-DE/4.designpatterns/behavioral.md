@@ -38,6 +38,13 @@ hero:
 
 # Entwurfsmuster - Verhaltensmuster
 
+::: danger TODO:
+
+Beispiele
+
+:::
+
+
 ## Einleitung {#einleitung}
 
 Verhaltensmuster sind Entwurfsmuster, die sich mit der Kommunikation zwischen Objekten und Klassen beschäftigen.

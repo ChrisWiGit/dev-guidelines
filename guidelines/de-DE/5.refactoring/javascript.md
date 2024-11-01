@@ -8,6 +8,10 @@ customIgnoreTitlesForRules: [Einleitung]
 
 # Refactoring von JavaScript und TypeScript
 
+::: danger TODO:
+:::
+
+
 ## Einleitung {#einleitung}
 
 Allen Kapiteln wurde eine eindeutige Nummerierung, der Richtliniennummer, hinzugefügt, um eine eindeutige Identifikation zu ermöglichen.

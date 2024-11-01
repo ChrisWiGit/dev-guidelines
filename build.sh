@@ -39,8 +39,12 @@ function buildLang {
 
   echo "Processing ${langDir}/stats.md"
   node ../../.ops/statistics/index.js .
-
   node $hbs stats.json wordcount.md.hbs wordcount.md
+  
+  echo "Processing ${langDir}/todos.md"
+  node ../../.ops/todos/index.js .
+  node $hbs todos.json todos.md.hbs todos.md
+
 
   cd $currentDir
 }

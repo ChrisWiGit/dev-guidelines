@@ -1,0 +1,16 @@
+[
+  {
+    "filePath": "dasf\\general.md",
+    "filename": "general.md",
+    "todos": [
+      {
+        "title": "Prinzipien des Refactoring",
+        "link": "dasf\\general.md"
+      },
+      {
+        "title": "Einleitung",
+        "link": "dasf\\general.md#einleitung"
+      }
+    ]
+  }
+]

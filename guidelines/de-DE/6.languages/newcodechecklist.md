@@ -1,5 +1,10 @@
 # Checkliste für eine neues Projekt
 
+::: danger TODO:
+Beispiel
+:::
+
+
 <!-- Eine Checkliste, die abgearbeitet wird, wenn ein neues Projekt erstellt wird. 
 auch je nach Sprache: erstmal java, javascript und vue3
 

@@ -45,3 +45,4 @@ Diese Disziplinen sind, aber nicht beschränkt auf:
 - Rechtliche Anforderungen
 
 gegenüber allen bei der Softwareentwicklung beteiligten Personen (Kunden, Projektmanagern, Vorgesetzten etc.) vertreten können.
+

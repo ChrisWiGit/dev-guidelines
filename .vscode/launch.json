@@ -58,6 +58,17 @@
       "program": "${workspaceFolder}\\.ops\\statistics\\index.js",
       "args": ["../../guidelines/de-DE/"],
       "cwd": "${workspaceFolder}/.ops/statistics"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Todos",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}\\.ops\\todos\\index.js",
+      "args": ["."],
+      "cwd": "${workspaceFolder}/.ops/todos/"
     }
   ]
 }
