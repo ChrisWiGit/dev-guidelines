@@ -21,12 +21,51 @@ Beispiele hierfür sind überlange Funktionen, verschachtelte Schleifen, globale
 
 Strenggenommen ist die Guard Clause eine Operations-Logik, welche die Methode nach IOSP auch zu einer Operations-Logik, statt einer Integration-Logik macht.
 
+## Innere Methoden/Funktionen
+
+In JavaScript könnten komplexe Bereichsblöcke in eigene Methoden einer Klasse ausgelagert werden.
+Dies führt jedoch zu vielen öffentlichen Methoden führt, die nur von einer Methode aufgerufen werden, und interne Methoden und Information nach aussen sichtbar macht.
+Das sollte verhindert werden, indem die Funktionen innerhalb der Methode als Konstanten, wie im Beispiel oben, definiert werden.
+Alternativ können private Methoden in einer Klasse verwendet werden, um die Verantwortlichkeiten klar zu trennen.
+Entweder wird eine Methode im Konstruktor definiert oder mit `#` als private Methode gekennzeichnet, bzw. in TypeScript mit `private`.
+```javascript
+class MyClass {
+  constructor() {
+    this.#checkComplicatedCondition();
+    this.#doWhile();
+    this.#checkAnotherCondition();
+  }
+  #checkComplicatedCondition() {
+    for (let i = 0; i < 10; i++) {
+      if (complicatedCondition) {
+      } else {
+      }
+    }
+  }
+  #doWhile() {
+    while (condition) {
+      // Code
+    }
+  }
+  #checkAnotherCondition() {
+    if (anotherCondition) {
+      // Code
+    }
+  }
+}
+```
+
 ## Kopplung und Kohäsion
 
 - `Kopplung` ist die Abhängigkeit zwischen zwei oder mehr Modulen oder Komponenten.
 Sie beschreibt, wie stark zwei oder mehr Module oder Komponenten voneinander abhängig sind.
 - `Kohäsion` ist die Zusammengehörigkeit von Funktionalitäten innerhalb eines Moduls, Klasse oder einer Komponente.
 Sie beschreibt, wie stark die Funktionalität innerhalb eines Moduls, Klasse oder einer Komponente zusammenhängt.
+
+## Mehr Code durch Trennung
+
+Das Argument "mehr Code" ist kein Argument gegen die Trennung von Verantwortlichkeiten, denn die Trennung führt zu besser wartbarem und testbarem Code, was die Größe des Codes überwiegt.
+Ein großer Teil des zusätzlichen Codes sind oftmals nur Methoden- oder Klassendeklarationen, die keine zusätzliche Logik enthalten und damit auch nicht getestet werden können (Solche Logik wird vom Compiler/Interpreter/Linter geprüft).
 
 ## Model Driven Development vs. Domain Driven Design
 

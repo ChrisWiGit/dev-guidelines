@@ -383,3 +383,25 @@ Hauptsächliche Probleme bei Parameter sind:
 NullPointer-Exceptions sind keine Parameterprüfungen, sondern Fehlerbehandlungen, die durch die Sprache zur Laufzeit durchgeführt werden.
 Oftmals beinhalten diese Meldungen keine Informationen, welcher Parameter null war und sollen daher durch eine separate Parameterprüfung mit Erklärung ersetzt werden.
 
+## GL24 Trennung von Verantwortlichkeiten {#trennung-von-verantwortlichkeiten}
+
+Es sollen Methoden, Klassen und Module nur die Aufgaben erfüllen, für die sie zuständig sind.
+
+Das bedeutet:
+
+- Klassen und Methoden haben nur eine Aufgabe und erfüllen diese.
+- Es gibt **keine** Gott- oder Utility Klassen, die alle Methoden enthalten.
+
+Umgesetzt wird dies durch:
+
+- Aufteilung von Klassen und Methoden in kleinere Einheiten.
+- Verwendung von Dependency Injection, um Abhängigkeiten zu verwalten.
+- Abstrahierung von Klassen durch Schnittstellen (Interfaces).
+- Verwendung von Design Patterns, um die Verantwortlichkeiten zu trennen (
+- Verwendung von immutable Objekten (Value-Objects) und Information Hiding.
+
+### GL24 Vorteile
+
+- Übersichtlicher Code durch kleinere Einheiten
+- Einfachere Wartung, durch weniger Komplexität, weil einzelne Methoden und Klassen weniger Aufgaben haben und dadurch kleiner sind.
+- Einfachere Tests, da einzelne Methoden und Klassen einfacher zu testen sind.

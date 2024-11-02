@@ -40,3 +40,8 @@ npm run docs:preview
 2. All markdown files are processed to extract terms and definitions for the glossary.
 
 See `.op` folder for the scripts.
+
+## Credits/Attributions
+
+- [Vitepress](https://github.com/vuejs/vitepress)
+- [Icons from FreePik](https://www.freepik.com/)

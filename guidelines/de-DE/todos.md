@@ -58,10 +58,6 @@ Dieses Dokument enthält eine Liste von Aufgaben, die noch erledigt werden müss
 
 - [Richtlinien für JavaScript und TypeScript](6.languages\vue\index.md)
 
-## 7.reviews.md
-
-- [Code-Reviews](7.reviews.md)
-
 ## 8.accessibility\index.md
 
 - [https://vitepress.dev/reference/default-theme-home-page](8.accessibility\index.md)
