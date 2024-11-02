@@ -224,7 +224,7 @@ In DDD wird die Interaktion zwischen den Entitäten durch bestimmte Muster wie A
 
 <!-- !glossary-->
 ::: info Globale Fehlerbehandlung der lokalen Fehlerbehandlung vorziehen
-Globale Fehlerbehandlung ist einfacher zu implementieren und zu warten und führt verständlicheren Code.
+Globale Fehlerbehandlung ist einfacher zu implementieren und zu warten und führt zu verständlicheren Code.
 Und oftmals wird die Fehlerbehandlung vollständig vergessen oder ignoriert, was zu unterschiedlicher Behandlung von Fehlern führt.
 :::
 
