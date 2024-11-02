@@ -50,10 +50,6 @@ Dieses Dokument enthält eine Liste von Aufgaben, die noch erledigt werden müss
 
 - [Entwicklungsrichtlinien](6.languages\index.md)
 
-## 6.languages\newcodechecklist.md
-
-- [Checkliste für eine neues Projekt](6.languages\newcodechecklist.md)
-
 ## 6.languages\vue\index.md
 
 - [Richtlinien für JavaScript und TypeScript](6.languages\vue\index.md)

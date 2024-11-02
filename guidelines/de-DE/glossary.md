@@ -17,6 +17,11 @@ Es ist eine Referenz für Entwickler, um die Bedeutung von Begriffen zu verstehe
 Code Smells sind Anzeichen in deinem Code, die auf tiefer liegende Probleme hinweisen können.
 Beispiele hierfür sind überlange Funktionen, verschachtelte Schleifen, globale Variablen und duplizierter Code. Durch das Identifizieren dieser "Code Smells" kannst du gezielt Verbesserungen vornehmen.
 
+## Globale Fehlerbehandlung der lokalen Fehlerbehandlung vorziehen
+
+Globale Fehlerbehandlung ist einfacher zu implementieren und zu warten und führt verständlicheren Code.
+Und oftmals wird die Fehlerbehandlung vollständig vergessen oder ignoriert, was zu unterschiedlicher Behandlung von Fehlern führt.
+
 ## Guard Clause
 
 Strenggenommen ist die Guard Clause eine Operations-Logik, welche die Methode nach IOSP auch zu einer Operations-Logik, statt einer Integration-Logik macht.

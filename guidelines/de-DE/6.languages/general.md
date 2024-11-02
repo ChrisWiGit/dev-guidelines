@@ -222,9 +222,10 @@ In DDD wird die Interaktion zwischen den Entitäten durch bestimmte Muster wie A
 - Fehler sollen anhand ihres Abstraktionsgrades geworfen werden
   - Fehler von niederen Schichten sollen in höheren Schichten in Domänen-spezifische Fehler umgewandelt werden (gewrappt werden).
 
-::: info
-Lokale Fehlerbehandlung statt globaler Fehlerbehandlung führt zu unaufgeräumten Code.
-Oftmals wird die Fehlerbehandlung vollständig vergessen oder ignoriert, was zu unterschiedlicher Behandlung von Fehlern führt.
+<!-- !glossary-->
+::: info Globale Fehlerbehandlung der lokalen Fehlerbehandlung vorziehen
+Globale Fehlerbehandlung ist einfacher zu implementieren und zu warten und führt verständlicheren Code.
+Und oftmals wird die Fehlerbehandlung vollständig vergessen oder ignoriert, was zu unterschiedlicher Behandlung von Fehlern führt.
 :::
 
 ## GL16 Verwenden aussagekräftige Rückgabewerte und -typen {#verwenden-aussagekraeftige-rueckgabewerte-und-typen}
