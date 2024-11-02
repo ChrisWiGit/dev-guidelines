@@ -1,15 +1,15 @@
 {
-  "sentences": 4411,
-  "words": 53670,
-  "syllables": 104221,
-  "characters": 324307,
+  "sentences": 4413,
+  "words": 53694,
+  "syllables": 104272,
+  "characters": 324469,
   "wordToCount": [
     {
       "word": "oder",
-      "count": "491",
-      "countAsHex": "1eb",
-      "countAsOctal": "753",
-      "countAsBinary": "1 1110 1011"
+      "count": "493",
+      "countAsHex": "1ed",
+      "countAsOctal": "755",
+      "countAsBinary": "1 1110 1101"
     },
     {
       "word": "eine",
@@ -181,10 +181,10 @@
     },
     {
       "word": "einem",
-      "count": "99",
-      "countAsHex": "63",
-      "countAsOctal": "143",
-      "countAsBinary": "110 0011"
+      "count": "101",
+      "countAsHex": "65",
+      "countAsOctal": "145",
+      "countAsBinary": "110 0101"
     },
     {
       "word": "Parameter",
@@ -516,13 +516,6 @@
       "countAsBinary": "10 1101"
     },
     {
-      "word": "Fehlerbehandlung",
-      "count": "45",
-      "countAsHex": "2d",
-      "countAsOctal": "55",
-      "countAsBinary": "10 1101"
-    },
-    {
       "word": "eindeutige",
       "count": "44",
       "countAsHex": "2c",
@@ -584,6 +577,13 @@
       "countAsHex": "2a",
       "countAsOctal": "52",
       "countAsBinary": "10 1010"
+    },
+    {
+      "word": "Fehlerbehandlung",
+      "count": "41",
+      "countAsHex": "29",
+      "countAsOctal": "51",
+      "countAsBinary": "10 1001"
     },
     {
       "word": "Wartbarkeit",
@@ -705,20 +705,20 @@
       "countAsBinary": "10 0010"
     }
   ],
-  "sentencesFormatted": "4 411",
-  "wordsFormatted": "53 670",
-  "syllablesFormatted": "104 221",
-  "charactersFormatted": "324 307",
-  "sentencesAsHex": "113b",
-  "wordsAsHex": "d1a6",
-  "syllablesAsHex": "1971d",
-  "charactersAsHex": "4f2d3",
-  "sentencesAsOctal": "10 473",
-  "wordsAsOctal": "150 646",
-  "syllablesAsOctal": "313 435",
-  "charactersAsOctal": "1 171 323",
-  "sentencesAsBinary": "1 0001 0011 1011",
-  "wordsAsBinary": "1101 0001 1010 0110",
-  "syllablesAsBinary": "1 1001 0111 0001 1101",
-  "charactersAsBinary": "100 1111 0010 1101 0011"
+  "sentencesFormatted": "4 413",
+  "wordsFormatted": "53 694",
+  "syllablesFormatted": "104 272",
+  "charactersFormatted": "324 469",
+  "sentencesAsHex": "113d",
+  "wordsAsHex": "d1be",
+  "syllablesAsHex": "1 9750",
+  "charactersAsHex": "4f375",
+  "sentencesAsOctal": "10 475",
+  "wordsAsOctal": "150 676",
+  "syllablesAsOctal": "313 520",
+  "charactersAsOctal": "1 171 565",
+  "sentencesAsBinary": "1 0001 0011 1101",
+  "wordsAsBinary": "1101 0001 1011 1110",
+  "syllablesAsBinary": "1 1001 0111 0101 0000",
+  "charactersAsBinary": "100 1111 0011 0111 0101"
 }

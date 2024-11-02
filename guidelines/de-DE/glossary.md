@@ -19,11 +19,11 @@ Beispiele hierfür sind überlange Funktionen, verschachtelte Schleifen, globale
 
 ## Globale Fehlerbehandlung der lokalen Fehlerbehandlung vorziehen
 
-Lokale Fehlerbehandlung ist die Verwendung von `try-catch`-Blöcken in der Nähe des Codes, der den Fehler verursachen könnte.
-Globaler Fehlerbehandlung ist die Verwendung eines zentralen Mechanismus, um Fehler zu behandeln, die nicht lokal behandelt werden.
-Oftmals stellt das eingesetzte Framework eine globale Fehlerbehandlung zur Verfügung, die verwendet werden kann, um z.B. dem Benutzer eine Fehlermeldung anzuzeigen.
+**Lokale Fehlerbehandlung** ist die Verwendung von `try-catch`-Blöcken, Status-Wert-Abfrage, `Promise.catch` oder ähnlichen Mechanismen, um Fehler zu behandeln, die in einem bestimmten Codeabschnitt auftreten können.\
+**Globaler Fehlerbehandlung** ist die Verwendung eines zentralen Mechanismus, um Fehler zu behandeln, die nicht lokal behandelt werden.
+Oftmals stellt das eingesetzte Framework eine globale Fehlerbehandlung zur Verfügung, die verwendet werden kann, um z.B. dem Benutzer eine Fehlermeldung anzuzeigen.\
 Die Globale Fehlerbehandlung ist einfacher zu implementieren und zu warten und führt zu verständlicheren Code.
-Wenn eine lokale Fehlerbehandlung mit `try-catch`-Blöcken verwendet wird, muss die Behandlung der möglichen Fehler manuell implementiert werden.
+Wenn eine lokale Fehlerbehandlung wie mit `try-catch`-Blöcken verwendet wird, muss die Behandlung der möglichen Fehler manuell implementiert werden.
 Oftmals wird jedoch die Fehlerbehandlung vollständig vergessen oder ignoriert (und auch nicht getestet), was zu unterschiedlicher Behandlung von Fehlern führt.
 
 ## Guard Clause
