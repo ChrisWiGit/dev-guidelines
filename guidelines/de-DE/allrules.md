@@ -215,6 +215,7 @@ layout: doc
 - [GR8 Gesamten Code prüfen](7.reviews.md#gesamten-code-pruefen)
 - [GR9 Code lokal prüfen](7.reviews.md#code-lokal-pruefen)
 - [GR10 Linting soll automatisiert sein](7.reviews.md#linting-soll-automatisiert-sein)
+- [GR11 Fehlerbehandlung](7.reviews.md#fehlerbehandlung)
 
 ## Regeln für das Arbeiten mit Künstlicher Intelligenz
 
