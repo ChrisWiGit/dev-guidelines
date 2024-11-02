@@ -1,8 +1,8 @@
 {
-  "sentences": 4408,
-  "words": 53660,
-  "syllables": 104204,
-  "characters": 324243,
+  "sentences": 4411,
+  "words": 53670,
+  "syllables": 104221,
+  "characters": 324307,
   "wordToCount": [
     {
       "word": "oder",
@@ -90,10 +90,10 @@
     },
     {
       "word": "wird",
-      "count": "167",
-      "countAsHex": "a7",
-      "countAsOctal": "247",
-      "countAsBinary": "1010 0111"
+      "count": "168",
+      "countAsHex": "a8",
+      "countAsOctal": "250",
+      "countAsBinary": "1010 1000"
     },
     {
       "word": "soll",
@@ -111,10 +111,10 @@
     },
     {
       "word": "sind",
-      "count": "150",
-      "countAsHex": "96",
-      "countAsOctal": "226",
-      "countAsBinary": "1001 0110"
+      "count": "151",
+      "countAsHex": "97",
+      "countAsOctal": "227",
+      "countAsBinary": "1001 0111"
     },
     {
       "word": "public",
@@ -705,20 +705,20 @@
       "countAsBinary": "10 0010"
     }
   ],
-  "sentencesFormatted": "4 408",
-  "wordsFormatted": "53 660",
-  "syllablesFormatted": "104 204",
-  "charactersFormatted": "324 243",
-  "sentencesAsHex": "1138",
-  "wordsAsHex": "d19c",
-  "syllablesAsHex": "1970c",
-  "charactersAsHex": "4f293",
-  "sentencesAsOctal": "10 470",
-  "wordsAsOctal": "150 634",
-  "syllablesAsOctal": "313 414",
-  "charactersAsOctal": "1 171 223",
-  "sentencesAsBinary": "1 0001 0011 1000",
-  "wordsAsBinary": "1101 0001 1001 1100",
-  "syllablesAsBinary": "1 1001 0111 0000 1100",
-  "charactersAsBinary": "100 1111 0010 1001 0011"
+  "sentencesFormatted": "4 411",
+  "wordsFormatted": "53 670",
+  "syllablesFormatted": "104 221",
+  "charactersFormatted": "324 307",
+  "sentencesAsHex": "113b",
+  "wordsAsHex": "d1a6",
+  "syllablesAsHex": "1971d",
+  "charactersAsHex": "4f2d3",
+  "sentencesAsOctal": "10 473",
+  "wordsAsOctal": "150 646",
+  "syllablesAsOctal": "313 435",
+  "charactersAsOctal": "1 171 323",
+  "sentencesAsBinary": "1 0001 0011 1011",
+  "wordsAsBinary": "1101 0001 1010 0110",
+  "syllablesAsBinary": "1 1001 0111 0001 1101",
+  "charactersAsBinary": "100 1111 0010 1101 0011"
 }
