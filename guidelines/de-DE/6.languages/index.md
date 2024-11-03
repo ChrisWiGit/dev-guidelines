@@ -57,10 +57,3 @@ features:
 
 ---
 
-# Entwicklungsrichtlinien
-
-::: danger TODO:
-Icon fehlt
-:::
-
-

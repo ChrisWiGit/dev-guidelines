@@ -30,9 +30,9 @@ Dieses Dokument enthält eine Liste von Aufgaben, die noch erledigt werden müss
 ## 5.refactoring\general.md
 
 - [Prinzipien des Refactoring](5.refactoring\general.md)
-- [RFP13 Umfangreiche Klassen](5.refactoring\general.md#umfangreiche-klassen)
-- [RFP14 Datenklassen](5.refactoring\general.md#datenklassen)
-- [RFP15 Kommentare](5.refactoring\general.md#kommentare)
+- [RFP18 Umfangreiche Klassen](5.refactoring\general.md#umfangreiche-klassen)
+- [RFP19 Datenklassen](5.refactoring\general.md#datenklassen)
+- [RFP20 Kommentare](5.refactoring\general.md#kommentare)
 
 ## 5.refactoring\java.md
 
@@ -45,10 +45,6 @@ Dieses Dokument enthält eine Liste von Aufgaben, die noch erledigt werden müss
 ## 5.refactoring\vue.md
 
 - [Refactoring von Vue 3](5.refactoring\vue.md)
-
-## 6.languages\index.md
-
-- [Entwicklungsrichtlinien](6.languages\index.md)
 
 ## 6.languages\vue\index.md
 

@@ -68,15 +68,15 @@
         "link": "5.refactoring\\general.md"
       },
       {
-        "title": "RFP13 Umfangreiche Klassen",
+        "title": "RFP18 Umfangreiche Klassen",
         "link": "5.refactoring\\general.md#umfangreiche-klassen"
       },
       {
-        "title": "RFP14 Datenklassen",
+        "title": "RFP19 Datenklassen",
         "link": "5.refactoring\\general.md#datenklassen"
       },
       {
-        "title": "RFP15 Kommentare",
+        "title": "RFP20 Kommentare",
         "link": "5.refactoring\\general.md#kommentare"
       }
     ]
@@ -108,16 +108,6 @@
       {
         "title": "Refactoring von Vue 3",
         "link": "5.refactoring\\vue.md"
-      }
-    ]
-  },
-  {
-    "filePath": "6.languages\\index.md",
-    "filename": "index.md",
-    "todos": [
-      {
-        "title": "Entwicklungsrichtlinien",
-        "link": "6.languages\\index.md"
       }
     ]
   },

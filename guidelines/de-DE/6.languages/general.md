@@ -393,6 +393,9 @@ Oftmals beinhalten diese Meldungen keine Informationen, welcher Parameter null w
 
 Es sollen Methoden, Klassen und Module nur die Aufgaben erfüllen, für die sie zuständig sind.
 
+> Dies entspricht Single Responsibility Principle (SRP) aus den Prinzipien der Softwareentwicklung.
+> [SOLID](../2.principles/principles#single-responsibility-principle)
+
 Das bedeutet:
 
 - Klassen und Methoden haben nur eine Aufgabe und erfüllen diese.

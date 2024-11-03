@@ -103,11 +103,11 @@ Code, der sich oft wiederholt, ist schwer zu pflegen und zu korrigieren, da Änd
 
 Das `Don't Repeat Yourself` Prinzip besagt, dass Code so geschrieben werden sollte, dass er sich nicht wiederholt.
 
-### P7 Die 2-3-5 Regel
+### P7 Die 2-3-5 Regel {#2-3-5-regel}
 
-Die *2-3-5- Regel besagt, dass Code, der sich mehr als **zweimal*- wiederholt, in eine Funktion oder Methode ausgelagert werden sollte.
-Code, der sich mehr als **dreimal*- wiederholt, sollte in eine Klasse oder ein Modul ausgelagert werden.
-Code, der sich mehr als **fünfmal*- wiederholt, sollte in eine eigene Bibliothek oder ein eigenes Framework ausgelagert werden.
+Die *2-3-5- Regel besagt, dass Code, der sich mehr als *zweimal*- wiederholt, in eine Funktion oder Methode ausgelagert werden sollte.
+Code, der sich mehr als *dreimal*- wiederholt, sollte in eine Klasse oder ein Modul ausgelagert werden.
+Code, der sich mehr als *fünfmal*- wiederholt, sollte in eine eigene Bibliothek oder ein eigenes Framework ausgelagert werden.
 
 ::: warning Vorsicht
 Oftmals ist doppelter Code nicht sofort ein Problem, sondern erst später, wenn er ein drittes Mal angefasst wird.

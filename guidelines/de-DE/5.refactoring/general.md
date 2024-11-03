@@ -123,25 +123,61 @@ Beispiele hierfür sind überlange Funktionen, verschachtelte Schleifen, globale
 
 Siehe Beispiele [Code-Smells](./codesmells).
 
-### RFP4 Bezeichner
 
-### RFP4 Doppelter Code
+## RFP5 Vereinfachungen {#vereinfachungen}
 
-## RFP5 Lange Funktionen/Methoden {#lange-funktionen-methoden}
+Code soll vereinfacht durch Refactoring vereinfacht werden, um die Lesbarkeit und Wartbarkeit zu verbessern.
 
-## RFP6 Lange Parameterlisten {#lange-parameterlisten}
+Die Prinzipien [DRY](../2.principles/principles#dry), [SOC](../2.principles/principles#soc) und [KISS](../2.principles/principles#kiss) sind hierbei zu beachten.
 
-## RFP7 Globale Variablen/Daten {#globale-variablen-daten}
+## RFP6 Bewusstsein für Seiteneffekte beim Refactoring {#bewusstsein-fuer-seiteneffekte-beim-refactoring}
 
-## RFP8 Feature-Neid {#feature-neid}
+Während der Refaktorisierung ist es wichtig, sicherzustellen, dass der Code noch immer das tut, was er soll.
+Änderungen, die unerwartete Seiteneffekte verursachen könnten, sollen mit Vorsicht behandelt werden.
+Es ist daher ratsam, Änderungen in kleinen Schritten durchzuführen und regelmäßig zu testen, um sicherzustellen, dass das Verhalten des Codes unverändert bleibt.
 
-## RFP9 elementare Datentypen {#elementare-datentypen}
+## RFP7 Kein nachträgliches Kommentieren von Code {#kein-nachtraegliches-kommentieren-von-code}
 
-## RFP10 Schleifen {#schleifen}
+Bestehender Code, der bisher nicht kommentiert wurde, soll im Nachhinein auch nicht kommentiert werden.
 
-## RFP11 Switch-Statements {#switch-statements}
+Dokumentation von Legacy-Code ist auch im Nachhinein kaum eine Hilfe, den Code zu verstehen.
+Beim Lesen von alten Code besteht die Gefahr, dass er falsch verstanden wird und die Dokumentation dadurch nutzlos und verwirrend wird.
+Vielmehr soll alter Code selbst im Zuge eines Refactorings verbessert werden, damit er selbsterklärend ist und nur neue Dokumentation braucht.
 
-## RFP12 If-Statements {#if-statements}
+## RFP8 Code entfernen {#code-entfernen}
+
+Refaktorisierung kann auch das Entfernen von Code bedeuten, der nicht mehr benötigt wird.
+
+## RFP9 Methodisches Vorgehen {#methodisches-vorgehen}
+
+Ein Refactoring muss methodisch durchgeführt werden, um sicherzustellen, dass das Verhalten des Codes unverändert bleibt.
+
+Ein Vorgehen soll wie folgt aussehen:
+
+1. Sicherstellen, dass ein Test vorhanden ist, der das Verhalten des Codes sicherstellt.
+Ggf. einen Test schreiben, wenn noch keiner vorhanden ist.
+2. Refactoring in kleinen Schritten mit Zwischenprüfung(en) durchführen, ob der Test noch grün ist.
+3. Prüfen, ob alle Tests noch grün sind, damit mögliche Seiteneffekte erkannt werden.
+
+### RFP9 Bezeichner
+
+### RFP9 Doppelter Code
+
+## RFP10 Lange Funktionen/Methoden {#lange-funktionen-methoden}
+
+## RFP11 Lange Parameterlisten {#lange-parameterlisten}
+
+## RFP12 Globale Variablen/Daten {#globale-variablen-daten}
+
+## RFP13 Feature-Neid {#feature-neid}
+
+## RFP14 elementare Datentypen {#elementare-datentypen}
+
+## RFP15 Schleifen {#schleifen}
+
+## RFP16 Switch-Statements {#switch-statements}
+
+## RFP17 If-Statements {#if-statements}
 
 - Negationen
 - Große If-Blöcke
@@ -152,49 +188,20 @@ Siehe Beispiele [Code-Smells](./codesmells).
 
 Siehe Beispiele [Code-Smells](./codesmells#if-statements).
 
-## RFP13 Umfangreiche Klassen {#umfangreiche-klassen}
+## RFP18 Umfangreiche Klassen {#umfangreiche-klassen}
 
 ::: danger TODO:
 Umfangreiche Klassen
 :::
 
-## RFP14 Datenklassen {#datenklassen}
+## RFP19 Datenklassen {#datenklassen}
 
 ::: danger TODO:
 :::
 
 
-## RFP15 Kommentare {#kommentare}
+## RFP20 Kommentare {#kommentare}
 
 ::: danger TODO:
 :::
 
-
-
-## RFP16 Vereinfachungen {#vereinfachungen}
-
-Code soll vereinfacht durch Refactoring vereinfacht werden, um die Lesbarkeit und Wartbarkeit zu verbessern.
-
-Die Prinzipien [DRY](../2.principles/principles#dry), [SOC](../2.principles/principles#soc) und [KISS](../2.principles/principles#kiss) sind hierbei zu beachten.
-
-## RFP17 Bewusstsein für Seiteneffekte beim Refactoring {#bewusstsein-fuer-seiteneffekte-beim-refactoring}
-
-Während der Refaktorisierung ist es wichtig, sicherzustellen, dass der Code noch immer das tut, was er soll.
-Änderungen, die unerwartete Seiteneffekte verursachen könnten, sollen mit Vorsicht behandelt werden.
-Es ist daher ratsam, Änderungen in kleinen Schritten durchzuführen und regelmäßig zu testen, um sicherzustellen, dass das Verhalten des Codes unverändert bleibt.
-
-## RFP18 Kein nachträgliches Kommentieren von Code {#kein-nachtraegliches-kommentieren-von-code}
-
-Bestehender Code, der bisher nicht kommentiert wurde, soll im Nachhinein auch nicht kommentiert werden.
-
-Dokumentation von Legacy-Code ist auch im Nachhinein kaum eine Hilfe, den Code zu verstehen.
-Beim Lesen von alten Code besteht die Gefahr, dass er falsch verstanden wird und die Dokumentation dadurch nutzlos und verwirrend wird.
-Vielmehr soll alter Code selbst im Zuge eines Refactorings verbessert werden, damit er selbsterklärend ist und nur neue Dokumentation braucht.
-
-## RFP19 Code entfernen {#code-entfernen}
-
-Refaktorisierung kann auch das Entfernen von Code bedeuten, der nicht mehr benötigt wird.
-
-## RFP20 Methodisches Vorgehen {#methodisches-vorgehen}
-
-Ein Refactoring muss methodisch durchgeführt werden, um sicherzustellen, dass das Verhalten des Codes unverändert bleibt.
