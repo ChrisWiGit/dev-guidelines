@@ -9,9 +9,12 @@ customIgnoreTitlesForRules: [Einleitung]
 # Richtlinien für JavaScript und TypeScript
 
 ::: danger TODO:
-Weitere Regeln
-:::
+Weitere Regeln einfügen.
 
+Weiterhin sind die Beispiele auch noch nur für Vue 2 geeignet.
+Composition-Api wird überhaupt nicht erwähnt.
+
+:::
 
 ## Einleitung {#einleitung}
 
@@ -309,6 +312,14 @@ computed: {
   }
 }
 ```
+
+### Weitere Informationen
+
+- Vue 3
+  - [Vue V-Model](https://vuejs.org/guide/components/v-model)
+- Vue 2
+  - [Vue V-Model](https://v2.vuejs.org/v2/guide/components.html#Using-v-model-on-Components)
+  - [Vue Forms](https://v2.vuejs.org/v2/guide/forms)
 
 ## V9 Keine direkten Objektzugriffe im Template {#keine-direkten-objektzugriffe-im-template}
 

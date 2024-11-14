@@ -33,13 +33,13 @@ features:
   - title: Allgemeines (100%)
     details: Allgemeines zum Leitfaden
     link: ./general
-    icon: 
+    icon:
       src: /flag.png
       width: 36
       height: 36
   - title: Gesundheit (100%)
     details: Regeln zur Gesundheit
-    link: ./1.health/ 
+    link: ./1.health/
     icon:
       src: /health.png
       width: 36
@@ -72,7 +72,7 @@ features:
       src: /refactoring.png
       width: 36
       height: 36
-  - title: Sprachen (60%)
+  - title: Sprachen und Frameworks (70%)
     details: Richtlinien zu den Sprachen und Frameworks Java, JavaScript, Vue
     link: ./6.languages/
     icon:
@@ -100,7 +100,7 @@ features:
       src: /ai.png
       width: 36
       height: 36
-  
+
 ---
 
 
