@@ -313,7 +313,7 @@ computed: {
 }
 ```
 
-### Weitere Informationen
+### V8 Weitere Informationen
 
 - Vue 3
   - [Vue V-Model](https://vuejs.org/guide/components/v-model)
