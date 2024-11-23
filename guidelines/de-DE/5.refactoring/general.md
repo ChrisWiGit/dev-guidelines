@@ -195,19 +195,35 @@ Die [Die 2-3-5](../2.principles/principles#the-2-3-5) Regel kann hierbei helfen 
 
 ## RFP13 Lange Funktionen/Methoden {#lange-funktionen-methoden}
 
-Kompexlität von Funktionen/Methoden steigt mir ihrer Länge.
+Komplexität von Funktionen/Methoden steigt mir ihrer Länge.
 Um die Lesbarkeit und Wartbarkeit zu verbessern, sollen lange Funktionen/Methoden in kleinere Funktionen/Methoden aufgeteilt werden.
 
 1. Funktionen/Methoden sollen nur eine Aufgabe erfüllen.
 2. Funktionen/Methoden sollen in mehrere Funktionen/Methoden in unterschiedlichen Abstraktionsstufen aufgeteilt werden.
-3. Jede aufgteilte Funktion/Methode soll eine klare Aufgabe haben.
-4. Jede aufgteilte Funktion/Methode soll getestet werden.
+3. Jede aufgeteilte Funktion/Methode soll eine klare und einzelne Aufgabe haben.
+4. Jede aufgeteilte Funktion/Methode soll getestet sein.
 
-## RFP14 Lange Parameterlisten {#lange-parameterlisten}
+## RFP14 Parameter {#lange-parameterlisten}
+
+1. Parameter sollen `final`, `const` oder `readonly` sein, damit sie nicht verändert werden.
+2. Viele Parameter mit gleicher Art und Reihenfolge können durch ein Objekt ersetzt werden.
+3. Boolean-Parameter können durch zwei Methoden mit aussagekräftigen Namen ersetzt werden.
+4. ENUM-Parameter können durch Polymorphie ersetzt werden.
 
 ## RFP15 Globale Variablen/Daten {#globale-variablen-daten}
 
+1. Globale Variablen sollen unbedingt vermieden werden und durch `Dependency Injection` mit Klassen, die die Daten kapseln, ersetzt werden.
+2. Der direkte Zugriff auf globale Variablen soll vermieden werden und durch Methoden, die darauf zugreifen, ersetzt werden.
+3. Globale Variablen, wenn unvermeidlich, sollen unveränderlich sein und mit Kopien gearbeitet werden (Value Object).
+
 ## RFP16 Feature-Neid {#feature-neid}
+
+Wenn eine Klasse oder Methode zu viele Verantwortlichkeiten hat, kann dies zu Feature-Neid führen.
+Andere Klassen müssen dann auf diese Klasse zugreifen, um auf die Funktionalität zuzugreifen.
+
+1. Klassen und Methoden sollen nur eine Verantwortlichkeit haben.
+Verschiebe die Funktionalität in eine neue Klasse oder Methode.
+2. 
 
 ## RFP17 elementare Datentypen {#elementare-datentypen}
 
