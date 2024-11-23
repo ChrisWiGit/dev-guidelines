@@ -87,13 +87,20 @@ Ohne Tests ist es schwierig, sicherzustellen, dass das Verhalten des Codes nach 
 
 Refactoring sollte nicht durchgeführt werden:
 
-- Wenn es keine Tests gibt, kann das korrekte Verhalten des Codes nicht sichergestellt werden.
-- Wenn es keine klare Vorstellung davon gibt, wie der Code verbessert werden kann.
-- Wenn die eigentliche Änderung sehr klein ist und das Refactoring mehr Zeit in Anspruch nimmt.
+1. Wenn es keine Tests gibt, kann das korrekte Verhalten des Codes nicht sichergestellt werden.
+2. Wenn es keine klare Vorstellung davon gibt, wie der Code verbessert werden kann.
+3. Wenn die eigentliche Änderung sehr klein ist und das Refactoring mehr Zeit in Anspruch nimmt.
 
-Siehe [Die 2-3-5](../2.principles/principles#the-2-3-5) Regel.
+## RFP3 Was soll nicht von einer Refaktorisierung abhalten? {#was-soll-nicht-von-einer-refaktorisierung-abhalten}
 
-## RFP3 Wann soll refaktorisiert werden? {#wann-soll-refaktorisiert-werden}
+1. Schwer verständlicher Coder muss zuerst versanden werden. Dies kann durch Tests geschehen, die dazu auch das Verhalten des Codes sicherstellen.
+2. Schlecht strukturierter Code.
+3. Fehlende Zeit für Refactoring.
+4. Angst vor Seiteneffekten.
+5. Angst vor dem Management, dass keine Zeit für Refactoring zur Verfügung gestellt wird.
+6. Angst vor dem Verlust oder der Veränderung des Verhaltens des Codes.
+
+## RFP4 Wann soll refaktorisiert werden? {#wann-soll-refaktorisiert-werden}
 
 1. Refaktorisierung wird vor dem Beginn einer neuen Aufgabe durchgeführt, wenn notwendig.
 Die Refaktorisierung ermöglicht es auch sich in den Code einzuarbeiten und den Code dadurch besser zu verstehen.
@@ -111,7 +118,7 @@ Damit ist es auch möglich große Teile des Codes zu erneuern, ohne dass ein gan
 
 6. Zu einer Refaktorisierung gehört zudem das Schreiben von Tests, um die Funktionalität sicherzustellen.
 
-## RFP4 Prüfung auf Code Smells {#pruefung-auf-code-smells}
+## RFP5 Prüfung auf Code Smells {#pruefung-auf-code-smells}
 
 `Code Smells` sollen identifiziert und behoben werden, um die Codequalität zu verbessern.
 
@@ -123,20 +130,19 @@ Beispiele hierfür sind überlange Funktionen, verschachtelte Schleifen, globale
 
 Siehe Beispiele [Code-Smells](./codesmells).
 
-
-## RFP5 Vereinfachungen {#vereinfachungen}
+## RFP6 Vereinfachungen {#vereinfachungen}
 
 Code soll vereinfacht durch Refactoring vereinfacht werden, um die Lesbarkeit und Wartbarkeit zu verbessern.
 
 Die Prinzipien [DRY](../2.principles/principles#dry), [SOC](../2.principles/principles#soc) und [KISS](../2.principles/principles#kiss) sind hierbei zu beachten.
 
-## RFP6 Bewusstsein für Seiteneffekte beim Refactoring {#bewusstsein-fuer-seiteneffekte-beim-refactoring}
+## RFP7 Bewusstsein für Seiteneffekte beim Refactoring {#bewusstsein-fuer-seiteneffekte-beim-refactoring}
 
 Während der Refaktorisierung ist es wichtig, sicherzustellen, dass der Code noch immer das tut, was er soll.
 Änderungen, die unerwartete Seiteneffekte verursachen könnten, sollen mit Vorsicht behandelt werden.
 Es ist daher ratsam, Änderungen in kleinen Schritten durchzuführen und regelmäßig zu testen, um sicherzustellen, dass das Verhalten des Codes unverändert bleibt.
 
-## RFP7 Kein nachträgliches Kommentieren von Code {#kein-nachtraegliches-kommentieren-von-code}
+## RFP8 Kein nachträgliches Kommentieren von Code {#kein-nachtraegliches-kommentieren-von-code}
 
 Bestehender Code, der bisher nicht kommentiert wurde, soll im Nachhinein auch nicht kommentiert werden.
 
@@ -144,11 +150,15 @@ Dokumentation von Legacy-Code ist auch im Nachhinein kaum eine Hilfe, den Code z
 Beim Lesen von alten Code besteht die Gefahr, dass er falsch verstanden wird und die Dokumentation dadurch nutzlos und verwirrend wird.
 Vielmehr soll alter Code selbst im Zuge eines Refactorings verbessert werden, damit er selbsterklärend ist und nur neue Dokumentation braucht.
 
-## RFP8 Code entfernen {#code-entfernen}
+## RFP9 Code entfernen {#code-entfernen}
 
 Refaktorisierung kann auch das Entfernen von Code bedeuten, der nicht mehr benötigt wird.
 
-## RFP9 Methodisches Vorgehen {#methodisches-vorgehen}
+Code, der nicht mehr gebraucht wird hat keinen Zweck und kann zu Verwirrung für den Leser führen und benötigt außerdem Zeit, wenn Tests darauf ausgeführt werden.
+
+Wenn der Code und dazugehörige Tests entfernt wurden, soll das Projekt auch neu gebaut werden, um sicherzustellen, dass keine Abhängigkeiten mehr bestehen.
+
+## RFP10 Methodisches Vorgehen {#methodisches-vorgehen}
 
 Ein Refactoring muss methodisch durchgeführt werden, um sicherzustellen, dass das Verhalten des Codes unverändert bleibt.
 
@@ -159,25 +169,53 @@ Ggf. einen Test schreiben, wenn noch keiner vorhanden ist.
 2. Refactoring in kleinen Schritten mit Zwischenprüfung(en) durchführen, ob der Test noch grün ist.
 3. Prüfen, ob alle Tests noch grün sind, damit mögliche Seiteneffekte erkannt werden.
 
-### RFP9 Bezeichner
+## RFP11 Bezeichner {#bezeichner}
 
-### RFP9 Doppelter Code
+Bezeichner sollen aussagekräftig und verständlich sein, daher ist es wichtig, Namen von Variablen, Funktionen und Klassen im Zuge eines Refactorings zu überprüfen und ggf. anzupassen.
 
-## RFP10 Lange Funktionen/Methoden {#lange-funktionen-methoden}
+1. Namen können länger, aber aussagekräftiger sein.
+2. Abkürzungen sollen ausgechrieben werden.
+3. Namen sollen entsprechend der Funktion benannt werden.
+4. Präfixe (`get`, `set`) und Typ-Suffixe (`varStr`, `iVar`) sollen vermieden werden.
+5. Kompexe Namen deuten auf komplexe Funktionen hin und die Funktion sollte refaktorisiert werden.
 
-## RFP11 Lange Parameterlisten {#lange-parameterlisten}
+Weitere Regeln können unter [Bezeichner](../6.languages/naming.html) gefunden werden.
 
-## RFP12 Globale Variablen/Daten {#globale-variablen-daten}
+## RFP12 Doppelter Code {#doppelter-code}
 
-## RFP13 Feature-Neid {#feature-neid}
+Mehrfach vorkommender Code reduziert Kopplung (Abhängigkeit) kann aber auch zu Wartbarkeitsproblemen führen,
+da Änderungen an mehreren Stellen vorgenommen werden müssen (Eine Stelle vergessen?).
 
-## RFP14 elementare Datentypen {#elementare-datentypen}
+1. Einzelne Zeilen von dupliziertem Code können in eine Funktion extrahiert werden.
+2. Funktionen mit ähnlichem Verhalten können in parametrisierte Methoden zusammengeführt werden.
+3. Große und viele Duplikate können durch das Zusammenführen in Klassen oder Modulen reduziert werden.
 
-## RFP15 Schleifen {#schleifen}
+Nicht jedes Duplikat benötigt eine Refaktorisierung, beispielweise wenn es nur zwei Stellen gibt, an denen der Code vorkommt.
+Die [Die 2-3-5](../2.principles/principles#the-2-3-5) Regel kann hierbei helfen einzuschätzen, ob ein Duplikat refaktorisiert werden sollte.
 
-## RFP16 Switch-Statements {#switch-statements}
+## RFP13 Lange Funktionen/Methoden {#lange-funktionen-methoden}
 
-## RFP17 If-Statements {#if-statements}
+Kompexlität von Funktionen/Methoden steigt mir ihrer Länge.
+Um die Lesbarkeit und Wartbarkeit zu verbessern, sollen lange Funktionen/Methoden in kleinere Funktionen/Methoden aufgeteilt werden.
+
+1. Funktionen/Methoden sollen nur eine Aufgabe erfüllen.
+2. Funktionen/Methoden sollen in mehrere Funktionen/Methoden in unterschiedlichen Abstraktionsstufen aufgeteilt werden.
+3. Jede aufgteilte Funktion/Methode soll eine klare Aufgabe haben.
+4. Jede aufgteilte Funktion/Methode soll getestet werden.
+
+## RFP14 Lange Parameterlisten {#lange-parameterlisten}
+
+## RFP15 Globale Variablen/Daten {#globale-variablen-daten}
+
+## RFP16 Feature-Neid {#feature-neid}
+
+## RFP17 elementare Datentypen {#elementare-datentypen}
+
+## RFP18 Schleifen {#schleifen}
+
+## RFP19 Switch-Statements {#switch-statements}
+
+## RFP20 If-Statements {#if-statements}
 
 - Negationen
 - Große If-Blöcke
@@ -188,20 +226,18 @@ Ggf. einen Test schreiben, wenn noch keiner vorhanden ist.
 
 Siehe Beispiele [Code-Smells](./codesmells#if-statements).
 
-## RFP18 Umfangreiche Klassen {#umfangreiche-klassen}
+## RFP21 Umfangreiche Klassen {#umfangreiche-klassen}
 
 ::: danger TODO:
 Umfangreiche Klassen
 :::
 
-## RFP19 Datenklassen {#datenklassen}
+## RFP22 Datenklassen {#datenklassen}
 
 ::: danger TODO:
 :::
 
-
-## RFP20 Kommentare {#kommentare}
+## RFP23 Kommentare {#kommentare}
 
 ::: danger TODO:
 :::
-
