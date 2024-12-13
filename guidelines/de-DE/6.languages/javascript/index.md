@@ -1888,12 +1888,12 @@ Jede Zeile innerhalb des Kommentars beginnt mit `*`.
 ```javascript
 /**
  * Berechnet die Summe von zwei Zahlen.
- * @param {number} x - Die erste Zahl.
- * @param [number] y - Die zweite Zahl ist optional. //Alternative Google Closure Compiler Syntax: {number=}
- * @param [string|number] text - Ein Text als String oder Zahl.
- * @param {*} data - Ein beliebiger Typ.
+ * @param {number} x Die erste Zahl.
+ * @param [number] y Die zweite Zahl ist optional. //Alternative Google Closure Compiler Syntax: {number=}
+ * @param [string|number] text Ein Text als String oder Zahl.
+ * @param {*} data Ein beliebiger Typ.
  * @param {number} [offsetDefault=1] - Der Standardwert, falls der Parameter fehlt.
- * @returns {number} Die Summe der beiden Zahlen.
+ * @return {number} Die Summe der beiden Zahlen.
  * @throws {Error} Wenn die Eingabe ungültig ist.
  */
 ```
@@ -1935,10 +1935,10 @@ Objekt-Variablen können direkt mit `@type` dokumentiert werden.
  /**
  * Ein Benutzerobjekt.
  * @type {Object}
- * @property {string} name - Der Name des Benutzers.
- * @property {number} age - Das Alter des Benutzers.
- * @property {{street: string, city: string}} address - Die Adresse des Benutzers.
- * @property {string[]} roles - Die Rollen des Benutzers.
+ * @property {string} name Der Name des Benutzers.
+ * @property {number} age Das Alter des Benutzers.
+ * @property {{street: string, city: string}} address Die Adresse des Benutzers.
+ * @property {string[]} roles Die Rollen des Benutzers.
  */
 let user = {
   name: 'Alice',
@@ -1964,8 +1964,8 @@ Im Gegensatz zu `@type`, welches den Typ einer Variablen oder eines Objekts angi
  * Ein Benutzerobjekt.
  * @typedef {Object} User
  * @type {Object}
- * @property {string} name - Der Name des Benutzers.
- * @property {number} age - Das Alter des Benutzers.
+ * @property {string} name Der Name des Benutzers.
+ * @property {number} age Das Alter des Benutzers.
  */
 
 // definiert den Typ der Variable user als User-Objekt
