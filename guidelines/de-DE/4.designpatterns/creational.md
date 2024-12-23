@@ -46,15 +46,18 @@ Sie helfen dabei, die Erzeugung von Objekten zu entkoppeln und die Art und Weise
 Allen Kapiteln wurde eine eindeutige Nummerierung, der Richtliniennummer, hinzugefügt, um eine eindeutige Identifikation zu ermöglichen.
 Jede Richtliniennummer besteht aus dem Buchstaben **DPC**(Design Pattern Creational) gefolgt von einer Nummer, die den Abschnitt identifiziert. Damit kann eine Regel eindeutig identifiziert werden, z.B. für ein Code-Review.
 
-
 ## DPC1 Singleton {#singleton}
 
 ::: danger TODO:
 Beispiel
 :::
 
-
 Das Singleton Pattern sorgt dafür, dass von einer Klasse nur ein einziges Objekt existiert.
+
+::: warning Anti-Pattern
+Das Singleton Pattern wird oft als Anti-Pattern angesehen, da es die Testbarkeit des Codes erschwert.
+Oftmals werden Utility- oder Service-Klassen als Singleton implementiert, was zu einer starken Kopplung führt, da direkt auf die Singleton-Instanz zugegriffen wird, statt über Interfaces.
+:::
 
 ### DPC1 Externe Beschreibung auf refactoring.guru
 
@@ -62,12 +65,84 @@ Das Singleton Pattern sorgt dafür, dass von einer Klasse nur ein einziges Objek
 
 ## DPC2 Factory Method {#factory-method}
 
-::: danger TODO:
-Beispiel
-:::
-
-
 Das Factory Method Pattern definiert eine Schnittstelle zur Erzeugung von Objekten, lässt aber die Unterklassen entscheiden, welche Klasse instanziiert wird.
+Auf diese Weise können Objekte sehr flexibel mit derselben Methode erstellt werden.
+
+### DPC2 Beispiel
+
+Im folgenden Beispiel wird das Factory Method Pattern verwendet, um eine abstrakte Klasse `Creator` zu definieren, die eine abstrakte Methode `factoryMethod` enthält, die von Unterklassen implementiert wird, um eine Instanz von `Product` zu erstellen.
+Je nach Implementierung der `factoryMethod` wird eine Instanz von `ConcreteProduct` oder einer anderen Klasse erstellt.
+
+::: code-group
+
+```java [Java]
+public abstract class Creator {
+    public abstract Product factoryMethod();
+}
+
+public class ConcreteCreator extends Creator {
+    @Override
+    public Product factoryMethod() {
+        return new ConcreteProduct();
+    }
+}
+
+public class ConcreteCreatorAnother extends Creator {
+    @Override
+    public Product factoryMethod() {
+        return new ConcreteAnotherProduct();
+    }
+}
+
+public interface Product {
+    void operation();
+}
+
+public class ConcreteProduct implements Product {
+    @Override
+    public void operation() {
+        System.out.println("ConcreteProduct operation");
+    }
+}
+
+public class Client {
+    public static void main(String[] args) {
+        Creator creator = new ConcreteCreator();
+        Product product = creator.factoryMethod();
+        product.operation();
+    }
+}
+```
+
+```typescript [TypeScript]
+interface Creator {
+    factoryMethod(): Product;
+}
+
+class ConcreteCreator implements Creator {
+    factoryMethod(): Product {
+        return new ConcreteProduct();
+    }
+}
+
+class ConcreteCreatorAnother implements Creator {
+    factoryMethod(): Product {
+        return new ConcreteAnotherProduct();
+    }
+}
+
+interface Product {
+    operation(): void;
+}
+
+class ConcreteProduct implements Product {
+    operation(): void {
+        console.log("ConcreteProduct operation");
+    }
+}
+```
+
+:::
 
 ### DPC2 Externe Beschreibung auf refactoring.guru
 
@@ -75,12 +150,107 @@ Das Factory Method Pattern definiert eine Schnittstelle zur Erzeugung von Objekt
 
 ## DPC3 Abstract Factory {#abstract-factory}
 
-::: danger TODO:
-Beispiel
+Das Abstract Factory Pattern definiert eine Schnittstelle zur Erzeugung von Familien von Objekten, ohne die konkreten Klassen zu spezifizieren.
+
+::: info Erweiterbarkeit
+
+Durch das Abstract Factory Pattern können neue Familien von Objekten hinzugefügt werden, ohne die bestehenden Klassen zu ändern.
+Sollte später neue Funktionalität gewünscht sein, kann eine neue Factory-Klasse erstellt werden, die die neuen Klassen instanziiert.
+
 :::
 
+### DPC3 Beispiel
 
-Das Abstract Factory Pattern definiert eine Schnittstelle zur Erzeugung von Familien von Objekten, ohne die konkreten Klassen zu spezifizieren.
+::: code-group
+
+```java [Java Auth-Benutzer]
+
+class AbstractAuthenticatedUserFactory {
+    public abstract AuthenticatedUser getAuthenticatedUser();
+}
+
+class AuthenticatedUserFactory extends AbstractAuthenticatedUserFactory {
+    private User user;
+    public ConcreteAuthenticatedUserFactory(User user) {
+        this.user = user;
+    }
+    @Override
+    public AuthenticatedUser getAuthenticatedUser() {
+        return new ConcreteAuthenticatedUser(user);
+    }
+}
+
+class SysAdminFactory extends AbstractAuthenticatedUserFactory {
+    @Override
+    public AuthenticatedUser getAuthenticatedUser() {
+        return new SysAdmin();
+    }
+}
+
+// ...
+class Backend {
+    private AbstractAuthenticatedUserFactory factory;
+    public Backend(AbstractAuthenticatedUserFactory factory) {
+        this.factory = factory;
+    }
+    public AbstractAuthenticatedUserFactory authenticate(LoginDto loginDto) {
+        // Login logic example only!
+        if (loginDto.getUsername().equals("admin")) {
+            factory = new SysAdminFactory();
+        } else {
+            factory = new AuthenticatedUserFactory();
+        }
+        
+        return factory;
+    }
+}
+
+```
+
+```typescript [TypeScript]
+
+interface AbstractAuthenticatedUserFactory {
+    getAuthenticatedUser(): AuthenticatedUser;
+}
+
+class AuthenticatedUserFactory implements AbstractAuthenticatedUserFactory {
+    private user: User;
+    constructor(user: User) {
+        this.user = user;
+    }
+    getAuthenticatedUser(): AuthenticatedUser {
+        return new ConcreteAuthenticatedUser(this.user);
+    }
+}
+
+class SysAdminFactory implements AbstractAuthenticatedUserFactory {
+    getAuthenticatedUser(): AuthenticatedUser {
+        return new SysAdmin();
+    }
+}
+
+// ...
+
+class Backend {
+    private factory: AbstractAuthenticatedUserFactory;
+    constructor(factory: AbstractAuthenticatedUserFactory) {
+        this.factory = factory;
+    }
+    authenticate(loginDto: LoginDto): AbstractAuthenticatedUserFactory {
+        // Login logic example only!
+        if (loginDto.username === "admin") {
+            this.factory = new SysAdminFactory();
+        } else {
+            this.factory = new AuthenticatedUserFactory();
+        }
+        
+        return this.factory;
+    }
+}
+
+```
+
+:::
 
 ### DPC3 Externe Beschreibung auf refactoring.guru
 

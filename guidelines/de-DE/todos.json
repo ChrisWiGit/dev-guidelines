@@ -28,14 +28,6 @@
         "link": "4.designpatterns\\creational.md#singleton"
       },
       {
-        "title": "DPC2 Factory Method",
-        "link": "4.designpatterns\\creational.md#factory-method"
-      },
-      {
-        "title": "DPC3 Abstract Factory",
-        "link": "4.designpatterns\\creational.md#abstract-factory"
-      },
-      {
         "title": "DPC5 Prototype",
         "link": "4.designpatterns\\creational.md#prototype"
       }
@@ -68,15 +60,15 @@
         "link": "5.refactoring\\general.md"
       },
       {
-        "title": "RFP18 Umfangreiche Klassen",
+        "title": "RFP21 Umfangreiche Klassen",
         "link": "5.refactoring\\general.md#umfangreiche-klassen"
       },
       {
-        "title": "RFP19 Datenklassen",
+        "title": "RFP22 Datenklassen",
         "link": "5.refactoring\\general.md#datenklassen"
       },
       {
-        "title": "RFP20 Kommentare",
+        "title": "RFP23 Kommentare",
         "link": "5.refactoring\\general.md#kommentare"
       }
     ]

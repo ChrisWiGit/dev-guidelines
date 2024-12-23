@@ -406,7 +406,7 @@ Umgesetzt wird dies durch:
 - Aufteilung von Klassen und Methoden in kleinere Einheiten.
 - Verwendung von Dependency Injection, um Abhängigkeiten zu verwalten.
 - Abstrahierung von Klassen durch Schnittstellen (Interfaces).
-- Verwendung von Design Patterns, um die Verantwortlichkeiten zu trennen (
+- Verwendung von Design Patterns, um die Verantwortlichkeiten zu trennen.
 - Verwendung von immutable Objekten (Value-Objects) und Information Hiding.
 
 ### GL24 Vorteile
@@ -414,3 +414,32 @@ Umgesetzt wird dies durch:
 - Übersichtlicher Code durch kleinere Einheiten
 - Einfachere Wartung, durch weniger Komplexität, weil einzelne Methoden und Klassen weniger Aufgaben haben und dadurch kleiner sind.
 - Einfachere Tests, da einzelne Methoden und Klassen einfacher zu testen sind.
+
+## GL25 Länge von Methoden/Funktionen {#laenge-von-methoden-funktionen}
+
+Oftmals bestehen Methoden/Funktionen aus vielen Zeilen Code, die aus Kombinationen von logischen (`if`, `while`) und operativen Anweisungen (Aufrufen) bestehen.
+Diese Methoden/Funktionen sind oft schwer zu verstehen und zu testen.
+
+Die Länge von Methoden/Funktionen ist daher soweit klein zu halten, dass sie nur eine Aufgabe erfüllen und leicht zu verstehen sind.
+Dies kann durch folgende Maßnahmen erreicht werden:
+
+- Extrahieren von Code in eigene Methoden/Funktionen ([Single Responsibility Principle](../2.principles/principles.md#single-responsibility-principle))
+  - Business-fremde Logik in eigene Klassen oder Module auslagern ([Separation of Concerns](../2.principles/principles.md#separation-of-concerns), [Einsatz von modellgetriebener Entwicklung](../general.md#model-getriebener-entwicklung}]))
+  - Schleifen oder Schleifenkörper in eigene Methoden/Funktionen extrahieren
+  - Ausnahmebehandlung dem Framework überlassen oder in eigene Methoden/Funktionen extrahieren ([Decorator-Pattern](../4.designpatterns/structural.md#decorator))
+- Auftrennen der Methoden/Funktionen in logische und operative Methoden/Funktionen ([Trennung von operationalem und integrativem Code](../6.languages/index#trennung-von-operationalem-und-integrativem-code))
+
+Anhaltspunkte wie maximal groß eine Methode/Funktion sein sollte sind:
+
+- Die Anzahl der Zeilen soll eine durchschnittliche Bildschirmhöhe nicht überschreiten, damit die Methode/Funktion auf einen Blick erfasst werden kann.
+- 24 Zeilen (einschließlich Leerzeilen) können auf einen Blick erfasst werden.
+- Die Menge an Informationen, die ein menschliches Gehirn gleichzeitig verarbeiten kann sind 7±2 (Miller's Law).
+- Unit-Tests sind zu groß und komplex (7±2 Fälle).
+
+<!-- !glossary-->
+::: details Miller's Law
+
+Millers Law, benannt nach dem Psychologen George A. Miller, besagt, dass ein Mensch durchschnittlich nur etwa 7 ± 2 Informationseinheiten (Chunks) gleichzeitig im Kurzzeitgedächtnis halten kann.
+
+Millers Law hilft Software intuitiver, verständlicher und wartbarer zu gestalten, indem es die kognitiven Grenzen des Menschen berücksichtigt.
+:::

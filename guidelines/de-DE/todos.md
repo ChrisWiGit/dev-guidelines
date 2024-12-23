@@ -17,8 +17,6 @@ Dieses Dokument enthält eine Liste von Aufgaben, die noch erledigt werden müss
 ## 4.designpatterns\creational.md
 
 - [DPC1 Singleton](4.designpatterns\creational.md#singleton)
-- [DPC2 Factory Method](4.designpatterns\creational.md#factory-method)
-- [DPC3 Abstract Factory](4.designpatterns\creational.md#abstract-factory)
 - [DPC5 Prototype](4.designpatterns\creational.md#prototype)
 
 ## 4.designpatterns\structural.md
@@ -30,9 +28,9 @@ Dieses Dokument enthält eine Liste von Aufgaben, die noch erledigt werden müss
 ## 5.refactoring\general.md
 
 - [Prinzipien des Refactoring](5.refactoring\general.md)
-- [RFP18 Umfangreiche Klassen](5.refactoring\general.md#umfangreiche-klassen)
-- [RFP19 Datenklassen](5.refactoring\general.md#datenklassen)
-- [RFP20 Kommentare](5.refactoring\general.md#kommentare)
+- [RFP21 Umfangreiche Klassen](5.refactoring\general.md#umfangreiche-klassen)
+- [RFP22 Datenklassen](5.refactoring\general.md#datenklassen)
+- [RFP23 Kommentare](5.refactoring\general.md#kommentare)
 
 ## 5.refactoring\java.md
 

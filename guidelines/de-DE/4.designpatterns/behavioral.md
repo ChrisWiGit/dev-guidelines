@@ -44,14 +44,12 @@ Beispiele
 
 :::
 
-
 ## Einleitung {#einleitung}
 
 Verhaltensmuster sind Entwurfsmuster, die sich mit der Kommunikation zwischen Objekten und Klassen beschäftigen.
 
 Allen Kapiteln wurde eine eindeutige Nummerierung, der Richtliniennummer, hinzugefügt, um eine eindeutige Identifikation zu ermöglichen.
 Jede Richtliniennummer besteht aus dem Buchstaben **DPB**(Design Pattern Behavioral) gefolgt von einer Nummer, die den Abschnitt identifiziert. Damit kann eine Regel eindeutig identifiziert werden, z.B. für ein Code-Review.
-
 
 ## DPB1 Chain of Responsibility {#chain-of-responsibility}
 

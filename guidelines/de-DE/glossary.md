@@ -76,6 +76,11 @@ Sie beschreibt, wie stark die Funktionalität innerhalb eines Moduls, Klasse ode
 Das Argument "mehr Code" ist kein Argument gegen die Trennung von Verantwortlichkeiten, denn die Trennung führt zu besser wartbarem und testbarem Code, was die Größe des Codes überwiegt.
 Ein großer Teil des zusätzlichen Codes sind oftmals nur Methoden- oder Klassendeklarationen, die keine zusätzliche Logik enthalten und damit auch nicht getestet werden können (Solche Logik wird vom Compiler/Interpreter/Linter geprüft).
 
+## Miller's Law
+
+Millers Law, benannt nach dem Psychologen George A. Miller, besagt, dass ein Mensch durchschnittlich nur etwa 7 ± 2 Informationseinheiten (Chunks) gleichzeitig im Kurzzeitgedächtnis halten kann.
+Millers Law hilft Software intuitiver, verständlicher und wartbarer zu gestalten, indem es die kognitiven Grenzen des Menschen berücksichtigt.
+
 ## Model Driven Development vs. Domain Driven Design
 
 - **Model Driven Development (MDE)** konzentriert sich auf die Modellierung von Software.

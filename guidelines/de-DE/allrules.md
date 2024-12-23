@@ -62,6 +62,7 @@ layout: doc
 - [GL22 Vertikaler Abstand](6.languages/general.md#vertikaler-abstand)
 - [GL23 Parameter prüfen](6.languages/general.md#parameter-pruefen)
 - [GL24 Trennung von Verantwortlichkeiten](6.languages/general.md#trennung-von-verantwortlichkeiten)
+- [GL25 Länge von Methoden/Funktionen](6.languages/general.md#laenge-von-methoden-funktionen)
 
 ## Allgemein Regeln für Namen
 
