@@ -3210,6 +3210,15 @@ public class MyClass {
 }
 ```
 
+::: info Warum Logging getestet werden sollte
+
+Logging sollte in Tests getestet werden, um sicherzustellen, dass die richtigen Log-Nachrichten mit den richtigen Parametern und Werten protokolliert werden.
+Werte, die über Platzhalter (`{}`, `%s%d`, `{0}{1}`) in Log-Nachrichten eingefügt werden, sollten überprüft werden, um sicherzustellen, dass die richtigen Werte und im richtigen Format protokolliert werden.
+Logging in Fehlerfällen sollte ebenfalls getestet werden, um sicherzustellen, dass die richtigen Fehlermeldungen protokolliert werden.
+Sollte ein Logging im Fehlerfall selbst eine Exception werfen, wird die ursprüngliche Exception verschluckt und kann nicht erkannt werden.
+
+:::
+
 ### J43 Lösung
 
 Statt statische Initialisierungen zu verwenden, kann [Dependency Injection](../../2.principles/principles.md#dependency-injection) verwendet werden, um die Werte zur Laufzeit zu setzen.
