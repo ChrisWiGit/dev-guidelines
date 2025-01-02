@@ -11,8 +11,8 @@ hero:
       text: Craftmanship/Craftwomanship
       link: ./craftsmanship
     - theme: alt
-      text: 1000 Stunden Regel
-      link: ./1000hours
+      text: 10000 Stunden Regel
+      link: ./10000hours
     - theme: alt
       text: Warum Clean Code?
       link: ./whycleancode
@@ -26,7 +26,17 @@ features:
 
 # Clean Code
 
+## Einleitung
+
+Clean Code wurde ursprünglich von Robert C. Martin in seinem gleichnamigen Buch genannt.
+Es ist ein Begriff, der sich auf die Lesbarkeit und Wartbarkeit von Code bezieht und Verhaltensweise, Prinzipien, Regeln und Best Practices umfasst, die dazu beitragen, Code sauber und verständlich zu halten.
+
+Viele Regeln und Best Practices in diesen [Richtlinien](../) sind Teil von Clean Code oder können als Teil davon betrachtet werden.
+
+## Thema Performance
+
+Es ist 
+
 ::: danger TODO: Clean Code
 :::
-
 

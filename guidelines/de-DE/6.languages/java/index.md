@@ -3074,7 +3074,8 @@ public List<String> getActiveUsers(List<Integer> userIds) {
 
 ### J40 Ausnahmen
 
-In bestimmten Fällen kann es aus Performance-Gründen oder aufgrund von spezifischen Anforderungen notwendig sein, die Komplexität direkt in der API-Methode zu belassen. In solchen Fällen sollte jedoch sorgfältig abgewogen werden, ob die Vorteile der Kapselung überwiegen.
+In bestimmten Fällen kann es aus Performance-Gründen oder aufgrund von spezifischen Anforderungen notwendig sein, die Komplexität direkt in der API-Methode zu belassen. 
+In solchen Fällen sollte jedoch sorgfältig abgewogen werden, ob die Vorteile der Kapselung überwiegen.
 
 ### J40 Weiterführende Literatur/Links
 
@@ -3182,4 +3183,131 @@ Beispiele für Methoden, die unveränderliche Datenstrukturen `Collections.unmod
 Dies wird durch eine Wrapper-Klasse erreicht, die die Methoden zum Hinzufügen und Entfernen von Elementen blockiert, bzw. eine Ausnahame `UnsupportedOperationException` wirft.
 Der Vorteil besteht darin, dass die ursprüngliche Datenstruktur nicht kopiert werden muss, sondern nur eine Ansicht auf die Datenstruktur erstellt wird.
 Wenn komplexe Objekte in einer unveränderlichen Datenstruktur gespeichert werden, können die Objekte jedoch selbst verändert werden.
+:::
+
+## J43 Statische Initialisierer vermeiden {#statische-initialisierer-vermeiden}
+
+Statische Initialisierungen in Java sind eine Möglichkeit, in Klassen statische Felder direkt beim Start der Anwendung zu initialisieren.
+Statische Initialisierungen sind jedoch, wie der Name schon sagt, statisch und können nicht verändert werden, was zu Problemen bei der Testbarkeit und Wartbarkeit führen kann, wenn diese Werte doch verändert werden müssen.
+
+### J43 Problem
+
+Statische Felder, die direkt mit einem Wert initialisiert werden, können zur Lauzeit nicht verändert werden.
+In Tests kann es notwendig sein, diese Werte zu verändern, um bestimmte Szenarien zu testen und Mocks zu verwenden.
+Im ersten Beispiel wird ein statisches Feld mit einer Umgebungsvariable initialisiert, die auf dem Produktivsystem gesetzt wird, jedoch in einer Testumgebung überschrieben werden muss.
+
+```java
+public class Config {
+  public static final String ENVIRONMENT = System.getProperty("environment", "dev");
+}
+```
+
+Auch Logging mit dem SLF4J-Framework kann in Tests nicht getestet werden, wenn der Logger statisch initialisiert wird.
+
+```java [Logger]
+public class MyClass {
+  private static final Logger log = LoggerFactory.getLogger(MyClass.class);
+}
+```
+
+### J43 Lösung
+
+Statt statische Initialisierungen zu verwenden, kann [Dependency Injection](../../2.principles/principles.md#dependency-injection) verwendet werden, um die Werte zur Laufzeit zu setzen.
+
+Die Klasse sollte sich nicht darum kümmern müssen, woher die Umgebungsvariable kommt, sondern nur, dass sie gesetzt ist.
+Es ist die Aufgabe des Aufrufers, die Umgebungsvariable zu setzen.
+So kann der Wert auch aus einer Datei, einer Datenbank oder als CLI-Argument kommen.
+
+```java
+public class Config {
+  private String environment;
+
+  public Config(String environment) {
+    this.environment = environment;
+  }
+
+  public String getEnvironment() {
+    return environment;
+  }
+}
+```
+
+Es gibt viele Lösungen für den Einsatz von Dependency Injection mit SL4J.
+
+- Logger als Parameter übergeben
+- Logger über Factory-Methode erstellen
+- Einen Log-Adapter verwenden, um die Log-Implementierung zu wrappen
+
+::: code-group
+
+```java [org.slf4j.Logger]
+
+public class MyClass {
+  private final Logger log;
+
+  public MyClass(Logger log) {
+    this.log = log;
+  }
+
+```
+
+```java [org.slf4j.ILoggerFactory]
+
+public class MyClass {
+   private static final Logger;
+
+  public MyClass(ILoggFactory loggerFactory) {
+    this.Logger = loggerFactory.getLogger(MyClass.class);
+  }
+}
+
+```
+
+```java [Log-Adapter]
+
+public interface CustomLoggerInterface {
+  void info(String message);
+  void error(String message);
+}
+
+public class LogAdapter implements CustomLoggerInterface {
+  private final org.slf4j.Logger logger;
+
+  public LogAdapter(org.slf4j.Logger logger) {
+    this.logger = logger;
+  }
+
+  public void info(String message) {
+    logger.info(message);
+  }
+
+  public void error(String message) {
+    logger.error(message);
+  }
+}
+
+public class MyClassToLog {
+  private final Logger log;
+
+  public MyClassToLog(Logger log) {
+    this.log = log;
+  }
+}
+
+void Main() {
+  org.slf4j.Logger logger = LoggerFactory.getLogger(MyClassToLog.class);
+  LogAdapter logAdapter = new LogAdapter(logger);
+  MyClassToLog myClassToLog = new MyClassToLog(logAdapter);
+}
+
+```
+
+Ein Adapter kann auch verwendet werden, um die Log-Implementierung zu wrappen und so die Log-Implementierung zu entkoppeln.
+Damit ist die Klasse nicht mehr von einer spezifischen Log-Implementierung abhängig (hier das Logger-Interface), sondern nur noch von einer generischen Log-Implementierung, die im Projekt definiert ist.
+
+::: warning Spezieller Code für Tests
+
+Bei diesem Code handelt es sich nicht um speziellen Code für Tests, sondern um eine allgemeine Verbesserung der Codequalität.
+Die Klasse wir dadurch vom konkreten Logger entkoppelt und kann leichter getestet werden.
+
 :::
