@@ -82,5 +82,10 @@ features:
 - title: Komposition über Vererbung
   details: Daten mit Komposition statt Vererbung modellieren 
   link: ./principles#komposition-ueber-vererbung
+- title: Kenne deine Werkzeuge
+  details: Entwickler sollen die Werkzeuge, die sie verwenden, gut kennen
+  link: ./principles#kenne-deine-werkzeuge
+- title: Fehler mit Tests nachstellen
+  details: Fehler mit Tests reproduzierbar machen
+  link: ./principles#fehler-mit-tests-nachstellen
 ---
-

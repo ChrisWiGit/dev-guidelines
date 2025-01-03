@@ -1,6 +1,7 @@
 ---
 # https://vitepress.dev/reference/default-theme-home-page
 layout: doc
+outline: [2, 2]
 customRulePrefix: GL
 customIgnoreTitlesForRules: [Einleitung]
 ---
@@ -87,7 +88,7 @@ Ein Projekt soll mit einem einzigen Befehl gebaut werden können. Dies erleichte
 
 ## GL7 Dokumentation {#dokumentation}
 
-- Ein Projekt muss immer mit einem `README.md`-Dokument beginnen, das eine kurze und lange Beschreibung des Projekts, Anweisungen zur Installation und Verwendung, sowie Informationen zur Lizenzierung und zum Beitrag enthält.
+- Ein Projekt muss immer mit einem `README`-Dokument beginnen, das eine kurze und lange Beschreibung des Projekts, Anweisungen zur Installation und Verwendung, sowie Informationen zur Lizenzierung und zum Beitrag enthält.
 - Der Standardtext, der von gitlab für readme-Dateien generiert wird, muss angepasst werden.
 - Dokumentation über die Architektur und die Funktionsweise muss verlinkt oder im Projekt selbst enthalten sein.
 
@@ -258,7 +259,7 @@ addressDI.streetName();
 Code wird öfters gelesen als geschrieben.
 Daher ist es wichtig, dass die Namensgebung konsistent und aussagekräftig ist.
 
-Detailliertere Regeln dazu findest du in [Einheitliche Namensgebung](./naming.md).
+Detailliertere Regeln dazu findest du in [Einheitliche Namensgebung](./naming).
 
 ::: info
 Gute Code beschreibt sich selbst.
@@ -389,6 +390,8 @@ Hauptsächliche Probleme bei Parameter sind:
 NullPointer-Exceptions sind keine Parameterprüfungen, sondern Fehlerbehandlungen, die durch die Sprache zur Laufzeit durchgeführt werden.
 Oftmals beinhalten diese Meldungen keine Informationen, welcher Parameter null war und sollen daher durch eine separate Parameterprüfung mit Erklärung ersetzt werden.
 
+:::
+
 ## GL24 Trennung von Verantwortlichkeiten {#trennung-von-verantwortlichkeiten}
 
 Es sollen Methoden, Klassen und Module nur die Aufgaben erfüllen, für die sie zuständig sind.
@@ -421,12 +424,17 @@ Oftmals bestehen Methoden/Funktionen aus vielen Zeilen Code, die aus Kombination
 Diese Methoden/Funktionen sind oft schwer zu verstehen und zu testen.
 
 Die Länge von Methoden/Funktionen ist daher soweit klein zu halten, dass sie nur eine Aufgabe erfüllen und leicht zu verstehen sind.
+
+**Idealerweise soll die Methode/Funktion so klein gehalten werden, dass maximal maximal 7 Fälle damit behandelt werden können.
+Dies entspricht der kognitiven Grenze des Menschen, der nur 7±2 Informationseinheiten gleichzeitig verarbeiten kann (Miller's Law).
+Dies entspricht nicht unbedingt der Anzahl der Zeilen.**
+
 Dies kann durch folgende Maßnahmen erreicht werden:
 
-- Extrahieren von Code in eigene Methoden/Funktionen ([Single Responsibility Principle](../2.principles/principles.md#single-responsibility-principle))
-  - Business-fremde Logik in eigene Klassen oder Module auslagern ([Separation of Concerns](../2.principles/principles.md#separation-of-concerns), [Einsatz von modellgetriebener Entwicklung](../general.md#model-getriebener-entwicklung}]))
+- Extrahieren von Code in eigene Methoden/Funktionen ([Single Responsibility Principle](../2.principles/principles#single-responsibility-principle))
+  - Business-fremde Logik in eigene Klassen oder Module auslagern ([Separation of Concerns](../2.principles/principles#separation-of-concerns), [Einsatz von modellgetriebener Entwicklung](../general#model-getriebener-entwicklung}]))
   - Schleifen oder Schleifenkörper in eigene Methoden/Funktionen extrahieren
-  - Ausnahmebehandlung dem Framework überlassen oder in eigene Methoden/Funktionen extrahieren ([Decorator-Pattern](../4.designpatterns/structural.md#decorator))
+  - Ausnahmebehandlung dem Framework überlassen oder in eigene Methoden/Funktionen extrahieren ([Decorator-Pattern](../4.designpatterns/structural#decorator))
 - Auftrennen der Methoden/Funktionen in logische und operative Methoden/Funktionen ([Trennung von operationalem und integrativem Code](../6.languages/index#trennung-von-operationalem-und-integrativem-code))
 
 Anhaltspunkte wie maximal groß eine Methode/Funktion sein sollte sind:
@@ -442,4 +450,27 @@ Anhaltspunkte wie maximal groß eine Methode/Funktion sein sollte sind:
 Millers Law, benannt nach dem Psychologen George A. Miller, besagt, dass ein Mensch durchschnittlich nur etwa 7 ± 2 Informationseinheiten (Chunks) gleichzeitig im Kurzzeitgedächtnis halten kann.
 
 Millers Law hilft Software intuitiver, verständlicher und wartbarer zu gestalten, indem es die kognitiven Grenzen des Menschen berücksichtigt.
+:::
+
+## GL26 Niedrige Kopplung {#niedrige-kopplung}
+
+Oftmals sind Klassen und Methoden so miteinander verbunden, dass eine Änderung in einer Klasse oder Methode eine Änderung in einer anderen Klasse oder Methode erfordert.
+Dies führt zu einer hohen Kopplung zwischen den Klassen und Methoden.
+
+Hohe Kopplung kann verhindert werden durch:
+
+- Einsatz von Architekturmustern, um die Kopplung zu verringern (Schichtenarchitektur, Pipes and Filters, Microservices, Hexagonale Architektur/Ports and Adapters).
+- Verwendung von Schnittstellen (Interfaces) und abstrakten Klassen, um die Kopplung zu verringern.
+- Verwendung von Dependency Injection, um Abhängigkeiten zu verwalten.
+- Verwendung von Design Patterns, um Klassen, deren Abstraktion und Implementierung voneinander zu trennen ([Adapter](../4.designpatterns/structural#adapter), [Bridge](../4.designpatterns/structural#bridge), [Mediator](../4.designpatterns/behavioral#mediator)).
+
+::: warning Schnittstellen
+
+Niedrige Kopplung wird hauptsächlich durch Schnittstellen erreicht.
+Verwende daher immer Schnittstellen, um die Kopplung zwischen Klassen zu verringern.
+
+Der zusätzliche Aufwand rechnet sich, wenn die Klassen getestet oder erweitert werden müssen.
+
+Welche Arten von Kopplungen es gibt, können in [Kopplung](../2.principles/principles#coupling) nachgelesen werden.
+
 :::

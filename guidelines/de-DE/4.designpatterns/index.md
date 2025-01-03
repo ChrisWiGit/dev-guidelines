@@ -132,9 +132,7 @@ features:
       width: 36
       height: 36
       alt: Proxy zählt zu den Creational Patterns      
-
 ## Behavioral Patterns
-
   - title: Chain of Responsibility
     details: Eine Anfrage von mehr als einem Objekt bearbeiten
     link: ./behavioral#chainofresponsibility

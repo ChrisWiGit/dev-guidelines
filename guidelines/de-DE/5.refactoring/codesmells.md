@@ -8,7 +8,7 @@ outline: [2, 2]
 
 ## Einleitung {#einleitung}
 
-Code-Smells sind Hinweise darauf, dass der Code [refaktorisiert](../5.refactoring/general.md) werden sollte.
+Code-Smells sind Hinweise darauf, dass der Code [refaktorisiert](../5.refactoring/general) werden sollte.
 Anhand von wiederkehrende Muster und Anzeichen können Code-Smells identifiziert werden.
 Hier werden daher Beispiel für Code-Smells aufgeführt, die auf Probleme im Code hinweisen können.
 

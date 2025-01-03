@@ -323,3 +323,8 @@ Siehe [Was ist Polymorphismus?](../6.languages/polymorphism#was-ist-polymorphism
 
 Das Prinzip `Kenne deine Werkzeuge` besagt, dass Entwickler die Werkzeuge, die sie verwenden, gut kennen sollen.
 Nur wenn Entwickler die Werkzeuge, die sie verwenden, gut kennen, können sie effektiv und effizient arbeiten.
+
+## P30 Fehler mit Tests nachstellen {#fehler-mit-tests-nachstellen}
+
+Dieses Prinzip sagt aus, soll ein Fehler im Produkt gefunden werden, so soll dieser Fehler mit einem Test nachgestellt werden, um den Ursprung des Fehlers zu finden und zu beheben.
+Nur so tauchen Fehler nicht erneut auf.
