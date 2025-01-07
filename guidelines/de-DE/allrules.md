@@ -203,6 +203,7 @@ layout: doc
 ## Regeln für das Refactoring in JavaScript
 
 - [RFJS1 JavaScript und TypeScript](5.refactoring/javascript.md#javascript-und-typescript)
+- [RFJS2 Verwenden von `await` und `async` statt Callback und Promise](5.refactoring/javascript.md#await-async)
 
 ## Regeln für das Refactoring in Refactoring Vue
 

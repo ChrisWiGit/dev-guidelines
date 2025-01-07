@@ -8,11 +8,11 @@ hero:
   tagline: "Langlebiger Code ist eine Sache des Refactorings"
   actions:
     - theme: brand
-      text: Übersicht und allgemeine Regeln
-      link: ./general
-    - theme: alt
-      text: Code Smells
-      link: ./codesmells
+      text: Prinzipien
+      link: ./principals
+    - theme: brand
+      text: Allgemeine Regeln
+      link: ./all
     - theme: brand
       text: Literatur
       link: ../sources

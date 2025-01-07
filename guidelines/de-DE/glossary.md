@@ -17,6 +17,11 @@ Es ist eine Referenz für Entwickler, um die Bedeutung von Begriffen zu verstehe
 Code Smells sind Anzeichen in deinem Code, die auf tiefer liegende Probleme hinweisen können.
 Beispiele hierfür sind überlange Funktionen, verschachtelte Schleifen, globale Variablen und duplizierter Code. Durch das Identifizieren dieser "Code Smells" kannst du gezielt Verbesserungen vornehmen.
 
+## Code-Smells
+
+Code-Smells sind wiederkehrende Muster und Anzeichen, die auf Probleme im Code hinweisen.
+Anhand von Code-Smells können Code-Verbesserungen identifiziert und Refactorings durchgeführt werden.
+
 ## Globale Fehlerbehandlung der lokalen Fehlerbehandlung vorziehen
 
 **Lokale Fehlerbehandlung** ist die Verwendung von `try-catch`-Blöcken, Status-Wert-Abfrage, `Promise.catch` oder ähnlichen Mechanismen, um Fehler zu behandeln, die in einem bestimmten Codeabschnitt auftreten können.\

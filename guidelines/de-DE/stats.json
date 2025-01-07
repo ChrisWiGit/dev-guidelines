@@ -1,151 +1,165 @@
 {
-  "sentences": 4732,
-  "words": 57103,
-  "syllables": 111478,
-  "characters": 346710,
+  "sentences": 4843,
+  "words": 59128,
+  "syllables": 115270,
+  "characters": 358423,
   "wordToCount": [
     {
       "word": "oder",
-      "count": "515",
-      "countAsHex": "203",
-      "countAsOctal": "1 003",
-      "countAsBinary": "10 0000 0011"
+      "count": "525",
+      "countAsHex": "20d",
+      "countAsOctal": "1 015",
+      "countAsBinary": "10 0000 1101"
     },
     {
       "word": "eine",
-      "count": "405",
-      "countAsHex": "195",
-      "countAsOctal": "625",
-      "countAsBinary": "1 1001 0101"
+      "count": "427",
+      "countAsHex": "1ab",
+      "countAsOctal": "653",
+      "countAsBinary": "1 1010 1011"
     },
     {
       "word": "nicht",
-      "count": "364",
-      "countAsHex": "16c",
-      "countAsOctal": "554",
-      "countAsBinary": "1 0110 1100"
+      "count": "373",
+      "countAsHex": "175",
+      "countAsOctal": "565",
+      "countAsBinary": "1 0111 0101"
     },
     {
       "word": "Code",
-      "count": "303",
-      "countAsHex": "12f",
-      "countAsOctal": "457",
-      "countAsBinary": "1 0010 1111"
+      "count": "340",
+      "countAsHex": "154",
+      "countAsOctal": "524",
+      "countAsBinary": "1 0101 0100"
     },
     {
       "word": "werden",
-      "count": "268",
-      "countAsHex": "10c",
-      "countAsOctal": "414",
-      "countAsBinary": "1 0000 1100"
+      "count": "288",
+      "countAsHex": "120",
+      "countAsOctal": "440",
+      "countAsBinary": "1 0010 0000"
     },
     {
       "word": "dass",
-      "count": "263",
-      "countAsHex": "107",
-      "countAsOctal": "407",
-      "countAsBinary": "1 0000 0111"
+      "count": "274",
+      "countAsHex": "112",
+      "countAsOctal": "422",
+      "countAsBinary": "1 0001 0010"
     },
     {
       "word": "sollen",
-      "count": "252",
-      "countAsHex": "fc",
-      "countAsOctal": "374",
-      "countAsBinary": "1111 1100"
+      "count": "264",
+      "countAsHex": "108",
+      "countAsOctal": "410",
+      "countAsBinary": "1 0000 1000"
     },
     {
       "word": "kann",
-      "count": "249",
-      "countAsHex": "f9",
-      "countAsOctal": "371",
-      "countAsBinary": "1111 1001"
+      "count": "264",
+      "countAsHex": "108",
+      "countAsOctal": "410",
+      "countAsBinary": "1 0000 1000"
     },
     {
       "word": "Methoden",
-      "count": "231",
-      "countAsHex": "e7",
-      "countAsOctal": "347",
-      "countAsBinary": "1110 0111"
+      "count": "242",
+      "countAsHex": "f2",
+      "countAsOctal": "362",
+      "countAsBinary": "1111 0010"
     },
     {
       "word": "verwendet",
-      "count": "220",
-      "countAsHex": "dc",
-      "countAsOctal": "334",
-      "countAsBinary": "1101 1100"
+      "count": "226",
+      "countAsHex": "e2",
+      "countAsOctal": "342",
+      "countAsBinary": "1110 0010"
     },
     {
       "word": "einer",
-      "count": "213",
-      "countAsHex": "d5",
-      "countAsOctal": "325",
-      "countAsBinary": "1101 0101"
+      "count": "221",
+      "countAsHex": "dd",
+      "countAsOctal": "335",
+      "countAsBinary": "1101 1101"
     },
     {
       "word": "wenn",
-      "count": "196",
-      "countAsHex": "c4",
-      "countAsOctal": "304",
-      "countAsBinary": "1100 0100"
-    },
-    {
-      "word": "public",
-      "count": "187",
-      "countAsHex": "bb",
-      "countAsOctal": "273",
-      "countAsBinary": "1011 1011"
+      "count": "207",
+      "countAsHex": "cf",
+      "countAsOctal": "317",
+      "countAsBinary": "1100 1111"
     },
     {
       "word": "wird",
-      "count": "181",
-      "countAsHex": "b5",
-      "countAsOctal": "265",
-      "countAsBinary": "1011 0101"
+      "count": "203",
+      "countAsHex": "cb",
+      "countAsOctal": "313",
+      "countAsBinary": "1100 1011"
     },
     {
-      "word": "soll",
-      "count": "166",
-      "countAsHex": "a6",
-      "countAsOctal": "246",
-      "countAsBinary": "1010 0110"
+      "word": "public",
+      "count": "190",
+      "countAsHex": "be",
+      "countAsOctal": "276",
+      "countAsBinary": "1011 1110"
     },
     {
       "word": "durch",
-      "count": "165",
-      "countAsHex": "a5",
-      "countAsOctal": "245",
-      "countAsBinary": "1010 0101"
+      "count": "185",
+      "countAsHex": "b9",
+      "countAsOctal": "271",
+      "countAsBinary": "1011 1001"
     },
     {
       "word": "sind",
-      "count": "164",
-      "countAsHex": "a4",
-      "countAsOctal": "244",
-      "countAsBinary": "1010 0100"
+      "count": "173",
+      "countAsHex": "ad",
+      "countAsOctal": "255",
+      "countAsBinary": "1010 1101"
+    },
+    {
+      "word": "soll",
+      "count": "169",
+      "countAsHex": "a9",
+      "countAsOctal": "251",
+      "countAsBinary": "1010 1001"
     },
     {
       "word": "return",
-      "count": "144",
-      "countAsHex": "90",
-      "countAsOctal": "220",
-      "countAsBinary": "1001 0000"
+      "count": "161",
+      "countAsHex": "a1",
+      "countAsOctal": "241",
+      "countAsBinary": "1010 0001"
     },
     {
       "word": "Methode",
-      "count": "137",
-      "countAsHex": "89",
-      "countAsOctal": "211",
-      "countAsBinary": "1000 1001"
+      "count": "149",
+      "countAsHex": "95",
+      "countAsOctal": "225",
+      "countAsBinary": "1001 0101"
     },
     {
       "word": "const",
-      "count": "129",
-      "countAsHex": "81",
-      "countAsOctal": "201",
-      "countAsBinary": "1000 0001"
+      "count": "142",
+      "countAsHex": "8e",
+      "countAsOctal": "216",
+      "countAsBinary": "1000 1110"
+    },
+    {
+      "word": "Verwendung",
+      "count": "128",
+      "countAsHex": "80",
+      "countAsOctal": "200",
+      "countAsBinary": "1000 0000"
     },
     {
       "word": "sich",
+      "count": "126",
+      "countAsHex": "7e",
+      "countAsOctal": "176",
+      "countAsBinary": "111 1110"
+    },
+    {
+      "word": "Codes",
       "count": "125",
       "countAsHex": "7d",
       "countAsOctal": "175",
@@ -159,39 +173,25 @@
       "countAsBinary": "111 1101"
     },
     {
-      "word": "Verwendung",
-      "count": "122",
-      "countAsHex": "7a",
-      "countAsOctal": "172",
-      "countAsBinary": "111 1010"
-    },
-    {
-      "word": "Codes",
-      "count": "122",
-      "countAsHex": "7a",
-      "countAsOctal": "172",
-      "countAsBinary": "111 1010"
-    },
-    {
       "word": "Klassen",
-      "count": "115",
-      "countAsHex": "73",
-      "countAsOctal": "163",
-      "countAsBinary": "111 0011"
+      "count": "116",
+      "countAsHex": "74",
+      "countAsOctal": "164",
+      "countAsBinary": "111 0100"
     },
     {
       "word": "einem",
-      "count": "105",
-      "countAsHex": "69",
-      "countAsOctal": "151",
-      "countAsBinary": "110 1001"
+      "count": "108",
+      "countAsHex": "6c",
+      "countAsOctal": "154",
+      "countAsBinary": "110 1100"
     },
     {
       "word": "Variablen",
-      "count": "104",
-      "countAsHex": "68",
-      "countAsOctal": "150",
-      "countAsBinary": "110 1000"
+      "count": "106",
+      "countAsHex": "6a",
+      "countAsOctal": "152",
+      "countAsBinary": "110 1010"
     },
     {
       "word": "Parameter",
@@ -201,25 +201,32 @@
       "countAsBinary": "110 0110"
     },
     {
-      "word": "Funktionen",
-      "count": "94",
-      "countAsHex": "5e",
-      "countAsOctal": "136",
-      "countAsBinary": "101 1110"
+      "word": "statt",
+      "count": "100",
+      "countAsHex": "64",
+      "countAsOctal": "144",
+      "countAsBinary": "110 0100"
     },
     {
-      "word": "statt",
-      "count": "93",
-      "countAsHex": "5d",
-      "countAsOctal": "135",
-      "countAsBinary": "101 1101"
+      "word": "Funktionen",
+      "count": "92",
+      "countAsHex": "5c",
+      "countAsOctal": "134",
+      "countAsBinary": "101 1100"
     },
     {
       "word": "void",
-      "count": "89",
-      "countAsHex": "59",
-      "countAsOctal": "131",
-      "countAsBinary": "101 1001"
+      "count": "92",
+      "countAsHex": "5c",
+      "countAsOctal": "134",
+      "countAsBinary": "101 1100"
+    },
+    {
+      "word": "Verhalten",
+      "count": "88",
+      "countAsHex": "58",
+      "countAsOctal": "130",
+      "countAsBinary": "101 1000"
     },
     {
       "word": "Objekte",
@@ -229,25 +236,11 @@
       "countAsBinary": "101 1000"
     },
     {
-      "word": "Verhalten",
-      "count": "84",
-      "countAsHex": "54",
-      "countAsOctal": "124",
-      "countAsBinary": "101 0100"
-    },
-    {
       "word": "Problem",
       "count": "83",
       "countAsHex": "53",
       "countAsOctal": "123",
       "countAsBinary": "101 0011"
-    },
-    {
-      "word": "Refactoring",
-      "count": "82",
-      "countAsHex": "52",
-      "countAsOctal": "122",
-      "countAsBinary": "101 0010"
     },
     {
       "word": "class",
@@ -258,10 +251,24 @@
     },
     {
       "word": "Lesbarkeit",
+      "count": "78",
+      "countAsHex": "4e",
+      "countAsOctal": "116",
+      "countAsBinary": "100 1110"
+    },
+    {
+      "word": "keine",
       "count": "76",
       "countAsHex": "4c",
       "countAsOctal": "114",
       "countAsBinary": "100 1100"
+    },
+    {
+      "word": "function",
+      "count": "75",
+      "countAsHex": "4b",
+      "countAsOctal": "113",
+      "countAsBinary": "100 1011"
     },
     {
       "word": "eines",
@@ -271,32 +278,46 @@
       "countAsBinary": "100 1010"
     },
     {
-      "word": "keine",
-      "count": "74",
-      "countAsHex": "4a",
-      "countAsOctal": "112",
-      "countAsBinary": "100 1010"
+      "word": "sollte",
+      "count": "73",
+      "countAsHex": "49",
+      "countAsOctal": "111",
+      "countAsBinary": "100 1001"
     },
     {
       "word": "final",
-      "count": "68",
-      "countAsHex": "44",
-      "countAsOctal": "104",
-      "countAsBinary": "100 0100"
+      "count": "73",
+      "countAsHex": "49",
+      "countAsOctal": "111",
+      "countAsBinary": "100 1001"
     },
     {
-      "word": "sollte",
+      "word": "Refactoring",
+      "count": "72",
+      "countAsHex": "48",
+      "countAsOctal": "110",
+      "countAsBinary": "100 1000"
+    },
+    {
+      "word": "Wenn",
+      "count": "70",
+      "countAsHex": "46",
+      "countAsOctal": "106",
+      "countAsBinary": "100 0110"
+    },
+    {
+      "word": "Funktion",
       "count": "67",
       "countAsHex": "43",
       "countAsOctal": "103",
       "countAsBinary": "100 0011"
     },
     {
-      "word": "function",
-      "count": "66",
-      "countAsHex": "42",
-      "countAsOctal": "102",
-      "countAsBinary": "100 0010"
+      "word": "Fehler",
+      "count": "67",
+      "countAsHex": "43",
+      "countAsOctal": "103",
+      "countAsBinary": "100 0011"
     },
     {
       "word": "Wert",
@@ -306,28 +327,7 @@
       "countAsBinary": "100 0010"
     },
     {
-      "word": "Fehler",
-      "count": "66",
-      "countAsHex": "42",
-      "countAsOctal": "102",
-      "countAsBinary": "100 0010"
-    },
-    {
-      "word": "Funktion",
-      "count": "64",
-      "countAsHex": "40",
-      "countAsOctal": "100",
-      "countAsBinary": "100 0000"
-    },
-    {
       "word": "Software",
-      "count": "64",
-      "countAsHex": "40",
-      "countAsOctal": "100",
-      "countAsBinary": "100 0000"
-    },
-    {
-      "word": "Wenn",
       "count": "64",
       "countAsHex": "40",
       "countAsOctal": "100",
@@ -341,18 +341,25 @@
       "countAsBinary": "100 0000"
     },
     {
-      "word": "Klasse",
+      "word": "einen",
       "count": "63",
       "countAsHex": "3f",
       "countAsOctal": "77",
       "countAsBinary": "11 1111"
     },
     {
-      "word": "einen",
+      "word": "immer",
       "count": "62",
       "countAsHex": "3e",
       "countAsOctal": "76",
       "countAsBinary": "11 1110"
+    },
+    {
+      "word": "Klasse",
+      "count": "61",
+      "countAsHex": "3d",
+      "countAsOctal": "75",
+      "countAsBinary": "11 1101"
     },
     {
       "word": "null",
@@ -369,14 +376,14 @@
       "countAsBinary": "11 1100"
     },
     {
-      "word": "immer",
-      "count": "60",
-      "countAsHex": "3c",
-      "countAsOctal": "74",
-      "countAsBinary": "11 1100"
+      "word": "mehr",
+      "count": "59",
+      "countAsHex": "3b",
+      "countAsOctal": "73",
+      "countAsBinary": "11 1011"
     },
     {
-      "word": "mehr",
+      "word": "Pattern",
       "count": "59",
       "countAsHex": "3b",
       "countAsOctal": "73",
@@ -390,7 +397,14 @@
       "countAsBinary": "11 1000"
     },
     {
-      "word": "Pattern",
+      "word": "jedoch",
+      "count": "55",
+      "countAsHex": "37",
+      "countAsOctal": "67",
+      "countAsBinary": "11 0111"
+    },
+    {
+      "word": "ohne",
       "count": "55",
       "countAsHex": "37",
       "countAsOctal": "67",
@@ -398,20 +412,34 @@
     },
     {
       "word": "Regeln",
+      "count": "55",
+      "countAsHex": "37",
+      "countAsOctal": "67",
+      "countAsBinary": "11 0111"
+    },
+    {
+      "word": "anderen",
       "count": "54",
       "countAsHex": "36",
       "countAsOctal": "66",
       "countAsBinary": "11 0110"
     },
     {
-      "word": "something",
-      "count": "52",
-      "countAsHex": "34",
-      "countAsOctal": "64",
-      "countAsBinary": "11 0100"
+      "word": "spezielle",
+      "count": "53",
+      "countAsHex": "35",
+      "countAsOctal": "65",
+      "countAsBinary": "11 0101"
     },
     {
-      "word": "spezielle",
+      "word": "info",
+      "count": "53",
+      "countAsHex": "35",
+      "countAsOctal": "65",
+      "countAsBinary": "11 0101"
+    },
+    {
+      "word": "Vorteile",
       "count": "52",
       "countAsHex": "34",
       "countAsOctal": "64",
@@ -419,27 +447,13 @@
     },
     {
       "word": "Regel",
-      "count": "52",
-      "countAsHex": "34",
-      "countAsOctal": "64",
-      "countAsBinary": "11 0100"
+      "count": "51",
+      "countAsHex": "33",
+      "countAsOctal": "63",
+      "countAsBinary": "11 0011"
     },
     {
-      "word": "anderen",
-      "count": "52",
-      "countAsHex": "34",
-      "countAsOctal": "64",
-      "countAsBinary": "11 0100"
-    },
-    {
-      "word": "jedoch",
-      "count": "52",
-      "countAsHex": "34",
-      "countAsOctal": "64",
-      "countAsBinary": "11 0100"
-    },
-    {
-      "word": "Vorteile",
+      "word": "Namen",
       "count": "51",
       "countAsHex": "33",
       "countAsOctal": "63",
@@ -453,25 +467,25 @@
       "countAsBinary": "11 0010"
     },
     {
-      "word": "Bedingungen",
-      "count": "50",
-      "countAsHex": "32",
-      "countAsOctal": "62",
-      "countAsBinary": "11 0010"
-    },
-    {
-      "word": "Namen",
-      "count": "50",
-      "countAsHex": "32",
-      "countAsOctal": "62",
-      "countAsBinary": "11 0010"
-    },
-    {
       "word": "Objekt",
       "count": "50",
       "countAsHex": "32",
       "countAsOctal": "62",
       "countAsBinary": "11 0010"
+    },
+    {
+      "word": "Werte",
+      "count": "50",
+      "countAsHex": "32",
+      "countAsOctal": "62",
+      "countAsBinary": "11 0010"
+    },
+    {
+      "word": "Entwickler",
+      "count": "49",
+      "countAsHex": "31",
+      "countAsOctal": "61",
+      "countAsBinary": "11 0001"
     },
     {
       "word": "Eine",
@@ -481,41 +495,6 @@
       "countAsBinary": "11 0001"
     },
     {
-      "word": "ohne",
-      "count": "49",
-      "countAsHex": "31",
-      "countAsOctal": "61",
-      "countAsBinary": "11 0001"
-    },
-    {
-      "word": "Werte",
-      "count": "49",
-      "countAsHex": "31",
-      "countAsOctal": "61",
-      "countAsBinary": "11 0001"
-    },
-    {
-      "word": "diese",
-      "count": "48",
-      "countAsHex": "30",
-      "countAsOctal": "60",
-      "countAsBinary": "11 0000"
-    },
-    {
-      "word": "Entwickler",
-      "count": "48",
-      "countAsHex": "30",
-      "countAsOctal": "60",
-      "countAsBinary": "11 0000"
-    },
-    {
-      "word": "info",
-      "count": "48",
-      "countAsHex": "30",
-      "countAsOctal": "60",
-      "countAsBinary": "11 0000"
-    },
-    {
       "word": "zwischen",
       "count": "48",
       "countAsHex": "30",
@@ -523,11 +502,60 @@
       "countAsBinary": "11 0000"
     },
     {
-      "word": "Beispiel",
+      "word": "andere",
+      "count": "48",
+      "countAsHex": "30",
+      "countAsOctal": "60",
+      "countAsBinary": "11 0000"
+    },
+    {
+      "word": "Wartbarkeit",
+      "count": "48",
+      "countAsHex": "30",
+      "countAsOctal": "60",
+      "countAsBinary": "11 0000"
+    },
+    {
+      "word": "alle",
+      "count": "48",
+      "countAsHex": "30",
+      "countAsOctal": "60",
+      "countAsBinary": "11 0000"
+    },
+    {
+      "word": "Bedingungen",
       "count": "47",
       "countAsHex": "2f",
       "countAsOctal": "57",
       "countAsBinary": "10 1111"
+    },
+    {
+      "word": "diese",
+      "count": "47",
+      "countAsHex": "2f",
+      "countAsOctal": "57",
+      "countAsBinary": "10 1111"
+    },
+    {
+      "word": "sein",
+      "count": "47",
+      "countAsHex": "2f",
+      "countAsOctal": "57",
+      "countAsBinary": "10 1111"
+    },
+    {
+      "word": "warning",
+      "count": "47",
+      "countAsHex": "2f",
+      "countAsOctal": "57",
+      "countAsBinary": "10 1111"
+    },
+    {
+      "word": "Beispiel",
+      "count": "46",
+      "countAsHex": "2e",
+      "countAsOctal": "56",
+      "countAsBinary": "10 1110"
     },
     {
       "word": "Ausnahmen",
@@ -537,11 +565,18 @@
       "countAsBinary": "10 1110"
     },
     {
-      "word": "sein",
+      "word": "aber",
       "count": "46",
       "countAsHex": "2e",
       "countAsOctal": "56",
       "countAsBinary": "10 1110"
+    },
+    {
+      "word": "Daten",
+      "count": "45",
+      "countAsHex": "2d",
+      "countAsOctal": "55",
+      "countAsBinary": "10 1101"
     },
     {
       "word": "besteht",
@@ -551,21 +586,7 @@
       "countAsBinary": "10 1101"
     },
     {
-      "word": "andere",
-      "count": "45",
-      "countAsHex": "2d",
-      "countAsOctal": "55",
-      "countAsBinary": "10 1101"
-    },
-    {
-      "word": "Wartbarkeit",
-      "count": "45",
-      "countAsHex": "2d",
-      "countAsOctal": "55",
-      "countAsBinary": "10 1101"
-    },
-    {
-      "word": "Daten",
+      "word": "muss",
       "count": "45",
       "countAsHex": "2d",
       "countAsOctal": "55",
@@ -586,14 +607,14 @@
       "countAsBinary": "10 1100"
     },
     {
-      "word": "muss",
+      "word": "Fehlerbehandlung",
       "count": "44",
       "countAsHex": "2c",
       "countAsOctal": "54",
       "countAsBinary": "10 1100"
     },
     {
-      "word": "warning",
+      "word": "throw",
       "count": "44",
       "countAsHex": "2c",
       "countAsOctal": "54",
@@ -607,35 +628,14 @@
       "countAsBinary": "10 1011"
     },
     {
-      "word": "Fehlerbehandlung",
-      "count": "41",
-      "countAsHex": "29",
-      "countAsOctal": "51",
-      "countAsBinary": "10 1001"
-    },
-    {
-      "word": "alle",
-      "count": "41",
-      "countAsHex": "29",
-      "countAsOctal": "51",
-      "countAsBinary": "10 1001"
+      "word": "sollten",
+      "count": "43",
+      "countAsHex": "2b",
+      "countAsOctal": "53",
+      "countAsBinary": "10 1011"
     },
     {
       "word": "Reihenfolge",
-      "count": "41",
-      "countAsHex": "29",
-      "countAsOctal": "51",
-      "countAsBinary": "10 1001"
-    },
-    {
-      "word": "aber",
-      "count": "41",
-      "countAsHex": "29",
-      "countAsOctal": "51",
-      "countAsBinary": "10 1001"
-    },
-    {
-      "word": "throw",
       "count": "41",
       "countAsHex": "29",
       "countAsOctal": "51",
@@ -649,11 +649,18 @@
       "countAsBinary": "10 1000"
     },
     {
-      "word": "Tests",
+      "word": "Durch",
       "count": "40",
       "countAsHex": "28",
       "countAsOctal": "50",
       "countAsBinary": "10 1000"
+    },
+    {
+      "word": "Tests",
+      "count": "39",
+      "countAsHex": "27",
+      "countAsOctal": "47",
+      "countAsBinary": "10 0111"
     },
     {
       "word": "Zugriff",
@@ -663,21 +670,21 @@
       "countAsBinary": "10 0111"
     },
     {
-      "word": "Durch",
-      "count": "38",
-      "countAsHex": "26",
-      "countAsOctal": "46",
-      "countAsBinary": "10 0110"
+      "word": "gibt",
+      "count": "39",
+      "countAsHex": "27",
+      "countAsOctal": "47",
+      "countAsBinary": "10 0111"
+    },
+    {
+      "word": "Diese",
+      "count": "39",
+      "countAsHex": "27",
+      "countAsOctal": "47",
+      "countAsBinary": "10 0111"
     },
     {
       "word": "Einsatz",
-      "count": "38",
-      "countAsHex": "26",
-      "countAsOctal": "46",
-      "countAsBinary": "10 0110"
-    },
-    {
-      "word": "gibt",
       "count": "38",
       "countAsHex": "26",
       "countAsOctal": "46",
@@ -691,34 +698,27 @@
       "countAsBinary": "10 0110"
     },
     {
-      "word": "vermieden",
-      "count": "36",
-      "countAsHex": "24",
-      "countAsOctal": "44",
-      "countAsBinary": "10 0100"
-    },
-    {
-      "word": "welche",
-      "count": "36",
-      "countAsHex": "24",
-      "countAsOctal": "44",
-      "countAsBinary": "10 0100"
+      "word": "nach",
+      "count": "38",
+      "countAsHex": "26",
+      "countAsOctal": "46",
+      "countAsBinary": "10 0110"
     }
   ],
-  "sentencesFormatted": "4 732",
-  "wordsFormatted": "57 103",
-  "syllablesFormatted": "111 478",
-  "charactersFormatted": "346 710",
-  "sentencesAsHex": "127c",
-  "wordsAsHex": "df0f",
-  "syllablesAsHex": "1b376",
-  "charactersAsHex": "54a56",
-  "sentencesAsOctal": "11 174",
-  "wordsAsOctal": "157 417",
-  "syllablesAsOctal": "331 566",
-  "charactersAsOctal": "1 245 126",
-  "sentencesAsBinary": "1 0010 0111 1100",
-  "wordsAsBinary": "1101 1111 0000 1111",
-  "syllablesAsBinary": "1 1011 0011 0111 0110",
-  "charactersAsBinary": "101 0100 1010 0101 0110"
+  "sentencesFormatted": "4 843",
+  "wordsFormatted": "59 128",
+  "syllablesFormatted": "115 270",
+  "charactersFormatted": "358 423",
+  "sentencesAsHex": "12eb",
+  "wordsAsHex": "e6f8",
+  "syllablesAsHex": "1c246",
+  "charactersAsHex": "5 7817",
+  "sentencesAsOctal": "11 353",
+  "wordsAsOctal": "163 370",
+  "syllablesAsOctal": "341 106",
+  "charactersAsOctal": "1 274 027",
+  "sentencesAsBinary": "1 0010 1110 1011",
+  "wordsAsBinary": "1110 0110 1111 1000",
+  "syllablesAsBinary": "1 1100 0010 0100 0110",
+  "charactersAsBinary": "101 0111 1000 0001 0111"
 }

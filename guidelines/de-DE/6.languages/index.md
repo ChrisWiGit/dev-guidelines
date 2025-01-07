@@ -12,7 +12,7 @@ hero:
       link: ./general
     - theme: alt
       text: Code Smells
-      link: ../5.refactoring/codesmells
+      link: ../5.refactoring/all
     - theme: alt
       text: Checkliste für ein neues Projekt
       link: ../6.languages/newcodechecklist

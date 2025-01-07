@@ -52,28 +52,6 @@
     ]
   },
   {
-    "filePath": "5.refactoring\\general.md",
-    "filename": "general.md",
-    "todos": [
-      {
-        "title": "Prinzipien des Refactoring",
-        "link": "5.refactoring\\general.md"
-      },
-      {
-        "title": "RFP21 Umfangreiche Klassen",
-        "link": "5.refactoring\\general.md#umfangreiche-klassen"
-      },
-      {
-        "title": "RFP22 Datenklassen",
-        "link": "5.refactoring\\general.md#datenklassen"
-      },
-      {
-        "title": "RFP23 Kommentare",
-        "link": "5.refactoring\\general.md#kommentare"
-      }
-    ]
-  },
-  {
     "filePath": "5.refactoring\\java.md",
     "filename": "java.md",
     "todos": [

@@ -25,13 +25,6 @@ Dieses Dokument enthält eine Liste von Aufgaben, die noch erledigt werden müss
 - [DPS5 Facade](4.designpatterns\structural.md#facade)
 - [DPS6 Flyweight](4.designpatterns\structural.md#flyweight)
 
-## 5.refactoring\general.md
-
-- [Prinzipien des Refactoring](5.refactoring\general.md)
-- [RFP21 Umfangreiche Klassen](5.refactoring\general.md#umfangreiche-klassen)
-- [RFP22 Datenklassen](5.refactoring\general.md#datenklassen)
-- [RFP23 Kommentare](5.refactoring\general.md#kommentare)
-
 ## 5.refactoring\java.md
 
 - [Refactoring von Java](5.refactoring\java.md)

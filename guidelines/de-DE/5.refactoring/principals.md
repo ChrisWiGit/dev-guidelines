@@ -3,34 +3,30 @@ layout: doc
 outline: [2, 2]
 
 customRulePrefix: RFP
-customIgnoreTitlesForRules: [Einleitung,Begriffsdefinition,Warum Refactoring?]
+customIgnoreTitlesForRules: [Einleitung]
 ---
 
 # Prinzipien des Refactoring
 
-::: danger TODO: Allgemeines Refactoring
-
-Teile diese Dokumentation sind noch in Arbeit und können unvollständig sein.
-
-:::
-
 ## Einleitung {#einleitung}
 
-Refactoring ist ein Prozess, bei dem der Code verbessert wird, ohne das Verhalten zu ändern. Es ist ein wichtiger Bestandteil der Softwareentwicklung, um die Wartbarkeit und Lesbarkeit des Codes zu verbessern.
-Durch Refactoring wird die sogenannte **technische Schuld** abgebaut, die durch schnelle Lösungen und Kompromisse entsteht.
+In diesem Dokument werden allgemeine Prinzipien für das Refactoring von Code beschrieben.
+Diese Prinzipien sind unabhängig von der Programmiersprache und können auf jede Sprache angewendet werden.
 
-::: warning Integrierter Bestandteil der Programmierung
-Code Refactoring ist als integraler Bestandteil der normalen Programmiertätigkeit zu betrachten.
-:::
-
-In diesem Dokument werden allgemeine Richtlinien für das Refactoring von Code beschrieben.
-Diese Richtlinien sind unabhhängig von der Programmiersprache und können auf jede Sprache angewendet werden.
+Spezifische Regeln zu Code-Refactoring für alle Programmiersprachen finden sing in [Allgemeine Regeln](./all) und für spezifische Sprachen in den entsprechenden Kapiteln.
 
 Allen Kapiteln wurde eine eindeutige Nummerierung, der Richtliniennummer, hinzugefügt, um eine eindeutige Identifikation zu ermöglichen.
 Jede Richtliniennummer besteht aus dem Buchstaben **RFG**(Refactoring General) gefolgt von einer Nummer, die den Abschnitt identifiziert.
 Damit kann eine Regel eindeutig identifiziert werden, z.B. für ein Code-Review.
 
-## Begriffsdefinition {#begriffsdefinition}
+## RFP1 Begriffsdefinition {#begriffsdefinition}
+
+`Refactoring` ist ein Prozess, bei dem der Code verbessert wird, ohne das Verhalten zu ändern. Es ist ein wichtiger Bestandteil der Softwareentwicklung, um die Wartbarkeit und Lesbarkeit des Codes zu verbessern.
+Durch Refactoring wird die sogenannte **technische Schuld** abgebaut, die durch schnelle Lösungen und Kompromisse entsteht.
+
+::: warning Integrierter Bestandteil der Programmierung
+Code Refactoring ist als integraler Bestandteil der normalen Programmiertätigkeit zu betrachten.
+:::
 
 `Code Refactoring` bezieht sich auf den Prozess der Überarbeitung von vorhandenem Code, um dessen interne Struktur zu verbessern, ohne dabei das externe Verhalten zu ändern.
 
@@ -52,7 +48,7 @@ Trotzdem merken sie irgendwann, dass der Code so unübersichtlich und komplex ge
 
 :::
 
-## Warum Refactoring? {#warum-refactoring}
+## RFP2 Warum Refactoring? {#warum-refactoring}
 
 > Code altert nicht, er wird alt.
 
@@ -78,12 +74,12 @@ Nur durch den Abbau dieser technischen Schulden können neue Features effizient 
 
 :::
 
-## RFP1 Wann kann refaktorisiert werden? {#wann-kann-refaktorisiert-werden}
+## RFP3 Wann kann refaktorisiert werden? {#wann-kann-refaktorisiert-werden}
 
 Refaktorisierung kann nur dann richtig durchgeführt werden, wenn Tests vorhanden sind, die das Verhalten des Codes sicherstellen.
 Ohne Tests ist es schwierig, sicherzustellen, dass das Verhalten des Codes nach dem Refactoring unverändert bleibt.
 
-## RFP2 Wann sollte nicht refaktorisiert werden? {#wann-sollte-nicht-refaktorisiert-werden}
+## RFP4 Wann sollte nicht refaktorisiert werden? {#wann-sollte-nicht-refaktorisiert-werden}
 
 Refactoring sollte nicht durchgeführt werden:
 
@@ -91,7 +87,7 @@ Refactoring sollte nicht durchgeführt werden:
 2. Wenn es keine klare Vorstellung davon gibt, wie der Code verbessert werden kann.
 3. Wenn die eigentliche Änderung sehr klein ist und das Refactoring mehr Zeit in Anspruch nimmt.
 
-## RFP3 Was soll nicht von einer Refaktorisierung abhalten? {#was-soll-nicht-von-einer-refaktorisierung-abhalten}
+## RFP5 Was soll nicht von einer Refaktorisierung abhalten? {#was-soll-nicht-von-einer-refaktorisierung-abhalten}
 
 1. Schwer verständlicher Coder muss zuerst versanden werden. Dies kann durch Tests geschehen, die dazu auch das Verhalten des Codes sicherstellen.
 2. Schlecht strukturierter Code.
@@ -100,7 +96,7 @@ Refactoring sollte nicht durchgeführt werden:
 5. Angst vor dem Management, dass keine Zeit für Refactoring zur Verfügung gestellt wird.
 6. Angst vor dem Verlust oder der Veränderung des Verhaltens des Codes.
 
-## RFP4 Wann soll refaktorisiert werden? {#wann-soll-refaktorisiert-werden}
+## RFP6 Wann soll refaktorisiert werden? {#wann-soll-refaktorisiert-werden}
 
 1. Refaktorisierung wird vor dem Beginn einer neuen Aufgabe durchgeführt, wenn notwendig.
 Die Refaktorisierung ermöglicht es auch sich in den Code einzuarbeiten und den Code dadurch besser zu verstehen.
@@ -118,32 +114,50 @@ Damit ist es auch möglich große Teile des Codes zu erneuern, ohne dass ein gan
 
 6. Zu einer Refaktorisierung gehört zudem das Schreiben von Tests, um die Funktionalität sicherzustellen.
 
-## Mögliche Arten von Refactoring
+## RFP7 Strangler Pattern {#strangler-pattern}
 
-::: danger TODO:
+Ein Refactoring dient dazu, den bestehenden Code in Hinblick auf Lesbarkeit, Wartbarkeit und Effizienz zu verbessern, ohne dabei das Verhalten der Anwendung zu verändern. Dabei wird der Code so angepasst, dass er leichter verständlich und einfacher zu warten ist.
+
+Allerdings ist der zu refaktorisierende Code oft stark mit anderen Teilen der Anwendung verzahnt oder wird von externen Komponenten intensiv genutzt. In solchen Fällen kann es risikoreich sein, den Code direkt umfassend zu ändern, da dadurch unvorhergesehene Probleme entstehen könnten.
+
+Das **Strangler Pattern** ermöglicht es, den bestehenden Code schrittweise zu ersetzen, ohne das bestehende Verhalten der Anwendung zu beeinträchtigen.
+
+Das Strangler Pattern ist eine Technik zur schrittweisen Modernisierung oder Ablösung bestehender Anwendungen. Es funktioniert nach dem Prinzip, dass der alte Code Stück für Stück durch neuen, verbesserten Code ersetzt wird, während der ursprüngliche Code weiterhin parallel existiert.
+
+Der Prozess erfolgt in mehreren Schritten:
+
+1. Der bestehende Code wird als `deprecated` markiert, sodass Entwickler wissen, dass er langfristig ersetzt werden soll.
+   Wenn möglich wird er jedoch direkt entfernt, um zu verhindern, dass er weiterhin genutzt wird.
+2. Neue Funktionalitäten werden ausschließlich im neuen Code implementiert.
+3. Nach und nach werden alte Teile der Anwendung durch den neuen Code ersetzt, bis der alte vollständig entfernt werden kann.
+
+::: info Strangler Pattern Ursprung
+
+Der Name dieses Patterns stammt von der sogenannten "Strangler Fig" (Würgefeige), einem Baum, der einen anderen Baum umschließt und ihn allmählich verdrängt, bis der alte Baum abstirbt und durch den neuen vollständig ersetzt wird.
+
 :::
 
+Das Strangler Pattern eignet sich insbesondere für Legacy-Anwendungen, bei denen ein sofortiger vollständiger Austausch des Codes nicht praktikabel ist.
+Durch den schrittweisen Ansatz werden Risiken minimiert und gleichzeitig kontinuierliche Verbesserungen ermöglicht.
 
+Im API-Design können neue Interfaces mit leicht angepasstem Namen verwendet werden, um die alten zu ersetzen.
+So können bestehende Clients schrittweise auf die neuen Interfaces migriert werden, ohne dass sie sofort umgestellt werden müssen.
 
+Methoden können schrittweise durch neue umbenannte Methoden ersetzt werden, die das gleiche Verhalten implementieren, aber mit einer verbesserten Struktur und Lesbarkeit.
 
+::: warning Overloading
 
+Overloading beschreibt die Möglichkeit, eine Methode mit dem gleichen Namen, aber unterschiedlichen Parametern zu definieren.
+Einige Programmiersprachen unterstützen das Overloading von Methoden, andere nicht.
 
+In manchen Fällen kann es sinnvoll sein, die alten Methoden zu überladen, um die neuen Funktionalitäten zu integrieren.
+Es sollte jedoch darauf geachtet werden, dass das Überladen der Methoden nicht dazu führt, dass versehentlich die alten Methoden aufgerufen werden.
 
+:::
 
+REST-Schnittstellen sollten im Pfad bereits eine Versionsnummer enthalten, um zukünftige Änderungen zu ermöglichen, ohne bestehende Clients zu beeinträchtigen.
 
-
-
-
-
-
-
-
-
-
-
-
-
-## RFP5 Prüfung auf Code Smells {#pruefung-auf-code-smells}
+## RFP8 Prüfung auf Code Smells {#pruefung-auf-code-smells}
 
 `Code Smells` sollen identifiziert und behoben werden, um die Codequalität zu verbessern.
 
@@ -155,19 +169,19 @@ Beispiele hierfür sind überlange Funktionen, verschachtelte Schleifen, globale
 
 Siehe Beispiele [Code-Smells](./codesmells).
 
-## RFP6 Vereinfachungen {#vereinfachungen}
+## RFP9 Vereinfachungen {#vereinfachungen}
 
-Code soll vereinfacht durch Refactoring vereinfacht werden, um die Lesbarkeit und Wartbarkeit zu verbessern.
+Code soll durch Refactoring immer vereinfacht werden, um die Lesbarkeit und Wartbarkeit zu verbessern.
 
 Die Prinzipien [DRY](../2.principles/principles#dry), [SOC](../2.principles/principles#soc) und [KISS](../2.principles/principles#kiss) sind hierbei zu beachten.
 
-## RFP7 Bewusstsein für Seiteneffekte beim Refactoring {#bewusstsein-fuer-seiteneffekte-beim-refactoring}
+## RFP10 Bewusstsein für Seiteneffekte beim Refactoring {#bewusstsein-fuer-seiteneffekte-beim-refactoring}
 
 Während der Refaktorisierung ist es wichtig, sicherzustellen, dass der Code noch immer das tut, was er soll.
 Änderungen, die unerwartete Seiteneffekte verursachen könnten, sollen mit Vorsicht behandelt werden.
 Es ist daher ratsam, Änderungen in kleinen Schritten durchzuführen und regelmäßig zu testen, um sicherzustellen, dass das Verhalten des Codes unverändert bleibt.
 
-## RFP8 Kein nachträgliches Kommentieren von Code {#kein-nachtraegliches-kommentieren-von-code}
+## RFP11 Kein nachträgliches Kommentieren von Code {#kein-nachtraegliches-kommentieren-von-code}
 
 Bestehender Code, der bisher nicht kommentiert wurde, soll im Nachhinein auch nicht kommentiert werden.
 
@@ -175,7 +189,7 @@ Dokumentation von Legacy-Code ist auch im Nachhinein kaum eine Hilfe, den Code z
 Beim Lesen von alten Code besteht die Gefahr, dass er falsch verstanden wird und die Dokumentation dadurch nutzlos und verwirrend wird.
 Vielmehr soll alter Code selbst im Zuge eines Refactorings verbessert werden, damit er selbsterklärend ist und nur neue Dokumentation braucht.
 
-## RFP9 Code entfernen {#code-entfernen}
+## RFP12 Code entfernen {#code-entfernen}
 
 Refaktorisierung kann auch das Entfernen von Code bedeuten, der nicht mehr benötigt wird.
 
@@ -183,7 +197,7 @@ Code, der nicht mehr gebraucht wird hat keinen Zweck und kann zu Verwirrung für
 
 Wenn der Code und dazugehörige Tests entfernt wurden, soll das Projekt auch neu gebaut werden, um sicherzustellen, dass keine Abhängigkeiten mehr bestehen.
 
-## RFP10 Methodisches Vorgehen {#methodisches-vorgehen}
+## RFP13 Methodisches Vorgehen {#methodisches-vorgehen}
 
 Ein Refactoring muss methodisch durchgeführt werden, um sicherzustellen, dass das Verhalten des Codes unverändert bleibt.
 
@@ -194,19 +208,19 @@ Ggf. einen Test schreiben, wenn noch keiner vorhanden ist.
 2. Refactoring in kleinen Schritten mit Zwischenprüfung(en) durchführen, ob der Test noch grün ist.
 3. Prüfen, ob alle Tests noch grün sind, damit mögliche Seiteneffekte erkannt werden.
 
-## RFP11 Bezeichner {#bezeichner}
+## RFP14 Bezeichner {#bezeichner}
 
 Bezeichner sollen aussagekräftig und verständlich sein, daher ist es wichtig, Namen von Variablen, Funktionen und Klassen im Zuge eines Refactorings zu überprüfen und ggf. anzupassen.
 
 1. Namen können länger, aber aussagekräftiger sein.
-2. Abkürzungen sollen ausgechrieben werden.
+2. Abkürzungen sollen ausgeschrieben werden.
 3. Namen sollen entsprechend der Funktion benannt werden.
 4. Präfixe (`get`, `set`) und Typ-Suffixe (`varStr`, `iVar`) sollen vermieden werden.
-5. Kompexe Namen deuten auf komplexe Funktionen hin und die Funktion sollte refaktorisiert werden.
+5. Komplexe Namen deuten auf komplexe Funktionen hin und die Funktion sollte refaktorisiert werden.
 
-Weitere Regeln können unter [Bezeichner](../6.languages/naming.html) gefunden werden.
+Weitere Regeln können unter [Bezeichner](../6.languages/naming.html) nachgelesen werden.
 
-## RFP12 Doppelter Code {#doppelter-code}
+## RFP15 Doppelter Code {#doppelter-code}
 
 Mehrfach vorkommender Code reduziert Kopplung (Abhängigkeit) kann aber auch zu Wartbarkeitsproblemen führen,
 da Änderungen an mehreren Stellen vorgenommen werden müssen (Eine Stelle vergessen?).
@@ -218,7 +232,7 @@ da Änderungen an mehreren Stellen vorgenommen werden müssen (Eine Stelle verge
 Nicht jedes Duplikat benötigt eine Refaktorisierung, beispielweise wenn es nur zwei Stellen gibt, an denen der Code vorkommt.
 Die [Die 2-3-5](../2.principles/principles#the-2-3-5) Regel kann hierbei helfen einzuschätzen, ob ein Duplikat refaktorisiert werden sollte.
 
-## RFP13 Lange Funktionen/Methoden {#lange-funktionen-methoden}
+## RFP16 Lange Funktionen/Methoden {#lange-funktionen-methoden}
 
 Komplexität von Funktionen/Methoden steigt mir ihrer Länge.
 Um die Lesbarkeit und Wartbarkeit zu verbessern, sollen lange Funktionen/Methoden in kleinere Funktionen/Methoden aufgeteilt werden.
@@ -228,20 +242,20 @@ Um die Lesbarkeit und Wartbarkeit zu verbessern, sollen lange Funktionen/Methode
 3. Jede aufgeteilte Funktion/Methode soll eine klare und einzelne Aufgabe haben.
 4. Jede aufgeteilte Funktion/Methode soll getestet sein.
 
-## RFP14 Parameter {#lange-parameterlisten}
+## RFP17 Parameter {#lange-parameterlisten}
 
 1. Parameter sollen `final`, `const` oder `readonly` sein, damit sie nicht verändert werden.
 2. Viele Parameter mit gleicher Art und Reihenfolge können durch ein Objekt ersetzt werden.
 3. Boolean-Parameter können durch zwei Methoden mit aussagekräftigen Namen ersetzt werden.
 4. ENUM-Parameter können durch Polymorphie ersetzt werden.
 
-## RFP15 Globale Variablen/Daten {#globale-variablen-daten}
+## RFP18 Globale Variablen/Daten {#globale-variablen-daten}
 
 1. Globale Variablen sollen unbedingt vermieden werden und durch `Dependency Injection` mit Klassen, die die Daten kapseln, ersetzt werden.
 2. Der direkte Zugriff auf globale Variablen soll vermieden werden und durch Methoden, die darauf zugreifen, ersetzt werden.
 3. Globale Variablen, wenn unvermeidlich, sollen unveränderlich sein und mit Kopien gearbeitet werden (Value Object).
 
-## RFP16 Feature-Neid {#feature-neid}
+## RFP19 Feature-Neid {#feature-neid}
 
 Wenn eine Klasse oder Methode zu viele Verantwortlichkeiten hat, kann dies zu Feature-Neid führen, denn andere Klassen und Methoden greifen auf die Funktionalität ständig zu.
 Die Kopplung steigt dadurch und die Wartbarkeit sinkt, denn eine Änderung an der Funktionalität muss an vielen Stellen vorgenommen werden.
@@ -249,39 +263,3 @@ Die Kopplung steigt dadurch und die Wartbarkeit sinkt, denn eine Änderung an de
 1. Klassen und Methoden sollen nur eine Verantwortlichkeit haben.
 Verschiebe die Funktionalität in eine neue Klasse oder Methode.
 2. Klassen und Methoden sollen nur auf die Funktionalität anderer Klassen und Methoden zugreifen, wenn sie diese wirklich benötigen.
-    
-
-## RFP17 elementare Datentypen {#elementare-datentypen}
-
-## RFP18 Schleifen {#schleifen}
-
-## RFP19 Switch-Statements {#switch-statements}
-
-## RFP20 If-Statements {#if-statements}
-
-- Negationen
-- Große If-Blöcke
-- Viele If-Statements
-- Tief oder mehrfach verschachtelte If-Statements
-- Lange If-Statements
-- Komplexe Bedingungen
-
-Siehe Beispiele [Code-Smells](./codesmells#if-statements).
-
-## RFP21 Umfangreiche Klassen {#umfangreiche-klassen}
-
-::: danger TODO:
-Umfangreiche Klassen
-:::
-
-## RFP22 Datenklassen {#datenklassen}
-
-::: danger TODO:
-:::
-
-## RFP23 Kommentare {#kommentare}
-
-::: danger TODO:
-:::
-
-## Strangler Patern verwenden {#strangler-patern}

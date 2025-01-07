@@ -25,7 +25,7 @@ Dort wo es notwendig ist, wird auf die Unterschiede hingewiesen.
 
 > In Zukunft könnte ein eigenes Kapitel für TypeScript entstehen.
 
-## Verwenden von `await` und `async` statt Callback unf Promise {#await-async}
+## RFJS2 Verwenden von `await` und `async` statt Callback und Promise {#await-async}
 
 Callback-Funktionen und Promise können in den meisten Fällen durch `await` und `async` ersetzt werden.
 
@@ -179,7 +179,7 @@ Diese Exception sollte durch ein globales Error-Handling behandelt werden, statt
 
 :::
 
-### Vorteile
+### RFJS2 Vorteile
 
 - Bessere Lesbarkeit durch sequentielle Ausführung statt Verschachtelung
 - Bessere Fehlerbehandlung durch `try-catch` statt `catch`-Funktionen (die oft nicht implementiert und getestet sind)
