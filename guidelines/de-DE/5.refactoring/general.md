@@ -118,6 +118,31 @@ Damit ist es auch möglich große Teile des Codes zu erneuern, ohne dass ein gan
 
 6. Zu einer Refaktorisierung gehört zudem das Schreiben von Tests, um die Funktionalität sicherzustellen.
 
+## Mögliche Arten von Refactoring
+
+::: danger TODO:
+:::
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## RFP5 Prüfung auf Code Smells {#pruefung-auf-code-smells}
 
 `Code Smells` sollen identifiziert und behoben werden, um die Codequalität zu verbessern.
@@ -218,12 +243,13 @@ Um die Lesbarkeit und Wartbarkeit zu verbessern, sollen lange Funktionen/Methode
 
 ## RFP16 Feature-Neid {#feature-neid}
 
-Wenn eine Klasse oder Methode zu viele Verantwortlichkeiten hat, kann dies zu Feature-Neid führen.
-Andere Klassen müssen dann auf diese Klasse zugreifen, um auf die Funktionalität zuzugreifen.
+Wenn eine Klasse oder Methode zu viele Verantwortlichkeiten hat, kann dies zu Feature-Neid führen, denn andere Klassen und Methoden greifen auf die Funktionalität ständig zu.
+Die Kopplung steigt dadurch und die Wartbarkeit sinkt, denn eine Änderung an der Funktionalität muss an vielen Stellen vorgenommen werden.
 
 1. Klassen und Methoden sollen nur eine Verantwortlichkeit haben.
 Verschiebe die Funktionalität in eine neue Klasse oder Methode.
-2. 
+2. Klassen und Methoden sollen nur auf die Funktionalität anderer Klassen und Methoden zugreifen, wenn sie diese wirklich benötigen.
+    
 
 ## RFP17 elementare Datentypen {#elementare-datentypen}
 
@@ -257,3 +283,5 @@ Umfangreiche Klassen
 
 ::: danger TODO:
 :::
+
+## Strangler Patern verwenden {#strangler-patern}
