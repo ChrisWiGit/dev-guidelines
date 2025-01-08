@@ -19,6 +19,7 @@ Diese Richtlinien wurden auf der Basis der folgenden Quellen erstellt:
 10. Seemann, Mark, Code That Fits in Your Head, Pearson Education, 2022, ISBN: 9780137482708
 11. Vlissides, John M., Pattern Hatching: Design Patterns Applied, Addison-Wesley Professional, 1998, ISBN: 9780201432930
 12. Bloch, Joshua, Effective Java, Addison-Wesley Professional, 2001, (2.Auflage), ISBN: 9780137464357
+13. Awesome refactoring, [https://github.com/arnvald/awesome-refactoring](https://github.com/arnvald/awesome-refactoring)
 
 ## Deutsch
 

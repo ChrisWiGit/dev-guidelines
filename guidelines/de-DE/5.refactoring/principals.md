@@ -50,29 +50,59 @@ Trotzdem merken sie irgendwann, dass der Code so unübersichtlich und komplex ge
 
 ## RFP2 Warum Refactoring? {#warum-refactoring}
 
+Kein Entwickler oder Entwicklerin schreibt von Anfang an Code, der perfekt ist.
+
+![Veränderung der Komplexität mit und ohne Refactoring](./images/complexity.png){width=70%}
+Veränderung der Komplexität mit und ohne Refactoring
+
+- Ein häufiger Grund, warum Code so ist wie er ist, ist, dass ein Feature zu einem bestimmten Zeitpunkt versprochen und geliefert werden musste.
+**Überstürzte Fristen** führen zu Code, der nicht erweiterbar, wartbar, verständlich ist und nicht automatisch getestet werden kann.
+Zusätzlich müssen weitere Features schnellst möglichst hinzugefügt werden, was die Situation verschlimmert, denn Zeit für einer Verbesserung von Code ist auch nicht vorhanden.
+- Ein weiterer Grund ist, dass Entwickler oder Entwicklerinnen nicht immer das **nötige Wissen oder die Fähigkeiten** haben, um den Code besser zu schreiben.
+Dadurch entstehen Lösungen im Code, die alles andere als ideal ist und trägt weiter zur technischen Schuld bei.
+- Nichts ist so beständig wie der Wandel und **jede Anforderung kann sich ändern**.
+Das führt zu zweckmäßigen Lösungen, die oft mit der sprichwörtlichen heißen Nadel gestrickt sind.
+Selbst eine einst mal so geplante Architektur kann nicht jeden Umstand berücksichtigen und stellt sich mit ändernden Anforderungen als unzureichend heraus.
+Trotzdem wird versucht, die Anforderungen in den bestehenden Code zu quetschen.
+- Jede **Entscheidung**, die getroffen wird, musste abwiegen zwischen verschiedenen **Kompromissen**.
+Nach einer Zeit kann sich so ein Kompromiss als falsch herausstellen und folglich muss eine Anpassung vorgenommen werden, um die Fehlentscheidung zu korrigieren.
+- Oftmals besteht bereits eine **lange existierende Codebasis**, die über Jahre gewachsen ist und von vielen Entwicklern bearbeitet wurde.
+Die Strukturen und Muster sind veraltet und nicht mehr klar erkennbar, so dass es schwer fällt, den Code zu verstehen und zu erweitern.
+- Und zuletzt wird ein Refactoring oft verschoben, weil es **keine Zeit** dafür gibt oder es **nicht als notwendig** erachtet wird.
+Auch sogenannte **Refactoring-Tickets** werden oft nicht priorisiert, weil sie keine neuen Features liefern.
+
 > Code altert nicht, er wird alt.
 
-Die Entwicklung eines Produkts ist ein Lernprozess.
-Während der Entwicklung lernen wir mehr über die Anforderungen, die Technologien und die Architektur.
-Dieses wissen besteht allerdings bei den wenigsten Projekten von Anfang an.
-Außerdem ändern sich Anforderungen und Technologien im Laufe der Zeit, so dass spätere Änderungen am Code, der für frühere Anforderungen geschrieben wurde, notwendig werden.
-Diese Änderungen am Code werden oft einfach irgendwie hinzugefügt, ohne, dass der originale Code dafür ausgelegt war.
-Dazu werden oftmals Abkürzungen genommen, um schneller zu einem Ergebnis zu kommen, was zu technischen Schulden führt.
-Der Code wird dadurch immer komplexer und unübersichtlicher, und lässt sich irgendwann nicht mehr ändern oder erweitern, ohne, dass es an anderen Stellen zu Fehlern kommt.
+Aus diesen genannten Gründen manifestieren sich unterschiedliche **technische Schulden** im Code:
 
-Der Abbau dieser technischen Schulden ist ein wichtiger Bestandteil der Softwareentwicklung, um die Wartbarkeit und Erweiterbarkeit des Codes zu gewährleisten.
-Nur durch den Abbau dieser technischen Schulden können neue Features effizient hinzu gefügt werden.
+- Code wird **unübersichtlich** und **verworren**.
+Damit brauchen Entwickler und Entwicklerinnen immer länger, um den Code zu verstehen und zu warten.
+- Sogenannte **Code Smells** treten auf, die auf tiefer liegende Probleme hinweisen wie überlange Funktionen, verschachtelte Schleifen, globale Variablen und duplizierter Code.
+- **Dokumentation ist nicht mehr aktuell** und **Kommentare veraltet** oder geben falsche Informationen wieder.
+- **Tests sind nicht vorhanden** oder die Test-Abdeckung ist gering, so dass Änderungen am Code nicht sicher durchgeführt werden können.
+- Wenn ein Teil des Codes verändert wird, kann es zu **unerwarteten Seiteneffekten** an anderen Stellen kommen, denn der Code ist stark miteinander **gekoppelt**.
+- Die Architektur kann nicht mehr den Anforderungen gerecht werden und **neue Features** können nur schwer hinzugefügt werden.
+
+![Technische Schuld mit und ohne Refactoring](./images/TechnicalDebt.png){width=90%}
+*Technische Schuld mit und ohne Refactoring*
+
+**Die Entwicklung eines Produkts ist ein Lernprozess.**
+
+Der Abbau dieser technischen Schulden ist daher ein **wichtiger Bestandteil** der Softwareentwicklung, um all die genannten Probleme zu beheben und mittel- und langfristig neue Features in das Produkt integrieren zu können.
 
 ::: info Kurz gesagt
 
-- Refactoring verbessert das Design des Codes, ohne das Verhalten zu ändern.
-- Refactoring macht den Code lesbarer, verständlicher und leichter wartbar.
-- Refactoring baut technische Schulden ab und verbessert die Code-Qualität.
-- Refactoring hilft den Code zu verstehen.
-- Refactoring hilft beim Finden und Beheben von Fehlern.
-- Refactoring hilft schneller neue Features hinzuzufügen.
+- Refactoring verbessert das Design des Codes, ohne das Verhalten zu ändern, damit Features auch weiterhin funktionieren.
+- Refactoring macht den Code lesbarer, verständlicher und leichter wartbar, damit neue Features einfacher integriert werden können.
+- Refactoring baut technische Schulden ab und verbessert die Code-Qualität, damit neue Features einfacher integriert werden können.
+- Refactoring hilft den Code zu verstehen, damit ein neues Feature einfacher integriert werden kann.
+- Refactoring hilft beim Finden und Beheben von Fehlern, damit ein Feature wie gewollt funktioniert.
+- **Refactoring hilft vorhandene Features zu korrigieren, verändern und zu erweitern sowie schneller neue Features hinzuzufügen.**
 
 :::
+
+![Veränderung der Anzahl von Features und Fehlern mit der Zeit](./images/Features%20and%20Errors.png){width=50%}
+*Veränderung der Anzahl von Features und Fehlern mit der Zeit ohne Tests und Refactoring*
 
 ## RFP3 Wann kann refaktorisiert werden? {#wann-kann-refaktorisiert-werden}
 
