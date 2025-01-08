@@ -21,7 +21,10 @@ hero:
     - theme: alt
       text: Architekturmuster
       link: ./architectural
-    - theme: brand
+    - theme: alt
+      text: Technische Ansätze
+      link: ./technical
+    - theme: alt
       text: Literatur
       link: ../sources
   

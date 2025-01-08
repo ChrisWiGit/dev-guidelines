@@ -27,6 +27,9 @@ hero:
       text: Architekturmuster
       link: #
     - theme: alt
+      text: Technische Ansätze
+      link: ./technical
+    - theme: alt
       text: Übersicht
       link: ./index
 ---

@@ -11,10 +11,10 @@ hero:
   text: Erschaffungsmuster
   tagline: Erzeugung von etwas Neuem
   actions:
-    - theme: alt
+    - theme: brand
       text: Allgemein
       link: #
-    - theme: brand
+    - theme: alt
       text: Erschaffungsmuster
       link: ./creational
     - theme: alt
@@ -26,6 +26,9 @@ hero:
     - theme: alt
       text: Architekturmuster
       link: ./architectural
+    - theme: alt
+      text: Technische Ansätze
+      link: ./technical
     - theme: alt
       text: Übersicht
       link: ./index

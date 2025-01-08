@@ -65,14 +65,14 @@ features:
       src: /designpatterns.png
       width: 36
       height: 36
-  - title: Refactoring (33%)
+  - title: Refactoring (60%)
     details: Regeln zum Refactoring
     link: ./5.refactoring/
     icon:
       src: /refactoring.png
       width: 36
       height: 36
-  - title: Sprachen und Frameworks (70%)
+  - title: Sprachen und Frameworks (80%)
     details: Richtlinien zu den Sprachen und Frameworks Java, JavaScript, Vue
     link: ./6.languages/
     icon:

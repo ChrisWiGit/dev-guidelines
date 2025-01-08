@@ -451,7 +451,7 @@ Millers Law hilft Software intuitiver, verständlicher und wartbarer zu gestalte
 :::
 
 ![Fälle pro Methode nach Mark Seemann](./images/hexagons.png)
-*Fälle pro Methode nach Mark Seemann können als hexagonale Form dargestellt werden.*{#fig:faelle-pro-methode-nach-mark-seemann}
+*Fälle pro Methode nach [Mark Seemann](../sources.md) können als hexagonale Form dargestellt werden.*{#fig:faelle-pro-methode-nach-mark-seemann}
 
 ## GL26 Niedrige Kopplung {#niedrige-kopplung}
 
