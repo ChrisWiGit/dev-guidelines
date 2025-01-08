@@ -167,7 +167,7 @@ Code Smells sind Anzeichen in deinem Code, die auf tiefer liegende Probleme hinw
 Beispiele hierfür sind überlange Funktionen, verschachtelte Schleifen, globale Variablen und duplizierter Code. Durch das Identifizieren dieser "Code Smells" kannst du gezielt Verbesserungen vornehmen.
 :::
 
-Siehe Beispiele [Code-Smells](./codesmells).
+Siehe [Refactoring-Beispiele](./all).
 
 ## RFP9 Vereinfachungen {#vereinfachungen}
 
@@ -234,13 +234,14 @@ Die [Die 2-3-5](../2.principles/principles#the-2-3-5) Regel kann hierbei helfen 
 
 ## RFP16 Lange Funktionen/Methoden {#lange-funktionen-methoden}
 
-Komplexität von Funktionen/Methoden steigt mir ihrer Länge.
+Komplexität von Funktionen/Methoden steigt mir ihrer Länge überproportional an.
 Um die Lesbarkeit und Wartbarkeit zu verbessern, sollen lange Funktionen/Methoden in kleinere Funktionen/Methoden aufgeteilt werden.
 
 1. Funktionen/Methoden sollen nur eine Aufgabe erfüllen.
 2. Funktionen/Methoden sollen in mehrere Funktionen/Methoden in unterschiedlichen Abstraktionsstufen aufgeteilt werden.
 3. Jede aufgeteilte Funktion/Methode soll eine klare und einzelne Aufgabe haben.
 4. Jede aufgeteilte Funktion/Methode soll getestet sein.
+5. Jede Methode soll maximal 7±2 Fälle behandeln [Länge von Methode](../6.languages/general.html#laenge-von-methoden-funktionen).
 
 ## RFP17 Parameter {#lange-parameterlisten}
 

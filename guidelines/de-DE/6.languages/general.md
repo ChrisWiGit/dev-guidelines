@@ -425,11 +425,9 @@ Diese Methoden/Funktionen sind oft schwer zu verstehen und zu testen.
 
 Die Länge von Methoden/Funktionen ist daher soweit klein zu halten, dass sie nur eine Aufgabe erfüllen und leicht zu verstehen sind.
 
-**Idealerweise soll die Methode/Funktion so klein gehalten werden, dass maximal maximal 7 Fälle damit behandelt werden können.
-Dies entspricht der kognitiven Grenze des Menschen, der nur 7±2 Informationseinheiten gleichzeitig verarbeiten kann (Miller's Law).
-Dies entspricht nicht unbedingt der Anzahl der Zeilen.**
+**Eine Methode oder Funktion sollte möglichst klein sein und höchstens 7 verschiedene Fälle behandeln. Das liegt daran, dass Menschen nur etwa 7 Informationseinheiten gleichzeitig verarbeiten können (bekannt als Miller’s Law). Dabei geht es nicht um die Anzahl der Zeilen im Code, sondern um die Anzahl der unterschiedlichen Fälle, die die Methode behandelt.**
 
-Dies kann durch folgende Maßnahmen erreicht werden:
+Folgende Schritte können unternommen werden, um die Länge von Methoden/Funktionen zu reduzieren:
 
 - Extrahieren von Code in eigene Methoden/Funktionen ([Single Responsibility Principle](../2.principles/principles#single-responsibility-principle))
   - Business-fremde Logik in eigene Klassen oder Module auslagern ([Separation of Concerns](../2.principles/principles#separation-of-concerns), [Einsatz von modellgetriebener Entwicklung](../general#model-getriebener-entwicklung}]))
@@ -451,6 +449,9 @@ Millers Law, benannt nach dem Psychologen George A. Miller, besagt, dass ein Men
 
 Millers Law hilft Software intuitiver, verständlicher und wartbarer zu gestalten, indem es die kognitiven Grenzen des Menschen berücksichtigt.
 :::
+
+![Fälle pro Methode nach Mark Seemann](./images/hexagons.png)
+*Fälle pro Methode nach Mark Seemann können als hexagonale Form dargestellt werden.*{#fig:faelle-pro-methode-nach-mark-seemann}
 
 ## GL26 Niedrige Kopplung {#niedrige-kopplung}
 
