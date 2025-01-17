@@ -1189,6 +1189,8 @@ Soll für neue Methoden/Funktionen verwendet werden, um diese spezielle Fälle (
 
 Soll ein neues Klassen- oder Objektmodell erstellt werden, sollen direkt [spezielle Objekte](index#verwende-spezielle-objekte-statt-spezielle-werte) verwendet werden.
 
+Siehe auch [Null-Objekte](../../4.designpatterns/technical.md#null-objects).
+
 :::
 
 ::: warning Alternative Namensgebung

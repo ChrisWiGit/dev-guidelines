@@ -595,7 +595,7 @@ class MyClass {
 ## RFA15 Prüfung auf `null` {#pruefung-auf-null}
 
 - Fehlende Prüfung auf `null`
-- Rückgabe von `null` statt eines leeren Objekts
+- Rückgabe von `null` statt eines [Null-Objekts](../4.designpatterns/technical.md#null-objects)
 - Bezeichner enthält keine Information über die Möglichkeit von `null` (`data` statt `dataOrNull`)
 
 ```java
@@ -608,7 +608,7 @@ data.doSomething(); // NullPointerException
 - Prüfung auf `null` hinzufügen.
 - Rückgabe von `null` durch *leeres Objekt* (Array, List, etc) ersetzen.
 - Optional verwenden.
-- Spezielle Klassen für `null`-Werte verwenden.
+- Spezielle Klassen für `null`-Werte verwenden ([Null-Objekts](../4.designpatterns/technical.md#null-objects))
 
 ## RFA16 If-Statements {#if-statements}
 
@@ -996,7 +996,6 @@ class SubClass {
 - Vererbung entfernen.
 - Delegate Pattern verwenden.
 - Interface verwenden.
-
 
 ## RFA24 Verwechslung von booleschem und bitweisem Operator {#verwechslung-von-booleschem-und-bitweisem-operator}
 

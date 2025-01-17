@@ -2905,6 +2905,8 @@ Wenn spezielle Objekte verwendet werden, um spezielle Fälle zu repräsentieren,
 Das spezielle Objekt [Optional](index#verwendung-von-optional-in-javascript-funktionen) kann auch verwendet werden, um diese spezielle Fälle zu repräsentieren.
 Es ist nützlich, wenn bereits Klassen und Objekte aus einer Legacy-Anwendung verwendet werden, die nicht geändert werden können.
 
+Siehe auch [Null-Objekte](../../4.designpatterns/technical.md#null-objects).
+
 :::
 
 ```javascript

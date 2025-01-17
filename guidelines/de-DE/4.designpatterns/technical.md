@@ -78,7 +78,7 @@ Dadurch kann Software bereits in ein Release integriert werden, bevor sie für a
 - **Progressive Delivery:** Schrittweises Ausrollen von Funktionen an ausgewählte Benutzergruppen, um Feedback zu sammeln und die Systemstabilität zu gewährleisten.
 - **Experimentation und A/B-Tests:** Testen verschiedener Varianten einer Funktion, um die effektivste Lösung zu identifizieren.
 - **Schnelle Deaktivierung (Kill Switches):** Bei unerwarteten Problemen können Funktionen sofort deaktiviert werden, um negative Auswirkungen zu minimieren.
-- **Infrastruktur-Migrationen:** Erleichterung von Übergängen, z. B. bei der Migration von Monolithen zu Microservices, bei Refactoring [Strangler Pattern](../5.refactoring/principals#strangler-pattern) oder bei der Einführung neuer Implementierungen, indem neue Implementierungen schrittweise aktiviert werden.
+- **Infrastruktur-Migrationen:** Erleichterung von Übergängen, z.B. bei der Migration von Monolithen zu Microservices, bei Refactoring [Strangler Pattern](../5.refactoring/principals#strangler-pattern) oder bei der Einführung neuer Implementierungen, indem neue Implementierungen schrittweise aktiviert werden.
 - **Veraltete Features:** Veraltete oder nicht mehr benötigte Features können testweise deaktiviert werden, um zu prüfen, ob der zuständige Code entfernt werden kann.
 
 ### DPT1 Best Practices
@@ -93,7 +93,6 @@ Dadurch kann Software bereits in ein Release integriert werden, bevor sie für a
 - [Feature Flags - Martin Fowler](https://martinfowler.com/articles/feature-toggles.html)
 - [Feature Flags - LaunchDarkly](https://launchdarkly.com/blog/what-are-feature-flags/)
 - [Feature Toggle - Wikipedia](https://de.wikipedia.org/wiki/Feature_Toggle)
-
 
 ## DPT2 Null-Objekte {#null-objects}
 
@@ -142,6 +141,7 @@ boolean isUnDefined = getName() == NOT_DEFINED; // kein equals, da es sich um ei
 boolean isEmpty = getName().equals("");
 // isEmpty == true
 ```
+
 :::
 
 Sobald ein Datenobjekt zurückgegeben soll, die Methode jedoch keinen Wert zurückgeben kann, sollte ein Null-Objekt zurückgegeben werden, das die Schnittstelle implementiert, jedoch keine Daten enthält.
@@ -188,7 +188,6 @@ Folgecode muss ebenfalls angepasst werden, um die neuen Null-Objekte zu berücks
 Beispielsweise müssen UI-Elemente angepasst werden, die vorher auf `null` prüften und nun auf leere Datenobjekte prüfen müssen.
 5. **Testen:** Testen des Codes, um sicherzustellen, dass die Umstellung erfolgreich war und keine neuen Fehler eingeführt wurden.
 
-
 ::: info Optional
 
 Das Null-Objekt darf nicht mit einem Optional-Typ verwechselt werden, der in einigen Programmiersprachen wie Java oder Kotlin verwendet wird,
@@ -228,7 +227,7 @@ sum = sum + 10;
 // sum == 15
 ```
 
-Durch die Rückgabe eines Null-Objekts (`NO_NUMBER` in diesem Fall) entfällt die Notwendigkeit, auf `null` zu prüfen, da der Code jederzeit mit einem gültigen Wert arbeitet. 
+Durch die Rückgabe eines Null-Objekts (`NO_NUMBER` in diesem Fall) entfällt die Notwendigkeit, auf `null` zu prüfen, da der Code jederzeit mit einem gültigen Wert arbeitet.
 Dies ist möglich, da Null-Werte durch leere Werte ersetzt werden, die keine Auswirkungen auf die weitere Verarbeitung haben.
 Auf diese Weise wird das Risiko von NullPointerExceptions effektiv minimiert, ohne die Nachvollziehbarkeit des Codes einzuschränken.
 
@@ -239,9 +238,9 @@ Hier ist die überarbeitete Version des Abschnitts:
 
 ### DPT2 Gegenbeispiel
 
-Null-Werte sollten nicht als Ersatz für eine ordnungsgemäße Fehlerbehandlung verwendet werden, sondern als spezielle Werte, die eine klar definierte Bedeutung haben. 
-Ein Gegenbeispiel könnte die Verwendung eines `NoUserFound`-Objekts als Null-Objekt für Benutzer sein. 
-Dies ist nur in solchen Fällen sinnvoll, in denen die weitere Verarbeitung auch ohne einen Benutzer möglich ist. 
+Null-Werte sollten nicht als Ersatz für eine ordnungsgemäße Fehlerbehandlung verwendet werden, sondern als spezielle Werte, die eine klar definierte Bedeutung haben.
+Ein Gegenbeispiel könnte die Verwendung eines `NoUserFound`-Objekts als Null-Objekt für Benutzer sein.
+Dies ist nur in solchen Fällen sinnvoll, in denen die weitere Verarbeitung auch ohne einen Benutzer möglich ist.
 Andernfalls sollte ein Fehler geworfen werden, um explizit darauf hinzuweisen, dass kein Benutzer gefunden wurde.
 
 Das folgende **schlechte Beispiel** zeigt die Verwendung eines Null-Objekts in einem Szenario, in dem das Fehlen eines Benutzers eigentlich einen Fehler darstellen sollte:
@@ -262,7 +261,7 @@ if (user != User.NO_USER_FOUND) {
 }
 ```
 
-In diesem Fall wird das `NO_USER_FOUND`-Objekt verwendet, um das Fehlen eines Benutzers anzuzeigen. Dies kann jedoch zu **Sicherheits**-Problemen führen, da das Fehlen eines Benutzers hier ein Ausnahmefall sein sollte, der die weitere Verarbeitung verhindert. 
+In diesem Fall wird das `NO_USER_FOUND`-Objekt verwendet, um das Fehlen eines Benutzers anzuzeigen. Dies kann jedoch zu **Sicherheits**-Problemen führen, da das Fehlen eines Benutzers hier ein Ausnahmefall sein sollte, der die weitere Verarbeitung verhindert.
 Das Codebeispiel erfordert zusätzliche Prüfungen auf das spezielle Objekt, wodurch potenziell Fehler übersehen werden können.
 
 Stattdessen sollte in einem solchen Fall ein Fehler durch eine Ausnahme signalisiert werden, wie im folgenden **guten Beispiel**:
@@ -277,4 +276,3 @@ public User getUser() {
 ```
 
 Durch das Werfen einer spezifischen Ausnahme (`UserNotFoundException`) wird klar signalisiert, dass das Fehlen eines Benutzers ein Fehler ist und die weitere Verarbeitung nicht sinnvoll fortgesetzt werden kann. Dieses Vorgehen unterstützt das Fail-Fast-Prinzip und erleichtert die Fehlersuche, da Fehler frühzeitig erkannt und behandelt werden.
-
