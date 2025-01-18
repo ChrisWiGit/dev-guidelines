@@ -144,6 +144,7 @@ layout: doc
 - [JS40 Unbenutzte Variablen und Parameter](6.languages/javascript/index.md#unbenutzte-variablen-und-parameter)
 - [JS41 Verwende spezielle Objekte statt spezielle Werte](6.languages/javascript/index.md#verwende-spezielle-objekte-statt-spezielle-werte)
 - [JS42 Lokale Funktionen verwenden](6.languages/javascript/index.md#lokale-funktionen-verwenden)
+- [JS43 setTimeout und setInterval](6.languages/javascript/index.md#settimeout-und-setinterval)
 
 ## Regeln für Vue
 

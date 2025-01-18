@@ -3091,3 +3091,81 @@ Wenn die übergreifende Funktion zu groß wird, sollte sie in kleinere Funktione
 - Funktionen können nicht von außen getestet werden
 - Funktionen können nicht von anderen Funktionen verwendet werden
 - Die übergeordnete Funktion wird größer, wenn viele lokale Funktionen verwendet werden.
+
+## JS43 setTimeout und setInterval {#settimeout-und-setinterval}
+
+Die globalen Funktion setTimeout und setInterval werden in JavaScript oft verwendet, um Code zu verzögern oder in regelmäßigen Abständen auszuführen.
+Die Verwendung von setTimeout und setInterval soll vermieden werden, aus den folgenden Gründen:
+
+1. **Asynchronität**: setTimeout und setInterval sind asynchron und führen zu unvorhersehbarem Verhalten, wenn sie mit anderen asynchronen Operationen kombiniert werden.
+2. **Race Conditions**: setTimeout und setInterval können zu Zeitpunkten ausgeführt werden, die mit anderen Operationen kollidieren, was zu sogenannten "Heisenbugs" führen kann.
+
+### JS43 Alternativen
+
+1. **Promises**: Verwende Promises, um asynchrone Operationen zu verwalten.
+2. **EventEmitter**: Verwende EventEmitter, um benutzerdefinierte Ereignisse zu erstellen und zu verwalten.
+3. **Async/Await**: Verwende async/await, um asynchrone Operationen zu verwalten.
+4. **Web Workers**: Verwende Web Workers, um asynchrone Operationen im Hintergrund auszuführen.
+5. **Dependency Injection**: Verwende Dependency Injection.
+
+### JS43 Dependency Injection
+
+Muss `setTimeout` oder `setInterval` verwendet werden, sollen die Funktionen `setTimeout` und `setInterval` als Abhängigkeiten über Dependency Injection injiziert werden.
+Damit kann die Abhängigkeit beispielweise in Tests durch eine Mock-Funktion ersetzt werden.
+
+::: code-group
+
+```javascript [DI in Klasse]
+
+class MyClass {
+  constructor(setTimeout, setInterval) {
+    this.setTimeout = setTimeout;
+    this.setInterval = setInterval;
+  }
+
+  myFunction() {
+    this.setTimeout(() => {
+      // ...
+    }, 1000);
+
+    this.setInterval(() => {
+      // ...
+    }, 1000);
+  }
+}
+
+```
+
+```javascript [DI in Funktion]
+
+function myFunction(vars, { setTimeout, setInterval }) {
+  setTimeout(() => {
+    // ...
+  }, 1000);
+
+  setInterval(() => {
+    // ...
+  }, 1000);
+}
+
+```
+
+:::
+
+### JS43 Deinstallieren
+
+Wenn `setTimeout` oder `setInterval` verwendet werden, soll die Funktion `clearTimeout` oder `clearInterval` verwendet werden, um die Zeitüberschreitung oder das Intervall zu deinstallieren.
+
+```javascript
+const timeout = setTimeout(() => {
+  // ...
+}, 1000);
+
+clearTimeout(timeout);
+
+const interval = setInterval(() => {
+  // ...
+}, 1000);
+
+clearInterval(interval);
+```

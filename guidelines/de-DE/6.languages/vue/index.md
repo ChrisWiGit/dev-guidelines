@@ -6,7 +6,7 @@ customRulePrefix: V
 customIgnoreTitlesForRules: [Einleitung]
 ---
 
-# Richtlinien für JavaScript und TypeScript
+# Richtlinien für Vue
 
 ::: danger TODO:
 Weitere Regeln einfügen.
@@ -279,7 +279,7 @@ Vue-Props sollen nicht verändert werden.
 
 Wenn Vue-Props verändert werden, kann dies zu unerwartetem Verhalten führen.
 
-```js
+```javascript
 export default {
   props: {
     user: {
@@ -305,7 +305,7 @@ Dies kanna auf verschiedene Weisen erreicht werden:
 - Vue-Props in Computed Properties verwenden, die angepasste oder veränderte Werte zurückgeben.
 - Statt Schleifen können Deklarative Methoden aus `Array` wie `map`, `filter`, `reduce` verwendet werden, die keine Seiteneffekte haben.
 
-```js
+```javascript
 computed: {
   userName() {
     return this.user.name + '!'
@@ -341,37 +341,32 @@ Dies können sein:
 
 Watcher und Listener sollen in der `onUnmounted`-Hook entfernt werden.
 
-```js
-// irgendwo im Code
+```javascript
+import { watch, onMounted, onUnmounted } from 'vue'
 
-this.unwatch = watch(() => this.user.name, (newValue, oldValue) => {
-  console.log('Name changed')
+let watcher
+let stopTimeout
+let stopInterval
+
+onMounted(() => {
+  watcher = watch(() => userName, (newValue, oldValue) => {
+    console.log('Name changed')
+  })
+
+  stopTimeout = setTimeout(() => {
+    console.log('Timeout')
+  }, 1000)
+
+  stopInterval = setInterval(() => {
+    console.log('Interval')
+  }, 1000)
 })
-this.stopTimeout = setTimeout(() => {
-  console.log('Timeout')
-}, 1000)
-this.stopInterval = setInterval(() => {
-  console.log('Interval')
-}, 1000)
 
-const noop = () => {}
-
-export default {
-  data() {
-    return {
-      unwatch: noop,
-      stopTimeout: null,
-      stopInterval: null
-    }
-  },
-  setup() {
-    onUnmounted(() => {
-      clearInterval(this.stopInterval)
-      stopTimeout(this.stopTimeout)
-      this.unwatch()
-    })
-  }
-}
+onUnmounted(() => {
+  watcher()
+  clearTimeout(stopTimeout)
+  clearInterval(stopInterval)
+})
 
 ```
 
@@ -447,6 +442,7 @@ export default {
 ## V12 Inject/Provide verwenden {#inject-provide-verwenden}
 
 Vue-Komponenten sollen `Inject` und `Provide` verwenden, um Abhängigkeiten zu injizieren.
+**Statt `import` von Abhängigkeiten in Komponenten sollen diese durch `Inject` und `Provide` injiziert werden, so dass im besten Fall kein `import` in der Komponente vorkommt.**
 
 ### V12 Problem
 
@@ -454,13 +450,14 @@ Vue-Komponenten sind oft abhängig von anderen Komponenten oder Services.
 Diese Abhängigkeiten sollen nicht direkt in den Komponenten erstellt werden, sondern durch `Inject` und `Provide` injiziert werden.
 
 ```js
-export default {
-  data() {
-    return {
-      userService: new UserService()
-    }
-  }
-}
+import { onMounted, onUnmounted } from 'vue'
+import UserService from './UserService'
+import { otherMethod } from './OtherService'
+
+onMounted(() => {
+  const userService = new UserService()
+  otherMethod(userService)
+})
 ```
 
 ### V12 Lösung
@@ -470,14 +467,134 @@ Dadurch wird die Wiederverwendbarkeit, Testbarkeit und Wartbarkeit verbessert.
 Eine Komponente kann so einfach verändert werden, indem eine andere Abhängigkeit injiziert wird.
 
 ```js
-export default {
-  inject: ['userService']
-}
+import { onMounted, inject } from 'vue'
 
-// provide in Parent Component
-provide() {
-  return {
-    userService: new UserService()
-  }
-}
+const userService = inject('userService')
+const otherMethod = inject('otherService')
+
+onMounted(() => {
+  otherMethod(userService)
+})
 ```
+
+Der Komponente wird durch `provide` die Abhängigkeit injiziert.
+
+```js
+import { provide, ref } from 'vue'
+
+const userService = new UserService()
+
+provide('userService', userService)
+provide('otherService', otherMethod)
+
+```
+
+## V13 Browserspezifische Funktionen {#browserspezifische-funktionen}
+
+Oft werden spezielle Funktionen verwendet, um den Browser zu steuren.
+Dazu gehören:
+
+- `setTimeout` und `setInterval`
+- `scrollTo` und `scrollBy`
+- `resize` und `scroll` und ähnliche Events
+
+### V13 Problem
+
+Diese Funktionen führen speziellen Code im Browser aus und greifen direkt auf den Browser zu.
+Wenn dieser Code in Vue-Komponenten verwendet wird, wird die Komponente schwer oder überhaupt nicht testbar.
+Daher sollten diese Funktionen vermieden werden und auf Standard-Events und Vue-Events zurückgegriffen werden.
+Ist dies nicht möglich oder sinnvoll, sollen diese Funktionen abstrahiert werden und durch Dependency Injection injiziert werden.
+
+Im Folgenden wird auf `setTimeout` und `setInterval` als Beispiel für alle Browserfunktionen eingegangen.
+
+### V13 setTimeout und setInterval {#settimeout-und-setinterval}
+
+`setTimeout` und `setInterval` sollen in Vue-Komponenten vermieden werden.
+Die Gründe sind:
+
+1. **Schwierige Tests** Wenn Komponenten getestet werden, führen `setTimeout` und `setInterval` dazu, dass Tests schwierig zu schreiben und zu verstehen sind, weil Code asynchron ausgeführt wird.  
+2. **Asynchronität** `setTimeout` und `setInterval` führen zu asynchronem Code, der schwer zu verstehen und zu warten ist.
+Andere Komponenten, die eine solche Komponente verwenden, müssen wiederum asynchronen Code verwenden, um auf die asynchronen Timer zu reagieren.
+3. **Lebensdauer** `setTimeout` und `setInterval` führen zu Problemen, wenn die Komponente zerstört wird, aber die Timer noch laufen.
+So können bereits abgeschlossene Tests fehlschlagen, weil die Timer noch laufen.
+Siehe [Watcher und Listener müssen entfernt werden](#watcher-und-listener-muessen-entfernt-werden).
+
+### V13 Alternativen
+
+Statt `setTimer` soll die Reaktivität von Vue verwendet werden.
+Statt `setInterval` soll `requestAnimationFrame` verwendet werden.
+
+### V13 Dependecy Injection
+
+Sollte ein Timer benötigt werden, weil beispielsweise eine verwendete Komponente dies bereits macht, muss der Timer durch Dependency Injection injiziert werden, um die Asynchronität zu vermeiden.
+
+Vue 3 Composition API bietet die Möglichkeit, Timer zu injizieren.
+
+```javascript
+// Komponente
+import { inject } from 'vue'
+
+const setTimeoutDI = inject('setTimeout')
+
+// Parent Komponente
+import { provide } from 'vue'
+
+provide('setTimeout', setTimeout)
+```
+
+Tests können dadurch von `setTimeout` und `setInterval` entkoppelt, und die Asynchronität vermieden werden.
+Im folgenden Test wird `setTimeout` durch eine Funktion ersetzt, die sofort ausgeführt wird.
+Die Komponente kann so getestet werden, ohne auf die asynchrone Ausführung von `setTimeout` zu warten.
+
+```javascript
+
+const setTimeoutDI = (callback) => callback()
+
+it('should call setTimeout', () => {
+  const setTimeout = jest.fn()
+  const wrapper = mount(MyComponent, {
+    global: {
+      provide: {
+        setTimeout: (callback, time) => {
+          setTime(callback, time)out: setTimeoutDI
+        }
+      }
+    }
+  })
+  // ... alle Methoden der Komponenten, die setTimeout verwenden, aufrufen
+  // sind nicht mehr asynchron
+  expect(wrapper.vm.method()).toHaveBeenCalled()
+})
+```
+
+### V13 Globale Timeout und Intervall ersetzen für Tests
+
+In Tests für Komponenten, die weitere Komponenten einbinden, die `setTimeout` und `setInterval` verwenden, jedoch nicht verändert werden können, können die globalen Funktionen ersetzt werden.
+
+```javascript
+describe('MyComponent', () => {
+  let setTimeout
+  let setInterval
+
+  before(() => {
+    setTimeout = window.setTimeout
+    setInterval = window.setInterval
+    window.setTimeout = (callback) => callback()
+    window.setInterval = (callback) => callback()
+  })
+
+  after(() => {
+    window.setTimeout = setTimeout
+    window.setInterval = setInterval
+  })
+
+  it('should call setTimeout', () => {    
+    // MyComponent verwendet intern eine weitere Komponente, die setTimeout verwendet
+    const wrapper = mount(MyComponent)
+    // ... alle Methoden der Komponenten, die setTimeout verwenden, aufrufen
+    // sind nicht mehr asynchron
+    expect(wrapper.vm.method()).toHaveBeenCalled()
+  })
+})
+```
+
