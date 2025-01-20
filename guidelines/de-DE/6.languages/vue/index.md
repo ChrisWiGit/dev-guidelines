@@ -341,6 +341,11 @@ Dies können sein:
 
 Watcher und Listener sollen in der `onUnmounted`-Hook entfernt werden.
 
+::: warning Dependency Injection für `setTimeout` und `setInterval`
+`setTimeout` und `setInterval` sollen mit `inject` als Dependency Injection injiziert werden.
+Siehe dazu [Browserspezifische Funktionen](#browserspezifische-funktionen).
+:::
+
 ```javascript
 import { watch, onMounted, onUnmounted } from 'vue'
 
@@ -412,9 +417,7 @@ Folgende Möglichkeiten gibt es:
 - `null` oder `undefined` Werte in Computed Properties prüfen und abfangen.
 - Spezielle Objekte, die einen `Null Object Pattern` verwenden, um `null` oder `undefined` Werte zu vermeiden.
 
-::: code-group
-
-```html [Null Object Pattern]
+```html
 <template>
   <div>
     <div v-if="user.name">
@@ -422,22 +425,25 @@ Folgende Möglichkeiten gibt es:
     </div>
   </div>
 </template>
-<script>
-const NullUser = {
-  name: 'No Name'
-}
+<script setup>
+import { ref, readonly, onMounted } from 'vue'
 
-export default {
-  data() {
-    return {
-      user: NullUser
-    }
-  }
-}
+const NullUser = readonly(reactive({
+  name: 'None'
+}))
+
+const user = ref(NullUser)
+
+onMounted(() => {
+  // default user
+  user.value = NullUser
+})
 </script>
 ```
 
-:::
+Das Beispiel zeigt, wie ein `Null Object Pattern` verwendet werden kann, um `null` oder `undefined` Werte zu vermeiden.
+Dazu wird ein spezielles Objekt `NullUser` erstellt, das als Standardwert für `user` verwendet wird.
+Das NullUser-Objekt ist ein `readonly`-Objekt, das nicht verändert werden kann und auch nicht mit *value* verändert werden kann.
 
 ## V12 Inject/Provide verwenden {#inject-provide-verwenden}
 
@@ -449,13 +455,14 @@ Vue-Komponenten sollen `Inject` und `Provide` verwenden, um Abhängigkeiten zu i
 Vue-Komponenten sind oft abhängig von anderen Komponenten oder Services.
 Diese Abhängigkeiten sollen nicht direkt in den Komponenten erstellt werden, sondern durch `Inject` und `Provide` injiziert werden.
 
-```js
+```javascript
 import { onMounted, onUnmounted } from 'vue'
 import UserService from './UserService'
 import { otherMethod } from './OtherService'
 
 onMounted(() => {
   const userService = new UserService()
+
   otherMethod(userService)
 })
 ```
@@ -466,7 +473,7 @@ Abhängigkeiten sollen durch `Inject` und `Provide` injiziert werden.
 Dadurch wird die Wiederverwendbarkeit, Testbarkeit und Wartbarkeit verbessert.
 Eine Komponente kann so einfach verändert werden, indem eine andere Abhängigkeit injiziert wird.
 
-```js
+```javascript
 import { onMounted, inject } from 'vue'
 
 const userService = inject('userService')
@@ -500,12 +507,10 @@ Dazu gehören:
 
 ### V13 Problem
 
-Diese Funktionen führen speziellen Code im Browser aus und greifen direkt auf den Browser zu.
-Wenn dieser Code in Vue-Komponenten verwendet wird, wird die Komponente schwer oder überhaupt nicht testbar.
-Daher sollten diese Funktionen vermieden werden und auf Standard-Events und Vue-Events zurückgegriffen werden.
-Ist dies nicht möglich oder sinnvoll, sollen diese Funktionen abstrahiert werden und durch Dependency Injection injiziert werden.
+Diese Funktionen führen speziellen Code in der Laufzeitumgebung (Node, Browser) aus und können in Tests nicht oder nur schwer getestet werden.
+Um Komponenten testbar zu machen, sollen diese Funktionen vermieden und Alternativen wie Reaktivität, Events und Dependency Injection verwendet werden.
 
-Im Folgenden wird auf `setTimeout` und `setInterval` als Beispiel für alle Browserfunktionen eingegangen.
+Im Folgenden wird auf `setTimeout` und `setInterval` als Beispiel eingegangen.
 
 ### V13 setTimeout und setInterval {#settimeout-und-setinterval}
 
@@ -521,8 +526,7 @@ Siehe [Watcher und Listener müssen entfernt werden](#watcher-und-listener-muess
 
 ### V13 Alternativen
 
-Statt `setTimer` soll die Reaktivität von Vue verwendet werden.
-Statt `setInterval` soll `requestAnimationFrame` verwendet werden.
+Statt `setTimerout` soll die Reaktivität von Vue verwendet werden.
 
 ### V13 Dependecy Injection
 
@@ -555,9 +559,7 @@ it('should call setTimeout', () => {
   const wrapper = mount(MyComponent, {
     global: {
       provide: {
-        setTimeout: (callback, time) => {
-          setTime(callback, time)out: setTimeoutDI
-        }
+        setTimeout: (callback) => callback()
       }
     }
   })
@@ -573,19 +575,19 @@ In Tests für Komponenten, die weitere Komponenten einbinden, die `setTimeout` u
 
 ```javascript
 describe('MyComponent', () => {
-  let setTimeout
-  let setInterval
+  let setTimeoutOriginal
+  let setIntervalOriginal
 
   before(() => {
-    setTimeout = window.setTimeout
-    setInterval = window.setInterval
-    window.setTimeout = (callback) => callback()
-    window.setInterval = (callback) => callback()
+    setTimeoutOriginal = global.setTimeout
+    setIntervalOriginal = global.setInterval
+    global.setTimeout = (callback) => callback()
+    global.setInterval = (callback) => callback()
   })
 
   after(() => {
-    window.setTimeout = setTimeout
-    window.setInterval = setInterval
+    global.setTimeout = setTimeoutOriginal
+    global.setInterval = setIntervalOriginal
   })
 
   it('should call setTimeout', () => {    
@@ -597,4 +599,3 @@ describe('MyComponent', () => {
   })
 })
 ```
-
