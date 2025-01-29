@@ -1699,23 +1699,22 @@ if (!(name === "" || age < 18 || !isAuthorized)) {
 ### JS23 Lösung
 
 Durch die positive Formulierung der Bedingungen und die Auslagerung komplexer Ausdrücke in temporäre Variablen wird der Code lesbarer und verständlicher.
+Nicht jede Bedingung muss dabei in eine temporäre Variable ausgelagert werden, sondern nur diejenigen, die die Lesbarkeit des Codes verbessern.
 
 ```java
-boolean isNameEmpty = name.isEmpty();
-boolean isUnderAge = age < 18;
-boolean isNotAuthorized = !isAuthorized;
+boolean hasName = !name.isEmpty();
+boolean isOfAge = age >= 18;
 
-if (!isNameEmpty && !isUnderAge && isNotAuthorized) {
+if (hasName || isOfAge || !isAuthorized) {
     // Code ausführen
 }
 ```
 
 ```javascript
-const isNameEmpty = name === "";
-const isUnderAge = age < 18;
-const isNotAuthorized = !isAuthorized;
+const hasName = name !== "";
+const isOfAge = age >= 18;
 
-if (!isNameEmpty && !isUnderAge && isNotAuthorized) {
+if (hasName || isOfAge || !isAuthorized) {
     // Code ausführen
 }
 ```
@@ -1734,11 +1733,6 @@ if (!isNameEmpty && !isUnderAge && isNotAuthorized) {
 ### JS23 Ausnahmen
 
 Es gibt Fälle, in denen das Auslagern von Bedingungen in temporäre Variablen nicht sinnvoll ist, z. B. wenn die Bedingung nur an einer Stelle verwendet wird und keine weitere Klarheit oder Wartbarkeit gewonnen wird.
-
-### JS23 Weiterführende Literatur/Links
-
-- [The Art of Readable Code - Simple Conditionals](https://www.amazon.com/dp/0596802293)
-- [Clean Code: A Handbook of Agile Software Craftsmanship](https://www.amazon.com/dp/0132350882)
 
 ## JS24 Exceptions in JavaScript nicht einfach loggen und unverändert wieder werfen {#exceptions-in-javascript-nicht-einfach-loggen-und-unveraendert-wieder-werfen}
 
@@ -1777,6 +1771,16 @@ try {
   // Fehlerbehandlung und angemessene Maßnahmen ergreifen
   console.error('Ein Fehler ist aufgetreten:', error);
   // Weitere Maßnahmen wie Fehlermeldung anzeigen, alternative Verarbeitung, etc.
+}
+```
+
+oder die Exception kann durch eine sprechendere Exception ersetzt werden:
+
+```java
+try {
+  // Code, der eine Exception auslöst
+} catch (error) {
+  throw new CustomException('Fehler beim Verarbeiten der Daten', error);
 }
 ```
 
