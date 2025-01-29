@@ -93,6 +93,13 @@ features:
       src: /accessibility.png
       width: 36
       height: 36
+  - title: Metriken (1%)
+    details: Metriken in der Softwareentwicklung
+    link: ./10.metrics
+    icon:
+      src: /metrics.png
+      width: 36
+      height: 36
   - title: Künstliche Intelligenz (100%)
     details: KI in der Softwareentwicklung
     link: ./9.ai
