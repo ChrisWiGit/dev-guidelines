@@ -184,3 +184,4 @@ Diese Exception sollte durch ein globales Error-Handling behandelt werden, statt
 - Bessere Lesbarkeit durch sequentielle Ausführung statt Verschachtelung
 - Bessere Fehlerbehandlung durch `try-catch` statt `catch`-Funktionen (die oft nicht implementiert und getestet sind)
 - Bessere Wartbarkeit durch bessere Strukturierung des Codes
+

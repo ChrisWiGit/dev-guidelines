@@ -1699,23 +1699,22 @@ if (!(name === "" || age < 18 || !isAuthorized)) {
 ### JS23 Lösung
 
 Durch die positive Formulierung der Bedingungen und die Auslagerung komplexer Ausdrücke in temporäre Variablen wird der Code lesbarer und verständlicher.
+Nicht jede Bedingung muss dabei in eine temporäre Variable ausgelagert werden, sondern nur diejenigen, die die Lesbarkeit des Codes verbessern.
 
 ```java
-boolean isNameEmpty = name.isEmpty();
-boolean isUnderAge = age < 18;
-boolean isNotAuthorized = !isAuthorized;
+boolean hasName = !name.isEmpty();
+boolean isOfAge = age >= 18;
 
-if (!isNameEmpty && !isUnderAge && isNotAuthorized) {
+if (hasName || isOfAge || !isAuthorized) {
     // Code ausführen
 }
 ```
 
 ```javascript
-const isNameEmpty = name === "";
-const isUnderAge = age < 18;
-const isNotAuthorized = !isAuthorized;
+const hasName = name !== "";
+const isOfAge = age >= 18;
 
-if (!isNameEmpty && !isUnderAge && isNotAuthorized) {
+if (hasName || isOfAge || !isAuthorized) {
     // Code ausführen
 }
 ```
@@ -1734,11 +1733,6 @@ if (!isNameEmpty && !isUnderAge && isNotAuthorized) {
 ### JS23 Ausnahmen
 
 Es gibt Fälle, in denen das Auslagern von Bedingungen in temporäre Variablen nicht sinnvoll ist, z. B. wenn die Bedingung nur an einer Stelle verwendet wird und keine weitere Klarheit oder Wartbarkeit gewonnen wird.
-
-### JS23 Weiterführende Literatur/Links
-
-- [The Art of Readable Code - Simple Conditionals](https://www.amazon.com/dp/0596802293)
-- [Clean Code: A Handbook of Agile Software Craftsmanship](https://www.amazon.com/dp/0132350882)
 
 ## JS24 Exceptions in JavaScript nicht einfach loggen und unverändert wieder werfen {#exceptions-in-javascript-nicht-einfach-loggen-und-unveraendert-wieder-werfen}
 
@@ -1777,6 +1771,16 @@ try {
   // Fehlerbehandlung und angemessene Maßnahmen ergreifen
   console.error('Ein Fehler ist aufgetreten:', error);
   // Weitere Maßnahmen wie Fehlermeldung anzeigen, alternative Verarbeitung, etc.
+}
+```
+
+oder die Exception kann durch eine sprechendere Exception ersetzt werden:
+
+```java
+try {
+  // Code, der eine Exception auslöst
+} catch (error) {
+  throw new CustomException('Fehler beim Verarbeiten der Daten', error);
 }
 ```
 
@@ -3091,3 +3095,81 @@ Wenn die übergreifende Funktion zu groß wird, sollte sie in kleinere Funktione
 - Funktionen können nicht von außen getestet werden
 - Funktionen können nicht von anderen Funktionen verwendet werden
 - Die übergeordnete Funktion wird größer, wenn viele lokale Funktionen verwendet werden.
+
+## JS43 setTimeout und setInterval {#settimeout-und-setinterval}
+
+Die globalen Funktion setTimeout und setInterval werden in JavaScript oft verwendet, um Code zu verzögern oder in regelmäßigen Abständen auszuführen.
+Die Verwendung von setTimeout und setInterval soll vermieden werden, aus den folgenden Gründen:
+
+1. **Asynchronität**: setTimeout und setInterval sind asynchron und führen zu unvorhersehbarem Verhalten, wenn sie mit anderen asynchronen Operationen kombiniert werden.
+2. **Race Conditions**: setTimeout und setInterval können zu Zeitpunkten ausgeführt werden, die mit anderen Operationen kollidieren, was zu sogenannten "Heisenbugs" führen kann.
+
+### JS43 Alternativen
+
+1. **Promises**: Verwende Promises, um asynchrone Operationen zu verwalten.
+2. **EventEmitter**: Verwende EventEmitter, um benutzerdefinierte Ereignisse zu erstellen und zu verwalten.
+3. **Async/Await**: Verwende async/await, um asynchrone Operationen zu verwalten.
+4. **Web Workers**: Verwende Web Workers, um asynchrone Operationen im Hintergrund auszuführen.
+5. **Dependency Injection**: Verwende Dependency Injection.
+
+### JS43 Dependency Injection
+
+Muss `setTimeout` oder `setInterval` verwendet werden, sollen die Funktionen `setTimeout` und `setInterval` als Abhängigkeiten über Dependency Injection injiziert werden.
+Damit kann die Abhängigkeit beispielweise in Tests durch eine Mock-Funktion ersetzt werden.
+
+::: code-group
+
+```javascript [DI in Klasse]
+
+class MyClass {
+  constructor(setTimeout, setInterval) {
+    this.setTimeout = setTimeout;
+    this.setInterval = setInterval;
+  }
+
+  myFunction() {
+    this.setTimeout(() => {
+      // ...
+    }, 1000);
+
+    this.setInterval(() => {
+      // ...
+    }, 1000);
+  }
+}
+
+```
+
+```javascript [DI in Funktion]
+
+function myFunction(vars, { setTimeout, setInterval }) {
+  setTimeout(() => {
+    // ...
+  }, 1000);
+
+  setInterval(() => {
+    // ...
+  }, 1000);
+}
+
+```
+
+:::
+
+### JS43 Deinstallieren
+
+Wenn `setTimeout` oder `setInterval` verwendet werden, soll die Funktion `clearTimeout` oder `clearInterval` verwendet werden, um die Zeitüberschreitung oder das Intervall zu deinstallieren.
+
+```javascript
+const timeout = setTimeout(() => {
+  // ...
+}, 1000);
+
+clearTimeout(timeout);
+
+const interval = setInterval(() => {
+  // ...
+}, 1000);
+
+clearInterval(interval);
+```

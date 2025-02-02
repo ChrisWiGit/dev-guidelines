@@ -39,7 +39,7 @@ Dieses Dokument enthält eine Liste von Aufgaben, die noch erledigt werden müss
 
 ## 6.languages\vue\index.md
 
-- [Richtlinien für JavaScript und TypeScript](6.languages\vue\index.md)
+- [Richtlinien für Vue](6.languages\vue\index.md)
 
 ## 8.accessibility\index.md
 
@@ -48,5 +48,13 @@ Dieses Dokument enthält eine Liste von Aufgaben, die noch erledigt werden müss
 ## 8.accessibility\ui.md
 
 - [Einleitung](8.accessibility\ui.md#einleitung)
+
+## 9.metrics\code.md
+
+- [MC3 Qualitiative Metriken](9.metrics\code.md#qualitiative-metriken)
+
+## 9.metrics\index.md
+
+- [https://vitepress.dev/reference/default-theme-home-page](9.metrics\index.md)
 
 
