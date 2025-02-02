@@ -1,5 +1,25 @@
 [
   {
+    "filePath": "10.metrics\\code.md",
+    "filename": "code.md",
+    "todos": [
+      {
+        "title": "MC3 Qualitiative Metriken",
+        "link": "10.metrics\\code.md#qualitiative-metriken"
+      }
+    ]
+  },
+  {
+    "filePath": "10.metrics\\index.md",
+    "filename": "index.md",
+    "todos": [
+      {
+        "title": "https://vitepress.dev/reference/default-theme-home-page",
+        "link": "10.metrics\\index.md"
+      }
+    ]
+  },
+  {
     "filePath": "3.cleancode\\index.md",
     "filename": "index.md",
     "todos": [
@@ -108,26 +128,6 @@
       {
         "title": "Einleitung",
         "link": "8.accessibility\\ui.md#einleitung"
-      }
-    ]
-  },
-  {
-    "filePath": "9.metrics\\code.md",
-    "filename": "code.md",
-    "todos": [
-      {
-        "title": "MC3 Qualitiative Metriken",
-        "link": "9.metrics\\code.md#qualitiative-metriken"
-      }
-    ]
-  },
-  {
-    "filePath": "9.metrics\\index.md",
-    "filename": "index.md",
-    "todos": [
-      {
-        "title": "https://vitepress.dev/reference/default-theme-home-page",
-        "link": "9.metrics\\index.md"
       }
     ]
   }

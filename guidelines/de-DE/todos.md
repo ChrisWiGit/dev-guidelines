@@ -6,6 +6,14 @@ layout: doc
 
 Dieses Dokument enthält eine Liste von Aufgaben, die noch erledigt werden müssen.
 
+## 10.metrics\code.md
+
+- [MC3 Qualitiative Metriken](10.metrics\code.md#qualitiative-metriken)
+
+## 10.metrics\index.md
+
+- [https://vitepress.dev/reference/default-theme-home-page](10.metrics\index.md)
+
 ## 3.cleancode\index.md
 
 - [Thema Performance](3.cleancode\index.md)
@@ -48,13 +56,5 @@ Dieses Dokument enthält eine Liste von Aufgaben, die noch erledigt werden müss
 ## 8.accessibility\ui.md
 
 - [Einleitung](8.accessibility\ui.md#einleitung)
-
-## 9.metrics\code.md
-
-- [MC3 Qualitiative Metriken](9.metrics\code.md#qualitiative-metriken)
-
-## 9.metrics\index.md
-
-- [https://vitepress.dev/reference/default-theme-home-page](9.metrics\index.md)
 
 
