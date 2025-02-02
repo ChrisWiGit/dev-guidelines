@@ -231,6 +231,7 @@ layout: doc
 - [AI1 Was ist KI nicht?](9.ai.md#was-ist-ki-nicht)
 - [AI2 Traue keiner KI](9.ai.md#traue-keiner-ki)
 - [AI3 Sicherheit in den KI Code-Ergebnissen](9.ai.md#sicherheit-in-den-ki-code-ergebnissen)
+- [AI4 Code-Generierung](9.ai.md#code-generierung)
 
 ## Entwurfsmuster
 
