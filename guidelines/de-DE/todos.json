@@ -72,6 +72,16 @@
     ]
   },
   {
+    "filePath": "5.refactoring\\all.md",
+    "filename": "all.md",
+    "todos": [
+      {
+        "title": "RFA5 Variablen extrahieren",
+        "link": "5.refactoring\\all.md#variablen-extrahieren"
+      }
+    ]
+  },
+  {
     "filePath": "5.refactoring\\java.md",
     "filename": "java.md",
     "todos": [
@@ -102,6 +112,16 @@
     ]
   },
   {
+    "filePath": "6.languages\\java\\index.md",
+    "filename": "index.md",
+    "todos": [
+      {
+        "title": "J32 for, Array.forEach, Stream.forEach",
+        "link": "6.languages\\java\\index.md#for-array-foreach-stream-foreach"
+      }
+    ]
+  },
+  {
     "filePath": "6.languages\\vue\\index.md",
     "filename": "index.md",
     "todos": [
@@ -128,6 +148,16 @@
       {
         "title": "Einleitung",
         "link": "8.accessibility\\ui.md#einleitung"
+      }
+    ]
+  },
+  {
+    "filePath": "quality-terms.md",
+    "filename": "quality-terms.md",
+    "todos": [
+      {
+        "title": "Qualitäten in der Softwareentwicklung",
+        "link": "quality-terms.md"
       }
     ]
   }

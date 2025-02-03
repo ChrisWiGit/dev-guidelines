@@ -526,7 +526,7 @@ Siehe [Watcher und Listener müssen entfernt werden](#watcher-und-listener-muess
 
 ### V13 Alternativen
 
-Statt `setTimerout` soll die Reaktivität von Vue verwendet werden.
+Statt `setTimeout` soll die Reaktivität von Vue verwendet werden.
 
 ### V13 Dependecy Injection
 

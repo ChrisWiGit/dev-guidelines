@@ -2427,10 +2427,7 @@ Diese sollen verwendet werden, um das Boxing und Unboxing zu vermeiden.
 
 ## J32 for, Array.forEach, Stream.forEach {#for-array-foreach-stream-foreach}
 
-::: danger TODO
-
-TODO: JAVA
-
+::: danger TODO:
 :::
 
 ## J33 Generics einsetzen {#generics-einsetzen}

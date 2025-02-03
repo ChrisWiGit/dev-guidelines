@@ -33,6 +33,10 @@ Dieses Dokument enthält eine Liste von Aufgaben, die noch erledigt werden müss
 - [DPS5 Facade](4.designpatterns\structural.md#facade)
 - [DPS6 Flyweight](4.designpatterns\structural.md#flyweight)
 
+## 5.refactoring\all.md
+
+- [RFA5 Variablen extrahieren](5.refactoring\all.md#variablen-extrahieren)
+
 ## 5.refactoring\java.md
 
 - [Refactoring von Java](5.refactoring\java.md)
@@ -45,6 +49,10 @@ Dieses Dokument enthält eine Liste von Aufgaben, die noch erledigt werden müss
 
 - [Refactoring von Vue 3](5.refactoring\vue.md)
 
+## 6.languages\java\index.md
+
+- [J32 for, Array.forEach, Stream.forEach](6.languages\java\index.md#for-array-foreach-stream-foreach)
+
 ## 6.languages\vue\index.md
 
 - [Richtlinien für Vue](6.languages\vue\index.md)
@@ -56,5 +64,9 @@ Dieses Dokument enthält eine Liste von Aufgaben, die noch erledigt werden müss
 ## 8.accessibility\ui.md
 
 - [Einleitung](8.accessibility\ui.md#einleitung)
+
+## quality-terms.md
+
+- [Qualitäten in der Softwareentwicklung](quality-terms.md)
 
 

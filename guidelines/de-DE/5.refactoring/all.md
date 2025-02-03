@@ -214,8 +214,8 @@ Die extrahierten Methoden sollten so benannt werden, dass sie die Intention des 
 
 ## RFA5 Variablen extrahieren {#variablen-extrahieren}
 
-::: danger TODO
-TODO
+::: danger TODO:
+
 :::
 
 ## RFA6 Bedingungen vereinfachen {#bedingungen-vereinfachen}
