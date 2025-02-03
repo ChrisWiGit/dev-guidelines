@@ -14,8 +14,6 @@ Allen Kapiteln wurde eine eindeutige Nummerierung, der Richtliniennummer, hinzug
 Jede Richtliniennummer besteht aus dem Buchstaben **J**(Java) gefolgt von einer Nummer, die den Abschnitt identifiziert. Damit kann eine Regel eindeutig identifiziert werden, z.B. für ein Code-Review.
 
 ::: info
-Wo notwendig, wird auf die Unterschiede zwischen Java hingewiesen.
-
 Alle Beispiele sind mit 2 Leerzeichen eingerückt, da dies in Markdown die beste Darstellung bietet.
 :::
 
