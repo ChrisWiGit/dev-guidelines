@@ -6,15 +6,15 @@ customRulePrefix: J
 customIgnoreTitlesForRules: [Einleitung]
 ---
 
-# Richtlinien für JavaScript und TypeScript
+# Richtlinien für Java
 
 ## Einleitung {#einleitung}
 
 Allen Kapiteln wurde eine eindeutige Nummerierung, der Richtliniennummer, hinzugefügt, um eine eindeutige Identifikation zu ermöglichen.
-Jede Richtliniennummer besteht aus dem Buchstaben **JS**(JavaScript oder Typescript) gefolgt von einer Nummer, die den Abschnitt identifiziert. Damit kann eine Regel eindeutig identifiziert werden, z.B. für ein Code-Review.
+Jede Richtliniennummer besteht aus dem Buchstaben **J**(Java) gefolgt von einer Nummer, die den Abschnitt identifiziert. Damit kann eine Regel eindeutig identifiziert werden, z.B. für ein Code-Review.
 
 ::: info
-Wo notwendig, wird auf die Unterschiede zwischen JavaScript und TypeScript hingewiesen.
+Wo notwendig, wird auf die Unterschiede zwischen Java hingewiesen.
 
 Alle Beispiele sind mit 2 Leerzeichen eingerückt, da dies in Markdown die beste Darstellung bietet.
 :::
@@ -29,7 +29,7 @@ Es gelten die Regeln für eine [Einheitliche Namensgebung](../naming), wenn für
 
 ## J3 Abstraktionsschichten {#abstraktionsschichten}
 
-Zugriffe auf unterliegende Schichten (Vergleich mit [GL3 Abstraktionsschichten](../general#abstraktionsschichten)) sollen in JavaScript vermieden werden.
+Zugriffe auf unterliegende Schichten (Vergleich mit [GL3 Abstraktionsschichten](../general#abstraktionsschichten)) sollen in Java vermieden werden.
 
 ### J3 Problem
 
@@ -1409,7 +1409,6 @@ public int calculate(int x) {
 
 - [Guard Pattern](index#js12-guard-pattern)
 - [Clean Code: A Handbook of Agile Software Craftsmanship](https://www.amazon.com/dp/0132350882)
-- [JavaScript: The Good Parts](https://www.amazon.com/dp/0596517742)
 
 ## J17 Guard Pattern {#guard-pattern}
 
@@ -1425,7 +1424,7 @@ Im Folgenden sind sich widersprechende Regeln aufgeführt, die bei der Reihenfol
 
 ### J17 Problem
 
-In JavaScript müssen oft komplexe Bedingungen geprüft werden, um unerwünschte Ausführungszweige zu verhindern oder ungültige Eingaben abzufangen. Dies kann zu verschachteltem Code führen, der schwer zu lesen und zu warten ist.
+In Java müssen oft komplexe Bedingungen geprüft werden, um unerwünschte Ausführungszweige zu verhindern oder ungültige Eingaben abzufangen. Dies kann zu verschachteltem Code führen, der schwer zu lesen und zu warten ist.
 
 ```java
 public void processInput(Integer input) {
@@ -1788,14 +1787,8 @@ In einigen Fällen kann es sinnvoll sein, Exceptions zu loggen und unverändert 
 
 ## J22 Benennung von Methoden mit verschiedenen Präfixen für Synchronität und Ergebnisverhalten {#benennung-von-methoden-mit-verschiedenen-praefixen-fuer-synchronitaet-und-ergebnisverhalten}
 
-Es ist eine bewährte Praxis bei der Benennung von Methoden in JavaScript und Java, unterschiedliche Präfixe zu verwenden, um die Synchronität und das Ergebnisverhalten der Methode zu kennzeichnen. Das Präfix "get" soll für synchronen Zugriff verwendet werden und immer einen Wert zurückgeben, während die Präfixe "fetch" oder "request" für asynchronen Zugriff stehen, der länger dauern und auch fehlschlagen kann.
-
-::: info get-Präfix
-
-Verwechsle das get-Präfix nicht mit dem get-Präfix in Java, das für Getter-Methoden verwendet wird.
-`get-` in JavaScript soll für synchronen Zugriff für eine berechnete Eigenschaft oder ein Ergebnis stehen.
-
-:::
+Es ist eine bewährte Praxis bei der Benennung von Methoden in Java, unterschiedliche Präfixe zu verwenden, um die Synchronität und das Ergebnisverhalten der Methode zu kennzeichnen.
+Das Präfix "get" soll für synchronen Zugriff verwendet werden und immer einen Wert zurückgeben, während die Präfixe "fetch" oder "request" für asynchronen Zugriff stehen, der länger dauern und auch fehlschlagen kann.
 
 ### J22 Problem
 
@@ -1847,7 +1840,6 @@ Es ist wichtig, einheitliche Namen innerhalb des Projekts festzulegen und zu dok
 ### J22 Weiterführende Literatur/Links
 
 - [Method Naming Conventions in Java](https://www.baeldung.com/java-method-naming-conventions)
-- [JavaScript Naming Conventions](https://www.robinwieruch.de/javascript-naming-conventions)
 
 ## J23 Einsatz von JavaDoc {#einsatz-von-javadoc}
 
@@ -2007,7 +1999,7 @@ public void fetchData(String url) {
 
 ## J26 Lambda-Ausdrücke statt Funktionsdeklarationen {#lambda-ausdruecke-statt-funktionsdeklarationen}
 
-Lambda-Ausdrücke sollen verwendet werden, um Methoden in JavaScript und Java zu deklarieren, wenn sie kurz und prägnant sind.
+Lambda-Ausdrücke sollen verwendet werden, um Methoden in Java zu deklarieren, wenn sie kurz und prägnant sind.
 
 ::: info Methodenreferenzen
 
@@ -2650,7 +2642,7 @@ Wenn spezielle Objekte verwendet werden, um spezielle Fälle zu repräsentieren,
 
 ::: details Optional
 
-Das spezielle Objekt [Optional](index#verwendung-von-optional-in-javascript-funktionen) kann auch verwendet werden, um diese spezielle Fälle zu repräsentieren.
+Die Klasse [Optional](https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html) in Java kann auch verwendet werden, um diese spezielle Fälle zu repräsentieren.
 Es ist nützlich, wenn bereits Klassen und Objekte aus einer Legacy-Anwendung verwendet werden, die nicht geändert werden können.
 
 :::
