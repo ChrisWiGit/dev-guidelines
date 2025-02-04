@@ -130,9 +130,16 @@ Code, der sich oft wiederholt, ist schwer zu pflegen und zu korrigieren, da Änd
 
 Das `Don't Repeat Yourself` Prinzip besagt, dass Code so geschrieben werden sollte, dass er sich nicht wiederholt.
 
+::: warning Vorsicht
+DRY sollte nicht blind eingesetzt werden, denn, wenn Code wiederverwendet wird, entsteht eine Kopplung, die möglicherweise nicht gewünscht ist.
+Wenn Strukturen über Abstraktionsgrenzen oder über Prozessgrenzen (Client-Server) hinweg wiederverwendet werden, kann eine Kopplung dazu führen, dass Änderungen nur schwer durchgeführt werden können.
+Es können auch Modul- und Teamgrenzen existieren, die es notwendig machen, dass Code dupliziert wird, um die generelle Kopplung zwischen den Modulen und Teams zu reduzieren und die Entwicklung nicht zu verlangsamen.
+
+:::
+
 ### P8 Die 2-3-5 Regel {#2-3-5-regel}
 
-Die *2-3-5- Regel besagt, dass Code, der sich mehr als *zweimal*- wiederholt, in eine Funktion oder Methode ausgelagert werden sollte.
+Die **2-3-5 Regel** besagt, dass Code, der sich mehr als *zweimal*- wiederholt, in eine Funktion oder Methode ausgelagert werden sollte.
 Code, der sich mehr als *dreimal*- wiederholt, sollte in eine Klasse oder ein Modul ausgelagert werden.
 Code, der sich mehr als *fünfmal*- wiederholt, sollte in eine eigene Bibliothek oder ein eigenes Framework ausgelagert werden.
 
