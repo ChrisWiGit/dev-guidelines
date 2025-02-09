@@ -66,6 +66,7 @@ layout: doc
 - [GL24 Trennung von Verantwortlichkeiten](6.languages/general.md#trennung-von-verantwortlichkeiten)
 - [GL25 Länge von Methoden/Funktionen](6.languages/general.md#laenge-von-methoden-funktionen)
 - [GL26 Niedrige Kopplung](6.languages/general.md#niedrige-kopplung)
+- [GL27 Nebeneffekte vermeiden](6.languages/general.md#nebeneffekte-vermeiden)
 
 ## Allgemein Regeln für Namen
 
@@ -145,6 +146,7 @@ layout: doc
 - [JS41 Verwende spezielle Objekte statt spezielle Werte](6.languages/javascript/index.md#verwende-spezielle-objekte-statt-spezielle-werte)
 - [JS42 Lokale Funktionen verwenden](6.languages/javascript/index.md#lokale-funktionen-verwenden)
 - [JS43 setTimeout und setInterval](6.languages/javascript/index.md#settimeout-und-setinterval)
+- [JS44 Nebeneffekte vermeiden](6.languages/javascript/index.md#nebeneffekte-vermeiden)
 
 ## Regeln für Vue
 
@@ -197,6 +199,7 @@ layout: doc
 - [J44 Statische Initialisierer vermeiden](6.languages/java/index.md#statische-initialisierer-vermeiden)
 - [J45 Verwenden von Schnittstellen](6.languages/java/index.md#verwenden-von-schnittstellen)
 - [J46 Verwenden von `record`s statt Klassen](6.languages/java/index.md#verwende-record-s-statt-klassen)
+- [J47 Nebeneffekte vermeiden](6.languages/java/index.md#nebeneffekte-vermeiden)
 
 ## Allgemeine Regeln für das Refactoring
 

@@ -3173,3 +3173,116 @@ const interval = setInterval(() => {
 
 clearInterval(interval);
 ```
+
+## JS44 Nebeneffekte vermeiden {#nebeneffekte-vermeiden}
+
+Methoden und Funktionen sollten keine Nebeneffekte haben, die nicht offensichtlich sind. Dies verbessert die Vorhersagbarkeit, Wartbarkeit und Testbarkeit des Codes.
+
+### JS44 Problem
+
+Nebeneffekte sind unerwünschte Veränderungen des Zustands eines Systems, die durch eine Funktion oder Methode verursacht werden. Sie können schwer zu erkennen und zu debuggen sein, da sie nicht offensichtlich sind und an einer anderen Stelle im Code auftreten können.
+
+Einige Beispiele für unerwünschte Nebeneffekte:
+
+#### JS44 1. Veränderung eines Objekts innerhalb einer Funktion
+
+Im folgenden Beispiel wird die Funktion `addValue` definiert, die einen Wert zu einem Objekt hinzufügt. Diese Funktion verändert jedoch direkt den übergebenen Parameter und hat damit einen Nebeneffekt:
+
+```javascript
+function addValue(obj) {
+  obj.value = 42;  // Nebeneffekt: Das Original-Objekt wird verändert
+}
+```
+
+#### JS44 2. Veränderung des internen Zustands einer Klasse
+
+Die folgende Klasse enthält eine Methode `getValue`, die einen Wert berechnen soll. Allerdings verändert sie dabei eine interne Variable (`this.result`), was zu unerwarteten Seiteneffekten führen kann:
+
+```javascript
+class Calculator {
+  constructor() {
+    this.result = 0;
+  }
+
+  getValue(value) {
+    this.result += value; // Nebeneffekt: Interner Zustand wird verändert
+    return this.result;
+  }
+}
+```
+
+#### JS44 3. Veränderung einer globalen Variable
+
+Das folgende Beispiel zeigt eine Funktion, die eine globale Variable verändert:
+
+```javascript
+function increment() {
+  global.globalObject.value++; // Nebeneffekt: Änderung einer globalen Variable
+}
+```
+
+### JS44 Lösung
+
+Um Nebeneffekte zu vermeiden, sollten Funktionen und Methoden so gestaltet werden, dass sie keine externen Zustände verändern. Stattdessen sollte mit Kopien gearbeitet oder Werte als Rückgabe geliefert werden.
+
+#### JS44 1. Arbeiten mit unveränderlichen Objekten
+
+Statt das Originalobjekt zu modifizieren, sollte eine neue Kopie mit den geänderten Werten zurückgegeben werden:
+
+```javascript
+function addValue(obj) {
+  return { ...obj, value: 42 }; // Keine Änderung am Original-Objekt
+}
+```
+
+#### JS44 2. Vermeidung von Zustandsänderungen in Klassen
+
+Methoden sollten keine internen Variablen verändern, sondern den neuen Wert zurückgeben:
+
+```javascript
+class Calculator {
+  constructor() {
+    this.result = 0;
+  }
+
+  calculate(value) {
+    return this.result + value; // Kein Nebeneffekt
+  }
+}
+```
+
+#### JS44 3. Funktionale Programmierung statt Mutation
+
+Statt eine globale Variable zu ändern, sollte eine Funktion den neuen Wert berechnen und zurückgeben:
+
+```javascript
+function increment(value) {
+  return value + 1;
+}
+```
+
+#### JS44 4. Dependency Injection statt globaler Variablen
+
+Globale Variablen sollten vermieden werden. Stattdessen kann Dependency Injection genutzt werden, um Abhängigkeiten explizit zu übergeben:
+
+```javascript
+class GlobalObject {
+  constructor(dependency) {
+    this.dependency = dependency;
+  }
+
+  foo() {
+    this.dependency.increment();
+  }
+}
+
+const globalObject = { value: 0, increment: function() { this.value++; } };
+new GlobalObject(globalObject).foo();
+```
+
+### JS44 Fazit
+
+- Vermeide direkte Modifikationen von Objekten oder globalen Variablen.
+- Verwende unveränderliche (immutable) Datenstrukturen.
+- Bevorzuge reine Funktionen, die keine Nebeneffekte haben.
+- Nutze Dependency Injection, um Abhängigkeiten explizit zu machen.

@@ -3600,3 +3600,153 @@ Records sollten für Daten eingesetzt, die zusammengehören und eine hohe Kohäs
 - Records können nicht verändert werden, was in einigen Fällen dazu führt, dass eine Kopie des Records erstellt werden muss, um die Daten zu verändern.
 - Records können nicht von anderen Klassen erben.
 - Nachträgliche Änderungen an der Struktur sind aufwändig (nicht jedoch das Hinzufüren von neuen Feldern).
+
+## J47 Nebeneffekte vermeiden {#nebeneffekte-vermeiden}
+
+Methoden und Funktionen sollten keine Nebeneffekte haben, die nicht offensichtlich sind. Dies verbessert die Vorhersagbarkeit, Wartbarkeit und Testbarkeit des Codes.
+
+### J47 Problem
+
+Nebeneffekte sind unerwünschte Veränderungen des Zustands eines Systems, die durch eine Funktion oder Methode verursacht werden. Sie können schwer zu erkennen und zu debuggen sein, da sie nicht offensichtlich sind und an einer anderen Stelle im Code auftreten können.
+
+Einige Beispiele für unerwünschte Nebeneffekte:
+
+#### J47 1. Veränderung eines Objekts innerhalb einer Methode
+
+Im folgenden Beispiel wird die Methode `addValue` definiert, die einen Wert zu einem Objekt hinzufügt. Diese Methode verändert jedoch direkt den übergebenen Parameter und hat damit einen Nebeneffekt:
+
+```java
+class Data {
+    int value;
+}
+
+public class SideEffectExample {
+    static void addValue(Data obj) {
+        obj.value = 42;  // Nebeneffekt: Das Original-Objekt wird verändert
+    }
+}
+```
+
+#### J47 2. Veränderung des internen Zustands einer Klasse
+
+Die folgende Klasse enthält eine Methode `getValue`, die einen Wert berechnen soll. Allerdings verändert sie dabei eine interne Variable (`this.result`), was zu unerwarteten Seiteneffekten führen kann:
+
+```java
+class Calculator {
+    private int result = 0;
+
+    public int getValue(int value) {
+        result += value; // Nebeneffekt: Interner Zustand wird verändert
+        return result;
+    }
+}
+```
+
+#### J47 3. Veränderung einer globalen Variable
+
+Das folgende Beispiel zeigt eine Methode, die eine globale Variable verändert:
+
+```java
+class GlobalState {
+    static int value = 0;
+}
+
+public class SideEffectExample {
+    static void increment() {
+        GlobalState.value++; // Nebeneffekt: Änderung einer globalen Variable
+    }
+}
+```
+
+### J47 Lösung
+
+Um Nebeneffekte zu vermeiden, sollten Methoden so gestaltet werden, dass sie keine externen Zustände verändern. Stattdessen sollte mit Kopien gearbeitet oder Werte als Rückgabe geliefert werden.
+
+#### J47 1. Arbeiten mit unveränderlichen Objekten
+
+Statt das Originalobjekt zu modifizieren, sollte eine neue Instanz mit den geänderten Werten zurückgegeben werden:
+
+```java
+class Data {
+    private final int value;
+
+    public Data(int value) {
+        this.value = value;
+    }
+
+    public Data addValue() {
+        return new Data(42); // Keine Änderung am Original-Objekt
+    }
+}
+```
+
+#### J47 2. Vermeidung von Zustandsänderungen in Klassen
+
+Methoden sollten keine internen Variablen verändern, sondern den neuen Wert zurückgeben:
+
+```java
+class Calculator {
+    private final int result;
+
+    public Calculator(int result) {
+        this.result = result;
+    }
+
+    public int calculate(int value) {
+        return result + value; // Kein Nebeneffekt
+    }
+}
+```
+
+#### J47 3. Funktionale Programmierung statt Mutation
+
+Statt eine globale Variable zu ändern, sollte eine Methode den neuen Wert berechnen und zurückgeben:
+
+```java
+public class PureFunctionExample {
+    static int increment(int value) {
+        return value + 1;
+    }
+}
+```
+
+#### J47 4. Dependency Injection statt globaler Variablen
+
+Globale Variablen sollten vermieden werden. Stattdessen kann Dependency Injection genutzt werden, um Abhängigkeiten explizit zu übergeben:
+
+```java
+class Dependency {
+    private int value;
+
+    public void increment() {
+        value++;
+    }
+}
+
+class GlobalObject {
+    private final Dependency dependency;
+
+    public GlobalObject(Dependency dependency) {
+        this.dependency = dependency;
+    }
+
+    public void foo() {
+        dependency.increment();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dependency dependency = new Dependency();
+        GlobalObject obj = new GlobalObject(dependency);
+        obj.foo();
+    }
+}
+```
+
+### J47 Fazit
+
+- Vermeide direkte Modifikationen von Objekten oder globalen Variablen.
+- Verwende unveränderliche (immutable) Datenstrukturen.
+- Bevorzuge reine Methoden, die keine Nebeneffekte haben.
+- Nutze Dependency Injection, um Abhängigkeiten explizit zu machen.
