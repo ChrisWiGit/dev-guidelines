@@ -2427,8 +2427,134 @@ Diese sollen verwendet werden, um das Boxing und Unboxing zu vermeiden.
 
 ## J32 for, Array.forEach, Stream.forEach {#for-array-foreach-stream-foreach}
 
-::: danger TODO:
+Lange Zeit wurden `for`-Schleifen genutzt, um über Arrays oder Listen zu iterieren. Mit der Einführung von `Array.forEach` wurde die Syntax vereinfacht und die Lesbarkeit verbessert. Seit Java 8 ermöglicht die Stream-API eine deklarative Verarbeitung von Daten, sowohl sequenziell als auch parallel.
+
+Jede dieser Iterationsmethoden hat ihre Vor- und Nachteile, abhängig vom Anwendungsfall.
+
+### J32 for-Schleife mit Index
+
+Eine `for`-Schleife mit einem Index wird verwendet, wenn der Index zur Verarbeitung der Elemente benötigt wird:
+
+```java
+final int[] numbers = {1, 2, 3, 4, 5};
+
+for (final int i = 0; i < numbers.length; i++) {
+    System.out.println(numbers[i]);
+}
+```
+
+**Alternative:** Wenn der Index nicht benötigt wird, sollte `Array.forEach` oder `Stream.forEach` bevorzugt werden, um die Lesbarkeit zu erhöhen:
+
+### J32 for-Schleife für Arrays und iterierbare Objekte
+
+Arrays und Objekte, die das `Iterable`-Interface implementieren, können mit einer erweiterten `for`-Schleife durchlaufen werden.
+
+::: code-group
+
+```java [Array]
+final List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
+
+for (Integer num : list) {
+    System.out.println(num);
+}
+```
+
+```java [Iterable]
+class MyIterable implements Iterable<Integer> {
+    private final List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
+
+    @Override
+    public Iterator<Integer> iterator() {
+        return list.iterator();
+    }
+}
+
+final MyIterable myIterable = new MyIterable();
+for (Integer num : myIterable) {
+    System.out.println(num);
+}
+```
+
 :::
+
+### J32 Array.forEach
+
+Die Methode `Array.forEach` ermöglicht eine elegantere Iteration über Listen und Arrays mit Lambda-Ausdrücken.
+
+```java
+final List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
+
+names.forEach(name -> System.out.println(name));
+// oder mit Referenz auf eine Methode
+names.forEach(System.out::println);
+```
+
+**Vorteile:**
+
+- Kürzere und lesbarere Syntax (Referenz auf Methode oder Lambda-Ausdruck)
+- Kein expliziter Iterator oder Index erforderlich
+
+**Nachteile:**
+
+- Keine Möglichkeit, die Iteration vorzeitig zu beenden (kein `break` oder `continue`)
+- Kann Performance-Nachteile haben im Vergleich zu einer simplen `for`-Schleife (Autoboxing, Methodenaufrufe)
+- Keine Weitergabe von Exceptions
+
+Exceptions-Handling in `Array.forEach` kann durch die Verwendung von `com.machinezoo.noexception:Exceptions` vereinfacht werden:
+
+```java
+names.forEach(com.machinezoo.noexception.Exceptions.wrap().run(name -> {
+    System.out.println(name);
+}));
+```
+
+### J32 Stream.forEach
+
+Die `Stream.forEach`-Methode gehört zur Java Stream API und wird meist in Verbindung mit Filtern und Transformationen verwendet.
+
+```java
+final List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+
+numbers.stream().forEach(num -> System.out.println(num));
+```
+
+**Vorteile:**
+
+- Gut kombinierbar mit Filter- und Mapping-Operationen
+- Ermöglicht parallele Verarbeitung durch `parallelStream()`
+- Fördert eine deklarative Programmierung
+
+**Nachteile:**
+
+- Kann Performance-Probleme verursachen, wenn unnötig Streams verwendet werden
+- Höhere kognitive Last, da Streams oft für Entwickler ungewohnt sind
+- Schwerer zu debuggen, da Streams in Pipelines verarbeitet werden (wenn nicht IntelliJ IDEA verwendet wird)
+
+::: warning Array.forEach vs. Stream.forEach
+
+`Array.forEach` sollte bevorzugt werden, wenn keine Transformation oder Filterung notwendig ist. `Stream.forEach` eignet sich besser für komplexe Datenverarbeitungen.
+
+:::
+
+### J32 Vor- und Nachteile im Vergleich
+
+Methode                     | Vorteile                                                       | Nachteile
+--------------------------- | -------------------------------------------------------------- | ----------------------------------------------------------
+`for`-Schleife (Index)      | Hohe Performance, direkte Kontrolle                            | Unleserlich für große Operationen, manuelle Fehler möglich
+`for`-Schleife (`Iterable`) | Lesbarer als Index-basierte `for`-Schleife                     | Keine direkte Kontrolle über Index- Keine vorzeitige Beendigung möglich
+`Array.forEach`             | Kürzere und lesbarere Syntax                                   | Keine vorzeitige Beendigung möglich, Performance-Probleme, keine Weitergabe von Exceptions  
+`Stream.forEach`            | Ideal für komplexe Operationen, parallele Verarbeitung möglich | Höhere kognitive Last, schwieriges Debugging
+
+### J32 Fazit
+
+Die Wahl der Iterationsmethode hängt von mehreren Faktoren ab, darunter Lesbarkeit, Performance und Debugging-Aufwand:
+
+- **Verwende eine `for`-Schleife**, wenn höchste Performance und direkte Kontrolle erforderlich sind.
+- **Nutze `Array.forEach`**, wenn eine einfache Iteration ohne Index bevorzugt wird und keine vorzeitige Beendigung notwendig ist.
+- **Setze `Stream.forEach` ein**, wenn eine deklarative Verarbeitung mit Filtern oder Transformationen gewünscht ist und die Vorteile der Stream-API genutzt werden sollen.
+- **Vermeide `Stream.forEach` für simple Iterationen** (z.B. ohne Filterung), da es unnötige Performance-Kosten verursachen kann und schwieriger zu debuggen ist.
+
+**Generell sollte die Iterationsmethode so gewählt werden, dass sie die Lesbarkeit des Codes erhöht und die Anforderungen des Anwendungsfalls erfüllt. Performance-Optimierungen sollten nur bei Bedarf und nach Messung vorgenommen werden.**
 
 ## J33 Generics einsetzen {#generics-einsetzen}
 
@@ -3086,7 +3212,7 @@ public List<String> getActiveUsers(List<Integer> userIds) {
 
 ### J41 Ausnahmen
 
-In bestimmten Fällen kann es aus Performance-Gründen oder aufgrund von spezifischen Anforderungen notwendig sein, die Komplexität direkt in der API-Methode zu belassen. 
+In bestimmten Fällen kann es aus Performance-Gründen oder aufgrund von spezifischen Anforderungen notwendig sein, die Komplexität direkt in der API-Methode zu belassen.
 In solchen Fällen sollte jedoch sorgfältig abgewogen werden, ob die Vorteile der Kapselung überwiegen.
 
 ### J41 Weiterführende Literatur/Links
