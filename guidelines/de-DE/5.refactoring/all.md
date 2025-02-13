@@ -600,15 +600,28 @@ class MyClass {
 
 ```java
 var data = getData();
+
+// implizite Annahme, dass data nicht null ist
 data.doSomething(); // NullPointerException
 ```
 
 ### RFA15 Refactoring
 
-- Prüfung auf `null` hinzufügen.
+- Variablen mit `null` im Namen kennzeichnen.
+- Prüfung auf `null` hinzufügen (implizite Annahme, dass `null` nicht vorkommt).
 - Rückgabe von `null` durch *leeres Objekt* (Array, List, etc) ersetzen.
-- Optional verwenden.
+- Optional-Objekte verwenden (Java).
 - Spezielle Klassen für `null`-Werte verwenden ([Null-Objekts](../4.designpatterns/technical.md#null-objects))
+
+```java
+var dataOrNull = getDataOrNull();
+
+if (dataOrNull == null) {
+  // handle null
+}
+
+dataOrNull.doSomething();
+```
 
 ## RFA16 If-Statements {#if-statements}
 
@@ -822,7 +835,7 @@ Wenn der Code nicht verständlich ist, sollte der Code refactored werden.
 
 ```java
 // gehe durch alle Elemente
-for (int i = 0; i < 10; i++) {  
+for (int i = 0; i < 10; i++) {
   process_element(i)
 }
 ```
@@ -870,7 +883,7 @@ magic_number = 42
 Lange und unnötig ausschweifende Kommentare sind zu entfernen und durch verständlichen Code zu ersetzen.
 
 ```java
-// Diese Funktion ruft eine andere Funktion auf, die wiederum das Ergebnis 
+// Diese Funktion ruft eine andere Funktion auf, die wiederum das Ergebnis
 // verarbeitet, nachdem die Daten validiert wurden.
 result = process_data(data)
 ```
