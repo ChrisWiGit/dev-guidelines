@@ -2427,8 +2427,134 @@ Diese sollen verwendet werden, um das Boxing und Unboxing zu vermeiden.
 
 ## J32 for, Array.forEach, Stream.forEach {#for-array-foreach-stream-foreach}
 
-::: danger TODO:
+Lange Zeit wurden `for`-Schleifen genutzt, um über Arrays oder Listen zu iterieren. Mit der Einführung von `Array.forEach` wurde die Syntax vereinfacht und die Lesbarkeit verbessert. Seit Java 8 ermöglicht die Stream-API eine deklarative Verarbeitung von Daten, sowohl sequenziell als auch parallel.
+
+Jede dieser Iterationsmethoden hat ihre Vor- und Nachteile, abhängig vom Anwendungsfall.
+
+### J32 for-Schleife mit Index
+
+Eine `for`-Schleife mit einem Index wird verwendet, wenn der Index zur Verarbeitung der Elemente benötigt wird:
+
+```java
+final int[] numbers = {1, 2, 3, 4, 5};
+
+for (final int i = 0; i < numbers.length; i++) {
+    System.out.println(numbers[i]);
+}
+```
+
+**Alternative:** Wenn der Index nicht benötigt wird, sollte `Array.forEach` oder `Stream.forEach` bevorzugt werden, um die Lesbarkeit zu erhöhen:
+
+### J32 for-Schleife für Arrays und iterierbare Objekte
+
+Arrays und Objekte, die das `Iterable`-Interface implementieren, können mit einer erweiterten `for`-Schleife durchlaufen werden.
+
+::: code-group
+
+```java [Array]
+final List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
+
+for (Integer num : list) {
+    System.out.println(num);
+}
+```
+
+```java [Iterable]
+class MyIterable implements Iterable<Integer> {
+    private final List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
+
+    @Override
+    public Iterator<Integer> iterator() {
+        return list.iterator();
+    }
+}
+
+final MyIterable myIterable = new MyIterable();
+for (Integer num : myIterable) {
+    System.out.println(num);
+}
+```
+
 :::
+
+### J32 Array.forEach
+
+Die Methode `Array.forEach` ermöglicht eine elegantere Iteration über Listen und Arrays mit Lambda-Ausdrücken.
+
+```java
+final List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
+
+names.forEach(name -> System.out.println(name));
+// oder mit Referenz auf eine Methode
+names.forEach(System.out::println);
+```
+
+**Vorteile:**
+
+- Kürzere und lesbarere Syntax (Referenz auf Methode oder Lambda-Ausdruck)
+- Kein expliziter Iterator oder Index erforderlich
+
+**Nachteile:**
+
+- Keine Möglichkeit, die Iteration vorzeitig zu beenden (kein `break` oder `continue`)
+- Kann Performance-Nachteile haben im Vergleich zu einer simplen `for`-Schleife (Autoboxing, Methodenaufrufe)
+- Keine Weitergabe von Exceptions
+
+Exceptions-Handling in `Array.forEach` kann durch die Verwendung von `com.machinezoo.noexception:Exceptions` vereinfacht werden:
+
+```java
+names.forEach(com.machinezoo.noexception.Exceptions.wrap().run(name -> {
+    System.out.println(name);
+}));
+```
+
+### J32 Stream.forEach
+
+Die `Stream.forEach`-Methode gehört zur Java Stream API und wird meist in Verbindung mit Filtern und Transformationen verwendet.
+
+```java
+final List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+
+numbers.stream().forEach(num -> System.out.println(num));
+```
+
+**Vorteile:**
+
+- Gut kombinierbar mit Filter- und Mapping-Operationen
+- Ermöglicht parallele Verarbeitung durch `parallelStream()`
+- Fördert eine deklarative Programmierung
+
+**Nachteile:**
+
+- Kann Performance-Probleme verursachen, wenn unnötig Streams verwendet werden
+- Höhere kognitive Last, da Streams oft für Entwickler ungewohnt sind
+- Schwerer zu debuggen, da Streams in Pipelines verarbeitet werden (wenn nicht IntelliJ IDEA verwendet wird)
+
+::: warning Array.forEach vs. Stream.forEach
+
+`Array.forEach` sollte bevorzugt werden, wenn keine Transformation oder Filterung notwendig ist. `Stream.forEach` eignet sich besser für komplexe Datenverarbeitungen.
+
+:::
+
+### J32 Vor- und Nachteile im Vergleich
+
+Methode                     | Vorteile                                                       | Nachteile
+--------------------------- | -------------------------------------------------------------- | ----------------------------------------------------------
+`for`-Schleife (Index)      | Hohe Performance, direkte Kontrolle                            | Unleserlich für große Operationen, manuelle Fehler möglich
+`for`-Schleife (`Iterable`) | Lesbarer als Index-basierte `for`-Schleife                     | Keine direkte Kontrolle über Index- Keine vorzeitige Beendigung möglich
+`Array.forEach`             | Kürzere und lesbarere Syntax                                   | Keine vorzeitige Beendigung möglich, Performance-Probleme, keine Weitergabe von Exceptions  
+`Stream.forEach`            | Ideal für komplexe Operationen, parallele Verarbeitung möglich | Höhere kognitive Last, schwieriges Debugging
+
+### J32 Fazit
+
+Die Wahl der Iterationsmethode hängt von mehreren Faktoren ab, darunter Lesbarkeit, Performance und Debugging-Aufwand:
+
+- **Verwende eine `for`-Schleife**, wenn höchste Performance und direkte Kontrolle erforderlich sind.
+- **Nutze `Array.forEach`**, wenn eine einfache Iteration ohne Index bevorzugt wird und keine vorzeitige Beendigung notwendig ist.
+- **Setze `Stream.forEach` ein**, wenn eine deklarative Verarbeitung mit Filtern oder Transformationen gewünscht ist und die Vorteile der Stream-API genutzt werden sollen.
+- **Vermeide `Stream.forEach` für simple Iterationen** (z.B. ohne Filterung), da es unnötige Performance-Kosten verursachen kann und schwieriger zu debuggen ist.
+
+**Generell sollte die Iterationsmethode so gewählt werden, dass sie die Lesbarkeit des Codes erhöht und die Anforderungen des Anwendungsfalls erfüllt. Performance-Optimierungen sollten nur bei Bedarf und nach Messung vorgenommen werden.**
 
 ## J33 Generics einsetzen {#generics-einsetzen}
 
@@ -3086,7 +3212,7 @@ public List<String> getActiveUsers(List<Integer> userIds) {
 
 ### J41 Ausnahmen
 
-In bestimmten Fällen kann es aus Performance-Gründen oder aufgrund von spezifischen Anforderungen notwendig sein, die Komplexität direkt in der API-Methode zu belassen. 
+In bestimmten Fällen kann es aus Performance-Gründen oder aufgrund von spezifischen Anforderungen notwendig sein, die Komplexität direkt in der API-Methode zu belassen.
 In solchen Fällen sollte jedoch sorgfältig abgewogen werden, ob die Vorteile der Kapselung überwiegen.
 
 ### J41 Weiterführende Literatur/Links
@@ -3474,3 +3600,153 @@ Records sollten für Daten eingesetzt, die zusammengehören und eine hohe Kohäs
 - Records können nicht verändert werden, was in einigen Fällen dazu führt, dass eine Kopie des Records erstellt werden muss, um die Daten zu verändern.
 - Records können nicht von anderen Klassen erben.
 - Nachträgliche Änderungen an der Struktur sind aufwändig (nicht jedoch das Hinzufüren von neuen Feldern).
+
+## J47 Nebeneffekte vermeiden {#nebeneffekte-vermeiden}
+
+Methoden und Funktionen sollten keine Nebeneffekte haben, die nicht offensichtlich sind. Dies verbessert die Vorhersagbarkeit, Wartbarkeit und Testbarkeit des Codes.
+
+### J47 Problem
+
+Nebeneffekte sind unerwünschte Veränderungen des Zustands eines Systems, die durch eine Funktion oder Methode verursacht werden. Sie können schwer zu erkennen und zu debuggen sein, da sie nicht offensichtlich sind und an einer anderen Stelle im Code auftreten können.
+
+Einige Beispiele für unerwünschte Nebeneffekte:
+
+#### J47 1. Veränderung eines Objekts innerhalb einer Methode
+
+Im folgenden Beispiel wird die Methode `addValue` definiert, die einen Wert zu einem Objekt hinzufügt. Diese Methode verändert jedoch direkt den übergebenen Parameter und hat damit einen Nebeneffekt:
+
+```java
+class Data {
+    int value;
+}
+
+public class SideEffectExample {
+    static void addValue(Data obj) {
+        obj.value = 42;  // Nebeneffekt: Das Original-Objekt wird verändert
+    }
+}
+```
+
+#### J47 2. Veränderung des internen Zustands einer Klasse
+
+Die folgende Klasse enthält eine Methode `getValue`, die einen Wert berechnen soll. Allerdings verändert sie dabei eine interne Variable (`this.result`), was zu unerwarteten Seiteneffekten führen kann:
+
+```java
+class Calculator {
+    private int result = 0;
+
+    public int getValue(int value) {
+        result += value; // Nebeneffekt: Interner Zustand wird verändert
+        return result;
+    }
+}
+```
+
+#### J47 3. Veränderung einer globalen Variable
+
+Das folgende Beispiel zeigt eine Methode, die eine globale Variable verändert:
+
+```java
+class GlobalState {
+    static int value = 0;
+}
+
+public class SideEffectExample {
+    static void increment() {
+        GlobalState.value++; // Nebeneffekt: Änderung einer globalen Variable
+    }
+}
+```
+
+### J47 Lösung
+
+Um Nebeneffekte zu vermeiden, sollten Methoden so gestaltet werden, dass sie keine externen Zustände verändern. Stattdessen sollte mit Kopien gearbeitet oder Werte als Rückgabe geliefert werden.
+
+#### J47 1. Arbeiten mit unveränderlichen Objekten
+
+Statt das Originalobjekt zu modifizieren, sollte eine neue Instanz mit den geänderten Werten zurückgegeben werden:
+
+```java
+class Data {
+    private final int value;
+
+    public Data(int value) {
+        this.value = value;
+    }
+
+    public Data addValue() {
+        return new Data(42); // Keine Änderung am Original-Objekt
+    }
+}
+```
+
+#### J47 2. Vermeidung von Zustandsänderungen in Klassen
+
+Methoden sollten keine internen Variablen verändern, sondern den neuen Wert zurückgeben:
+
+```java
+class Calculator {
+    private final int result;
+
+    public Calculator(int result) {
+        this.result = result;
+    }
+
+    public int calculate(int value) {
+        return result + value; // Kein Nebeneffekt
+    }
+}
+```
+
+#### J47 3. Funktionale Programmierung statt Mutation
+
+Statt eine globale Variable zu ändern, sollte eine Methode den neuen Wert berechnen und zurückgeben:
+
+```java
+public class PureFunctionExample {
+    static int increment(int value) {
+        return value + 1;
+    }
+}
+```
+
+#### J47 4. Dependency Injection statt globaler Variablen
+
+Globale Variablen sollten vermieden werden. Stattdessen kann Dependency Injection genutzt werden, um Abhängigkeiten explizit zu übergeben:
+
+```java
+class Dependency {
+    private int value;
+
+    public void increment() {
+        value++;
+    }
+}
+
+class GlobalObject {
+    private final Dependency dependency;
+
+    public GlobalObject(Dependency dependency) {
+        this.dependency = dependency;
+    }
+
+    public void foo() {
+        dependency.increment();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dependency dependency = new Dependency();
+        GlobalObject obj = new GlobalObject(dependency);
+        obj.foo();
+    }
+}
+```
+
+### J47 Fazit
+
+- Vermeide direkte Modifikationen von Objekten oder globalen Variablen.
+- Verwende unveränderliche (immutable) Datenstrukturen.
+- Bevorzuge reine Methoden, die keine Nebeneffekte haben.
+- Nutze Dependency Injection, um Abhängigkeiten explizit zu machen.

@@ -1,153 +1,143 @@
 [
   {
-    "filePath": "10.metrics\\code.md",
+    "filePath": "10.metrics/code.md",
     "filename": "code.md",
     "todos": [
       {
         "title": "MC3 Qualitiative Metriken",
-        "link": "10.metrics\\code.md#qualitiative-metriken"
+        "link": "10.metrics/code.md#qualitiative-metriken"
       }
     ]
   },
   {
-    "filePath": "10.metrics\\index.md",
+    "filePath": "10.metrics/index.md",
     "filename": "index.md",
     "todos": [
       {
         "title": "https://vitepress.dev/reference/default-theme-home-page",
-        "link": "10.metrics\\index.md"
+        "link": "10.metrics/index.md"
       }
     ]
   },
   {
-    "filePath": "3.cleancode\\index.md",
+    "filePath": "3.cleancode/index.md",
     "filename": "index.md",
     "todos": [
       {
         "title": "Thema Performance",
-        "link": "3.cleancode\\index.md"
+        "link": "3.cleancode/index.md"
       }
     ]
   },
   {
-    "filePath": "4.designpatterns\\behavioral.md",
+    "filePath": "4.designpatterns/behavioral.md",
     "filename": "behavioral.md",
     "todos": [
       {
         "title": "Entwurfsmuster - Verhaltensmuster",
-        "link": "4.designpatterns\\behavioral.md"
+        "link": "4.designpatterns/behavioral.md"
       }
     ]
   },
   {
-    "filePath": "4.designpatterns\\creational.md",
+    "filePath": "4.designpatterns/creational.md",
     "filename": "creational.md",
     "todos": [
       {
         "title": "DPC1 Singleton",
-        "link": "4.designpatterns\\creational.md#singleton"
+        "link": "4.designpatterns/creational.md#singleton"
       },
       {
         "title": "DPC5 Prototype",
-        "link": "4.designpatterns\\creational.md#prototype"
+        "link": "4.designpatterns/creational.md#prototype"
       }
     ]
   },
   {
-    "filePath": "4.designpatterns\\structural.md",
+    "filePath": "4.designpatterns/structural.md",
     "filename": "structural.md",
     "todos": [
       {
         "title": "DPS3 Composite",
-        "link": "4.designpatterns\\structural.md#composite"
+        "link": "4.designpatterns/structural.md#composite"
       },
       {
         "title": "DPS5 Facade",
-        "link": "4.designpatterns\\structural.md#facade"
+        "link": "4.designpatterns/structural.md#facade"
       },
       {
         "title": "DPS6 Flyweight",
-        "link": "4.designpatterns\\structural.md#flyweight"
+        "link": "4.designpatterns/structural.md#flyweight"
       }
     ]
   },
   {
-    "filePath": "5.refactoring\\all.md",
+    "filePath": "5.refactoring/all.md",
     "filename": "all.md",
     "todos": [
       {
         "title": "RFA5 Variablen extrahieren",
-        "link": "5.refactoring\\all.md#variablen-extrahieren"
+        "link": "5.refactoring/all.md#variablen-extrahieren"
       }
     ]
   },
   {
-    "filePath": "5.refactoring\\java.md",
+    "filePath": "5.refactoring/java.md",
     "filename": "java.md",
     "todos": [
       {
         "title": "Refactoring von Java",
-        "link": "5.refactoring\\java.md"
+        "link": "5.refactoring/java.md"
       }
     ]
   },
   {
-    "filePath": "5.refactoring\\javascript.md",
+    "filePath": "5.refactoring/javascript.md",
     "filename": "javascript.md",
     "todos": [
       {
         "title": "Refactoring von JavaScript und TypeScript",
-        "link": "5.refactoring\\javascript.md"
+        "link": "5.refactoring/javascript.md"
       }
     ]
   },
   {
-    "filePath": "5.refactoring\\vue.md",
+    "filePath": "5.refactoring/vue.md",
     "filename": "vue.md",
     "todos": [
       {
         "title": "Refactoring von Vue 3",
-        "link": "5.refactoring\\vue.md"
+        "link": "5.refactoring/vue.md"
       }
     ]
   },
   {
-    "filePath": "6.languages\\java\\index.md",
-    "filename": "index.md",
-    "todos": [
-      {
-        "title": "J32 for, Array.forEach, Stream.forEach",
-        "link": "6.languages\\java\\index.md#for-array-foreach-stream-foreach"
-      }
-    ]
-  },
-  {
-    "filePath": "6.languages\\vue\\index.md",
+    "filePath": "6.languages/vue/index.md",
     "filename": "index.md",
     "todos": [
       {
         "title": "Richtlinien für Vue",
-        "link": "6.languages\\vue\\index.md"
+        "link": "6.languages/vue/index.md"
       }
     ]
   },
   {
-    "filePath": "8.accessibility\\index.md",
+    "filePath": "8.accessibility/index.md",
     "filename": "index.md",
     "todos": [
       {
         "title": "https://vitepress.dev/reference/default-theme-home-page",
-        "link": "8.accessibility\\index.md"
+        "link": "8.accessibility/index.md"
       }
     ]
   },
   {
-    "filePath": "8.accessibility\\ui.md",
+    "filePath": "8.accessibility/ui.md",
     "filename": "ui.md",
     "todos": [
       {
         "title": "Einleitung",
-        "link": "8.accessibility\\ui.md#einleitung"
+        "link": "8.accessibility/ui.md#einleitung"
       }
     ]
   },

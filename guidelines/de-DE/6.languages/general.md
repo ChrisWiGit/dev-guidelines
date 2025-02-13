@@ -475,3 +475,11 @@ Der zusätzliche Aufwand rechnet sich, wenn die Klassen getestet oder erweitert 
 Welche Arten von Kopplungen es gibt, können in [Kopplung](../2.principles/principles#coupling) nachgelesen werden.
 
 :::
+
+## GL27 Nebeneffekte vermeiden {#nebeneffekte-vermeiden}
+
+Methoden und Funktionen sollen keine Nebeneffekte haben, die nicht offensichtlich sind.
+
+- Eine Methode oder Funktion soll keine Parameter oder die Inhalte der Parameter verändern.
+- Eine Methode oder Funktion soll keine internen Zustände nach außen sichtbar machen.
+- Eine Methode oder Funktion soll keine globalen Variablen verändern.
