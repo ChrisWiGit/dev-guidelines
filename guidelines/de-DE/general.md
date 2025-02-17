@@ -54,6 +54,22 @@ Softwareentwicklung wird zu einer Ingenieursdisziplin, die nach festen Regeln un
 
 :::
 
+## Einbeziehung der Entwickler
+
+Es ist wichtig, dass Richtlinien, Best Practices und Prinzipien nicht von oben herab diktiert werden, sondern dass die Entwickler in den Prozess einbezogen werden.
+In diesem Sinne sollen die hier niedergeschriebenen Richtlinien als Diskussionsgrundlage dienen, um gemeinsam im Team zu entscheiden, welche Regeln und Prinzipien für die Softwareentwicklung gelten sollen.
+Nur, wenn alle Entwickler die Regeln und Prinzipien akzeptieren und sich daran halten, kann eine effiziente und qualitativ hochwertige Softwareentwicklung gewährleistet werden.
+Es ist daher auch nicht ausgeschlossen nur einen Teil der Regeln zu übernehmen oder eigene Regeln zu definieren oder diese Regeln für die eigenen Bedürfnisse anzupassen.
+Forke dazu einfach das Repository und passe die Regeln an deine Bedürfnisse an.
+
+Nochmal im Überblick:
+
+1. **Einbeziehung der Entwickler**: Entwickler sollen in den Prozess der Erstellung von Richtlinien und Prinzipien einbezogen werden.
+2. **Akzeptanz der Regeln**: Alle Entwickler sollen die Regeln und Prinzipien akzeptieren und sich daran halten.
+3. **Anpassung der Regeln**: Es ist möglich, nur einen Teil der Regeln zu übernehmen oder eigene Regeln zu definieren oder diese Regeln für die eigenen Bedürfnisse anzupassen.
+4. **Forken des Repositories**: Forken des Repositories und Anpassen der Regeln an die eigenen Bedürfnisse.
+5. **Diskussion**: Diskussion der Regeln im Team und gemeinsame Entscheidung, welche Regeln und Prinzipien für die Softwareentwicklung gelten sollen.
+
 ## Abschnitte
 
 Die Richtlinien sind in mehrere Abschnitte unterteilt, die dir helfen sollen, mit der Zeit immer besser bei der Entwicklung von Software zu werden.
@@ -69,7 +85,7 @@ Die Richtlinien sind nicht in Stein gemeißelt. Sie sind ein Leitfaden, der dir 
 
 ## Richtlinien und Regeln
 
-Alle Richtlinien in diesem Dokument sind kodiert. 
+Alle Richtlinien in diesem Dokument sind kodiert.
 Jede Regel beginnt mit einem Buchstaben, gefolgt von einer Nummer, die den Abschnitt identifiziert, z.B. H1 für Erste Regel im Abschnitt **Health**/**Gesundheit**.
 Damit kann eine Regel eindeutig identifiziert werden, z.B. für einen Kommentar im Code-Review.
 

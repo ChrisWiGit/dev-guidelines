@@ -37,6 +37,13 @@ features:
       src: /flag.png
       width: 36
       height: 36
+  - title: Einsatz
+    details: Wichtige Information zum Einsatz
+    link: ./general#einbeziehung-der-entwickler
+    icon:
+      src: /people.png
+      width: 36
+      height: 36
   - title: Gesundheit (100%)
     details: Regeln zur Gesundheit
     link: ./1.health/
@@ -79,7 +86,7 @@ features:
       src: /languages.png
       width: 36
       height: 36
-  - title: Code Reviews (40%)
+  - title: Code Reviews (70%)
     details: Regeln für Code Reviews
     link: ./7.reviews
     icon:

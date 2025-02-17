@@ -223,12 +223,13 @@ layout: doc
 - [GR3 Kommunikation](7.reviews.md#kommunikation)
 - [GR4 Zeitpunkt](7.reviews.md#zeitpunkt)
 - [GR5 Dauer](7.reviews.md#dauer)
-- [GR6 Persönliche Einstellung](7.reviews.md#persoenliche-einstellung)
-- [GR7 Gewissenhaftigkeit](7.reviews.md#gewissenhaftigkeit)
-- [GR8 Gesamten Code prüfen](7.reviews.md#gesamten-code-pruefen)
-- [GR9 Code lokal prüfen](7.reviews.md#code-lokal-pruefen)
-- [GR10 Linting soll automatisiert sein](7.reviews.md#linting-soll-automatisiert-sein)
-- [GR11 Fehlerbehandlung](7.reviews.md#fehlerbehandlung)
+- [GR6 Ablehnung von Code-Reviews](7.reviews.md#ablehnung-von-code-reviews)
+- [GR7 Persönliche Einstellung](7.reviews.md#persoenliche-einstellung)
+- [GR8 Gewissenhaftigkeit](7.reviews.md#gewissenhaftigkeit)
+- [GR9 Gesamten Code prüfen](7.reviews.md#gesamten-code-pruefen)
+- [GR10 Code lokal prüfen](7.reviews.md#code-lokal-pruefen)
+- [GR11 Linting soll automatisiert sein](7.reviews.md#linting-soll-automatisiert-sein)
+- [GR12 Fehlerbehandlung](7.reviews.md#fehlerbehandlung)
 
 ## Regeln für das Arbeiten mit Künstlicher Intelligenz
 
