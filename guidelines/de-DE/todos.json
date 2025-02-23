@@ -78,6 +78,10 @@
       {
         "title": "RFA6 Variablen extrahieren",
         "link": "5.refactoring\\all.md#variablen-extrahieren"
+      },
+      {
+        "title": "RFA14 Doppelter Code",
+        "link": "5.refactoring\\all.md#doppelter-code"
       }
     ]
   },

@@ -1,8 +1,8 @@
 {
   "sentences": 5360,
-  "words": 65418,
-  "syllables": 128156,
-  "characters": 397978,
+  "words": 65421,
+  "syllables": 128161,
+  "characters": 397990,
   "wordToCount": [
     {
       "word": "oder",
@@ -706,19 +706,19 @@
     }
   ],
   "sentencesFormatted": "5 360",
-  "wordsFormatted": "65 418",
-  "syllablesFormatted": "128 156",
-  "charactersFormatted": "397 978",
+  "wordsFormatted": "65 421",
+  "syllablesFormatted": "128 161",
+  "charactersFormatted": "397 990",
   "sentencesAsHex": "14f0",
-  "wordsAsHex": "ff8a",
-  "syllablesAsHex": "1f49c",
-  "charactersAsHex": "6129a",
+  "wordsAsHex": "ff8d",
+  "syllablesAsHex": "1f4a1",
+  "charactersAsHex": "612a6",
   "sentencesAsOctal": "12 360",
-  "wordsAsOctal": "177 612",
-  "syllablesAsOctal": "372 234",
-  "charactersAsOctal": "1 411 232",
+  "wordsAsOctal": "177 615",
+  "syllablesAsOctal": "372 241",
+  "charactersAsOctal": "1 411 246",
   "sentencesAsBinary": "1 0100 1111 0000",
-  "wordsAsBinary": "1111 1111 1000 1010",
-  "syllablesAsBinary": "1 1111 0100 1001 1100",
-  "charactersAsBinary": "110 0001 0010 1001 1010"
+  "wordsAsBinary": "1111 1111 1000 1101",
+  "syllablesAsBinary": "1 1111 0100 1010 0001",
+  "charactersAsBinary": "110 0001 0010 1010 0110"
 }

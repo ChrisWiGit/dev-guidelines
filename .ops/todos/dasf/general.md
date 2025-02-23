@@ -18,8 +18,6 @@ Teile diese Dokumentation sind noch in Arbeit und können unvollständig sein.
 
 ::: danger TODO:
 
-bdfgsdfg
-
 :::
 
 Refactoring ist ein Prozess, bei dem der Code verbessert wird, ohne das Verhalten zu ändern. Es ist ein wichtiger Bestandteil der Softwareentwicklung, um die Wartbarkeit und Lesbarkeit des Codes zu verbessern.
