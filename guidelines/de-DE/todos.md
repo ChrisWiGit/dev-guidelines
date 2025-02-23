@@ -35,7 +35,7 @@ Dieses Dokument enthält eine Liste von Aufgaben, die noch erledigt werden müss
 
 ## 5.refactoring\all.md
 
-- [RFA5 Variablen extrahieren](5.refactoring\all.md#variablen-extrahieren)
+- [RFA6 Variablen extrahieren](5.refactoring\all.md#variablen-extrahieren)
 
 ## 5.refactoring\java.md
 
