@@ -194,14 +194,15 @@ REST-Schnittstellen sollten im Pfad bereits eine Versionsnummer enthalten, um zu
 <!-- !glossary-->
 ::: info Code Smells
 Code Smells sind Anzeichen in deinem Code, die auf tiefer liegende Probleme hinweisen können.
-Beispiele hierfür sind überlange Funktionen, verschachtelte Schleifen, globale Variablen und duplizierter Code. Durch das Identifizieren dieser "Code Smells" kannst du gezielt Verbesserungen vornehmen.
+Beispiele hierfür sind überlange Funktionen, verschachtelte Schleifen, globale Variablen und duplizierter Code.
+Durch das Identifizieren dieser "Code Smells" können gezielt Verbesserungen vorgenommen werden.
 :::
 
 Siehe [Refactoring-Beispiele](./all).
 
 ## RFP9 Vereinfachungen {#vereinfachungen}
 
-Code soll durch Refactoring immer vereinfacht werden, um die Lesbarkeit und Wartbarkeit zu verbessern.
+Code soll durch Refactoring vereinfacht werden, um die Lesbarkeit und Wartbarkeit zu verbessern.
 
 Die Prinzipien [DRY](../2.principles/principles#dry), [SOC](../2.principles/principles#soc) und [KISS](../2.principles/principles#kiss) sind hierbei zu beachten.
 
@@ -260,7 +261,9 @@ da Änderungen an mehreren Stellen vorgenommen werden müssen (Eine Stelle verge
 3. Große und viele Duplikate können durch das Zusammenführen in Klassen oder Modulen reduziert werden.
 
 Nicht jedes Duplikat benötigt eine Refaktorisierung, beispielweise wenn es nur zwei Stellen gibt, an denen der Code vorkommt.
-Die [Die 2-3-5](../2.principles/principles#the-2-3-5) Regel kann hierbei helfen einzuschätzen, ob ein Duplikat refaktorisiert werden sollte.
+Die **[2-3-5-Regel](../2.principles/principles.html#2-3-5-regel)** Regel kann hierbei helfen einzuschätzen, ob ein Duplikat refaktorisiert werden sollte.
+
+Die **[Kopplung](../6.languages/general.html#niedrige-kopplung)** kann sich auch durch das Entfernen von Duplikaten erhöhen, wenn die Duplikate unterschiedliche Anforderungen haben.
 
 ## RFP16 Lange Funktionen/Methoden {#lange-funktionen-methoden}
 

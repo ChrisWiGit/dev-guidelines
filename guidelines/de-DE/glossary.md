@@ -15,7 +15,8 @@ Es ist eine Referenz für Entwickler, um die Bedeutung von Begriffen zu verstehe
 ## Code Smells
 
 Code Smells sind Anzeichen in deinem Code, die auf tiefer liegende Probleme hinweisen können.
-Beispiele hierfür sind überlange Funktionen, verschachtelte Schleifen, globale Variablen und duplizierter Code. Durch das Identifizieren dieser "Code Smells" kannst du gezielt Verbesserungen vornehmen.
+Beispiele hierfür sind überlange Funktionen, verschachtelte Schleifen, globale Variablen und duplizierter Code.
+Durch das Identifizieren dieser "Code Smells" können gezielt Verbesserungen vorgenommen werden.
 
 ## Code-Smells
 

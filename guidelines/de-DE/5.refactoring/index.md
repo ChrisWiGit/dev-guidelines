@@ -14,6 +14,9 @@ hero:
       text: Allgemeine Regeln
       link: ./all
     - theme: brand
+      text: Strategisches Vorgehen
+      link: ./all.html#strategien-zum-refactoring
+    - theme: brand
       text: Literatur
       link: ../sources
     
