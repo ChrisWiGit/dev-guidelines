@@ -298,6 +298,8 @@ Es soll immer die Wurzel des Problems behoben werden und nicht nur die Symptome.
 
 ## GL21 Logging {#logging}
 
+### GL21 Logging-Stufen
+
 Logging gibt es in verschiedenen Stufen
 
 - Debug: Detaillierte Informationen für die Entwickler
@@ -305,25 +307,158 @@ Logging gibt es in verschiedenen Stufen
 - Warn: Warnungen, die auf Probleme hinweisen, die behoben werden sollten, aber nicht dazu führen, dass das Programm nicht funktioniert.
 - Error: Fehler, die das Programm möglicherweise zum Absturz bringen und die behoben werden müssen.
 
-Folgendes ist zu beachten:
+### GL21 Logging-Regeln
 
-- Eine Log-Meldung soll im Code nur dann ausgegeben werden, wenn das entsprechende Log-Level aktiviert ist.
-  - Gegebenenfalls muss eine Log-Meldung auch mit einem `if`-Statement oder anderen Conditional-Patterns umgeben werden, um die Ausgabe zu verhindern.
-- Log-Meldungen sollen aussagekräftig sein und den Kontext der Meldung enthalten.
-  - Die Sprache ist Englisch.
-  - Log-Meldungen sollten auch von anderen Personen als Entwickler verstanden werden.
-  - Auf Rechtschreibung und Grammatik ist zu achten.
-- Log-Meldungen dürfen keine sensiblen Daten wie Passwörter oder personenbezogene Daten enthalten.
-  - Diese sollen vor dem Loggen entfernt oder unkenntlich gemacht werden.
-- Log-Meldungen sollen mit einem durch das Framework bereitgestellten Logger ausgegeben werden.
-  - Direktes Ausgeben von Log-Meldungen auf der Konsole oder in Dateien ist für Produktivumgebungen nicht erlaubt.
+**Generell gilt:** Gut designte Anwendungen haben nur wenige Codezeilen, die Loggen.
+Es soll nicht auf Verdacht geloggt werden, sondern nur wenn es notwendig ist.
+
+#### GL21 Logging soll von fachlichen Code getrennt sein
+
+Durch den Einsatz von Aspekt-Orientierter Programmierung (AOP) kann Logging von fachlichen Code getrennt werden.
+Dadurch wird der fachliche Code nicht durch Logging-Code verunreinigt und bleibt übersichtlich.
+
+Ein Logging geschieht indem ein Decorator-Pattern verwendet wird, um den fachlichen Code zu umhüllen und das Logging zu implementieren.
+
+In Beispielcodes von Logging-Frameworks wird oft eine statische Variable verwendet, um den Logger für eine Business-Klasse zu erhalten.
+Dies ist jedoch nicht empfohlen, da dadurch der Logger nicht ausgetauscht werden kann und das Logging nicht komplett deaktiviert werden kann (z.B. auch für Tests).
+
+::: details Beispiel für Logging mit Decorator-Pattern
+
+Im Folgenden wird ein Beispiel für das Logging mit dem Decorator-Pattern gezeigt.
+Dazu wird eine Business-Logik-Klasse mit einem Decorator umhüllt, der das Logging übernimmt.
+
+```java
+// Interface für die Business-Logik
+interface BusinessService {
+    execute(data)
+}
+
+// Konkrete Implementierung der Business-Logik
+class BusinessServiceImpl implements BusinessService {
+    execute(data) {
+        // Business-Logik hier
+        // z.B. Verarbeite Daten, führe Berechnungen durch, etc.
+        return "Result of business logic"
+    }
+}
+
+// Decorator, der Logging übernimmt, um die Business-Logik zu umhüllen und
+// beispielsweise die Ausführungsdauer zu loggen
+class LoggingPerfomanceDecorator implements BusinessService {
+    // Referenz auf die eigentliche Business-Logik
+    private wrappedService: BusinessService
+    private Logger logger;
+
+    // Konstruktor, um den zu dekorierenden Service zu übergeben
+    constructor(service: BusinessService, loggerFactory: LoggerFactory) {
+        this.wrappedService = service
+        this.logger = loggerFactory.getLogger(service.getClass())
+    }
+
+    execute(data) {
+        // Vor dem Aufruf: Log-Eintrag erstellen
+        logger.info("Starting execution of business logic with data: " + data)
+
+        // Aufruf der eigentlichen Business-Methode
+        result = this.wrappedService.execute(data)
+
+        // Nach dem Aufruf: Log-Eintrag erstellen
+        logger.info("Finished execution. Result: " + result)
+
+        return result
+    }
+}
+
+// Beispielhafte Nutzung
+// Erstellen der Business-Logik-Instanz
+service = new BusinessServiceImpl()
+
+// Dekorieren mit Logging-Funktionalität
+loggedService = new LoggingPerfomanceDecorator(service)
+
+// Aufruf der Methode; dabei werden Log-Meldungen erzeugt
+loggedService.execute("Beispieldaten")
+```
+
+:::
+
+#### GL21 Kleine Methoden
+
+Wenn Methoden klein sind, ist es einfacher, das Logging zu implementieren.
+Durch die Reihenfolge von Log-Ausgaben ist es einfacher möglich den Ablauf des Programms zu verstehen, wenn die Methoden klein sind und in einem Call-Stack sichtbar sind.
+
+- Logging soll nicht in Getter- und Setter-Methoden erfolgen.
+- Logging soll nicht in Konstruktoren erfolgen.
+- Logging soll nicht in statischen Methoden erfolgen.
+
+#### GL21 Logging nur, wenn notwendig
+
+Logging soll generell nur dann erfolgen, wenn es notwendig ist, um ein Problem zu identifizieren.
+
+- Es sollen nur Werte geloggt werden, die nicht bei einer Auswertung der Loggings selbst ermittelt werden können (z.B. keine Konstanten, pure Methodenaufrufe).
+- Werte sollen nur dann geloggt werden, wenn sie für die Analyse notwendig sind.
+- Sensible Daten sollen nicht geloggt werden (z.B. Passwörter, personenbezogene Daten).
+
+#### GL21 Performance
+
+Übermäßiges Logging kann die Performance beeinträchtigen, insbesondere, wenn Logs innerhalb von Schleifen oder bei jedem Methodenaufruf geschrieben werden.
+
+#### GL21 Aussagekräftige Log-Meldungen
+
+Log-Meldungen sollen aussagekräftig sein und den Kontext der Meldung enthalten.
+Dies bedeutet, dass ganze Sätze verwendet werden sollen, die den Kontext der Meldung beschreiben.
+
+- Log-Meldungen sollen in Englisch verfasst werden.
+- Log-Meldungen sollen auch von anderen Personen als Entwickler verstanden werden.
+- Log-Meldungen sollen Rechtschreibung und Grammatik beachten.
 - Log-Meldungen sollen Platzhalter verwenden, die durch das Logging-Framework ersetzt werden (z.B. `log.debug("User {} logged in", user.getName())`).
-  - Dies verhindert Sicherheitslücken durch die direkte Ausgabe von Benutzereingaben.
-- Log-Meldungen sollen eindeutig sein.
-  - Mehrere Log-Meldungen sollen nicht denselben Text haben.
-  - Log-Meldungen sollen nicht mehrfach ausgegeben werden.
 
-Log-Texte enthalten die folgenden Informationen:
+Wichtig: Log-Meldungen sollen eindeutig sein und nicht mehrfach ausgegeben werden oder an mehreren Stellen im Code identisch sein.
+
+::: danger Schlechte Log-Meldung
+
+Zu vage: An error occurred.\
+Zu technisch: NullReferenceException: Object reference not set to an instance of an object.\
+Zu unverständlich: 0x0000005: Access violation.\
+Unbekannte Abkürzungen: DBMS error: SQLERR 1234.\
+Spam: [INFO] Processing data... [INFO] Processing data... [INFO]Processing data...\
+Falsches Log-Level: [DEBUG] Database connection failed.\
+Persönliche Informationen: User 123 logged in with password 123456.
+Rechtschreibfehler: Conection to database faild.
+:::
+
+::: tip Gute Log-Meldung
+
+Klar und informativ: [ERROR] Could not open file: config.yaml (Permission denied)\
+Kontext: [INFO] User 'admin' logged in successfully (IP: 143.23.12.31)\
+Fehlerbehebung: [WARN] Database connection failed. Retrying in 5 seconds.\
+Lösungsvorschlag: [ERROR] Could not connect to database (Timeout). Check network connection.\
+Richtiges Log-Level:[ERROR] Could not connect to database.[INFO] Server started on port 8080.
+[WARN] High CPU usage detected (85%) [ERROR] Database connection failed: The connection was rejected by the server.\
+Vollständige Sätze: [WARN] Could not connect to database. A timeout occurred after 10 seconds.\
+Platzhalter: [INFO] User {} logged in from {} (IP: {}), user.getName(), user.getLocation(), user.getIp()
+:::
+
+#### GL21 Log-Level
+
+Eine Log-Meldung soll im Code nur dann ausgegeben werden, wenn das entsprechende Log-Level aktiviert ist.
+Gegebenenfalls muss eine Log-Meldung auch mit einem `if`-Statement oder anderen Conditional-Patterns umgeben werden, um die Ausgabe zu verhindern.
+
+#### GL21 Log-Framework
+
+Log-Meldungen sollen mit einem durch das Framework bereitgestellten Logger ausgegeben werden.
+Direktes Ausgeben von Log-Meldungen auf der Konsole oder in Dateien ist für Produktivumgebungen nicht erlaubt.
+
+Vermeide eine Neuerfindung des Logging-Rades und verwende ein Logging-Framework, das die Anforderungen erfüllt und für die Umgebung standardisiert ist.
+
+::: info console in Web-Umgebungen
+
+Das `console`-Object in der Web-Umgebung ist mächtig und moderne Web-Browser unterstützen das Logging mit vielen Funktionen.
+Generell ist es nicht notwendig, ein zusätzliches Logging-Framework in Web-Umgebungen zu verwenden, da das `console`-Object ausreichend ist.
+
+:::
+
+#### GL21 Log-Texte enthalten die folgenden Informationen
 
 - Datum und Uhrzeit (durch das Logging-Framework)
 - Log-Level (durch das Logging-Framework)
