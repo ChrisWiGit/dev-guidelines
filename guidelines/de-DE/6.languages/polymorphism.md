@@ -1,6 +1,13 @@
+---
+# https://vitepress.dev/reference/default-theme-home-page
+layout: doc
+outline: [2, 2]
+customRulePrefix: PY
+customIgnoreTitlesForRules: []
+---
 # Polymorphismus
 
-## Was ist Polymorphismus?
+## PY1 Was ist Polymorphismus? {#was-ist-polymorphismus}
 
 In der Objekt-Orientierten Programmierung (OOP) ist Polymorphismus ein Konzept, das es ermöglicht, dass ein Objekt sich in verschiedenen Formen verhalten kann.
 Das bedeutet, dass ein Objekt einer Klasse sich wie ein Objekt einer anderen Klasse verhalten kann, indem es eine Methode mit dem gleichen Namen wie die Methode der anderen Klasse implementiert.
@@ -54,7 +61,7 @@ Wenn Daten hinzu gefügt werden sollen, ist es besser das [Pattern Komposition](
 
 :::
 
-### Weiterführende Links
+### PY1 Weiterführende Links
 
 - [Wikipedia - Polymorphismus](https://de.wikipedia.org/wiki/Polymorphie_(Programmierung))
 - [Composition over Inheritance](https://en.wikipedia.org/wiki/Composition_over_inheritance)
