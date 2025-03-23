@@ -53,7 +53,13 @@ features:
       src: /vue.png
       width: 36
       height: 36
-
+  - title: Performance
+    details: 
+    link: ./performance
+    icon:
+      src: /vue.png
+      width: 36
+      height: 36
 
 ---
 
