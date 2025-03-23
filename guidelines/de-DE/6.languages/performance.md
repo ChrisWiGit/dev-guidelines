@@ -38,7 +38,7 @@ Es ist wichtig, sich zunächst auf sauberen Code und eine klare Architektur zu k
 
 ::: details Nintend 64 Mario 64 Optimierungen von Kaze Emanuar
 
-Der Modder Kaze Emanuar hat den Quellcode von Super Mario 64 auf dem Nintendo 64 (von 1996)  analysiert und optimiert, um die Performance des Spiels auf der originalen Nintendo 64-Hardware erheblich zu verbessern.
+Der Modder Kaze Emanuar hat den Quellcode des Bestellerspiels Super Mario 64 (Veröffentlicht 1996, 11,9 Mio verkaufte Einheiten lt. Wikipedia) analysiert und optimiert, um die Performance des Spiels auf der originalen Nintendo 64-Hardware erheblich zu verbessern.
 Durch seine Optimierungen konnte die Rendering-Geschwindigkeit des Spiels um das Sechsfache gesteigert werden.
 Diese Leistungsverbesserung ermöglicht es, aufwendigere Level mit höherer Polygonzahl und höherer Auflösung flüssig darzustellen.
 Zudem ebnet sie den Weg für einen Multiplayer-Modus, der ursprünglich aufgrund technischer Einschränkungen nicht realisiert werden konnte.
