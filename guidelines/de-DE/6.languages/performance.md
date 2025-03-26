@@ -434,7 +434,7 @@ Die richtige Invalidierungsstrategie ist entscheidend für die Datenkonsistenz:
 
 SIMD ist eine Technik, die es ermöglicht, eine einzelne Instruktion auf mehrere Daten gleichzeitig anzuwenden. Sie wird häufig in der Hochleistungsprogrammierung eingesetzt, insbesondere für Grafikberechnungen, KI und wissenschaftliche Simulationen.
 
-::: info Die eine milliarde Zeilen Challenge
+::: info Die eine Milliarde Zeilen Challenge
 
 2024 wurde die "Eine Milliarde Zeilen Challenge" von Gunnar Morling ins Leben gerufen, um den schnellsten Weg zu finden, eine Milliarde Zeilen in einer CSV-Datei zu verarbeiten.
 
@@ -450,6 +450,17 @@ Mehr Informationen und Implementierungen finden Sie auf [GitHub von Gunnar Morli
 - **Parallelität**: Mehrere Operationen werden gleichzeitig ausgeführt.
 - **Effizienz**: Reduziert den Overhead von Schleifen.
 - **Optimierung für moderne CPUs**: SIMD-Befehle nutzen spezialisierte Hardware in Prozessoren.
+- **Performance**: Beschleunigt Berechnungen erheblich.
+- **Skalierbarkeit**: Kann auf große Datenmengen angewendet werden.
+
+#### PF7 Nachteile von SIMD
+
+- **Nicht für Anfänger**: Erfordert spezielle Kenntnisse und Erfahrung.
+- **Komplexität**: SIMD erfordert spezielle Kenntnisse und kann schwer zu debuggen sein.
+- **Plattformabhängigkeit**: SIMD-Instruktionen sind nicht auf allen Plattformen verfügbar.
+- **Verständlichkeit**: SIMD-Code kann schwer zu lesen und zu warten sein.
+- **Erweiterbarkeit**: SIMD-Code ist oft spezifisch für eine Anwendung und schwer wiederverwendbar.
+- **Fehleranfälligkeit**: SIMD-Code kann zu Fehlern führen, die schwer zu finden sind.
 
 #### PF7 Beispiel für SIMD in Pseudocode
 
