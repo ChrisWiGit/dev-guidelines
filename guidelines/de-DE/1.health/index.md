@@ -30,7 +30,7 @@ d) Wenn du mehr als deine vereinbarten Stunden am Tag arbeitest, dann musst du m
 
 a) Mache regelmäßig Pausen. Viele Stunden am Stück zu arbeiten ist nicht effektiv.
 
-b) Teile deine Arbeitszeit ein, fokusiere dich auf deine Arbeit und mache dann zwischendurch eine Pause.
+b) Teile deine Arbeitszeit ein, fokussiere dich auf deine Arbeit und mache dann zwischendurch eine Pause.
 
 ## H4 Urlaub {#urlaub}
 
