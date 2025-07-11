@@ -30,7 +30,7 @@ hero:
       link: ./todos
 
 features:
-  - title: Allgemeines (100%)
+  - title: Allgemeines
     details: Allgemeines zum Leitfaden
     link: ./general
     icon:
@@ -44,70 +44,70 @@ features:
       src: /people.png
       width: 36
       height: 36
-  - title: Gesundheit (100%)
+  - title: Gesundheit
     details: Regeln zur Gesundheit
     link: ./1.health/
     icon:
       src: /health.png
       width: 36
       height: 36
-  - title: Prinzipien der SE (100%)
+  - title: Prinzipien der SE
     details: Prinzipien der Softwareentwicklung
     link: ./2.principles/
     icon:
       src: /principles.png
       width: 36
       height: 36
-  - title: Clean Code (20%)
+  - title: Clean Code
     details: Clean Code Regeln
     link: ./3.cleancode/
     icon:
       src: /cleancode.png
       width: 36
       height: 36
-  - title: Design Patterns (50%)
+  - title: Design Patterns
     details: Entwurfsmuster in der Softwareentwicklung
     link: ./4.designpatterns/
     icon:
       src: /designpatterns.png
       width: 36
       height: 36
-  - title: Refactoring (60%)
+  - title: Refactoring
     details: Regeln zum Refactoring
     link: ./5.refactoring/
     icon:
       src: /refactoring.png
       width: 36
       height: 36
-  - title: Sprachen und Frameworks (80%)
+  - title: Sprachen und Frameworks
     details: Richtlinien zu den Sprachen und Frameworks Java, JavaScript, Vue
     link: ./6.languages/
     icon:
       src: /languages.png
       width: 36
       height: 36
-  - title: Code Reviews (70%)
+  - title: Code Reviews
     details: Regeln für Code Reviews
     link: ./7.reviews
     icon:
       src: /codereviews.png
       width: 36
       height: 36
-  - title: Barrierefreiheit (1%)
+  - title: Barrierefreiheit (TODO)
     details: Regeln für barrierefreie Software
     link: ./8.accessibility
     icon:
       src: /accessibility.png
       width: 36
       height: 36
-  - title: Metriken (1%)
+  - title: Metriken (TODO)
     details: Metriken in der Softwareentwicklung
     link: ./10.metrics
     icon:
       src: /metrics.png
       width: 36
       height: 36
-  - title: Künstliche Intelligenz (100%)
+  - title: Künstliche Intelligenz
     details: KI in der Softwareentwicklung
     link: ./9.ai
     icon:
