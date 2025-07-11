@@ -25,7 +25,9 @@ Anhand von Code-Smells können Code-Verbesserungen identifiziert und Refactoring
 Oftmals stellt das eingesetzte Framework eine globale Fehlerbehandlung zur Verfügung, die verwendet werden kann, um z.B. dem Benutzer eine Fehlermeldung anzuzeigen.\
 Die Globale Fehlerbehandlung ist einfacher zu implementieren und zu warten und führt zu verständlicheren Code.
 Wenn eine lokale Fehlerbehandlung wie mit `try-catch`-Blöcken verwendet wird, muss die Behandlung der möglichen Fehler manuell implementiert werden.
-Oftmals wird jedoch die Fehlerbehandlung vollständig vergessen oder ignoriert (und auch nicht getestet), was zu unterschiedlicher Behandlung von Fehlern führt.
+Oftmals wird jedoch die Fehlerbehandlung vollständig vergessen oder ignoriert (und auch nicht getestet), was zu was zu unerwarteten Verhalten führen kann.
+Beispielsweise kann ein Fehler in einem Modul mit einem Dialog ausgegeben werden, während ein anderes Modul den Fehler ignoriert oder nur im Log ausgibt.
+Die entsprechenden Aufrufer der Module können dann nicht mehr unterscheiden, ob ein Fehler aufgetreten ist oder nicht.
 
 ## Guard Clause
 
