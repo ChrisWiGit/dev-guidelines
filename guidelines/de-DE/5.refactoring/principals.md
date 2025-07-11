@@ -191,7 +191,7 @@ REST-Schnittstellen sollten im Pfad bereits eine Versionsnummer enthalten, um zu
 
 `Code Smells` sollen identifiziert und behoben werden, um die Codequalität zu verbessern.
 
-<!-- !glossary-->
+<!-- noglossary-->
 ::: info Code Smells
 Code Smells sind Anzeichen in deinem Code, die auf tiefer liegende Probleme hinweisen können.
 Beispiele hierfür sind überlange Funktionen, verschachtelte Schleifen, globale Variablen und duplizierter Code.

@@ -119,7 +119,7 @@ Damit ist es auch möglich große Teile des Codes zu erneuern, ohne dass ein gan
 
 `Code Smells` sollen identifiziert und behoben werden, um die Codequalität zu verbessern.
 
-<!-- !glossary-->
+<!-- no-glossary-->
 ::: info Code Smells
 Code Smells sind Anzeichen in deinem Code, die auf tiefer liegende Probleme hinweisen können.
 Beispiele hierfür sind überlange Funktionen, verschachtelte Schleifen, globale Variablen und duplizierter Code. Durch das Identifizieren dieser "Code Smells" kannst du gezielt Verbesserungen vornehmen.

@@ -34,6 +34,17 @@ npm run docs:build
 npm run docs:preview
 ```
 
+## Build Script
+
+The build script is used to generate `headlines.json`, `allrules.md`, `glossary.md`, `stats.md`, and `todos.md` files for each language.
+In some folders there are Handlebars templates that are used to generate the markdown files.
+
+>> Do not edit the handlebars templates directly, instead use the build script to generate the files.
+
+```bash
+./build.sh
+```
+
 ## Deployment
 
 1. All markdown files are also processed by a nodejs custom script that creates the `allrules.md` file.

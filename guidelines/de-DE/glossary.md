@@ -12,10 +12,9 @@ Es ist eine Referenz für Entwickler, um die Bedeutung von Begriffen zu verstehe
 `Authentifizierung` ist der Prozess, bei dem die Identität eines Benutzers überprüft wird.
 `Autorisierung` ist der Prozess, bei dem überprüft wird, ob ein Benutzer auf bestimmte Ressourcen zugreifen darf.
 
-## Code Smells
+## Code-Smells
 
-Code Smells sind Anzeichen in deinem Code, die auf tiefer liegende Probleme hinweisen können.
-Beispiele hierfür sind überlange Funktionen, verschachtelte Schleifen, globale Variablen und duplizierter Code.
+Code-Smells sind wiederkehrende Muster und Anzeichen, die auf Probleme im Code hinweisen.
 Anhand von Code-Smells können Code-Verbesserungen identifiziert und Refactorings durchgeführt werden.
 
 ## Globale Fehlerbehandlung der lokalen Fehlerbehandlung vorziehen
@@ -25,8 +24,9 @@ Anhand von Code-Smells können Code-Verbesserungen identifiziert und Refactoring
 Oftmals stellt das eingesetzte Framework eine globale Fehlerbehandlung zur Verfügung, die verwendet werden kann, um z.B. dem Benutzer eine Fehlermeldung anzuzeigen.\
 Die Globale Fehlerbehandlung ist einfacher zu implementieren und zu warten und führt zu verständlicheren Code.
 Wenn eine lokale Fehlerbehandlung wie mit `try-catch`-Blöcken verwendet wird, muss die Behandlung der möglichen Fehler manuell implementiert werden.
-Oftmals wird jedoch die Fehlerbehandlung vollständig vergessen oder ignoriert (und auch nicht getestet), was zu was zu unerwarteten Verhalten führen kann.
-Beispielsweise kann ein Fehler in einem Modul mit einem Dialog ausgegeben werden, während ein anderes Modul den Fehler ignoriert oder nur im Log ausgibt.
+Oftmals wird jedoch die Fehlerbehandlung vollständig vergessen oder ignoriert (und auch nicht getestet).
+**Inkonsistente Fehlerbehandlung** kann zu unerwartetem Verhalten führen.
+Beispielsweise kann ein Fehler in einem Modul mit einem Dialog angezeigt werden, während ein anderes Modul den Fehler ignoriert oder nur im Log ausgibt.
 Die entsprechenden Aufrufer der Module können dann nicht mehr unterscheiden, ob ein Fehler aufgetreten ist oder nicht.
 
 ## Guard Clause
